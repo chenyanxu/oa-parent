@@ -10,7 +10,7 @@
     </feature>
 
     <feature name="oa-core" version="1.0">
-        <bundle>mvn:com.kalix.oa.core/oa-core-web/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.core/oa-core-extjs/${parent.version}</bundle>
     </feature>
 
     <feature name="oa-system" version="1.0">
@@ -24,7 +24,6 @@
         <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.dict/oa-system-dict-extjs/${parent.version}</bundle>
     </feature>
 
@@ -34,7 +33,6 @@
         <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.system.meetingroom/oa-system-meetingroom-extjs/${parent.version}</bundle>
     </feature>
 
@@ -52,7 +50,6 @@
         <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.carapply/oa-workflow-carapply-extjs/${parent.version}</bundle>
     </feature>
 
@@ -62,7 +59,6 @@
         <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-extjs/${parent.version}</bundle>
     </feature>
 
@@ -72,7 +68,6 @@
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-extjs/${parent.version}</bundle>
     </feature>
 
@@ -82,7 +77,6 @@
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-extjs/${parent.version}</bundle>
     </feature>
 
@@ -92,7 +86,6 @@
         <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.sealapply/oa-workflow-sealapply-extjs/${parent.version}</bundle>
     </feature>
 
@@ -107,7 +100,6 @@
         <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.candidate/oa-usecase-candidate-extjs/${parent.version}</bundle>
     </feature>
 
@@ -117,7 +109,6 @@
         <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-dao/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-biz/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-rest/${parent.version}</bundle>
-        <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-web/${parent.version}</bundle>
         <bundle>mvn:com.kalix.oa.usecase.interview/oa-usecase-interview-extjs/${parent.version}</bundle>
     </feature>
 
