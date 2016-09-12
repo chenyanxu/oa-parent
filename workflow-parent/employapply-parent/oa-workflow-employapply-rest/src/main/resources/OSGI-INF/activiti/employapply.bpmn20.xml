@@ -11,17 +11,19 @@
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-        <userTask id="branchSchoolLeader" name="分院领导审批" activiti:candidateGroups="分院领导" activiti:formKey="audit.form">
-            <documentation>分院领导审批</documentation>
+        <!--<userTask id="branchSchoolLeader" name="上级领导审核" activiti:candidateGroups="分院领导" activiti:formKey="audit.form">-->
+        <userTask id="branchSchoolLeader" name="上级领导审核" activiti:formKey="audit.form">
+            <documentation>上级领导审核</documentation>
             <extensionElements>
                 <activiti:formProperty id="accepted" name="判断环节" type="boolean" variable="accepted"></activiti:formProperty>
+                <activiti:taskListener event="create" class="com.kalix.middleware.workflow.engine.listener.LeaderListener"/>
             </extensionElements>
         </userTask>
         <sequenceFlow id="flow3" name="兼职、专职教师类" sourceRef="exclusivegateway1" targetRef="branchSchoolLeader">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${personCategory>1}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="schoolLeader" name="校领导审批" activiti:candidateGroups="校领导" activiti:formKey="audit.form">
-            <documentation>校领导审批</documentation>
+        <userTask id="schoolLeader" name="董事长审核" activiti:candidateGroups="吉林动画学院-董事长" activiti:formKey="audit.form">
+            <documentation>董事长审核</documentation>
         </userTask>
         <sequenceFlow id="flow4" name="行政、科研人员" sourceRef="exclusivegateway1" targetRef="schoolLeader">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${personCategory==1}]]></conditionExpression>
@@ -32,8 +34,8 @@
         <sequenceFlow id="flow7" name="同意" sourceRef="exclusivegateway2" targetRef="exclusivegateway3">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="manpower" name="人力领导审批" activiti:candidateGroups="人力领导" activiti:formKey="audit.form">
-            <documentation>人力领导审批</documentation>
+        <userTask id="manpower" name="人力领导审核" activiti:candidateGroups="人力资源开发与管理中心-副主任" activiti:formKey="audit.form">
+            <documentation>人力领导审核</documentation>
         </userTask>
         <sequenceFlow id="flow8" name="兼职教师" sourceRef="exclusivegateway3" targetRef="manpower">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${personCategory==3}]]></conditionExpression>

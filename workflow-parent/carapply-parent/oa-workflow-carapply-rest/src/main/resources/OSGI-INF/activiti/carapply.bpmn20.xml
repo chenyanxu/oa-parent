@@ -25,14 +25,14 @@
         <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="董事会机构-校务部副部长" activiti:formKey="audit.form">
+        <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="校务部-副部长" activiti:formKey="audit.form">
             <documentation>校务部副部长审核</documentation>
         </userTask>
         <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="schoolUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="managerUser" name="副校级领导审核" activiti:candidateGroups="董事会机构-副校级领导" activiti:formKey="audit.form">
-            <documentation>副校级领导审核</documentation>
+        <userTask id="managerUser" name="副校长后勤审核" activiti:candidateGroups="副校长-后勤" activiti:formKey="audit.form">
+            <documentation>副校长后勤审核</documentation>
         </userTask>
         <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="managerUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
@@ -40,9 +40,9 @@
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow7" sourceRef="managerUser" targetRef="exclusivegateway3"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-        <userTask id="schoolManagerUser" name="校党委书记审核" activiti:candidateGroups="董事会机构-校党委书记"
+        <userTask id="schoolManagerUser" name="党委书记审核" activiti:candidateGroups="吉林动画学院-党委书记"
                   activiti:formKey="audit.form">
-            <documentation>校党委书记审核</documentation>
+            <documentation>党委书记审核</documentation>
         </userTask>
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow12" sourceRef="schoolManagerUser" targetRef="exclusivegateway6"></sequenceFlow>
