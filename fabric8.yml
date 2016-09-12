@@ -2,7 +2,7 @@
 buildName: "oa-parent"
 codeReview: false
 links:
-  Current: "http://172.30.8.74:80/kubernetes/pods?namespace=develop"
+  Current: "http://172.30.17.123:80/kubernetes/pods?namespace=develop"
   Git: "https://github.com/chenyanxu/oa-parent.git"
   Job: "http://jenkins.app.kalix.com/job/oa-parent"
 environments:
