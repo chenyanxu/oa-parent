@@ -46,14 +46,11 @@ public class MeetingApplyBean extends WorkflowEntity {
     private String securityTel;
     //申请人联系电话
     private String operatorPhone;
-    //校务部文秘综合干事
-    private String depUser;
+
     //校务部行政事务办主管
     private String schoolAdminUser;
     //校务部签字
     private String schoolUser;
-    //发起部门会议纪要审批人
-    private String launchManagerUser;
 
     public Integer getMeetingroomId() {
         return meetingroomId;
@@ -175,14 +172,6 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.operatorPhone = operatorPhone;
     }
 
-    public String getDepUser() {
-        return depUser;
-    }
-
-    public void setDepUser(String depUser) {
-        this.depUser = depUser;
-    }
-
     public String getSchoolAdminUser() {
         return schoolAdminUser;
     }
@@ -199,11 +188,4 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.schoolUser = schoolUser;
     }
 
-    public String getLaunchManagerUser() {
-        return launchManagerUser;
-    }
-
-    public void setLaunchManagerUser(String launchManagerUser) {
-        this.launchManagerUser = launchManagerUser;
-    }
 }

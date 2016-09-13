@@ -272,21 +272,6 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             ]
         },
         {
-            html: '校务部文秘综合干事'
-        },
-        {
-            colspan: 2,
-            items: [
-                {
-                    xtype: 'tableFormField',
-                    readOnly: true,
-                    bind: {
-                        value: '{rec.depUser}'
-                    }
-                }
-            ]
-        },
-        {
             html: '校务部行政事务办主管'
         },
         {
@@ -312,21 +297,6 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
                     readOnly: true,
                     bind: {
                         value: '{rec.schoolUser}'
-                    }
-                }
-            ]
-        },
-        {
-            html: '发起部门会议纪要审批'
-        },
-        {
-            colspan: 2,
-            items: [
-                {
-                    xtype: 'tableFormField',
-                    readOnly: true,
-                    bind: {
-                        value: '{rec.launchManagerUser}'
                     }
                 }
             ]
