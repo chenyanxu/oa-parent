@@ -11,6 +11,7 @@
 
     <feature name="oa-core" version="1.0">
         <bundle>mvn:com.kalix.oa.core/oa-core-extjs/${parent.version}</bundle>
+        <bundle>mvn:com.kalix.oa.core/oa-core-etc/${parent.version}</bundle>
     </feature>
 
     <feature name="oa-system" version="1.0">
