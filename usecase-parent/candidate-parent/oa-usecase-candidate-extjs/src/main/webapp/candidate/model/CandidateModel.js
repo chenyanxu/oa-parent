@@ -14,6 +14,13 @@ Ext.define('kalix.usecase.candidate.model.CandidateModel', {
             name: 'personCategory'
         },
         {
+            name: 'orgId', //组织机构Id
+            validators: [{type: 'presence'}]
+        },
+        {
+            name: 'orgName' //组织机构名称
+        },
+        {
             name: 'xm'
         },
         {
