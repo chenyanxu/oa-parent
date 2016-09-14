@@ -40,6 +40,9 @@ Ext.define('kalix.usecase.interview.controller.InterviewGridController', {
         vm.set('rec', Ext.create(this.cfgModel));
         vm.set('iconCls', vm.get('addIconCls'));
         vm.set('title', vm.get('addTitle'));
+        vm.set('store',this.getView().store);
+
+        this.viewModelExtraInit(vm);
         view.show();
     },
 
@@ -58,6 +61,9 @@ Ext.define('kalix.usecase.interview.controller.InterviewGridController', {
         vm.set('rec', selModel);
         vm.set('iconCls', vm.get('editIconCls'));
         vm.set('title',vm.get('editTitle'));
+        vm.set('store',this.getView().store);
+
+        this.viewModelExtraInit(vm);
         view.show();
     }
 });

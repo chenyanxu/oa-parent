@@ -7,11 +7,14 @@
 Ext.define('kalix.usecase.interview.view.InterviewWindow', {
         extend: 'kalix.view.components.common.BaseWindow',
         requires: [
+            'kalix.usecase.interview.viewModel.InterviewViewModel',
             'kalix.controller.BaseWindowController',
-            'kalix.usecase.candidate.store.CandidateStore'
+            'kalix.usecase.candidate.store.CandidateStore',
+            'kalix.usecase.interview.store.InterviewStore'
         ],
         alias: 'widget.interviewWindow',
         xtype: "interviewWindow",
+        viewModel: 'interviewViewModel',
         controller: {
             type: 'baseWindowController',
             storeId: 'interviewStore'
