@@ -30,6 +30,9 @@ Ext.define('kalix.usecase.lecture.controller.LectureGridController', {
         vm.set('rec', Ext.create(this.cfgModel));
         vm.set('iconCls', vm.get('addIconCls'));
         vm.set('title', vm.get('addTitle'));
+        vm.set('store',this.getView().store);
+
+        this.viewModelExtraInit(vm);
         view.show();
     }
 });
