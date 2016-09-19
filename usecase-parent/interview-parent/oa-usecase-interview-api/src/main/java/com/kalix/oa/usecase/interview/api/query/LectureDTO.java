@@ -7,7 +7,7 @@ import com.kalix.framework.core.api.web.model.BaseDTO;
  */
 public class LectureDTO extends BaseDTO {
     private String personCategory;//人员类别
-    private String orgId;//部门代码
+    private Long orgId;//部门代码
     private String orgName;//部门名称
     private String xm;//姓名
     private String sex;//性别
@@ -37,11 +37,11 @@ public class LectureDTO extends BaseDTO {
         this.personCategory = personCategory;
     }
 
-    public String getOrgId() {
+    public Long getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(String orgId) {
+    public void setOrgId(Long orgId) {
         this.orgId = orgId;
     }
 
