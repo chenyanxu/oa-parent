@@ -6,6 +6,8 @@ import com.kalix.framework.core.api.persistence.PersistentEntity;
 import com.kalix.framework.core.api.web.model.BaseDTO;
 import com.kalix.framework.core.util.Assert;
 import com.kalix.framework.core.util.SerializeUtil;
+import com.kalix.middleware.workflow.api.Const;
+import com.kalix.middleware.workflow.api.exception.NotSameStarterException;
 import com.kalix.middleware.workflow.api.model.WorkflowStaus;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.usecase.candidate.api.biz.ICandidateBeanService;
@@ -82,7 +84,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
      */
     @Override
     protected String getNativeQueryStr() {
-        return "select a.id,a.personCategory,a.orgId,a.orgName,a.xm,a.sex,a.age,a.tel,a.position," +
+        return "select a.id,a.personCategory,a.orgId,a.orgName,a.xm,a.sex,a.age,a.tel,a.position,a.orgId,a.orgName,a.createby," +
                 "b.id as employApplyWorkflowId," +
                 "b.processInstanceId," +
                 "b.currentNode," +
@@ -108,6 +110,9 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         if(candidateBean.getEmployApplyWorkflowId() == null || candidateBean.getEmployApplyWorkflowId() == 0){
             EmployApplyBean employApplyBean = new EmployApplyBean();
             employApplyBean.setId(0);
+            employApplyBean.setOrgId(candidateBean.getOrgId());
+            employApplyBean.setOrgName(candidateBean.getOrgName());
+
             JsonStatus jsonStatus = this.saveEntity(employApplyBean);
 
             candidateBean.setEmployApplyWorkflowId(Long.parseLong(jsonStatus.getTag()));
@@ -129,8 +134,15 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             String userName = this.getShiroService().getSubject().getPrincipal().toString();
             identityService.setAuthenticatedUserId(userName);
             EmployApplyBean bean = this.getEntity(new Long(id));
+
+            //检查流程启动人和申请人是同一个人
+            if (!bean.getCreateBy().equals(this.getShiroService().getCurrentUserRealName()))
+                throw new NotSameStarterException();
+
             //启动流程
             Map varMap = new HashMap<>();
+            //put orgName to variant
+            varMap.put(Const.STARTER_ORG_Name,String.valueOf(bean.getOrgName()));
             getVariantMap(varMap,bean);
 
             // 将人员类别varMap传递到工作流中去，用于控制流程的分支
