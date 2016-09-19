@@ -23,7 +23,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyGrid', {
 
     columns: [
         {
-            xtype: "rownumberer",
+            xtype: "rownumberer"
         },
         {
             text: '编号',

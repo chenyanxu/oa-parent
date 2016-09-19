@@ -22,7 +22,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyGrid', {
     },
     columns: [
         {
-            xtype: "rownumberer",
+            xtype: "rownumberer"
         },
         {
             text: '编号',
@@ -39,6 +39,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyGrid', {
         },
         {
             text: '用工原因',
+            xtype: 'oADictGridColumn',
+            dictType: '招聘需求原因',
             dataIndex: 'reason'
         },
         {

@@ -9,7 +9,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
         'kalix.view.components.common.TableFormDateTimeField',
         'kalix.view.components.common.TableFormPanel',
         'kalix.view.components.common.TableFormField',
-        'kalix.admin.user.component.UserOrgComboBox'
+        'kalix.admin.user.component.UserOrgComboBox',
+        'kalix.oa.oADict.component.OADictCombobox'
     ],
     alias: 'widget.recruitApplyWindow',
     xtype: "recruitApplyWindow",
@@ -55,7 +56,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     colspan: 2,
                     items: [
                         {
-                            xtype: 'tableFormField',
+                            xtype: 'oADictCombobox',
+                            dictType: '招聘需求原因',
                             bind: {
                                 value: '{rec.reason}'
                             }
@@ -123,6 +125,57 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     ]
                 },
                 {
+                    html: '核心职责',
+                    height: 200,
+                    required: true
+                },
+                {
+                    colspan: 5,
+                    height: 200,
+                    items: [
+                        {
+                            xtype: 'tableFormField',
+                            bind: {
+                                value: '{rec.coreRecruit}'
+                            }
+                        }
+                    ]
+                },
+                {
+                    html: '常规职责',
+                    height: 200,
+                    required: true
+                },
+                {
+                    colspan: 5,
+                    height: 200,
+                    items: [
+                        {
+                            xtype: 'tableFormField',
+                            bind: {
+                                value: '{rec.commonRecruit}'
+                            }
+                        }
+                    ]
+                },
+                {
+                    html: '任职基本条件',
+                    height: 200,
+                    required: true
+                },
+                {
+                    colspan: 5,
+                    height: 200,
+                    items: [
+                        {
+                            xtype: 'tableFormField',
+                            bind: {
+                                value: '{rec.baseCondition}'
+                            }
+                        }
+                    ]
+                },
+                {
                     html: '待遇标准',
                     required: true
                 },
@@ -138,51 +191,6 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     ]
                 },
                 {
-                    html: '核心职责',
-                    required: true
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'tableFormField',
-                            bind: {
-                                value: '{rec.coreRecruit}'
-                            }
-                        }
-                    ]
-                },
-                {
-                    html: '常规职责',
-                    required: true
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'tableFormField',
-                            bind: {
-                                value: '{rec.commonRecruit}'
-                            }
-                        }
-                    ]
-                },
-                {
-                    html: '任职基本条件',
-                    required: true
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'tableFormField',
-                            bind: {
-                                value: '{rec.baseCondition}'
-                            }
-                        }
-                    ]
-                },
-                {
                     html: '建议招聘方式',
                     required: true
                 },
@@ -190,7 +198,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     colspan: 2,
                     items: [
                         {
-                            xtype: 'tableFormField',
+                            xtype: 'oADictCombobox',
+                            dictType: '招聘方式',
                             bind: {
                                 value: '{rec.recruitType}'
                             }
@@ -198,7 +207,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     ]
                 },
                 {
-                    html: '申请人'
+                    html: '申请人',
+                    readOnly: true
                 },
                 {
                     colspan: 2,

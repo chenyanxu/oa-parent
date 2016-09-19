@@ -6,7 +6,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
     extend: 'kalix.view.components.common.TableFormPanel',
     requires: [
         'kalix.view.components.common.TableFormField',
-        'kalix.view.components.common.TableFormDateTimeField'
+        'kalix.view.components.common.TableFormDateTimeField',
+        'kalix.oa.oADict.component.OADictCombobox'
     ],
     alias: 'widget.recruitApplyViewForm',
     xtype: "recruitApplyViewForm",
@@ -39,7 +40,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
             colspan: 2,
             items: [
                 {
-                    xtype: 'tableFormField',
+                    xtype: 'oADictCombobox',
+                    dictType: '招聘需求原因',
                     readOnly: true,
                     bind: {
                         value: '{rec.reason}'
@@ -108,21 +110,6 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
             ]
         },
         {
-            html: '待遇标准'
-        },
-        {
-            colspan: 2,
-            items: [
-                {
-                    xtype: 'tableFormField',
-                    readOnly: true,
-                    bind: {
-                        value: '{rec.treatmentLevel}'
-                    }
-                }
-            ]
-        },
-        {
             html: '核心职责'
         },
         {
@@ -153,7 +140,22 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
             ]
         },
         {
-            html: '任职基本素质条件'
+            html: '待遇标准'
+        },
+        {
+            colspan: 2,
+            items: [
+                {
+                    xtype: 'tableFormField',
+                    readOnly: true,
+                    bind: {
+                        value: '{rec.treatmentLevel}'
+                    }
+                }
+            ]
+        },
+        {
+            html: '任职基本条件'
         },
         {
             colspan: 2,
@@ -174,7 +176,8 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
             colspan: 2,
             items: [
                 {
-                    xtype: 'tableFormField',
+                    xtype: 'oADictCombobox',
+                    dictType: '招聘方式',
                     readOnly: true,
                     bind: {
                         value: '{rec.recruitType}'

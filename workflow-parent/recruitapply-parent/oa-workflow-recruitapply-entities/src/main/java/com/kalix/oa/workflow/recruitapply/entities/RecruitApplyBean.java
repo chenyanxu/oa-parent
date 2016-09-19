@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "oa_workflow_recruit")
 public class RecruitApplyBean extends WorkflowEntity {
     private String personType;// 人员类型
-    private String reason;// 需求原因
+    private Integer reason;// 需求原因
     private String positionName;//职位名称
     private Integer recruitCount;// 拟聘人数
     private Integer allocationCount;// 定编人数
@@ -24,7 +24,7 @@ public class RecruitApplyBean extends WorkflowEntity {
     private String coreRecruit;// 核心职责
     private String commonRecruit;// 常规职责
     private String baseCondition;// 任职基本素质条件
-    private String recruitType;// 建议招聘方式
+    private Integer recruitType;// 建议招聘方式
     private String depUser;// 申请部门负责人签字
     private String manpower;// 人力资源部长签字
 
@@ -36,11 +36,11 @@ public class RecruitApplyBean extends WorkflowEntity {
         this.personType = personType;
     }
 
-    public String getReason() {
+    public Integer getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(Integer reason) {
         this.reason = reason;
     }
 
@@ -116,11 +116,11 @@ public class RecruitApplyBean extends WorkflowEntity {
         this.baseCondition = baseCondition;
     }
 
-    public String getRecruitType() {
+    public Integer getRecruitType() {
         return recruitType;
     }
 
-    public void setRecruitType(String recruitType) {
+    public void setRecruitType(Integer recruitType) {
         this.recruitType = recruitType;
     }
 
