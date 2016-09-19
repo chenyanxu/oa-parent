@@ -41,9 +41,9 @@ public class CandidateBeanServiceImpl extends ShiroGenericBizServiceImpl<ICandid
             // 从应聘人员表oa_candidate和面试表oa_interview中左连接进行查询
             // 查询条件为 当人员类别2(专职教师)时，那么初试必须通过；当人员类别为3(兼职教师)，那么查还未进行试讲的人员
             // 也就是说专职教师只有一次面试，通过后可进行试讲，兼职教师可以直接试讲
-            checkList = dao.findByNativeSql("select b.id,a.id as candidateId,a.xm from oa_candidate a LEFT JOIN oa_lecture b on a.id = b.candidateid " +
+            checkList = dao.findByNativeSql("select b.id,a.id as candidateId,a.xm from oa_candidate a LEFT JOIN oa_interview b on a.id = b.candidateid " +
                     "where (case a.personcategory when '2' then a.id in (select candidateid from oa_interview c where c.passfirst=true) " +
-                    " when '3' then a.id in (select candidateid from oa_lecture d where d.pass=false or d.pass is null)" +
+                    " when '3' then a.id not in (select candidateid from oa_lecture d where d.pass=true)" +
                     " end)", CandidateDTO.class, "");
         }
 
