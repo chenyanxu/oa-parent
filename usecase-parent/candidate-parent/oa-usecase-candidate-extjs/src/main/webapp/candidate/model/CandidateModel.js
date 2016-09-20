@@ -11,7 +11,8 @@ Ext.define('kalix.usecase.candidate.model.CandidateModel', {
     //todo 在此修改模型定义
     fields: [
         {
-            name: 'personCategory'
+            name: 'personCategory',
+            validators: [{type: 'presence'}]
         },
         {
             name: 'orgId', //组织机构Id
@@ -21,42 +22,54 @@ Ext.define('kalix.usecase.candidate.model.CandidateModel', {
             name: 'orgName' //组织机构名称
         },
         {
-            name: 'xm'
+            name: 'xm',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'sex'
+            name: 'sex',
+            validators: [{type: 'presence'}]
         },
         {
             name: 'age',
             type: 'int',
-            defaultValue: 20
+            defaultValue: 20,
+            validators: [{type: 'presence'},{type: 'range',min:18,max:70}]
         },
         {
-            name: 'graduateSchool'
+            name: 'graduateSchool',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'major'
+            name: 'major',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'education'
+            name: 'education',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'residence'
+            name: 'residence',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'position'
+            name: 'position',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'salary'
+            name: 'salary',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'experience'
+            name: 'experience',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'comment'
+            name: 'comment',
+            validators: [{type: 'presence'}]
         },
         {
-            name: 'tel'
+            name: 'tel',
+            validators: [{type: 'presence'}]
         }
     ]
 });
