@@ -35,6 +35,8 @@ Ext.define('kalix.usecase.interview.view.InterviewViewWindow', {
                 //},
                 {
                     fieldLabel: '初试时间',
+                    xtype: 'datefield',
+                    format: 'Y-m-d',
                     allowBlank: false,
                     bind: {
                         value: '{rec.dateFirst}'
@@ -58,12 +60,24 @@ Ext.define('kalix.usecase.interview.view.InterviewViewWindow', {
                 {
                     fieldLabel: '初试是否通过',
                     allowBlank: false,
+                    xtype: 'combobox',
+                    editable: false,
+                    valueField: 'passFirst',
+                    displayField: 'name',
+                    store: {
+                        data: [
+                            {'name': '是', 'passFirst': true},
+                            {'name': '否', 'passFirst': false}
+                        ]
+                    },
                     bind: {
                         value: '{rec.passFirst}'
                     }
                 },
                 {
                     fieldLabel: '复试时间',
+                    xtype: 'datefield',
+                    format: 'Y-m-d',
                     allowBlank: false,
                     bind: {
                         value: '{rec.dateSecond}'
@@ -86,6 +100,16 @@ Ext.define('kalix.usecase.interview.view.InterviewViewWindow', {
                 },
                 {
                     fieldLabel: '复试是否通过',
+                    xtype: 'combobox',
+                    editable: false,
+                    valueField: 'passSecond',
+                    displayField: 'name',
+                    store: {
+                        data: [
+                            {'name': '是', 'passSecond': true},
+                            {'name': '否', 'passSecond': false}
+                        ]
+                    },
                     allowBlank: false,
                     bind: {
                         value: '{rec.passSecond}'

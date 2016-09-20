@@ -59,6 +59,11 @@ Ext.define('kalix.usecase.interview.view.InterviewWindow', {
                         }
                     },
                     {
+                        fieldLabel: '应聘者姓名',
+                        editable: false,
+                        hidden: true
+                    },
+                    {
                         fieldLabel: '初试时间',
                         allowBlank: false,
                         xtype: 'datefield',

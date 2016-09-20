@@ -14,7 +14,7 @@ Ext.define('kalix.usecase.interview.model.InterviewModel', {
             name: 'candidateId'
         },
         {
-            name: 'dateFirst'
+            name: 'dateFirst',type: 'date', dateFormat: 'Y-m-d H:i:s'
         },
         {
             name: 'interviewerFirst'
@@ -26,7 +26,7 @@ Ext.define('kalix.usecase.interview.model.InterviewModel', {
             name: 'passFirst'
         },
         {
-            name: 'dateSecond'
+            name: 'dateSecond',type: 'date', dateFormat: 'Y-m-d H:i:s'
         },
         {
             name: 'interviewerSecond'
