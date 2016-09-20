@@ -11,43 +11,43 @@ Ext.define('kalix.usecase.lecture.model.LectureModel', {
     //todo 在此修改模型定义
     fields: [
         {
-            name: 'candidateId'
+            name: 'candidateId',validators: [{type: 'presence'}]
         },
         {
-            name: 'subject'
+            name: 'subject',validators: [{type: 'presence'}]
         },
         {
-            name: 'content'
+            name: 'content',validators: [{type: 'presence'}]
         },
         {
-            name: 'argumentScore'
+            name: 'argumentScore',validators: [{type: 'presence'}]
         },
         {
-            name: 'coursewareScore'
+            name: 'coursewareScore',validators: [{type: 'presence'}]
         },
         {
-            name: 'expressionScore'
+            name: 'expressionScore',validators: [{type: 'presence'}]
         },
         {
-            name: 'attitudeScore'
+            name: 'attitudeScore',validators: [{type: 'presence'}]
         },
         {
-            name: 'effectScore'
+            name: 'effectScore',validators: [{type: 'presence'}]
         },
         {
-            name: 'qa'
+            name: 'qa',validators: [{type: 'presence'}]
         },
         {
-            name: 'comment'
+            name: 'comment',validators: [{type: 'presence'}]
         },
         {
-            name: 'suggestion'
+            name: 'suggestion',validators: [{type: 'presence'}]
         },
         {
-            name: 'participant'
+            name: 'participant',validators: [{type: 'presence'}]
         },
         {
-            name: 'pass'
+            name: 'pass',validators: [{type: 'presence'}]
         }
     ]
 });
