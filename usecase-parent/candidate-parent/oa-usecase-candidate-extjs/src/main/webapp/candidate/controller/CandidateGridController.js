@@ -6,6 +6,8 @@
  */
 Ext.define('kalix.usecase.candidate.controller.CandidateGridController', {
     extend: 'kalix.controller.BaseGridController',
-    alias: 'controller.candidateGridController'
-
+    alias: 'controller.candidateGridController',
+    mixins: {
+        attachment: 'kalix.attachment.common.mixins.Attachment'
+    }
 });
