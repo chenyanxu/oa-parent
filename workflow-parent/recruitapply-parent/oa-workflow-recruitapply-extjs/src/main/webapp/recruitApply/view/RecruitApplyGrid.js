@@ -26,7 +26,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyGrid', {
         },
         {
             text: '编号',
-            dataIndex: 'id'
+            dataIndex: 'businessNo'
         },
 
         {

@@ -27,7 +27,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyGrid', {
         },
         {
             text: '编号',
-            dataIndex: 'id'
+            dataIndex: 'businessNo'
         },
 
         {

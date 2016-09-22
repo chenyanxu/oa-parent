@@ -25,7 +25,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
         },
         {
             text: '编号',
-            dataIndex: 'id'
+            dataIndex: 'businessNo'
         },
         {
             text: '申请部门',

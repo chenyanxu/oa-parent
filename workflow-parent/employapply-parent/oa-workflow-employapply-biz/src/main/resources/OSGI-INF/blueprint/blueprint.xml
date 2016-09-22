@@ -8,6 +8,7 @@
     <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="candidateBeanService" interface="com.kalix.oa.usecase.candidate.api.biz.ICandidateBeanService"/>
 
     <reference id="employApplyBeanDao" interface="com.kalix.oa.workflow.employapply.api.dao.IEmployApplyBeanDao"/>
@@ -19,6 +20,7 @@
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="repositoryService" ref="repositoryService"/>
         <property name="candidateBeanService" ref="candidateBeanService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.employapply.api.biz.IEmployApplyBeanService" ref="employApplyBeanService"/>

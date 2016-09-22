@@ -8,7 +8,7 @@
     <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
-
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="recruitApplyBeanDao" interface="com.kalix.oa.workflow.recruitapply.api.dao.IRecruitApplyBeanDao"/>
 
     <bean id="recruitApplyBeanService" class="com.kalix.oa.workflow.recruitapply.biz.RecruitApplyBeanServiceImpl">
@@ -17,6 +17,7 @@
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>
+        <property name="repositoryService" ref="repositoryService"/>
         <property name="taskService" ref="taskService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.recruitapply.api.biz.IRecruitApplyBeanService" ref="recruitApplyBeanService"/>

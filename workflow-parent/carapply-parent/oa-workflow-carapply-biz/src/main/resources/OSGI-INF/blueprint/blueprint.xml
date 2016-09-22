@@ -4,10 +4,12 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     <jpa:enable/>
     <tx:enable-annotations/>
+
     <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
     <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
 
     <reference id="carApplyBeanDao" interface="com.kalix.oa.workflow.carapply.api.dao.ICarApplyBeanDao"/>
 
@@ -18,6 +20,7 @@
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="repositoryService" ref="repositoryService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.carapply.api.biz.ICarApplyBeanService" ref="carApplyBeanService"/>
 

@@ -26,7 +26,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
         },
         {
             text: '编号',
-            dataIndex: 'id'
+            dataIndex: 'businessNo'
         },
 
         {
