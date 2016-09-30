@@ -7,7 +7,7 @@
 
     <camelContext id="demo-rest-meetingapply" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
-            <dataFormatProperty key="prettyPrint" value="true"/>
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>
         <rest path="/meetingapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllMeetingApply" outType="com.kalix.framework.core.api.persistence.JsonData">

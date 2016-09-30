@@ -6,7 +6,7 @@
     <reference id="lectureService" interface="com.kalix.oa.usecase.interview.api.biz.ILectureBeanService"/>
     <camelContext id="lectureCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
-            <dataFormatProperty key="prettyPrint" value="true"/>
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /lecture -->
