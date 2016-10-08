@@ -19,7 +19,7 @@
             <!-- this is a rest GET to find all leave -->
             <get id="route-getAllLeave" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all Leaves</description>
-                <to uri="bean:leaveService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:leaveService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
 
             <!-- this is a rest POST to create a leave -->

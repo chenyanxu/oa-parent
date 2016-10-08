@@ -16,7 +16,7 @@
 
             <get id="route-getAllOADict" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all OADict</description>
-                <to uri="bean:oADictBeanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:oADictBeanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
 
             <post id="route-addOADict" type="com.kalix.oa.system.dict.entities.OADictBean"

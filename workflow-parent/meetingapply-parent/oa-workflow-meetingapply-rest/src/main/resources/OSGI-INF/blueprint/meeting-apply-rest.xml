@@ -12,7 +12,7 @@
         <rest path="/meetingapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllMeetingApply" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all meetingApplys</description>
-                <to uri="bean:meetingApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:meetingApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
             <post id="route-addMeetingApply" type="com.kalix.oa.workflow.meetingapply.entities.MeetingApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">

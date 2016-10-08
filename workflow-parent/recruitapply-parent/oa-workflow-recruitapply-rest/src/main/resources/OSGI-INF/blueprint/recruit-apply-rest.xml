@@ -12,7 +12,7 @@
         <rest path="/recruitapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllRecruitApply" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all recruitApplys</description>
-                <to uri="bean:recruitApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:recruitApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
             <post id="route-addRecruitApply" type="com.kalix.oa.workflow.recruitapply.entities.RecruitApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">

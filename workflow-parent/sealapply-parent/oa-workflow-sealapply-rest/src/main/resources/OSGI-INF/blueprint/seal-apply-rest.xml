@@ -12,7 +12,7 @@
         <rest path="/sealapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllSealApply" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all SealApplys</description>
-                <to uri="bean:sealApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:sealApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
             <post id="route-addSealApply" type="com.kalix.oa.workflow.sealapply.entities.SealApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">

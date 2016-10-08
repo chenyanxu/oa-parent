@@ -12,7 +12,7 @@
         <rest path="/employapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllEmployApply" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all employApplys</description>
-                <to uri="bean:employApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:employApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
             <post id="route-addEmployApply" type="com.kalix.oa.workflow.employapply.entities.EmployApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">

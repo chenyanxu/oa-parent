@@ -12,7 +12,7 @@
         <rest path="/carapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-getAllCarApply" outType="com.kalix.framework.core.api.persistence.JsonData">
                 <description>Find all carApplys</description>
-                <to uri="bean:carApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:carApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
             <post id="route-addCarApply" type="com.kalix.oa.workflow.carapply.entities.CarApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">
