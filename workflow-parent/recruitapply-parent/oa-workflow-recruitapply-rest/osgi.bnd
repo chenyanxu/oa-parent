@@ -4,5 +4,6 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Bundle-Category: Kalix OA Workflow Recruit Apply
+Include-Resource: target/classes
 Import-Package: com.kalix.framework.core.api.persistence,\
                 com.kalix.oa.workflow.recruitapply.entities,*
