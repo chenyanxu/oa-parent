@@ -19,6 +19,20 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
             bodyStyle: 'padding:10px 0px 15px 0px;font-size:24px;font-weight:bold;'
         },
         {
+            html: '名称',
+        },
+        {
+            colspan: 5,
+            items: [
+                {
+                    xtype: 'tableFormField',
+                    bind: {
+                        value: '{rec.title}'
+                    }
+                }
+            ]
+        },
+        {
             html: '申请部门'
         },
         {

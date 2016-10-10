@@ -31,6 +31,10 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyGrid', {
             hidden: true
         },
         {
+            text: '名称',
+            dataIndex: 'title'
+        },
+        {
             text: '人员类别',
             xtype: 'oADictGridColumn',
             dictType: '招聘人员类别',

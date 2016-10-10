@@ -28,7 +28,10 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
             text: '编号',
             dataIndex: 'businessNo'
         },
-
+        {
+            text: '名称',
+            dataIndex: 'title'
+        },
         {
             text: '申请部门',
             dataIndex: 'orgName'

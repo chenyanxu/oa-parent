@@ -28,6 +28,10 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
             dataIndex: 'businessNo'
         },
         {
+            text: '名称',
+            dataIndex: 'title'
+        },
+        {
             text: '申请部门',
             dataIndex: 'orgName'
         },
