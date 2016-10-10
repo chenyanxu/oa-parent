@@ -95,7 +95,7 @@ Ext.define('kalix.usecase.interview.view.InterviewGrid', {
             },
             {
                 xtype: 'securityGridColumnCommon',
-                items: [
+                verifyItems: [
                     {
                         iconCls:'iconfont icon-view-column',
                         permission: 'view',

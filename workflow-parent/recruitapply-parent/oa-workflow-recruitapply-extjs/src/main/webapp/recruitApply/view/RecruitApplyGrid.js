@@ -89,7 +89,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyGrid', {
             flex: 1.5,
             //width: 80,
             xtype: 'securityGridColumnCommon',
-            items: [
+            verifyItems: [
                 {
                     iconCls: 'iconfont icon-view-column',
                     permission: 'view',

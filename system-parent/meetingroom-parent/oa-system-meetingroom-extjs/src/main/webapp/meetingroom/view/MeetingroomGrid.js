@@ -60,7 +60,7 @@ Ext.define('kalix.system.meetingroom.view.MeetingroomGrid', {
             },
             {
                 xtype: 'securityGridColumnCommon',
-                items: [
+                verifyItems: [
                     {
                         iconCls:'iconfont icon-view-column',
                         permission: 'view',

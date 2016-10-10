@@ -52,7 +52,7 @@ Ext.define('kalix.app.leave.view.LeaveGrid', {
             },
             {
                 xtype: 'securityGridColumnCommon',
-                items: [
+                verifyItems: [
                     {
                         iconCls:'iconfont icon-view-column',
                         permission: 'admin:constructModule:leaveMenu:view',

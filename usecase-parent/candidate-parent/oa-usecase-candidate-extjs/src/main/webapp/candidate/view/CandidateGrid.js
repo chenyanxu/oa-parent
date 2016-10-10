@@ -91,7 +91,7 @@ Ext.define('kalix.usecase.candidate.view.CandidateGrid', {
             },
             {
                 xtype: 'securityGridColumnCommon',
-                items: [
+                verifyItems: [
                     {
                         iconCls: 'iconfont icon-view-column',
                         permission: 'view',

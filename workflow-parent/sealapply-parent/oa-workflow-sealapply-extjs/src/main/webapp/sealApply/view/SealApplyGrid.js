@@ -74,12 +74,11 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
             }
             //,
             //renderer: null
-        }
-        ,
+        },
         {
             flex: 1.5,
             xtype: 'securityGridColumnCommon',
-            items: [
+            verifyItems: [
                 {
                     iconCls: 'iconfont icon-view-column',
                     permission: 'view',
