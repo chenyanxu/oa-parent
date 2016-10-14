@@ -11,5 +11,5 @@ Ext.define('kalix.usecase.candidate.store.CandidateStore', {
     xtype: 'candidateStore',
     storeId: "candidateStore",
     autoLoad: true,
-    proxyUrl: '/kalix/camel/rest/candidates'
+    proxyUrl: CONFIG.restRoot + '/camel/rest/candidates'
 });

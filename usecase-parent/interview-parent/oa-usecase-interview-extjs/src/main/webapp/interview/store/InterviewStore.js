@@ -10,5 +10,5 @@ Ext.define('kalix.usecase.interview.store.InterviewStore', {
     alias: 'store.interviewStore',
     xtype: 'interviewStore',
     storeId: "interviewStore",
-    proxyUrl: '/kalix/camel/rest/interviews'
+    proxyUrl: CONFIG.restRoot + '/camel/rest/interviews'
 });

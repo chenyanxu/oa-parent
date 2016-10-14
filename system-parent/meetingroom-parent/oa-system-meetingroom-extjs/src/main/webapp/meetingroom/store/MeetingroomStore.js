@@ -11,5 +11,5 @@ Ext.define('kalix.system.meetingroom.store.MeetingroomStore', {
     xtype: 'meetingroomStore',
     storeId: "meetingroomStore",
     autoLoad:true,
-    proxyUrl: '/kalix/camel/rest/meetingrooms'
+    proxyUrl: CONFIG.restRoot + '/camel/rest/meetingrooms'
 });
