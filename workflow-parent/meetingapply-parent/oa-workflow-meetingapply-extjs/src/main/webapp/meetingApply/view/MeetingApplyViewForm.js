@@ -144,7 +144,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             },
             items: [
                 {
-                    xtype: 'datefield',
+                    xtype: 'tableFormDateTimeField',
                     format:'Y年m月d日',
                     width:155,
                     bind: {
@@ -158,7 +158,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
                     }
                 },
                 {
-                    xtype: 'timefield',
+                    xtype: 'tableFormDateTimeField',
                     format:'H时i分',
                     width:100,
                     bind: {
@@ -171,7 +171,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
                     bodyStyle: 'font-size:15px;border:0px;padding:5px 0 0 0;'
                 },
                 {
-                    xtype: 'timefield',
+                    xtype: 'tableFormDateTimeField',
                     format:'H时i分',
                     width:100,
                     bind: {
