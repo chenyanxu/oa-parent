@@ -108,9 +108,9 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                             columns: 3,
                             fieldName: 'requireType',
                             items: [
-                                {boxLabel: '照像', inputValue: '1'},
-                                {boxLabel: '摄像', inputValue: '2'},
-                                {boxLabel: '记者', inputValue: '3'}
+                                {boxLabel: '照像', inputValue: 1},
+                                {boxLabel: '摄像', inputValue: 2},
+                                {boxLabel: '记者', inputValue: 3}
                             ]
                         }
                     ]
