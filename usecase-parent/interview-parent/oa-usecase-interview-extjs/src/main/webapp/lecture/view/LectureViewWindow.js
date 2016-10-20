@@ -9,12 +9,12 @@ Ext.define('kalix.usecase.lecture.view.LectureViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     alias: 'widget.lectureViewWindow',
     xtype: "lectureViewWindow",
-    width: 400,
+    width: 800,
     //todo 在此修改查看字段
     items: [
         {
-            defaults: {readOnly: true},
-            xtype: 'baseForm',
+            defaults: {readOnly: false},
+            //xtype: 'baseForm',
             items: [
                 {
                     //readOnly:true,
@@ -88,17 +88,24 @@ Ext.define('kalix.usecase.lecture.view.LectureViewWindow', {
                         activeError: '{validation.effectScore}',
                         value: '{rec.effectScore}'
                     }
-                },
+                }
+            ]
+        },
+        {
+            defaults: {readOnly: true},
+            items:[
                 {
-                    fieldLabel: '所提问题及回答情况',
+                    fieldLabel: '问题及回答',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
-                        activeError: '{validation.comment}',
-                        value: '{rec.comment}'
+                        activeError: '{validation.qa}',
+                        value: '{rec.qa}'
                     }
                 },
                 {
                     fieldLabel: '评语',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.comment}',
@@ -107,6 +114,7 @@ Ext.define('kalix.usecase.lecture.view.LectureViewWindow', {
                 },
                 {
                     fieldLabel: '聘用意见',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.suggestion}',
@@ -124,6 +132,16 @@ Ext.define('kalix.usecase.lecture.view.LectureViewWindow', {
                 {
                     fieldLabel: '是否通过',
                     allowBlank: false,
+                    xtype: 'combobox',
+                    editable: false,
+                    valueField: 'pass',
+                    displayField: 'name',
+                    store: {
+                        data: [
+                            {'name': '是', 'pass': true},
+                            {'name': '否', 'pass': false}
+                        ]
+                    },
                     bind: {
                         activeError: '{validation.pass}',
                         value: '{rec.pass}'

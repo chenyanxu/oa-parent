@@ -20,19 +20,19 @@ Ext.define('kalix.usecase.lecture.model.LectureModel', {
             name: 'content',validators: [{type: 'presence'}]
         },
         {
-            name: 'argumentScore',validators: [{type: 'presence'}]
+            name: 'argumentScore',type: 'int',validators: [{type: 'presence'}]
         },
         {
-            name: 'coursewareScore',validators: [{type: 'presence'}]
+            name: 'coursewareScore',type: 'int', validators: [{type: 'presence'}]
         },
         {
-            name: 'expressionScore',validators: [{type: 'presence'}]
+            name: 'expressionScore',type: 'int',validators: [{type: 'presence'}]
         },
         {
-            name: 'attitudeScore',validators: [{type: 'presence'}]
+            name: 'attitudeScore',type: 'int',validators: [{type: 'presence'}]
         },
         {
-            name: 'effectScore',validators: [{type: 'presence'}]
+            name: 'effectScore',type: 'int',validators: [{type: 'presence'}]
         },
         {
             name: 'qa',validators: [{type: 'presence'}]

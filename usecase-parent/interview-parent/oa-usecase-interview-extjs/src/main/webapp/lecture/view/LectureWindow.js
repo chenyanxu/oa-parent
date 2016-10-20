@@ -16,7 +16,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
     },
     xtype: "lectureWindow",
     whichInterview: 'lecture',
-    width: 400,
+    width: 800,
     constructor: function () {
         this.callParent(arguments);
         this.items.items[0].items.items[0].store.proxy.extraParams = {
@@ -28,7 +28,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
     },
     items: [
         {
-            xtype: 'baseForm',
+            //xtype: 'baseForm',
             items: [
                 {
                     xtype: 'combobox',
@@ -79,6 +79,9 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '教学论点分数',
+                    xtype: 'numberfield',
+                    maxValue: 100,
+                    minValue: 0,
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.argumentScore}',
@@ -87,6 +90,9 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '板书或课件分数',
+                    xtype: 'numberfield',
+                    maxValue: 100,
+                    minValue: 0,
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.coursewareScore}',
@@ -95,6 +101,9 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '语言表达分数',
+                    xtype: 'numberfield',
+                    maxValue: 100,
+                    minValue: 0,
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.expressionScore}',
@@ -103,6 +112,9 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '教态分数',
+                    xtype: 'numberfield',
+                    maxValue: 100,
+                    minValue: 0,
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.attitudeScore}',
@@ -111,14 +123,22 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '教学效果分数',
+                    maxValue: 100,
+                    minValue: 0,
+                    xtype: 'numberfield',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.effectScore}',
                         value: '{rec.effectScore}'
                     }
-                },
+                }
+            ]
+        },
+        {
+            items:[
                 {
-                    fieldLabel: '所提问题及回答情况',
+                    fieldLabel: '问题及回答',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.qa}',
@@ -127,6 +147,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '评语',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.comment}',
@@ -135,6 +156,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                 },
                 {
                     fieldLabel: '聘用意见',
+                    xtype: 'textarea',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.suggestion}',
