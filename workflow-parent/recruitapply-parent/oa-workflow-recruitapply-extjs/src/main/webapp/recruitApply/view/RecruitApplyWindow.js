@@ -34,7 +34,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'
                 },
                 {
-                    html: '名称',
+                    html: '名称'
                 },
                 {
                     colspan: 5,
@@ -113,7 +113,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                     required: true
                 },
                 {
-                    colspan: 2,
+                    colspan: 5,
                     items: [
                         {
                             xtype: 'tableFormField',
@@ -123,21 +123,21 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
                         }
                     ]
                 },
-                {
-                    html: '直接上级',
-                    required: true
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'tableFormField',
-                            bind: {
-                                value: '{rec.leaderName}'
-                            }
-                        }
-                    ]
-                },
+                //{
+                //    html: '直接上级',
+                //    required: true
+                //},
+                //{
+                //    colspan: 2,
+                //    items: [
+                //        {
+                //            xtype: 'tableFormField',
+                //            bind: {
+                //                value: '{rec.leaderName}'
+                //            }
+                //        }
+                //    ]
+                //},
                 {
                     html: '核心职责',
                     height: 200,

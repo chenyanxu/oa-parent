@@ -11,7 +11,7 @@ Ext.define('kalix.workflow.recruitApply.model.RecruitApplyModel', {
         {name: 'recruitCount',validators: [{type: 'presence'}]}, //拟聘人数
         {name: 'allocationCount',validators: [{type: 'presence'}]}, //定编人数
         {name: 'existCount', validators: [{type: 'presence'}]}, //现有人数
-        {name: 'leaderName',validators: [{type: 'presence'}]}, //直接上级
+        {name: 'leaderName'}, //直接上级
         {name: 'treatmentLevel',validators: [{type: 'presence'}]}, //待遇标准
         {name: 'coreRecruit',validators: [{type: 'presence'}]}, //核心职责
         {name: 'commonRecruit',validators: [{type: 'presence'}]}, //常规职责
