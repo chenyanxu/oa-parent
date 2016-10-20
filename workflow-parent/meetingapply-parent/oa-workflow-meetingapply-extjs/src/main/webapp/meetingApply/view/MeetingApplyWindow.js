@@ -37,7 +37,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'
                 },
                 {
-                    html: '名称',
+                    html: '名称'
                 },
                 {
                     colspan: 5,

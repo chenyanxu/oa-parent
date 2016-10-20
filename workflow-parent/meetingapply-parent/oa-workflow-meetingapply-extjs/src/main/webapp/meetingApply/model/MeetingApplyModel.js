@@ -10,9 +10,9 @@ Ext.define('kalix.workflow.meetingApply.model.MeetingApplyModel', {
         {name: 'meetingTopic',validators: [{type: 'presence'}]},//会议名称
         {name: 'requireType'},//宣传需求（企划中心）
         {name: 'host',validators: [{type: 'presence'}]},//主持人
-        {name: 'meetingDate'},//会议申请时间
-        {name: 'beginTime',validators: [{type: 'presence'}]}, //会议时段,开始时间
-        {name: 'endTime',validators: [{type: 'presence'}]}, //会议时段，结束时间
+        {name: 'meetingDate',type:'date',dateFormat: 'Y-m-d H:i:s'},//会议申请时间
+        {name: 'beginTime',type:'date',dateFormat: 'Y-m-d H:i:s',validators: [{type: 'presence'}]}, //会议时段,开始时间
+        {name: 'endTime',type:'date',dateFormat: 'Y-m-d H:i:s',validators: [{type: 'presence'}]}, //会议时段，结束时间
         {name: 'weekOfDate'}, //星期几
         {name: 'participant'},//参会人员
         {name: 'attendance'},//出席人数
