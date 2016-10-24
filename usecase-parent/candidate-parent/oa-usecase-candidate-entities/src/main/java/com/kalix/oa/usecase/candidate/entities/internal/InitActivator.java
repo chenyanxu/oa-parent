@@ -1,20 +1,9 @@
 package com.kalix.oa.usecase.candidate.entities.internal;
 
-import com.kalix.framework.core.util.SystemUtil;
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
+import com.kalix.framework.core.api.osgi.BaseBundleActivator;
 
 /**
- * Created by zangyanming on 2016/6/21.
+ * @author chenyanxu
  */
-public class InitActivator implements BundleActivator {
-    @Override
-    public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.startBundlePrintln(bundleContext);
-    }
-
-    @Override
-    public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.stopBundlePrintln(bundleContext);
-    }
+public class InitActivator extends BaseBundleActivator {
 }
