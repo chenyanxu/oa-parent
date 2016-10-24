@@ -28,6 +28,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             items: [
                 {
                     xtype: 'tableFormField',
+                    readOnly: true,
                     bind: {
                         value: '{rec.title}'
                     }

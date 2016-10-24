@@ -26,6 +26,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
             items: [
                 {
                     xtype: 'tableFormField',
+                    readOnly: true,
                     bind: {
                         value: '{rec.title}'
                     }

@@ -26,6 +26,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
             items: [
                 {
                     xtype: 'tableFormField',
+                    readOnly: true,
                     bind: {
                         value: '{rec.title}'
                     }
