@@ -27,12 +27,12 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyGrid', {
         },
         {
             text: '编号',
-            dataIndex: 'businessNo',
-            hidden: true
+            dataIndex: 'businessNo'
         },
         {
             text: '名称',
-            dataIndex: 'title'
+            dataIndex: 'title',
+            hidden: true
         },
         {
             text: '人员类别',

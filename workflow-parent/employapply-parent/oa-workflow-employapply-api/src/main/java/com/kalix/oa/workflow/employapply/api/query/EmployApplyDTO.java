@@ -23,6 +23,7 @@ public class EmployApplyDTO extends BaseDTO {
     private Short status;//工作流状态
     private String auditResult="无审批结果";//审批最终结果
 
+    private String businessNo;
     private String branchSchoolLeader;//分院领导审批
     private String schoolLeader;//校领导审批
     private String manpower;// 人力资源部长签字
@@ -129,6 +130,14 @@ public class EmployApplyDTO extends BaseDTO {
 
     public void setAuditResult(String auditResult) {
         this.auditResult = auditResult;
+    }
+
+    public String getBusinessNo() {
+        return businessNo;
+    }
+
+    public void setBusinessNo(String businessNo) {
+        this.businessNo = businessNo;
     }
 
     public String getBranchSchoolLeader() {

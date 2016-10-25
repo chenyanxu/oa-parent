@@ -90,6 +90,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
                 "b.currentNode," +
                 "b.status," +
                 "b.auditResult," +
+                "b.businessNo," +
                 "b.branchSchoolLeader,b.schoolLeader,b.manpower " +
                 "from oa_candidate a left join oa_workflow_employapply b " +
                 "on a.employApplyWorkflowId = b.id " +
@@ -154,7 +155,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             bean.setCurrentNode(task.getName());
             bean.setStatus(WorkflowStaus.ACTIVE);
             bean.setAuditResult("审批中...");
+            //创建流程业务编号
+            String bizNo = createBusinessNo();
+            bean.setBusinessNo(bizNo);
             this.updateEntity(bean);
+
+            runtimeService.setProcessInstanceName(instance.getId(), bizNo);
+
             jsonStatus.setMsg("启动流程成功！");
         } catch (Exception e) {
             e.printStackTrace();
