@@ -64,8 +64,7 @@ Ext.define('kalix.usecase.candidate.model.CandidateModel', {
             validators: [{type: 'presence'}]
         },
         {
-            name: 'comment',
-            validators: [{type: 'presence'}]
+            name: 'comment'
         },
         {
             name: 'tel',

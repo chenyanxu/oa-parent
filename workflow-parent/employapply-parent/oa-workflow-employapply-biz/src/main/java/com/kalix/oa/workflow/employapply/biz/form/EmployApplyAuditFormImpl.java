@@ -9,6 +9,6 @@ import com.kalix.middleware.workflow.biz.AbstractAuditFormHandler;
 public class EmployApplyAuditFormImpl extends AbstractAuditFormHandler {
     @Override
     public String getFormClass() {
-        return "kalix.workflow.employApply.view.EmployApplyViewForm";
+        return "kalix.workflow.employApply.view.EmployApplyAllViewForm";
     }
 }

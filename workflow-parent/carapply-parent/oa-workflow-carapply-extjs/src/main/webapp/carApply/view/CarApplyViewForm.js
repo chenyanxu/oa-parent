@@ -10,6 +10,10 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewForm', {
     ],
     alias: 'widget.carApplyViewForm',
     xtype: "carApplyViewForm",
+    layout: {
+    type: 'table',
+        columns: 6
+    },
     items: [
         {
             html: '吉林动画学院公务用车申请表',
@@ -18,7 +22,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewForm', {
             bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'
         },
         {
-            html: '名称',
+            html: '名称'
         },
         {
             colspan: 5,

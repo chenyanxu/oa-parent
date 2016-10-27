@@ -11,6 +11,10 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
     ],
     alias: 'widget.recruitApplyViewForm',
     xtype: "recruitApplyViewForm",
+    layout: {
+        type: 'table',
+        columns: 6
+    },
     items: [
         {
             html: '吉林动画学院用工招聘申请表',

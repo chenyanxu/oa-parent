@@ -11,12 +11,6 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewWindow', {
     xtype: "employApplyViewWindow",
     width: 840,
     items: [
-        {
-            xtype: 'employApplyViewForm',
-            layout: {
-                type: 'table',
-                columns: 6
-            }
-        }
+        Ext.create('kalix.workflow.employApply.view.EmployApplyViewForm')
     ]
 });

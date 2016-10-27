@@ -10,6 +10,10 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewForm', {
     ],
     alias: 'widget.employApplyViewForm',
     xtype: "employApplyViewForm",
+    layout: {
+        type: 'table',
+        columns: 6
+    },
     items: [
         {
             html: '吉林动画学院入职申请表',
@@ -18,7 +22,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewForm', {
             bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'
         },
         {
-            html: '名称',
+            html: '名称'
         },
         {
             colspan: 5,

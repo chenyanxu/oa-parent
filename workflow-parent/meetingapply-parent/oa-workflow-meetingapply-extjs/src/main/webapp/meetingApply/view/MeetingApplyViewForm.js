@@ -13,6 +13,10 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
     ],
     alias: 'widget.meetingApplyViewForm',
     xtype: "meetingApplyViewForm",
+    layout: {
+        type: 'table',
+        columns: 6
+    },
     items: [
         {
             html: '吉林动画学院会议室使用申请表',

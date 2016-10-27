@@ -125,7 +125,6 @@ Ext.define('kalix.usecase.candidate.view.CandidateWindow', {
                 },
                 {
                     fieldLabel: '备注',
-                    allowBlank: false,
                     xtype: 'textarea',
                     bind: {
                         value: '{rec.comment}'

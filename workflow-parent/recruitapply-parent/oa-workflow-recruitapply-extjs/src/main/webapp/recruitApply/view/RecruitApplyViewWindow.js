@@ -11,12 +11,6 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewWindow', {
     xtype: "recruitApplyViewWindow",
     width: 840,
     items: [
-        {
-            xtype: 'recruitApplyViewForm',
-            layout: {
-                type: 'table',
-                columns: 6
-            }
-        }
+        Ext.create('kalix.workflow.recruitApply.view.RecruitApplyViewForm')
     ]
 });

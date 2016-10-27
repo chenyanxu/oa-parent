@@ -11,12 +11,6 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewWindow', {
     xtype: "carApplyViewWindow",
     width: 840,
     items: [
-        {
-            xtype: 'carApplyViewForm',
-            layout: {
-                type: 'table',
-                columns: 6
-            }
-        }
+        Ext.create('kalix.workflow.carApply.view.CarApplyViewForm')
     ]
 });

@@ -11,6 +11,10 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
     ],
     alias: 'widget.sealApplyViewForm',
     xtype: "sealApplyViewForm",
+    layout: {
+        type: 'table',
+        columns: 6
+    },
     items: [
         {
             html: '吉林动画学院印章使用申请单',
@@ -19,7 +23,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
             bodyStyle: 'padding:10px 0px 15px 0px;font-size:24px;font-weight:bold;'
         },
         {
-            html: '名称',
+            html: '名称'
         },
         {
             colspan: 5,
