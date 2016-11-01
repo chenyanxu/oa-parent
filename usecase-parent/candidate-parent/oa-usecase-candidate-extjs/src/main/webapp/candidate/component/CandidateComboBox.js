@@ -11,7 +11,7 @@ Ext.define('kalix.usecase.candidate.component.CandidateComboBox', {
     xtype: 'candidateComboBox',
     valueField: 'id',
     displayField: 'xm',
-    queryParam: 'xm',
+    queryParam: '%xm%',
     modelField:'candidateId',
     store: {
         type: 'candidateStore'

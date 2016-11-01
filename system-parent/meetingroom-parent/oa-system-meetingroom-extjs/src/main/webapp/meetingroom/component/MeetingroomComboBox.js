@@ -11,7 +11,7 @@ Ext.define('kalix.system.meetingroom.component.MeetingroomComboBox', {
     xtype: 'meetingroomComboBox',
     valueField: 'id',
     displayField: 'name',
-    queryParam: 'name',
+    queryParam: '%name%',
     modelField: 'meetingroomId',
     store: {
         type: 'meetingroomStore'
