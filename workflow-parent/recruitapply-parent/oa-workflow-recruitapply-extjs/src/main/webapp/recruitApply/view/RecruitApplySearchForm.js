@@ -15,14 +15,14 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplySearchForm', {
       labelAlign: 'right',
       labelWidth: 60,
       width: 200,
-      name: 'orgName'
+      name: '%orgName%'
     }, {
       xtype: 'textfield',
       fieldLabel: '经办人',
       labelAlign: 'right',
       labelWidth: 60,
       width: 200,
-      name: 'createBy'
+      name: '%createBy%'
     }
   ]
 });

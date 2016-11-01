@@ -14,7 +14,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplySearchForm', {
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'orgName'
+            name: '%orgName%'
         },
         {
             xtype: 'textfield',
@@ -22,7 +22,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplySearchForm', {
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'createBy'
+            name: '%createBy%'
         }
     ]
 });

@@ -15,7 +15,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplySearchForm', {
       labelAlign: 'right',
       labelWidth: 60,
       width: 200,
-      name: 'createBy'
+      name: '%createBy%'
     }
   ]
 });

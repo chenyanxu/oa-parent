@@ -15,7 +15,7 @@ Ext.define('kalix.system.meetingroom.view.MeetingroomSearchForm', {
             labelAlign: 'right',
             labelWidth: 80,
             width: 200,
-            name: 'name'
+            name: '%name%'
         },
         {
             xtype: 'textfield',
@@ -23,7 +23,7 @@ Ext.define('kalix.system.meetingroom.view.MeetingroomSearchForm', {
             labelAlign: 'right',
             labelWidth: 80,
             width: 200,
-            name: 'address'
+            name: '%address%'
         },
         {
             xtype: 'numberfield',
