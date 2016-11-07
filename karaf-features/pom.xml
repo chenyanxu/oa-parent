@@ -11,6 +11,7 @@
 
     <artifactId>karaf-features</artifactId>
     <name>Kalix OA Karaf Features</name>
+    <version>${project.oa.version}</version>
     <packaging>pom</packaging>
 
     <properties>
