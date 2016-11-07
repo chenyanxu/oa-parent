@@ -5,12 +5,13 @@
     <parent>
         <artifactId>leave-parent</artifactId>
         <groupId>com.kalix.oa.leave</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-leave-dao</artifactId>
     <name>Kalix OA Leave Dao</name>
+    <version>${project.oa.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
@@ -21,7 +22,7 @@
         <dependency>
             <groupId>com.kalix.oa.leave</groupId>
             <artifactId>oa-leave-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.kalix.framework.core</groupId>

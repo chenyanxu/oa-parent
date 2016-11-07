@@ -5,12 +5,13 @@
     <parent>
         <artifactId>interview-parent</artifactId>
         <groupId>com.kalix.oa.usecase.interview</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-usecase-interview-dao</artifactId>
     <name>Kalix OA UseCase Interview Dao</name>
+    <version>${project.oa.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
