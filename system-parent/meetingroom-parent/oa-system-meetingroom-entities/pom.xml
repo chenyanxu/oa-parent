@@ -5,13 +5,12 @@
     <parent>
         <artifactId>meetingroom-parent</artifactId>
         <groupId>com.kalix.oa.system.meetingroom</groupId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-system-meetingroom-entities</artifactId>
     <name>Kalix OA System Meetingroom Entities</name>
-    <version>${project.oa.version}</version>
     <packaging>bundle</packaging>
 
     <properties>

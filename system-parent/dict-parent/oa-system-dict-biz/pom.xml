@@ -5,13 +5,12 @@
     <parent>
         <groupId>com.kalix.oa.system.dict</groupId>
         <artifactId>dict-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-system-dict-biz</artifactId>
     <name>Kalix OA System Dict Biz</name>
-    <version>${project.oa.version}</version>
     <packaging>bundle</packaging>
 
     <properties>

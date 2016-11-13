@@ -5,13 +5,12 @@
     <parent>
         <artifactId>meetingapply-parent</artifactId>
         <groupId>com.kalix.oa.workflow.meetingapply</groupId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-workflow-meetingapply-dao</artifactId>
     <name>Kalix OA Workflow Meeting Apply DAO</name>
-    <version>${project.oa.version}</version>
     <packaging>bundle</packaging>
 
     <properties>
