@@ -8,7 +8,7 @@ import com.kalix.framework.core.api.web.model.QueryDTO;
 public class CandidateDTO extends QueryDTO {
     private Long id;
     private String xm;
-    private long candidateId;
+    private Long candidateId;
 
     public String getXm() {
         return xm;
@@ -26,11 +26,11 @@ public class CandidateDTO extends QueryDTO {
         this.xm = xm;
     }
 
-    public long getCandidateId() {
+    public Long getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(long candidateId) {
+    public void setCandidateId(Long candidateId) {
         this.candidateId = candidateId;
     }
 }

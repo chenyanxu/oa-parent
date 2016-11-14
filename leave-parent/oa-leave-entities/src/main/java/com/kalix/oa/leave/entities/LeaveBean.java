@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "oa_leave")
 public class LeaveBean extends PersistentEntity {
-    private long candidateId;//应聘id
+    private Long candidateId;//应聘id
     private Date dateFirst;//初试时间
     private String interviewerFirst;//初试面试官
     private String interviewContentFirst;//初试面试内容
@@ -27,11 +27,11 @@ public class LeaveBean extends PersistentEntity {
 
     private Boolean employment;//是否聘用
 
-    public long getCandidateId() {
+    public Long getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(long candidateId) {
+    public void setCandidateId(Long candidateId) {
         this.candidateId = candidateId;
     }
 
