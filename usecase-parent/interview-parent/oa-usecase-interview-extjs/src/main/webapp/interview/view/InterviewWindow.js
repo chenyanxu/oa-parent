@@ -67,7 +67,7 @@ Ext.define('kalix.usecase.interview.view.InterviewWindow', {
                         fieldLabel: '初试时间',
                         allowBlank: false,
                         xtype: 'datefield',
-                        format: 'Y-m-d',
+                        format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                         bind: {
                             value: '{rec.dateFirst}'
                         }
@@ -107,7 +107,7 @@ Ext.define('kalix.usecase.interview.view.InterviewWindow', {
                     {
                         fieldLabel: '复试时间',
                         xtype: 'datefield',
-                        format: 'Y-m-d',
+                        format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                         allowBlank: false,
                         bind: {
                             value: '{rec.dateSecond}'

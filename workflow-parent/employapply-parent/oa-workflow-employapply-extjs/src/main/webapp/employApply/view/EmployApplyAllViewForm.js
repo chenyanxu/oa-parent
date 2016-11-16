@@ -560,7 +560,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
                                 {
                                     fieldLabel: '初试时间',
                                     xtype: 'datefield',
-                                    format: 'Y-m-d',
+                                    format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                                     labelAlign: 'right',
                                     labelWidth: 120,
                                     width: 435,
@@ -573,7 +573,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
                                 {
                                     fieldLabel: '复试时间',
                                     xtype: 'datefield',
-                                    format: 'Y-m-d',
+                                    format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                                     labelAlign: 'right',
                                     labelWidth: 120,
                                     width: 435,

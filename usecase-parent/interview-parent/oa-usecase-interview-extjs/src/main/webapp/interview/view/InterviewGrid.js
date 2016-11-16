@@ -51,7 +51,7 @@ Ext.define('kalix.usecase.interview.view.InterviewGrid', {
                 text: '初试时间',
                 dataIndex: 'dateFirst',
                 xtype: 'datecolumn',
-                format: 'Y-m-d',
+                format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                 renderer: null
             },
             {
@@ -74,7 +74,7 @@ Ext.define('kalix.usecase.interview.view.InterviewGrid', {
                 text: '复试时间',
                 dataIndex: 'dateSecond',
                 xtype: 'datecolumn',
-                format: 'Y-m-d',
+                format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',
                 renderer: null
             },
             {
