@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/person">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/person">
   <process id="employapply" name="入职审批申请流程" isExecutable="true" xmlns:activiti="http://activiti.org/bpmn" activiti:type="">
     <documentation>入职审批申请流程</documentation>
     <extensionElements>
@@ -17,7 +21,7 @@
     <sequenceFlow id="flow3" name="兼职、专职教师类" sourceRef="exclusivegateway1" targetRef="branchSchoolLeader">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${personCategory>1}]]></conditionExpression>
     </sequenceFlow>
-    <userTask id="schoolLeader" name="董事长审核" activiti:candidateGroups="吉林动画学院-董事长" activiti:formKey="audit.form">
+    <userTask id="schoolLeader" name="董事长审核" activiti:candidateGroups="吉林动画学院::董事长" activiti:formKey="audit.form">
       <documentation>董事长审核</documentation>
     </userTask>
     <sequenceFlow id="flow4" name="行政、科研人员" sourceRef="exclusivegateway1" targetRef="schoolLeader">
@@ -29,7 +33,7 @@
     <sequenceFlow id="flow7" name="同意" sourceRef="exclusivegateway2" targetRef="exclusivegateway3">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
     </sequenceFlow>
-    <userTask id="manpower" name="人力领导审核" activiti:candidateGroups="人力资源开发与管理中心-副主任" activiti:formKey="audit.form">
+    <userTask id="manpower" name="人力领导审核" activiti:candidateGroups="人力资源开发与管理中心::副主任" activiti:formKey="audit.form">
       <documentation>人力领导审核</documentation>
     </userTask>
     <sequenceFlow id="flow8" name="兼职教师" sourceRef="exclusivegateway3" targetRef="manpower">

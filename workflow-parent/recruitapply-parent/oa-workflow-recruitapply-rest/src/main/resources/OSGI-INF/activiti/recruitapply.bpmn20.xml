@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/person">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/person">
   <process id="recruitapply" name="用工招聘申请流程" isExecutable="true">
     <documentation>用工招聘申请流程</documentation>
     <extensionElements>
@@ -15,7 +19,8 @@
     </userTask>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow3" sourceRef="depUser" targetRef="exclusivegateway1"></sequenceFlow>
-    <userTask id="manpower" name="人力资源开发与管理中心主任审核" activiti:candidateGroups="人力资源开发与管理中心-主任" activiti:formKey="audit.form"></userTask>
+    <userTask id="manpower" name="人力资源开发与管理中心主任审核" activiti:candidateGroups="人力资源开发与管理中心::主任"
+              activiti:formKey="audit.form"></userTask>
     <sequenceFlow id="flow4" name="同意" sourceRef="exclusivegateway1" targetRef="manpower">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
     </sequenceFlow>

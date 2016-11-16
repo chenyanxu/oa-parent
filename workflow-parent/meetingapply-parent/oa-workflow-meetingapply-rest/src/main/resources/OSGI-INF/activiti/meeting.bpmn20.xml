@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/admin">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/admin">
   <process id="meetingapply" name="会议室使用申请流程" isExecutable="true">
     <documentation>会议室使用申请流程</documentation>
     <extensionElements>
       <activiti:eventListener events="TASK_CREATED,TASK_COMPLETED" entityType="task" class="com.kalix.middleware.workflow.engine.listener.MessageEventListener"></activiti:eventListener>
     </extensionElements>
     <startEvent id="startevent1" name="启动审批"></startEvent>
-    <userTask id="schoolAdminUser" name="行政事务办公室主管审核" activiti:candidateGroups="行政事务办公室-主管" activiti:formKey="audit.form"></userTask>
+    <userTask id="schoolAdminUser" name="行政事务办公室主管审核" activiti:candidateGroups="行政事务办公室::主管"
+              activiti:formKey="audit.form"></userTask>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow4" sourceRef="schoolAdminUser" targetRef="exclusivegateway2"></sequenceFlow>
-    <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="校务部-副部长" activiti:formKey="audit.form"></userTask>
+    <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="校务部::副部长"
+              activiti:formKey="audit.form"></userTask>
     <sequenceFlow id="flow5" name="同意" sourceRef="exclusivegateway2" targetRef="schoolUser">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
     </sequenceFlow>
