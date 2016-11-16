@@ -4,28 +4,28 @@
   [carapply-parent](oa-parent/workflow-parent/carapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 校务部-副部长
-    * 吉林动画学院-副校长-后勤
-    * 吉林动画学院-党委书记
+    * 校务部&副部长
+    * 吉林动画学院&副校长-后勤
+    * 吉林动画学院&党委书记
 
 ## employapply-parent 入职审批工作流
   [employapply-parent](oa-parent/workflow-parent/employapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 吉林动画学院-董事长
-    * 人力资源开发与管理中心-副主任
+    * 吉林动画学院&董事长
+    * 人力资源开发与管理中心&副主任
 
 ## meetingapply-parent 会议室使用申请工作流
   [meetingapply-parent](oa-parent/workflow-parent/meetingapply-parent/README.md)
   * 流程审批职位列表
-    * 行政事务办公室-主管
-    * 校务部-副部长
+    * 行政事务办公室&主管
+    * 校务部&副部长
 
 ## recruitapply-parent 招聘申请工作流
   [recruitapply-parent](oa-parent/workflow-parent/recruitapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 人力资源开发与管理中心-主任
+    * 人力资源开发与管理中心&主任
 
 ## sealapply-parent 印章使用申请工作流
   [sealapply-parent](oa-parent/workflow-parent/sealapply-parent/README.md)
