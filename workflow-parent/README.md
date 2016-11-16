@@ -1,33 +1,38 @@
 # workflow-parent
   工作流工程的父工程
+## 说明
+
+> 工作流的用户审批目前采用组织机构和职位联合的方式，中间统一采用::分割
+> 例如：校务部::副部长 ，其中校务部为组织机构名称，副部长为属于“校务部”组织机构下的职位。属于该职位的人员拥有审批权限。
 ## carapply-parent 车辆使用申请工作流
   [carapply-parent](oa-parent/workflow-parent/carapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 校务部&副部长
-    * 吉林动画学院&副校长-后勤
-    * 吉林动画学院&党委书记
+    * 校务部::副部长
+    * 吉林动画学院::副校长-后勤
+    * 吉林动画学院::党委书记
 
 ## employapply-parent 入职审批工作流
   [employapply-parent](oa-parent/workflow-parent/employapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 吉林动画学院&董事长
-    * 人力资源开发与管理中心&副主任
+    * 吉林动画学院::董事长
+    * 人力资源开发与管理中心::副主任
 
 ## meetingapply-parent 会议室使用申请工作流
   [meetingapply-parent](oa-parent/workflow-parent/meetingapply-parent/README.md)
   * 流程审批职位列表
-    * 行政事务办公室&主管
-    * 校务部&副部长
+    * 行政事务办公室::主管
+    * 校务部::副部长
 
 ## recruitapply-parent 招聘申请工作流
   [recruitapply-parent](oa-parent/workflow-parent/recruitapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
-    * 人力资源开发与管理中心&主任
+    * 人力资源开发与管理中心::主任
 
 ## sealapply-parent 印章使用申请工作流
+> 该流程因为业务变动暂时停用
   [sealapply-parent](oa-parent/workflow-parent/sealapply-parent/README.md)
   * 流程审批职位列表
     * 上级领导
