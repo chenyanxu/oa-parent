@@ -11,6 +11,8 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewWindow', {
     xtype: "sealApplyViewWindow",
     width: 840,
     items: [
-        Ext.create('kalix.workflow.sealApply.view.SealApplyViewForm')
+        {
+            xtype:'sealApplyViewForm'
+        }
     ]
 });
