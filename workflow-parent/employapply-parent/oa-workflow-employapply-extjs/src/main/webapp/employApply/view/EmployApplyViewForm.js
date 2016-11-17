@@ -14,6 +14,16 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewForm', {
         type: 'table',
         columns: 6
     },
+    constructor: function () {
+        if (arguments.length == 1 && arguments[0].layout == 'form') {
+            arguments[0].layout =
+            {
+                type: 'table',
+                columns: 6
+            }
+        }
+        this.callParent(arguments);
+    },
     items: [
         {
             html: '吉林动画学院入职申请表',

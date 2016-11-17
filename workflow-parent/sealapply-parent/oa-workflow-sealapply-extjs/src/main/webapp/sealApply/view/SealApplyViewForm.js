@@ -15,6 +15,16 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
         type: 'table',
         columns: 6
     },
+    constructor: function () {
+        if (arguments.length == 1 && arguments[0].layout == 'form') {
+            arguments[0].layout =
+            {
+                type: 'table',
+                columns: 6
+            }
+        }
+        this.callParent(arguments);
+    },
     items: [
         {
             html: '吉林动画学院印章使用申请单',

@@ -11,6 +11,8 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewWindow', {
     xtype: "employApplyViewWindow",
     width: 840,
     items: [
-        Ext.create('kalix.workflow.employApply.view.EmployApplyViewForm')
+        {
+            xtype:'employApplyViewForm'
+        }
     ]
 });

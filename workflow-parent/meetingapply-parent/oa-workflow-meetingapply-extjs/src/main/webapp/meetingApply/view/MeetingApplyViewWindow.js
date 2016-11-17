@@ -11,6 +11,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewWindow', {
     xtype: "meetingApplyViewWindow",
     width: 840,
     items: [
-        Ext.create('kalix.workflow.meetingApply.view.MeetingApplyViewForm')
+        {
+            xtype:'meetingApplyViewForm'
+        }
     ]
 });
