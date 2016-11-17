@@ -2,7 +2,6 @@ package com.kalix.oa.workflow.employapply.biz;
 
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
-import com.kalix.framework.core.api.persistence.PersistentEntity;
 import com.kalix.framework.core.api.web.model.BaseDTO;
 import com.kalix.framework.core.util.Assert;
 import com.kalix.framework.core.util.SerializeUtil;
@@ -143,7 +142,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             //启动流程
             Map varMap = new HashMap<>();
             //put orgName to variant
-            varMap.put(Const.STARTER_ORG_Name,String.valueOf(bean.getOrgName()));
+            varMap.put(Const.VAR_STARTER_ORG_Name, String.valueOf(bean.getOrgName()));
             getVariantMap(varMap,bean);
 
             // 将人员类别varMap传递到工作流中去，用于控制流程的分支
