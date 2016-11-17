@@ -15,7 +15,7 @@ Ext.define('kalix.usecase.lecture.view.LectureSearchForm', {
             xtype: 'candidateComboBox',
             fieldLabel: '应聘者姓名',
             allowBlank: true,
-            name:'%candidateId%'
+            name:'candidateId'
         }
     ]
 });
