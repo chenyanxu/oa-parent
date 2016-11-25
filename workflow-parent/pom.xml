@@ -18,6 +18,7 @@
         <module>recruitapply-parent</module>
         <module>meetingapply-parent</module>
         <module>sealapply-parent</module>
+        <module>evectionapply-parent</module>
     </modules>
 
     <dependencyManagement>

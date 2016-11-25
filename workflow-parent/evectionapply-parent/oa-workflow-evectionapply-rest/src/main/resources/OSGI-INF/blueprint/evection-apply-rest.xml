@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="evectionApplyService" interface="com.kalix.oa.workflow.evectionapply.api.biz.IEvectionApplyBeanService"/>
+    <camelContext id="evectionApplyCamel" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /evection -->
+        <rest path="/evectionapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <description>evection rest service</description>
+
+            <!-- this is a rest GET to find all evection -->
+            <get id="route-getAllEvectionApply" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all EvectionApplys</description>
+                <to uri="bean:evectionApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a evection -->
+            <post id="route-addEvectionApply" type="com.kalix.oa.workflow.evectionapply.entities.EvectionApplyBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a EvectionApply</description>
+                <to uri="bean:evectionApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/evectionapplys/{id}" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <!-- this is a rest GET to view a evection by the given id -->
+            <get id="route-getEvectionApply" outType="com.kalix.oa.workflow.evectionapply.entities.EvectionApplyBean">
+                <description>Find EvectionApply by id</description>
+                <to uri="bean:evectionApplyService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a evection -->
+            <put id="route-updateEvectionApply" type="com.kalix.oa.workflow.evectionapply.entities.EvectionApplyBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a EvectionApply</description>
+                <to uri="bean:evectionApplyService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a evection -->
+            <delete id="route-deleteEvectionApply"
+                outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a EvectionApply</description>
+                <to uri="bean:evectionApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/evectionapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessevectionApply" uri="/startProcess" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Start Process of evectionApply</description>
+                <to uri="bean:evectionApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskEvectionApply" uri="/completeTask" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Complete Task of evectionApply</description>
+                <to uri="bean:evectionApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
