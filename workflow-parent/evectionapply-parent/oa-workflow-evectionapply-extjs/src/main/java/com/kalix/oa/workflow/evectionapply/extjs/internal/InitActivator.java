@@ -20,9 +20,11 @@ public class InitActivator extends KalixBundleActivator {
 
         if(deploy){
             httpService.registerResources(contextPath + "/app/workflow/evectionApply", "/min/evectionApply", null);
+            httpService.registerResources(contextPath + "/app/workflow/loan", "/min/loan", null);
         }
         else{
             httpService.registerResources(contextPath + "/app/workflow/evectionApply", "/evectionApply", null);
+            httpService.registerResources(contextPath + "/app/workflow/loan", "/loan", null);
         }
     }
 
@@ -34,6 +36,7 @@ public class InitActivator extends KalixBundleActivator {
             bundleContext.ungetService(reference);
         if (httpService != null) {
             httpService.unregister(contextPath + "/workflow/evectionApply");
+            httpService.unregister(contextPath + "/workflow/loan");
         }
     }
 }

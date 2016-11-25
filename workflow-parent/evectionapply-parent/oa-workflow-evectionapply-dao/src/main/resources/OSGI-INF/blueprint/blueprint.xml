@@ -12,6 +12,11 @@
         <tx:transaction method="*" value="Required"/>
     </bean>
 
+    <bean id="loanBeanDaoImpl" class="com.kalix.oa.workflow.evectionapply.dao.LoanBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
     <service interface="com.kalix.oa.workflow.evectionapply.api.dao.IEvectionApplyBeanDao" ref="evectionBeanDaoImpl"/>
+    <service interface="com.kalix.oa.workflow.evectionapply.api.dao.ILoanBeanDao" ref="loanBeanDaoImpl"/>
 </blueprint>
 

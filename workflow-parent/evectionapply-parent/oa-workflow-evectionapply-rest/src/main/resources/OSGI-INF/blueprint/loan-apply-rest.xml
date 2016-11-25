@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <reference id="loanService" interface="com.kalix.oa.workflow.evectionapply.api.biz.ILoanBeanService"/>
+    <camelContext id="loanCamel" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /loan -->
+        <rest path="/loans" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <description>loan rest service</description>
+
+            <!-- this is a rest GET to find all loan -->
+            <get id="route-getAllLoan" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all Loans</description>
+                <to uri="bean:loanService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a loan -->
+            <post id="route-addLoan" type="com.kalix.oa.workflow.evectionapply.entities.LoanBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a Loan</description>
+                <to uri="bean:loanService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/loans/{id}" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <!-- this is a rest GET to view a loan by the given id -->
+            <get id="route-getLoan" outType="com.kalix.oa.workflow.evectionapply.entities.LoanBean">
+                <description>Find Loan by id</description>
+                <to uri="bean:loanService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a loan -->
+            <put id="route-updateLoan" type="com.kalix.oa.workflow.evectionapply.entities.LoanBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a Loan</description>
+                <to uri="bean:loanService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete a loan -->
+            <delete id="route-deleteLoan"
+                outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a Loan</description>
+                <to uri="bean:loanService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+    </camelContext>
+</blueprint>

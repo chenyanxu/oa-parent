@@ -12,6 +12,7 @@
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
 
     <reference id="evectionBeanDao" interface="com.kalix.oa.workflow.evectionapply.api.dao.IEvectionApplyBeanDao"/>
+    <reference id="loanBeanDao" interface="com.kalix.oa.workflow.evectionapply.api.dao.ILoanBeanDao"/>
 
     <bean id="evectionApplyBeanService" class="com.kalix.oa.workflow.evectionapply.biz.EvectionApplyBeanServiceImpl">
         <tx:transaction method="*" value="Required"/>
@@ -22,6 +23,14 @@
         <property name="taskService" ref="taskService"/>
         <property name="repositoryService" ref="repositoryService"/>
     </bean>
+
+    <bean id="loanBeanService" class="com.kalix.oa.workflow.evectionapply.biz.LoanBeanServiceImpl">
+        <tx:transaction method="*" value="Required"/>
+        <property name="dao" ref="loanBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
     <service interface="com.kalix.oa.workflow.evectionapply.api.biz.IEvectionApplyBeanService" ref="evectionApplyBeanService"/>
+    <service interface="com.kalix.oa.workflow.evectionapply.api.biz.ILoanBeanService" ref="loanBeanService"/>
 </blueprint>
 

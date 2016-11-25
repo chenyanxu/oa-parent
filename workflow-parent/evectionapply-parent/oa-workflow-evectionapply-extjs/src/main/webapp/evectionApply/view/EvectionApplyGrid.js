@@ -121,6 +121,19 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyGrid', {
                     handler: 'onWorkFlowStart'
                 },
                 {
+                    //出差申请工作流启动后就不能够借款了
+                    getClass: function (v, meta, record) {
+                        if (record.data.status) {
+                            return "kalix_hidden";
+                        }
+                        return "iconfont icon-workflow-loan-column";
+                    },
+                    //iconCls: 'iconfont icon-workflow-loan-column',
+                    permission: 'attachment',
+                    tooltip: '借款',
+                    handler: 'onLoan'
+                },
+                {
                     iconCls: 'iconfont icon-attachment-column',
                     permission: 'attachment',
                     tooltip: '附件管理',
