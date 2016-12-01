@@ -27,6 +27,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplySearchForm', {
         {
             xtype: 'datefield',
             format: 'Y-m-d',
+            formatText:'格式为YYYY-mm-dd',
             fieldLabel: '出差开始时间:',
             labelAlign: 'right',
             labelWidth: 120,
@@ -42,6 +43,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplySearchForm', {
         {
             xtype: 'datefield',
             format: 'Y-m-d',
+            formatText:'格式为YYYY-mm-dd',
             headLabel: true,
             labelAlign: 'right',
             width: 140,

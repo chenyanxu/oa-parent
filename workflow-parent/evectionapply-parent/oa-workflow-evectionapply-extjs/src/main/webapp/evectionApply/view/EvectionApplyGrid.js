@@ -44,13 +44,13 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyGrid', {
             text: '出差开始时间',
             dataIndex: 'beginDate',
             xtype: 'datecolumn',
-            format: 'Y-m-d', renderer: null
+            format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',renderer: null
         },
         {
             text: '出差结束时间',
             dataIndex: 'endDate',
             xtype: 'datecolumn',
-            format: 'Y-m-d', renderer: null
+            format: 'Y-m-d', formatText:'格式为YYYY-mm-dd',renderer: null
         },
         {
             text: '审批结果',
