@@ -64,6 +64,11 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         //获得返回的结果类
         Class<? extends BaseDTO> cls = getResultClass();
         Assert.notNull(cls, "返回查询结果类不能为空.");
+        //数据安全
+        if(jsonMap.get("createById")!=null){
+            sql = sql + " and a.createById=" +jsonMap.get("createById") ;
+            jsonMap.remove("createById");
+        }
 
         String posSql = " order by a.creationDate desc";
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
