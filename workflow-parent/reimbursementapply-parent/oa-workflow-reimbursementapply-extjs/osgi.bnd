@@ -1,0 +1,6 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Include-Resource: src/main/webapp,target/classes
+Bundle-Category: Kalix OA Workflow Reimbursement Apply

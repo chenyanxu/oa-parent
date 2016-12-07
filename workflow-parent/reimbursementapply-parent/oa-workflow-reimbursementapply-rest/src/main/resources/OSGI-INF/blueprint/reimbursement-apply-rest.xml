@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="reimbursementApplyService" interface="com.kalix.oa.workflow.reimbursementapply.api.biz.IReimbursementApplyBeanService"/>
+
+    <camelContext id="oa-reimbursementapply-rest" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+        <rest path="/reimbursementapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllReimbursementApply" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all reimbursementApplys</description>
+                <to uri="bean:reimbursementApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+            <post id="route-addReimbursementApply" type="com.kalix.oa.workflow.reimbursementapply.entities.ReimbursementApplyBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a ReimbursementApply</description>
+                <to uri="bean:reimbursementApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/reimbursementapplys/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getReimbursementApply" outType="com.kalix.oa.workflow.reimbursementapply.entities.ReimbursementApplyBean">
+                <description>Find reimbursementApply by id</description>
+                <to uri="bean:reimbursementApplyService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updatereimbursementApply" type="com.kalix.oa.workflow.reimbursementapply.entities.ReimbursementApplyBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a reimbursementApply</description>
+                <to uri="bean:reimbursementApplyService?method=updateEntity"/>
+            </put>
+            <delete id="route-removereimbursementApply"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a reimbursementApply</description>
+                <to uri="bean:reimbursementApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/reimbursementapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessreimbursementApply" uri="/startProcess" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Start Process of reimbursementApply</description>
+                <to uri="bean:reimbursementApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskReimbursementApply" uri="/completeTask" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Complete Task of reimbursementApply</description>
+                <to uri="bean:reimbursementApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+        <rest path="/reimbursementapplys/{id}/details" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-detailByReimbursementId" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>get detailByReimbursementId</description>
+                <to uri="bean:detailService?method=getDetailByReimbursementId(${header.id})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
+

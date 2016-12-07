@@ -19,6 +19,7 @@
         <module>meetingapply-parent</module>
         <module>sealapply-parent</module>
         <module>evectionapply-parent</module>
+        <module>reimbursementapply-parent</module>
     </modules>
 
     <dependencyManagement>
