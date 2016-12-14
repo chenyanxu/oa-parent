@@ -33,7 +33,7 @@ public class InitActivator extends KalixBundleActivator {
         if (reference != null)
             bundleContext.ungetService(reference);
         if (httpService != null) {
-            httpService.unregister(contextPath + "/workflow/sealApply");
+            httpService.unregister(contextPath + "/app/workflow/sealApply");
         }
     }
 }

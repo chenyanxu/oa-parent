@@ -1,9 +1,0 @@
-#-----------------------------------------------------------------
-# Use this file to add customized Bnd instructions for the bundle
-#-----------------------------------------------------------------
-
-Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Bundle-Category: Kalix OA Workflow Meeting Apply
-Include-Resource: target/classes
-Import-Package: com.kalix.framework.core.api.persistence,\
-                com.kalix.oa.workflow.meetingapply.entities,*

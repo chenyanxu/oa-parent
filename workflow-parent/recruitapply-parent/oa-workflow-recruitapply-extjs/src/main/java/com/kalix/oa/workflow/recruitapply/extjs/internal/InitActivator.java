@@ -27,7 +27,7 @@ public class InitActivator extends KalixBundleActivator {
         if (reference != null)
             bundleContext.ungetService(reference);
         if (httpService != null) {
-            httpService.unregister(contextPath + "/workflow/recruitApply");
+            httpService.unregister(contextPath + "/app/workflow/recruitApply");
         }
     }
 }
