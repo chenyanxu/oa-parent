@@ -5,7 +5,6 @@
 package com.kalix.oa.workflow.meetingroomapply.biz;
 
 
-
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
@@ -18,7 +17,6 @@ import com.kalix.oa.workflow.meetingroomapply.api.dao.IMeetingRoomApplyBeanDao;
 import com.kalix.oa.workflow.meetingroomapply.entities.MeetingRoomApplyBean;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -181,13 +179,5 @@ public class MeetingRoomApplyBeanServiceImpl extends WorkflowGenericBizServiceIm
         jsonData.setData(beans);
         jsonData.setTotalCount((long) beans.size());
         return jsonData;
-    }
-
-    @Override
-    public void getStartMap(Map map, MeetingApplyBean bean) {
-        List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
-        map.put("assigneeList", assigneeList);
-        map.put("isAttend", false);
-        super.getStartMap(map, bean);
     }
 }
