@@ -16,6 +16,11 @@ public class StarterFinishListener implements TaskListener {
     @Override
     public void notify(DelegateTask delegateTask) {
         //get starter user name
-        delegateTask.setVariable("isAttend", true);
+        /*List<Execution> executions = delegateTask.getExecution().getEngineServices().getRuntimeService().createExecutionQuery()
+                .signalEventSubscriptionName("decide")
+                .list();*/
+        //发送信号
+        delegateTask.getExecution().getEngineServices().getRuntimeService().signalEventReceived("decide");
+//        delegateTask.setVariable("isAttend", true);
     }
 }

@@ -4,23 +4,29 @@
              xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.activiti.org/admin">
+    <signal id="decideSignal" name="decide"></signal>
     <process id="meetingapply" name="会议申请流程" isExecutable="true">
         <documentation>会议申请流程</documentation>
+        <extensionElements>
+            <activiti:eventListener events="TASK_CREATED,TASK_COMPLETED" entityType="task"
+                                    class="com.kalix.middleware.workflow.engine.listener.MessageEventListener"></activiti:eventListener>
+        </extensionElements>
         <startEvent id="startevent1" name="Start" activiti:initiator="initiator"></startEvent>
         <userTask id="usertask1" name="重要出席人审批" activiti:candidateUsers="${assignee}" activiti:formKey="audit.form">
             <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="assigneeList"
                                               activiti:elementVariable="assignee">
-                <completionCondition>${isAttend}</completionCondition>
+                <!--<completionCondition>${isAttend}</completionCondition>-->
             </multiInstanceLoopCharacteristics>
         </userTask>
         <userTask id="usertask2" name="会议发起人审批" activiti:formKey="audit.form">
             <documentation>会议发起人确定是否最终召开会议</documentation>
             <extensionElements>
-                <activiti:formProperty id="accepted" name="判断环节" type="boolean" variable="accepted"/>
+                <activiti:formProperty id="accepted" name="判断环节" type="boolean"
+                                       variable="accepted"></activiti:formProperty>
                 <activiti:taskListener event="create"
-                                       class="com.kalix.middleware.workflow.engine.listener.StarterListener"/>
+                                       class="com.kalix.middleware.workflow.engine.listener.StarterListener"></activiti:taskListener>
                 <activiti:taskListener event="complete"
-                                       class="com.kalix.oa.workflow.meetingapply.biz.event.StarterFinishListener"/>
+                                       class="com.kalix.oa.workflow.meetingapply.biz.event.StarterFinishListener"></activiti:taskListener>
             </extensionElements>
         </userTask>
         <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
@@ -28,12 +34,10 @@
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="parallelgateway1"></sequenceFlow>
         <sequenceFlow id="flow2" sourceRef="parallelgateway1" targetRef="usertask1"></sequenceFlow>
         <sequenceFlow id="flow3" sourceRef="parallelgateway1" targetRef="usertask2"></sequenceFlow>
-        <sequenceFlow id="flow4" sourceRef="usertask1" targetRef="parallelgateway2"></sequenceFlow>
         <sequenceFlow id="flow5" sourceRef="usertask2" targetRef="parallelgateway2"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-        <endEvent id="cancelendevent1" name="CancelEnd">
-        </endEvent>
+        <endEvent id="cancelendevent1" name="CancelEnd"></endEvent>
         <sequenceFlow id="flow6" sourceRef="parallelgateway2" targetRef="exclusivegateway1"></sequenceFlow>
         <sequenceFlow id="flow7" name="通过" sourceRef="exclusivegateway1" targetRef="endevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
@@ -41,6 +45,10 @@
         <sequenceFlow id="flow8" name="不通过" sourceRef="exclusivegateway1" targetRef="cancelendevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
         </sequenceFlow>
+        <boundaryEvent id="boundarysignal1" name="Signal" attachedToRef="usertask1" cancelActivity="true">
+            <signalEventDefinition signalRef="decideSignal"></signalEventDefinition>
+        </boundaryEvent>
+        <sequenceFlow id="flow9" sourceRef="boundarysignal1" targetRef="parallelgateway2"></sequenceFlow>
         <textAnnotation id="textannotation1">
             <text>会议召开</text>
         </textAnnotation>
@@ -57,6 +65,9 @@
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
                 <omgdc:Bounds height="55.0" width="105.0" x="402.0" y="100.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="boundarysignal1" id="BPMNShape_boundarysignal1">
+                <omgdc:Bounds height="30.0" width="30.0" x="504.0" y="113.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">
                 <omgdc:Bounds height="55.0" width="105.0" x="400.0" y="250.0"></omgdc:Bounds>
@@ -96,11 +107,6 @@
                 <omgdi:waypoint x="260.0" y="277.0"></omgdi:waypoint>
                 <omgdi:waypoint x="400.0" y="277.0"></omgdi:waypoint>
             </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-                <omgdi:waypoint x="507.0" y="127.0"></omgdi:waypoint>
-                <omgdi:waypoint x="670.0" y="127.0"></omgdi:waypoint>
-                <omgdi:waypoint x="670.0" y="180.0"></omgdi:waypoint>
-            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
                 <omgdi:waypoint x="505.0" y="277.0"></omgdi:waypoint>
                 <omgdi:waypoint x="670.0" y="277.0"></omgdi:waypoint>
@@ -115,7 +121,7 @@
                 <omgdi:waypoint x="770.0" y="127.0"></omgdi:waypoint>
                 <omgdi:waypoint x="885.0" y="127.0"></omgdi:waypoint>
                 <bpmndi:BPMNLabel>
-                    <omgdc:Bounds height="14.0" width="100.0" x="820.0" y="132.0"></omgdc:Bounds>
+                    <omgdc:Bounds height="14.0" width="24.0" x="820.0" y="132.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
@@ -123,8 +129,13 @@
                 <omgdi:waypoint x="770.0" y="277.0"></omgdi:waypoint>
                 <omgdi:waypoint x="885.0" y="277.0"></omgdi:waypoint>
                 <bpmndi:BPMNLabel>
-                    <omgdc:Bounds height="14.0" width="100.0" x="810.0" y="280.0"></omgdc:Bounds>
+                    <omgdc:Bounds height="14.0" width="36.0" x="810.0" y="280.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+                <omgdi:waypoint x="534.0" y="128.0"></omgdi:waypoint>
+                <omgdi:waypoint x="670.0" y="127.0"></omgdi:waypoint>
+                <omgdi:waypoint x="670.0" y="180.0"></omgdi:waypoint>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="association1" id="BPMNEdge_association1">
                 <omgdi:waypoint x="920.0" y="277.0"></omgdi:waypoint>
