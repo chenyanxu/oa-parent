@@ -14,7 +14,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
         'kalix.view.components.common.TableFormDateTimeField',
         'kalix.system.meetingroom.component.MeetingroomComboBox',
         'kalix.admin.user.component.UserOrgComboBox',
-        'kalix.admin.user.component.UserTagField'
+        'kalix.admin.user.component.UserTagField',
+        'kalix.view.components.common.TableFormDateTimeField'
     ],
     alias: 'widget.meetingApplyWindow',
     xtype: "meetingApplyWindow",
@@ -97,7 +98,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     ]
                 },
                 {
-                    html: '会议议程'
+                    html: '会议议程',
+                    required: true
                 },
                 {
                     colspan: 5,
@@ -106,6 +108,34 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                             xtype: 'tableFormField',
                             bind: {
                                 value: '{rec.meetingAgenda}'
+                            }
+                        }
+                    ]
+                },
+                {
+                    html: '开始时间'
+                },
+                {
+                    colspan: 2,
+                    items: [
+                        {
+                            xtype: 'tableFormDateTimeField',
+                            bind: {
+                                value: '{rec.beginTime}'
+                            }
+                        }
+                    ]
+                },
+                {
+                    html: '结束时间'
+                },
+                {
+                    colspan: 2,
+                    items: [
+                        {
+                            xtype: 'tableFormDateTimeField',
+                            bind: {
+                                value: '{rec.endTime}'
                             }
                         }
                     ]
@@ -125,20 +155,6 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     ]
                 },
                 {
-                    html: '会议申请人'
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'tableFormField',
-                            bind: {
-                                value: '{rec.createBy}'
-                            }
-                        }
-                    ]
-                },
-                {
                     html: '会议纪要人员'
                 },
                 {
@@ -149,34 +165,6 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                             bind: {
                                 value: '{rec.meetingSummaryPerson}'
                             }
-                        }
-                    ]
-                },
-                {
-                    html: '开始时间'
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'datefield',
-                            format: 'Y-m-d',
-                            formatText:'格式为YYYY-mm-dd',
-                            name: 'beginTime'
-                        }
-                    ]
-                },
-                {
-                    html: '结束时间'
-                },
-                {
-                    colspan: 2,
-                    items: [
-                        {
-                            xtype: 'datefield',
-                            format: 'Y-m-d',
-                            formatText:'格式为YYYY-mm-dd',
-                            name: 'endTime'
                         }
                     ]
                 },
@@ -208,6 +196,20 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                             displayField: 'name',
                             bind: {
                                 value: '{rec.otherAttendees}'
+                            }
+                        }
+                    ]
+                },
+                {
+                    html: '会议申请人'
+                },
+                {
+                    colspan: 5,
+                    items: [
+                        {
+                            xtype: 'tableFormField',
+                            bind: {
+                                value: '{rec.createBy}'
                             }
                         }
                     ]

@@ -7,18 +7,14 @@ Ext.define('kalix.workflow.meetingApply.model.MeetingApplyModel', {
     fields: [
         {name: 'meetingroomId',validators: [{type: 'presence'}]},//会议地点
         {name: 'meetingroomName'},//会议地点
-        {name: 'meetingTopic',validators: [{type: 'presence'}]},//会议名称
-        {name: 'requireType'},//宣传需求（企划中心）
-        {name: 'host',validators: [{type: 'presence'}]},//主持人
-        {name: 'meetingDate',type:'date',dateFormat: 'Y-m-d H:i:s'},//会议申请时间
-        {name: 'beginTime',type:'date',dateFormat: 'Y-m-d H:i:s',validators: [{type: 'presence'}]}, //会议时段,开始时间
-        {name: 'endTime',type:'date',dateFormat: 'Y-m-d H:i:s',validators: [{type: 'presence'}]}, //会议时段，结束时间
-        {name: 'weekOfDate'}, //星期几
-        {name: 'participant'},//参会人员
-        {name: 'attendance'},//出席人数
-        {name: 'equipmentRequirement'}, //设备要求
-        {name: 'securityPerson'}, //联系人（安全责任人）
-        {name: 'securityTel'}, //联系人电话
-        {name: 'operatorPhone'} //申请人电话
+        {name: 'meetingTopic', validators: [{type: 'presence'}]},//会议议题
+        {name: 'meetingAgenda', validators: [{type: 'presence'}]},//会议议程
+        {name: 'meetingType'},//会议类型
+        {name: 'meetingSummaryPerson'},//会议纪要人员
+        {name: 'beginTime', type: 'date', dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]}, //会议开始时间
+        {name: 'endTime', type: 'date', dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]}, //会议结束时间
+        {name: 'importantAttendees', type: 'string'},//重要出席人
+        {name: 'otherAttendees', type: 'string'},//其他出席人
+        {name: 'approveDeadline'}//审批截止时间
     ]
 });

@@ -185,7 +185,8 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void getStartMap(Map map, MeetingApplyBean bean) {
-        List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
+        //List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
+        List<String> assigneeList = Arrays.asList(bean.getImportantAttendees());
         map.put("assigneeList", assigneeList);
         map.put("isAttend", false);
         super.getStartMap(map, bean);
