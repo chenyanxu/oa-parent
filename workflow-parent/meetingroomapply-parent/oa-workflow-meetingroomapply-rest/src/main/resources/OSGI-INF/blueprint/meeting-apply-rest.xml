@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="meetingRoomApplyService" interface="com.kalix.oa.workflow.meetingroomapply.api.biz.IMeetingRoomApplyBeanService"/>
+
+    <camelContext id="demo-rest-meetingroomapply" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+        <rest path="/meetingroomapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllMeetingRoomApply" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all meetingRoomApplys</description>
+                <to uri="bean:meetingRoomApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+            <post id="route-addMeetingRoomApply" type="com.kalix.oa.workflow.meetingroomapply.entities.MeetingRoomApplyBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a MeetingRoomApply</description>
+                <to uri="bean:meetingRoomApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/meetingroomapplys/check" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-checkMeetingRoomApplyDateTime"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Check MeetingRoomApply DateTime</description>
+                <to uri="bean:meetingRoomApplyService?method=checkDateTime(${header.jsonStr})"/>
+            </get>
+        </rest>
+        <rest path="/meetingroomapplys/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getMeetingRoomApply" outType="com.kalix.oa.workflow.meetingroomapply.entities.MeetingRoomApplyBean">
+                <description>Find meetingRoomApply by id</description>
+                <to uri="bean:meetingRoomApplyService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updatemeetingRoomApply" type="com.kalix.oa.workflow.meetingroomapply.entities.MeetingRoomApplyBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a meetingRoomApply</description>
+                <to uri="bean:meetingRoomApplyService?method=updateEntity"/>
+            </put>
+            <delete id="route-removemeetingRoomApply"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a meetingRoomApply</description>
+                <to uri="bean:meetingRoomApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/meetingroomapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessmeetingRoomApply" uri="/startProcess" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Start Process of meetingRoomApply</description>
+                <to uri="bean:meetingRoomApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskMeetingRoomApply" uri="/completeTask" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Complete Task of meetingRoomApply</description>
+                <to uri="bean:meetingRoomApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+        <rest path="/meetingroomapplys/reservation" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-meetingRoomReservation" uri="/getAll" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Query MeetingRoom Reservation</description>
+                <to uri="bean:meetingRoomApplyService?method=reservation(${header.date})"/>
+            </get>
+            <get id="route-meetingRoomReservations" uri="/getOne" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Query MeetingRoom Reservations</description>
+                <to uri="bean:meetingRoomApplyService?method=reservation(${header.id},${header.date})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
+

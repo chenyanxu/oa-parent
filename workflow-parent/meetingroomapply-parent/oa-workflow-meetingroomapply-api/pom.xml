@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>meetingroomapply-parent</artifactId>
+        <groupId>com.kalix.oa.workflow.meetingroomapply</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>oa-workflow-meetingroomapply-api</artifactId>
+    <name>Kalix OA Workflow Meeting Room Apply API</name>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>com.kalix.oa.workflow.meetingroomapply.api</bundle.symbolicName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.kalix.oa.workflow.meetingroomapply</groupId>
+            <artifactId>oa-workflow-meetingroomapply-entities</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

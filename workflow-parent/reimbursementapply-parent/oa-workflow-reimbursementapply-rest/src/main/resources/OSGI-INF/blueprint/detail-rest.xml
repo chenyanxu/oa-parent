@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="detailService" interface="com.kalix.oa.workflow.reimbursementapply.api.biz.IDetailBeanService"/>
+
+    <camelContext id="oa-detail-rest" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+        <rest path="/details" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllDetail" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all details</description>
+                <to uri="bean:detailService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+            <post id="route-addDetail" type="com.kalix.oa.workflow.reimbursementapply.entities.DetailBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a Detail</description>
+                <to uri="bean:detailService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/details/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getDetail" outType="com.kalix.oa.workflow.reimbursementapply.entities.DetailBean">
+                <description>Find detail by id</description>
+                <to uri="bean:detailService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updatedetail" type="com.kalix.oa.workflow.reimbursementapply.entities.DetailBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a detail</description>
+                <to uri="bean:detailService?method=updateEntity"/>
+            </put>
+            <delete id="route-removedetail"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a detail</description>
+                <to uri="bean:detailService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+
+    </camelContext>
+</blueprint>
+

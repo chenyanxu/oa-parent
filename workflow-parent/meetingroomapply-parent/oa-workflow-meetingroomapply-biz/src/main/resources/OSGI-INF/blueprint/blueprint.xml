@@ -1,0 +1,28 @@
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           default-activation="eager"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
+    <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
+    <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="meetingroomBeanService" interface="com.kalix.oa.system.meetingroom.api.biz.IMeetingroomBeanService"/>
+
+    <reference id="meetingApplyBeanDao" interface="com.kalix.oa.workflow.meetingroomapply.api.dao.IMeetingRoomApplyBeanDao"/>
+
+    <bean id="meetingApplyBeanService" class="com.kalix.oa.workflow.meetingroomapply.biz.MeetingRoomApplyBeanServiceImpl">
+        <property name="dao" ref="meetingApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="meetingroomBeanService" ref="meetingroomBeanService"/>
+    </bean>
+    <service interface="com.kalix.oa.workflow.meetingroomapply.api.biz.IMeetingRoomApplyBeanService" ref="meetingApplyBeanService"/>
+
+</blueprint>
+
