@@ -113,7 +113,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     ]
                 },
                 {
-                    html: '开始时间'
+                    html: '开始时间',
+                    required: true
                 },
                 {
                     colspan: 2,
@@ -127,7 +128,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     ]
                 },
                 {
-                    html: '结束时间'
+                    html: '结束时间',
+                    required: true
                 },
                 {
                     colspan: 2,
