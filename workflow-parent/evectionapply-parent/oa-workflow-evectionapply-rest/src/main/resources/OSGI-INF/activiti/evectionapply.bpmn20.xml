@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/test">
   <process id="evectionapply" name="出差申请流程" isExecutable="true" xmlns:activiti="http://activiti.org/bpmn" activiti:type="">
     <documentation>出差申请流程</documentation>
     <extensionElements>
@@ -19,7 +23,7 @@
       <documentation>董事会综合管理部董事长审核</documentation>
     </userTask>
     <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="chairmanUser">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow4" sourceRef="chairmanUser" targetRef="exclusivegateway2"></sequenceFlow>
@@ -27,7 +31,7 @@
       <documentation>会计审核</documentation>
     </userTask>
     <sequenceFlow id="flow5" name="同意" sourceRef="exclusivegateway2" targetRef="accountantUser">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow6" sourceRef="accountantUser" targetRef="exclusivegateway3"></sequenceFlow>
@@ -35,7 +39,7 @@
       <documentation>出纳审核</documentation>
     </userTask>
     <sequenceFlow id="flow7" name="同意" sourceRef="exclusivegateway3" targetRef="cashierUser">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow8" sourceRef="cashierUser" targetRef="exclusivegateway4"></sequenceFlow>
@@ -43,19 +47,19 @@
     <userTask id="modify" name="出差申请修改" activiti:candidateGroups="审批修改" activiti:formKey="modify.form"></userTask>
     <sequenceFlow id="flow22" sourceRef="modify" targetRef="depUser"></sequenceFlow>
     <sequenceFlow id="flow23" name="不同意" sourceRef="exclusivegateway1" targetRef="modify">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow24" name="不同意" sourceRef="exclusivegateway2" targetRef="modify">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow25" name="不同意" sourceRef="exclusivegateway3" targetRef="modify">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow26" name="不同意" sourceRef="exclusivegateway4" targetRef="modify">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow27" name="同意" sourceRef="exclusivegateway4" targetRef="endevent1">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow33" sourceRef="startevent1" targetRef="depUser"></sequenceFlow>
   </process>
