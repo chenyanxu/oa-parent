@@ -68,10 +68,11 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
         for (int i = 0; i < beans.size(); i++) {
             MeetingApplyBean meetingApplyBean = (MeetingApplyBean) beans.get(i);
+            String[] meetingSummaryPerson = meetingApplyBean.getMeetingSummaryPerson().split(",");
             if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
-                for (int j = 0; j < meetingApplyBean.getMeetingSummaryPerson().split(",").length; j++) {
-                    if (!meetingApplyBean.getMeetingSummaryPerson().split(",")[j].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
+                for (int j = 0; j < meetingSummaryPerson.length; j++) {
+                    if (!meetingSummaryPerson[j].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingSummaryPerson[j]));
                         if (userBean != null) {
                             meetingSummaryPersonName += userBean.getName() + ",";
                         }
@@ -85,9 +86,10 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
 
             if (!meetingApplyBean.getImportantAttendees().isEmpty()) {
-                for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
-                    if (!meetingApplyBean.getImportantAttendees().split(",")[k].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
+                String[] meetingAttendeesSplit = meetingApplyBean.getImportantAttendees().split(",");
+                for (int k = 0; k < meetingAttendeesSplit.length; k++) {
+                    if (!meetingAttendeesSplit[k].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingAttendeesSplit[k]));
                         importantAttendeesName += userBean.getName() + ",";
                     }
                 }
@@ -99,9 +101,10 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             }
 
             if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
-                for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
-                    if (!meetingApplyBean.getOtherAttendees().split(",")[l].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
+                for (int l = 0; l < meetingSummaryPerson.length; l++) {
+                    String[] otherAttendeesSplit = meetingApplyBean.getOtherAttendees().split(",");
+                    if (!otherAttendeesSplit[l].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(otherAttendeesSplit[l]));
                         otherAttendeesName += userBean.getName() + ",";
                     }
                 }
