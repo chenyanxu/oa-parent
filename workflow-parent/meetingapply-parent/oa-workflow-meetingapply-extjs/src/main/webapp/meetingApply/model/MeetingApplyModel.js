@@ -20,7 +20,7 @@ Ext.define('kalix.workflow.meetingApply.model.MeetingApplyModel', {
         {name: 'meetingTopic', validators: [{type: 'presence'}]},//会议议题
         {name: 'meetingAgenda', validators: [{type: 'presence'}]},//会议议程
         {name: 'meetingType'},//会议类型
-        {name: 'meetingSummaryPerson'},//会议纪要人员
+        {name: 'meetingSummaryPerson', type: 'string'},//会议纪要人员
         {name: 'meetingSummaryPersonName'},//会议纪要人员
         {name: 'beginTime', type: 'date', dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]}, //会议开始时间
         {name: 'endTime', type: 'date', dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]}, //会议结束时间

@@ -147,7 +147,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     colspan: 2,
                     items: [
                         {
-                            xtype: 'meetingroomComboBox',
+                            xtype: 'oADictCombobox',
+                            dictType: '会议类型',
                             bind: {
                                 value: '{rec.meetingType}'
                             }
