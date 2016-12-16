@@ -5,7 +5,8 @@
 package com.kalix.oa.workflow.meetingapply.biz;
 
 
-
+import com.kalix.admin.core.api.biz.IUserBeanService;
+import com.kalix.admin.core.entities.UserBean;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
@@ -18,7 +19,7 @@ import com.kalix.oa.workflow.meetingapply.api.dao.IMeetingApplyBeanDao;
 import com.kalix.oa.workflow.meetingapply.entities.MeetingApplyBean;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +27,17 @@ import java.util.Map;
 public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IMeetingApplyBeanDao, MeetingApplyBean> implements IMeetingApplyBeanService {
     private IMeetingroomBeanService meetingroomBeanService;
 
+    private IUserBeanService userBeanService;
     public IMeetingroomBeanService getMeetingroomBeanService() {
         return meetingroomBeanService;
     }
 
     public void setMeetingroomBeanService(IMeetingroomBeanService meetingroomBeanService) {
         this.meetingroomBeanService = meetingroomBeanService;
+    }
+
+    public void setUserBeanService(IUserBeanService userBeanService) {
+        this.userBeanService = userBeanService;
     }
 
     @Override
@@ -56,6 +62,40 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         List ids = BeanUtil.getBeanFieldValueList(beans, "meetingroomId");
         List values = this.meetingroomBeanService.getFieldValuesByIds(ids.toArray(), "name");
         BeanUtil.setBeanListFieldValues(beans, "meetingroomName", values);
+
+        String meetingSummaryPersonName = "", importantAttendeesName = "", otherAttendeesName = "";
+
+        for (int i = 0; i < beans.size(); i++) {
+            MeetingApplyBean meetingApplyBean = (MeetingApplyBean) beans.get(i);
+
+            for (int j = 0; j < meetingApplyBean.getMeetingSummaryPerson().split(",").length; j++) {
+                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
+                if (userBean != null) {
+                    meetingSummaryPersonName += userBean.getName() + ",";
+                }
+            }
+
+            for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
+                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
+                importantAttendeesName += userBean.getName() + ",";
+            }
+            for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
+                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
+                otherAttendeesName += userBean.getName() + ",";
+            }
+            if (meetingSummaryPersonName.length() > 1) {
+                meetingSummaryPersonName = meetingSummaryPersonName.substring(0, meetingSummaryPersonName.length() - 1);
+            }
+            if (importantAttendeesName.length() > 1) {
+                importantAttendeesName = importantAttendeesName.substring(0, importantAttendeesName.length() - 1);
+            }
+            if (otherAttendeesName.length() > 1) {
+                otherAttendeesName = otherAttendeesName.substring(0, otherAttendeesName.length() - 1);
+            }
+            ((MeetingApplyBean) beans.get(i)).setMeetingSummaryPerson(meetingSummaryPersonName);
+            ((MeetingApplyBean) beans.get(i)).setImportantAttendeesName(importantAttendeesName);
+            ((MeetingApplyBean) beans.get(i)).setOtherAttendeesName(otherAttendeesName);
+        }
 
         jsonData.setTotalCount((long) beans.size());
         jsonData.setData(beans);
@@ -185,8 +225,17 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void getStartMap(Map map, MeetingApplyBean bean) {
-        List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
-//        List<String> assigneeList = Arrays.asList(bean.getImportantAttendees());
+        //List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
+        List<String> assigneeList = new ArrayList<>();
+        String importantAttendees = bean.getImportantAttendees();
+        if (importantAttendees.length() > 0) {
+            for (int i = 0; i < importantAttendees.split(",").length; i++) {
+                //根据用户id转成loginName
+                Long loginId = Long.parseLong(importantAttendees.split(",")[i]);
+                UserBean userBean = userBeanService.getEntity(loginId);
+                assigneeList.add(userBean.getLoginName());
+            }
+        }
         map.put("assigneeList", assigneeList);
         map.put("isAttend", false);
         super.getStartMap(map, bean);

@@ -29,5 +29,9 @@
             <artifactId>oa-system-meetingroom-api</artifactId>
             <version>${project.oa.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.core</groupId>
+            <artifactId>admin-core-api</artifactId>
+        </dependency>
     </dependencies>
 </project>
