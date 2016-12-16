@@ -28,6 +28,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     private IMeetingroomBeanService meetingroomBeanService;
 
     private IUserBeanService userBeanService;
+
     public IMeetingroomBeanService getMeetingroomBeanService() {
         return meetingroomBeanService;
     }
@@ -67,28 +68,31 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
         for (int i = 0; i < beans.size(); i++) {
             MeetingApplyBean meetingApplyBean = (MeetingApplyBean) beans.get(i);
-
-            for (int j = 0; j < meetingApplyBean.getMeetingSummaryPerson().split(",").length; j++) {
-                if (!meetingApplyBean.getMeetingSummaryPerson().split(",")[j].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
-                    if (userBean != null) {
-                        meetingSummaryPersonName += userBean.getName() + ",";
+            if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
+                for (int j = 0; j < meetingApplyBean.getMeetingSummaryPerson().split(",").length; j++) {
+                    if (!meetingApplyBean.getMeetingSummaryPerson().split(",")[j].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
+                        if (userBean != null) {
+                            meetingSummaryPersonName += userBean.getName() + ",";
+                        }
                     }
                 }
             }
 
-            for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
-                if (!meetingApplyBean.getImportantAttendees().split(",")[k].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
-                    importantAttendeesName += userBean.getName() + ",";
+            if (!meetingApplyBean.getImportantAttendees().isEmpty())
+                for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
+                    if (!meetingApplyBean.getImportantAttendees().split(",")[k].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
+                        importantAttendeesName += userBean.getName() + ",";
+                    }
                 }
-            }
-            for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
-                if (!meetingApplyBean.getOtherAttendees().split(",")[l].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
-                    otherAttendeesName += userBean.getName() + ",";
+            if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty())
+                for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
+                    if (!meetingApplyBean.getOtherAttendees().split(",")[l].equals("")) {
+                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
+                        otherAttendeesName += userBean.getName() + ",";
+                    }
                 }
-            }
             if (meetingSummaryPersonName.length() > 1) {
                 meetingSummaryPersonName = meetingSummaryPersonName.substring(0, meetingSummaryPersonName.length() - 1);
             }
@@ -111,6 +115,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 用于检测在会议申请的时间范围内，是否该与该会议室已经申请的会议试讲有冲突
+     *
      * @param jsonStr
      * @return
      */
@@ -194,6 +199,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 查询给定日期当天会议室的使用情况
+     *
      * @param date
      * @return
      */
@@ -212,6 +218,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 查询特定会议室在给定日期当天会议室的使用情况
+     *
      * @param roomId
      * @param date
      * @return
@@ -235,10 +242,11 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         List<String> assigneeList = new ArrayList<>();
         String importantAttendees = bean.getImportantAttendees();
         if (importantAttendees.length() > 0) {
-            for (int i = 0; i < importantAttendees.split(",").length; i++) {
+            String[] split = importantAttendees.split(",");
+            for (int i = 0; i < split.length; i++) {
                 //根据用户id转成loginName
-                Long loginId = Long.parseLong(importantAttendees.split(",")[i]);
-                UserBean userBean = userBeanService.getEntity(loginId);
+                Long userId = Long.parseLong(split[i]);
+                UserBean userBean = userBeanService.getEntity(userId);
                 assigneeList.add(userBean.getLoginName());
             }
         }
