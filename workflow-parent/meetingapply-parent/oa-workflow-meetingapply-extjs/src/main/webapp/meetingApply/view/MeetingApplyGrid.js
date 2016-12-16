@@ -53,21 +53,21 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyGrid', {
             text: '会议开始时间',
             dataIndex: 'beginTime',
             xtype: 'datecolumn',
-            format: 'Y年M月d日 H时i分',
+            format: 'Y-m-d H:i',
             renderer: null
         },
         {
             text: '会议结束时间',
             dataIndex: 'endTime',
             xtype: 'datecolumn',
-            format: 'Y年M月d日 H时i分',
+            format: 'Y-m-d H:i',
             renderer: null
         },
         {
             text: '审批截止时间',
             dataIndex: 'approveDeadline',
             xtype: 'datecolumn',
-            format: 'Y年M月d日 H时i分',
+            format: 'Y-m-d H:i',
             renderer: null
         },
         {
