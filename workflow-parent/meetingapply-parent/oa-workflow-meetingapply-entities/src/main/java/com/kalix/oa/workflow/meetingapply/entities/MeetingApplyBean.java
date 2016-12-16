@@ -28,16 +28,20 @@ public class MeetingApplyBean extends WorkflowEntity {
     private Long meetingType;
     //会议纪要人员
     private String meetingSummaryPerson;
-
+    @Transient
+    private String meetingSummaryPersonName;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-
     private Date beginTime;//会议开始时间
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;//会议结束时间
     //重要出席人
     private String importantAttendees;
+    @Transient
+    private String importantAttendeesName;
     //其他出席人
     private String otherAttendees;
+    @Transient
+    private String otherAttendeesName;
     //审批截止时间
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date approveDeadline;
@@ -90,6 +94,14 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.meetingSummaryPerson = meetingSummaryPerson;
     }
 
+    public String getMeetingSummaryPersonName() {
+        return meetingSummaryPersonName;
+    }
+
+    public void setMeetingSummaryPersonName(String meetingSummaryPersonName) {
+        this.meetingSummaryPersonName = meetingSummaryPersonName;
+    }
+
     public Date getBeginTime() {
         return beginTime;
     }
@@ -114,12 +126,28 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.importantAttendees = importantAttendees;
     }
 
+    public String getImportantAttendeesName() {
+        return importantAttendeesName;
+    }
+
+    public void setImportantAttendeesName(String importantAttendeesName) {
+        this.importantAttendeesName = importantAttendeesName;
+    }
+
     public String getOtherAttendees() {
         return otherAttendees;
     }
 
     public void setOtherAttendees(String otherAttendees) {
         this.otherAttendees = otherAttendees;
+    }
+
+    public String getOtherAttendeesName() {
+        return otherAttendeesName;
+    }
+
+    public void setOtherAttendeesName(String otherAttendeesName) {
+        this.otherAttendeesName = otherAttendeesName;
     }
 
     public Date getApproveDeadline() {

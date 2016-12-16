@@ -10,8 +10,6 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
         'kalix.view.components.common.TableFormDateTimeField',
         'kalix.oa.oADict.component.OADictCombobox',
         'kalix.system.meetingroom.component.MeetingroomComboBox',
-        'kalix.admin.user.component.UserTagField',
-        'kalix.admin.user.component.UserOrgComboBox',
         'kalix.view.components.common.TableFormDateTimeField'
     ],
     alias: 'widget.meetingApplyViewForm',
@@ -53,40 +51,37 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             ]
         },
         {
-            html: '申请部门',
-            required: true
+            html: '申请部门'
         },
         {
             colspan: 2,
             items: [
                 {
-                    xtype: 'userOrgComboBox',
+                    xtype: 'tableFormField',
                     readOnly: true,
                     bind: {
-                        value: '{rec.orgId}'
+                        value: '{rec.orgName}'
                     }
                 }
             ]
         },
         {
-            html: '会议地点',
-            required: true
+            html: '会议地点'
         },
         {
             colspan: 2,
             items: [
                 {
-                    xtype: 'meetingroomComboBox',
+                    xtype: 'tableFormField',
                     readOnly: true,
                     bind: {
-                        value: '{rec.meetingroomId}'
+                        value: '{rec.meetingroomName}'
                     }
                 }
             ]
         },
         {
-            html: '会议议题',
-            required: true
+            html: '会议议题'
         },
         {
             colspan: 5,
@@ -101,8 +96,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             ]
         },
         {
-            html: '会议议程',
-            required: true
+            html: '会议议程'
         },
         {
             colspan: 5,
@@ -153,7 +147,8 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             colspan: 2,
             items: [
                 {
-                    xtype: 'meetingroomComboBox',
+                    xtype: 'oADictCombobox',
+                    dictType: '招聘方式',
                     readOnly: true,
                     bind: {
                         value: '{rec.meetingType}'
@@ -171,7 +166,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
                     xtype: 'tableFormField',
                     readOnly: true,
                     bind: {
-                        value: '{rec.meetingSummaryPerson}'
+                        value: '{rec.meetingSummaryPersonName}'
                     }
                 }
             ]
@@ -183,12 +178,10 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             colspan: 5,
             items: [
                 {
-                    xtype: 'userTagField',
+                    xtype: 'tableFormField',
                     readOnly: true,
-                    valueField: 'id',
-                    displayField: 'name',
                     bind: {
-                        value: '{rec.importantAttendees}'
+                        value: '{rec.importantAttendeesName}'
                     }
                 }
             ]
@@ -200,12 +193,10 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             colspan: 5,
             items: [
                 {
-                    xtype: 'userTagField',
+                    xtype: 'tableFormField',
                     readOnly: true,
-                    valueField: 'id',
-                    displayField: 'name',
                     bind: {
-                        value: '{rec.otherAttendees}'
+                        value: '{rec.otherAttendeesName}'
                     }
                 }
             ]
