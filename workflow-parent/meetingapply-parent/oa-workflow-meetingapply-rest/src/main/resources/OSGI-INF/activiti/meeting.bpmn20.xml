@@ -21,7 +21,7 @@
         <userTask id="usertask2" name="会议发起人审批" activiti:formKey="audit.form">
             <documentation>会议发起人确定是否最终召开会议</documentation>
             <extensionElements>
-                <activiti:formProperty id="accepted" name="判断环节" type="boolean"
+                <activiti:formProperty id="accepted" name="判断环节" type="string"
                                        variable="accepted"></activiti:formProperty>
                 <activiti:taskListener event="create"
                                        class="com.kalix.middleware.workflow.engine.listener.StarterListener"></activiti:taskListener>

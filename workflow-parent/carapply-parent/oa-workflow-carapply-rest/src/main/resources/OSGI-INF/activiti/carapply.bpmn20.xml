@@ -13,7 +13,7 @@
     <userTask id="depUser" name="上级领导审核" activiti:formKey="audit.form">
       <documentation>上级领导审核</documentation>
       <extensionElements>
-        <activiti:formProperty id="accepted" name="判断环节" type="boolean" variable="accepted"></activiti:formProperty>
+        <activiti:formProperty id="accepted" name="判断环节" type="string" variable="accepted"></activiti:formProperty>
         <activiti:taskListener event="create" class="com.kalix.middleware.workflow.engine.listener.LeaderListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
