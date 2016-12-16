@@ -31,7 +31,7 @@
     <sequenceFlow id="flow5" sourceRef="branchSchoolLeader" targetRef="exclusivegateway2"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow7" name="同意" sourceRef="exclusivegateway2" targetRef="exclusivegateway3">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <userTask id="manpower" name="人力领导审核" activiti:candidateGroups="人力资源开发与管理中心::副主任" activiti:formKey="audit.form">
       <documentation>人力领导审核</documentation>
@@ -41,7 +41,7 @@
     </sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
     <sequenceFlow id="flow9" name="不同意" sourceRef="exclusivegateway2" targetRef="endevent1">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow10" name="专职教师" sourceRef="exclusivegateway3" targetRef="schoolLeader">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${personCategory==2}]]></conditionExpression>
@@ -52,16 +52,16 @@
     <sequenceFlow id="flow12" sourceRef="schoolLeader" targetRef="exclusivegateway5"></sequenceFlow>
     <endEvent id="endevent2" name="End"></endEvent>
     <sequenceFlow id="flow13" name="同意" sourceRef="exclusivegateway5" targetRef="endevent2">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow14" name="同意" sourceRef="exclusivegateway4" targetRef="endevent2">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow15" name="不同意" sourceRef="exclusivegateway4" targetRef="endevent1">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow16" name="不同意" sourceRef="exclusivegateway5" targetRef="endevent1">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow17" sourceRef="startevent1" targetRef="exclusivegateway1"></sequenceFlow>
     <textAnnotation id="textannotation1">

@@ -18,17 +18,17 @@
         <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="校务部::副部长"
                   activiti:formKey="audit.form"></userTask>
         <sequenceFlow id="flow5" name="同意" sourceRef="exclusivegateway2" targetRef="schoolUser">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
         </sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow6" sourceRef="schoolUser" targetRef="exclusivegateway3"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
         <endEvent id="endevent2" name="End"></endEvent>
         <sequenceFlow id="flow9" name="不同意" sourceRef="exclusivegateway2" targetRef="endevent2">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
         </sequenceFlow>
         <sequenceFlow id="flow10" name="不同意" sourceRef="exclusivegateway3" targetRef="endevent2">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
         </sequenceFlow>
         <sequenceFlow id="flow15" sourceRef="startevent1" targetRef="schoolAdminUser"></sequenceFlow>
         <sequenceFlow id="flow16" name="同意" sourceRef="exclusivegateway3" targetRef="endevent1"></sequenceFlow>

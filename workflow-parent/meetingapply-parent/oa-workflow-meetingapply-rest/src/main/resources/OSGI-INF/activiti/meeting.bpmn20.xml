@@ -40,10 +40,10 @@
         <endEvent id="cancelendevent1" name="CancelEnd"></endEvent>
         <sequenceFlow id="flow6" sourceRef="parallelgateway2" targetRef="exclusivegateway1"></sequenceFlow>
         <sequenceFlow id="flow7" name="通过" sourceRef="exclusivegateway1" targetRef="endevent1">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
         </sequenceFlow>
         <sequenceFlow id="flow8" name="不通过" sourceRef="exclusivegateway1" targetRef="cancelendevent1">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
         </sequenceFlow>
         <boundaryEvent id="boundarysignal1" name="Signal" attachedToRef="usertask1" cancelActivity="true">
             <signalEventDefinition signalRef="decideSignal"></signalEventDefinition>
