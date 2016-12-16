@@ -30,7 +30,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
     },
     items: [
         {
-            html: '吉林动画学院会议使用申请表',
+            html: '吉林动画学院会议申请表',
             colspan: 6,
             customStyle: true,
             bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'

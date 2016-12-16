@@ -4,6 +4,16 @@
  */
 Ext.define('kalix.workflow.recruitApply.model.RecruitApplyModel', {
     extend: 'kalix.model.WorkflowBaseModel',
+    constructor: function () {
+        this.callParent(arguments);
+
+        if (this.get('id') == 0) {
+            this.set('title','吉林动画学院用工招聘申请表');
+
+            this.modified = {};
+            this.dirty = false;
+        }
+    },
     fields: [
         {name: 'personType'},//人员类型
         {name: 'reason',validators: [{type: 'presence'}]},//需求原因申请事由

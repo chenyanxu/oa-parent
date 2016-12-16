@@ -4,6 +4,16 @@
  */
 Ext.define('kalix.workflow.meetingRoomApply.model.MeetingRoomApplyModel', {
     extend: 'kalix.model.WorkflowBaseModel',
+    constructor: function () {
+        this.callParent(arguments);
+
+        if (this.get('id') == 0) {
+            this.set('title','吉林动画学院会议室使用申请表');
+
+            this.modified = {};
+            this.dirty = false;
+        }
+    },
     fields: [
         {name: 'meetingroomId',validators: [{type: 'presence'}]},//会议地点
         {name: 'meetingroomName'},//会议地点

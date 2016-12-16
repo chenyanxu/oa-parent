@@ -4,6 +4,16 @@
  */
 Ext.define('kalix.workflow.carApply.model.CarApplyModel', {
     extend: 'kalix.model.WorkflowBaseModel',
+    constructor: function () {
+        this.callParent(arguments);
+
+        if (this.get('id') == 0) {
+            this.set('title','吉林动画学院公务用车申请表');
+
+            this.modified = {};
+            this.dirty = false;
+        }
+    },
     fields: [
         {name: 'reason',validators: [{type: 'presence'}]},//用车事由
         {name: 'usageCount', validators: [{type: 'presence'},{type: 'range',min:1}]}, //乘车人数
