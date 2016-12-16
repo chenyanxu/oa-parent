@@ -6,6 +6,12 @@
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
         <bean class="com.kalix.oa.workflow.meetingapply.biz.form.MeetingApplyAuditFormImpl"/>
     </service>
+
+    <!-- 会议参加申请审批页面-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.meetingapply.biz.form.MeetingApplyAuditAttendFormImpl"/>
+    </service>
+
     <!-- 会议使用申请业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
         <bean class="com.kalix.oa.workflow.meetingapply.biz.form.MeetingApplyBizDataFormImpl"/>
