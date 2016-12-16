@@ -12,7 +12,7 @@
                                     class="com.kalix.middleware.workflow.engine.listener.MessageEventListener"></activiti:eventListener>
         </extensionElements>
         <startEvent id="startevent1" name="Start" activiti:initiator="initiator"></startEvent>
-        <userTask id="usertask1" name="重要出席人审批" activiti:candidateUsers="${assignee}" activiti:formKey="audit.form">
+        <userTask id="usertask1" name="重要出席人审批" activiti:candidateUsers="${assignee}" activiti:formKey="attend.form">
             <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="assigneeList"
                                               activiti:elementVariable="assignee">
                 <!--<completionCondition>${isAttend}</completionCondition>-->

@@ -4,9 +4,9 @@ import com.kalix.middleware.workflow.biz.AbstractAuditFormHandler;
 
 /**
  * Created by sunlf on 2016/2/25.
- * 会议使用申请审批窗口
+ * 参加会议审批窗口 attend.form
  */
-public class MeetingApplyAuditFormImpl extends AbstractAuditFormHandler {
+public class MeetingApplyAuditAttendFormImpl extends AbstractAuditFormHandler {
 
     @Override
     public String getFormClass() {
@@ -14,4 +14,13 @@ public class MeetingApplyAuditFormImpl extends AbstractAuditFormHandler {
     }
 
 
+    @Override
+    public String getButtonValue() {
+        return "参加,不参加";
+    }
+
+    @Override
+    public String getFormKey() {
+        return "attend.form";
+    }
 }
