@@ -14,7 +14,7 @@
     <reference id="employApplyBeanDao" interface="com.kalix.oa.workflow.employapply.api.dao.IEmployApplyBeanDao"/>
 
     <bean id="employApplyBeanService" class="com.kalix.oa.workflow.employapply.biz.EmployApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="employApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>

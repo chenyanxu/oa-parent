@@ -12,7 +12,7 @@
     <reference id="recruitApplyBeanDao" interface="com.kalix.oa.workflow.recruitapply.api.dao.IRecruitApplyBeanDao"/>
 
     <bean id="recruitApplyBeanService" class="com.kalix.oa.workflow.recruitapply.biz.RecruitApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="recruitApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>

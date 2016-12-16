@@ -14,7 +14,7 @@
     <reference id="carApplyBeanDao" interface="com.kalix.oa.workflow.carapply.api.dao.ICarApplyBeanDao"/>
 
     <bean id="carApplyBeanService" class="com.kalix.oa.workflow.carapply.biz.CarApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="carApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>

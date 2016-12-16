@@ -7,7 +7,7 @@
     <tx:enable-annotations/>
 
     <bean id="oADictBeanDaoImpl" class="com.kalix.oa.system.dict.dao.OADictBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
 
     <service id="oADictBeanDao" ref="oADictBeanDaoImpl" interface="com.kalix.oa.system.dict.api.dao.IOADictBeanDao">

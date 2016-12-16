@@ -15,7 +15,7 @@
     <reference id="detailBeanDao" interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IDetailBeanDao"/>
 
     <bean id="reimbursementApplyBeanService" class="com.kalix.oa.workflow.reimbursementapply.biz.ReimbursementApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="reimbursementApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
@@ -24,7 +24,7 @@
         <property name="repositoryService" ref="repositoryService"/>
     </bean>
     <bean id="detailBeanService" class="com.kalix.oa.workflow.reimbursementapply.biz.DetailBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="detailBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>

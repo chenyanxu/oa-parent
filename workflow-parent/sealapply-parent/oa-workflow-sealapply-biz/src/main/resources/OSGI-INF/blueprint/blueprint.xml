@@ -12,7 +12,7 @@
     <reference id="sealApplyBeanDao" interface="com.kalix.oa.workflow.sealapply.api.dao.ISealApplyBeanDao"/>
 
     <bean id="sealApplyBeanService" class="com.kalix.oa.workflow.sealapply.biz.SealApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="sealApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>

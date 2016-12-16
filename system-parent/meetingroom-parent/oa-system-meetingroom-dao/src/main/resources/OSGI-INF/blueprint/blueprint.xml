@@ -9,7 +9,7 @@
     <tx:enable-annotations/>
 
     <bean id="meetingroomBeanDaoImpl" class="com.kalix.oa.system.meetingroom.dao.MeetingroomBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.system.meetingroom.api.dao.IMeetingroomBeanDao" ref="meetingroomBeanDaoImpl"/>
 </blueprint>

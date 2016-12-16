@@ -8,7 +8,7 @@
     <tx:enable-annotations/>
     <!--会议使用申请-->
     <bean id="meetingApplyBeanDaoImpl" class="com.kalix.oa.workflow.meetingapply.dao.MeetingApplyBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.meetingapply.api.dao.IMeetingApplyBeanDao" ref="meetingApplyBeanDaoImpl"/>
 </blueprint>

@@ -8,7 +8,7 @@
     <tx:enable-annotations/>
     <!--用车申请-->
     <bean id="carApplyBeanDaoImpl" class="com.kalix.oa.workflow.carapply.dao.CarApplyBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.carapply.api.dao.ICarApplyBeanDao" ref="carApplyBeanDaoImpl"/>
 </blueprint>

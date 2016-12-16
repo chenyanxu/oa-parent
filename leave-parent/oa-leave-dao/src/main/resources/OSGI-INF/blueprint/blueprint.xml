@@ -9,7 +9,7 @@
     <tx:enable-annotations/>
 
     <bean id="leaveBeanDaoImpl" class="com.kalix.oa.leave.dao.LeaveBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.leave.api.dao.ILeaveBeanDao" ref="leaveBeanDaoImpl"/>
 </blueprint>

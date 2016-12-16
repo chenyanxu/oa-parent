@@ -15,7 +15,7 @@
     <reference id="loanBeanDao" interface="com.kalix.oa.workflow.evectionapply.api.dao.ILoanBeanDao"/>
 
     <bean id="evectionApplyBeanService" class="com.kalix.oa.workflow.evectionapply.biz.EvectionApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="evectionBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
@@ -25,7 +25,7 @@
     </bean>
 
     <bean id="loanBeanService" class="com.kalix.oa.workflow.evectionapply.biz.LoanBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="loanBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>

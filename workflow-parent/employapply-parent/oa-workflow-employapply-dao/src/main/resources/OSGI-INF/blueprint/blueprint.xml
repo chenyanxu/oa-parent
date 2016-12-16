@@ -8,7 +8,7 @@
     <tx:enable-annotations/>
     <!--入职申请-->
     <bean id="employApplyBeanDaoImpl" class="com.kalix.oa.workflow.employapply.dao.EmployApplyBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.employapply.api.dao.IEmployApplyBeanDao" ref="employApplyBeanDaoImpl"/>
 </blueprint>

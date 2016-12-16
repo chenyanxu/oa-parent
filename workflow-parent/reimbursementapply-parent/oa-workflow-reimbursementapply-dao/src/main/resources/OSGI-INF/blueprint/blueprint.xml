@@ -8,10 +8,10 @@
     <tx:enable-annotations/>
     <!--报销申请-->
     <bean id="reimbursementApplyBeanDaoImpl" class="com.kalix.oa.workflow.reimbursementapply.dao.ReimbursementApplyBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <bean id="detailBeanDaoImpl" class="com.kalix.oa.workflow.reimbursementapply.dao.DetailBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IReimbursementApplyBeanDao" ref="reimbursementApplyBeanDaoImpl"/>
     <service interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IDetailBeanDao" ref="detailBeanDaoImpl"/>

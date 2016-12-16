@@ -9,10 +9,10 @@
     <tx:enable-annotations/>
 
     <bean id="interviewBeanDaoImpl" class="com.kalix.oa.usecase.interview.dao.InterviewBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <bean id="lectureBeanDaoImpl" class="com.kalix.oa.usecase.interview.dao.LectureBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.usecase.interview.api.dao.IInterviewBeanDao" ref="interviewBeanDaoImpl"/>
     <service interface="com.kalix.oa.usecase.interview.api.dao.ILectureBeanDao" ref="lectureBeanDaoImpl"/>

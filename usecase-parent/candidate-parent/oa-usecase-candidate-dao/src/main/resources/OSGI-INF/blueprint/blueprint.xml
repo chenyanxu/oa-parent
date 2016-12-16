@@ -9,7 +9,7 @@
     <tx:enable-annotations/>
 
     <bean id="candidateBeanDaoImpl" class="com.kalix.oa.usecase.candidate.dao.CandidateBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.usecase.candidate.api.dao.ICandidateBeanDao" ref="candidateBeanDaoImpl"/>
 </blueprint>

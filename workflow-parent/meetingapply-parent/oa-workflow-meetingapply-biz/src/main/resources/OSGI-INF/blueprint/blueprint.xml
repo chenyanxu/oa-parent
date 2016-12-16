@@ -15,7 +15,7 @@
     <reference id="meetingApplyBeanDao" interface="com.kalix.oa.workflow.meetingapply.api.dao.IMeetingApplyBeanDao"/>
 
     <bean id="meetingApplyBeanService" class="com.kalix.oa.workflow.meetingapply.biz.MeetingApplyBeanServiceImpl">
-        <tx:transaction method="*" value="Required"/>
+        <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="meetingApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
