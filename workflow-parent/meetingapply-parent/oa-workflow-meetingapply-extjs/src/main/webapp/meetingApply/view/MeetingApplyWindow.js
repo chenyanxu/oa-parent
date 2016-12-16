@@ -161,7 +161,9 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     colspan: 2,
                     items: [
                         {
-                            xtype: 'tableFormField',
+                            xtype: 'userTagField',
+                            valueField: 'id',
+                            displayField: 'name',
                             bind: {
                                 value: '{rec.meetingSummaryPerson}'
                             }

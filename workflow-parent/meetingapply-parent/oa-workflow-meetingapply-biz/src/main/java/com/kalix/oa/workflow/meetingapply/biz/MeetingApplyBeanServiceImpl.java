@@ -69,19 +69,25 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             MeetingApplyBean meetingApplyBean = (MeetingApplyBean) beans.get(i);
 
             for (int j = 0; j < meetingApplyBean.getMeetingSummaryPerson().split(",").length; j++) {
-                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
-                if (userBean != null) {
-                    meetingSummaryPersonName += userBean.getName() + ",";
+                if (!meetingApplyBean.getMeetingSummaryPerson().split(",")[j].equals("")) {
+                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[j]));
+                    if (userBean != null) {
+                        meetingSummaryPersonName += userBean.getName() + ",";
+                    }
                 }
             }
 
             for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
-                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
-                importantAttendeesName += userBean.getName() + ",";
+                if (!meetingApplyBean.getImportantAttendees().split(",")[k].equals("")) {
+                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
+                    importantAttendeesName += userBean.getName() + ",";
+                }
             }
             for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
-                UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
-                otherAttendeesName += userBean.getName() + ",";
+                if (!meetingApplyBean.getOtherAttendees().split(",")[l].equals("")) {
+                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
+                    otherAttendeesName += userBean.getName() + ",";
+                }
             }
             if (meetingSummaryPersonName.length() > 1) {
                 meetingSummaryPersonName = meetingSummaryPersonName.substring(0, meetingSummaryPersonName.length() - 1);
