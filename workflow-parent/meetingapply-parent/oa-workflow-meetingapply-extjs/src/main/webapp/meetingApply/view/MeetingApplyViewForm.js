@@ -148,7 +148,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
             items: [
                 {
                     xtype: 'oADictCombobox',
-                    dictType: '招聘方式',
+                    dictType: '会议类型',
                     readOnly: true,
                     bind: {
                         value: '{rec.meetingType}'
