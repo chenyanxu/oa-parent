@@ -54,7 +54,10 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyGrid', {
         },
         {
             text: '报销日期',
-            dataIndex: 'reimbursementDate'
+            dataIndex: 'reimbursementDate',
+            xtype: 'datecolumn',
+            format: 'Y年m月d日',
+            renderer: null
         },
         {
             text: '审批结果',
@@ -98,13 +101,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyGrid', {
                     iconCls: 'iconfont icon-view-column',
                     permission: 'view',
                     tooltip: '查看',
-                    handler: 'onView',
-                    getClass: function (v, meta, record) {
-                        if (record.data.status || record.data.status == null) {
-                            return "kalix_hidden";
-                        }
-                        return "iconfont icon-view-column";
-                    }
+                    handler: 'onView'
                 },
                 {
                     permission: 'edit',
@@ -148,13 +145,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyGrid', {
                     iconCls: 'iconfont icon-attachment-column',
                     permission: 'attachment',
                     tooltip: '附件管理',
-                    handler: 'onAttachmentManage',
-                    getClass: function (v, meta, record) {
-                        if (record.data.status || record.data.status == null) {
-                            return "kalix_hidden";
-                        }
-                        return "iconfont icon-view-column";
-                    }
+                    handler: 'onAttachmentManage'
                 }
             ]
         }

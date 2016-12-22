@@ -10,6 +10,18 @@ Ext.define('kalix.workflow.reimbursementApply.controller.ReimbursementApplyGridC
         workflow:'kalix.workflow.common.mixins.Workflow'
     },
     onReimbursement: function(grid, rowIndex, colIndex){
+        var view = Ext.create(this.cfgForm);
+        var vm = view.lookupViewModel();
+        var selModel = grid.getStore().getData().items[rowIndex];
 
+        vm.set('rec', selModel);
+        vm.set('iconCls', vm.get('addIconCls'));
+        vm.set('title', vm.get('addTitle'));
+        vm.set('store', this.getView().store);
+        vm.get('rec').vm = vm;
+
+        this.viewModelExtraInit(vm);
+
+        view.show();
     }
 });

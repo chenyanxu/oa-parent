@@ -1,7 +1,6 @@
 package com.kalix.oa.workflow.reimbursementapply.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
 import com.kalix.middleware.workflow.api.model.WorkflowEntity;
 
 import javax.persistence.Entity;
@@ -31,13 +30,14 @@ public class ReimbursementApplyBean extends WorkflowEntity {
     private String reason;//出差事由
     private String projectName;//项目名称
     private String managerUser;//领导批示
+    private String chairmanUser;//董事长
     private String depUser;//部门领导
     private String financeUser;//财务主管
     private String accountantUser;//会计
     private String cashierUser;//出纳
     private String payeeUser;//领款人
-    private Integer borrowMoney;//预借金额
-    private Integer backMoney;//补退金额
+    private Float borrowMoney;//预借金额
+    private Float backMoney;//补退金额
 
     public Long getEvectionApplyId() {
         return evectionApplyId;
@@ -103,6 +103,14 @@ public class ReimbursementApplyBean extends WorkflowEntity {
         this.depUser = depUser;
     }
 
+    public String getChairmanUser() {
+        return chairmanUser;
+    }
+
+    public void setChairmanUser(String chairmanUser) {
+        this.chairmanUser = chairmanUser;
+    }
+
     public String getFinanceUser() {
         return financeUser;
     }
@@ -135,19 +143,19 @@ public class ReimbursementApplyBean extends WorkflowEntity {
         this.payeeUser = payeeUser;
     }
 
-    public Integer getBorrowMoney() {
+    public Float getBorrowMoney() {
         return borrowMoney;
     }
 
-    public void setBorrowMoney(Integer borrowMoney) {
+    public void setBorrowMoney(Float borrowMoney) {
         this.borrowMoney = borrowMoney;
     }
 
-    public Integer getBackMoney() {
+    public Float getBackMoney() {
         return backMoney;
     }
 
-    public void setBackMoney(Integer backMoney) {
+    public void setBackMoney(Float backMoney) {
         this.backMoney = backMoney;
     }
 }

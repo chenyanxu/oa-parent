@@ -37,6 +37,10 @@ public class EvectionApplyBean extends WorkflowEntity {
      */
     private String reason;
     /**
+     * @describe 项目名称
+     */
+    private String projectName;
+    /**
      * @describe 部门领导
      */
     private String depUser;
@@ -75,6 +79,14 @@ public class EvectionApplyBean extends WorkflowEntity {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public String getDepUser() {

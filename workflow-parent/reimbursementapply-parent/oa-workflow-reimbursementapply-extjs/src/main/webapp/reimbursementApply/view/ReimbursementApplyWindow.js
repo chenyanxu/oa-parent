@@ -5,7 +5,7 @@
 Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.controller.BaseWorkFlowWindowController',
+        'kalix.workflow.reimbursementApply.controller.ReimbursementApplyWindowController',
         'kalix.workflow.reimbursementApply.controller.DetailGridController',
         'kalix.view.components.common.TableFormPanel',
         'kalix.view.components.common.TableFormField',
@@ -17,7 +17,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
     alias: 'widget.reimbursementApplyWindow',
     xtype: "reimbursementApplyWindow",
     controller: {
-        type: 'baseWorkFlowWindowController',
+        type: 'reimbursementApplyWindowController',
         storeId: 'reimbursementApplyStore'
     },
     width: 900,
@@ -71,33 +71,50 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                     html: '报销日期'
                 },
                 {
-                    xtype: 'textfield',
-                    value: '2016年12月30日'
+                    xtype: 'datefield',
+                    format: 'Y年m月d日',
+                    bind: {
+                        value: '{rec.reimbursementDate}'
+                    },
+                    value: new Date()
                 },
                 {
                     html: '编号'
                 },
                 {
-                    html:'00112233'
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.reimbursementNo}'
+                    }
                 },
                 {
                     html: '出差人'
                 },
                 {
-                    xtype: 'textfield',
-                    value:'张某'
+                    xtype: 'userCombobox',
+                    valueField: 'id',
+                    displayField: 'name',
+                    bind: {
+                        value: '{rec.bussinessPeopleId}'
+                    }
                 },
                 {
                     html: '出差事由'
                 },
                 {
-                    html:'现场开发'
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.reason}'
+                    }
                 },
                 {
                     html: '项目名称'
                 },
                 {
-                    html:'校园信息化系统'
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.projectName}'
+                    }
                 },
                 {
                     colspan: 6,
@@ -108,8 +125,23 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                     autoLoad:false,
                     controller:'detailGridController',
                     listeners:{
+                        beforerender: function () {
+                            var jsonStr = Ext.JSON.encode({'reimbursementApplyId': this.lookupViewModel().get('rec').id});
+                            this.store.proxy.extraParams = {'jsonStr': jsonStr};
+                            this.store.load();
+                        },
                         edit:function(editor, e){
                             console.log(1324);
+                            e.record.set('reimbursementApplyId', this.lookupViewModel().get('rec').id);
+
+                            this.store.sync({
+                                callback: function () {
+                                    var jsonStr = Ext.JSON.encode({'reimbursementApplyId': this.lookupViewModel().get('rec').id});
+                                    this.store.proxy.extraParams = {'jsonStr': jsonStr};
+
+                                    this.store.load();
+                                }, scope: this
+                            });
                         },
                         beforeedit:function( editor, context, eOpts ){
                             console.log('beforeedit');
@@ -117,7 +149,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                             for(var rIndex=0;rIndex<editor.grid.store.data.length;++rIndex){
                                 if(editor.grid.store.data.getAt(rIndex)!=context.record){
                                     if(editor.grid.store.data.getAt(rIndex).dirty || editor.grid.store.data.getAt(rIndex).get('id')==0){
-                                        alert('有记录未提交');
+                                        alert('有记录未提交1');
                                         return false;
                                     }
                                 }
@@ -130,7 +162,6 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                             autoCancel: false
                         })
                     ],
-
                     features: [
                         {
                             ftype: 'summary',
@@ -138,7 +169,8 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                         }
                     ],
                     textAlign: 'center',
-                    store: 'detailStore',
+                    //store: 'detailStore',
+                    store: Ext.create('kalix.workflow.reimbursementApply.store.DetailStore'),
                     columns: [
                         {
                             header: '出发',
@@ -372,7 +404,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                 {
                     xtype: 'textfield',
                     bind:{
-                        value:'rec.borrowMoney'
+                        value: '{rec.borrowMoney}'
                     }
                 },
                 {
@@ -381,7 +413,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
                 {
                     xtype: 'textfield',
                     bind:{
-                        value:'rec.backMoney'
+                        value: '{rec.backMoney}'
                     }
                 }
             ]

@@ -27,14 +27,14 @@
     </sequenceFlow>
     <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow12" sourceRef="chairmanUser" targetRef="exclusivegateway6"></sequenceFlow>
-    <userTask id="usertask7" name="财务主管" activiti:candidateGroups="会计办公室::财务主管" activiti:formKey="audit.form">
+    <userTask id="financeUser" name="财务主管" activiti:candidateGroups="会计办公室::财务主管" activiti:formKey="audit.form">
       <documentation>财务主管审核</documentation>
     </userTask>
-    <sequenceFlow id="flow13" name="同意" sourceRef="exclusivegateway6" targetRef="usertask7">
+    <sequenceFlow id="flow13" name="同意" sourceRef="exclusivegateway6" targetRef="financeUser">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="exclusivegateway7" name="Exclusive Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow14" sourceRef="usertask7" targetRef="exclusivegateway7"></sequenceFlow>
+    <sequenceFlow id="flow14" sourceRef="financeUser" targetRef="exclusivegateway7"></sequenceFlow>
     <userTask id="accountantUser" name="会计" activiti:candidateGroups="会计办公室::会计" activiti:formKey="audit.form">
       <documentation>会计审核</documentation>
     </userTask>
@@ -84,7 +84,7 @@
       <bpmndi:BPMNShape bpmnElement="exclusivegateway6" id="BPMNShape_exclusivegateway6">
         <omgdc:Bounds height="40.0" width="40.0" x="799.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="usertask7" id="BPMNShape_usertask7">
+      <bpmndi:BPMNShape bpmnElement="financeUser" id="BPMNShape_financeUser">
         <omgdc:Bounds height="55.0" width="105.0" x="639.0" y="170.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway7" id="BPMNShape_exclusivegateway7">

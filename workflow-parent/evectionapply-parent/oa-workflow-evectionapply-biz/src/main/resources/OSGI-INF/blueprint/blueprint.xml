@@ -13,10 +13,14 @@
 
     <reference id="evectionBeanDao" interface="com.kalix.oa.workflow.evectionapply.api.dao.IEvectionApplyBeanDao"/>
     <reference id="loanBeanDao" interface="com.kalix.oa.workflow.evectionapply.api.dao.ILoanBeanDao"/>
+    <reference id="reimbursementApplyBeanDao"
+               interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IReimbursementApplyBeanDao"/>
 
     <bean id="evectionApplyBeanService" class="com.kalix.oa.workflow.evectionapply.biz.EvectionApplyBeanServiceImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
         <property name="dao" ref="evectionBeanDao"/>
+        <property name="loanBeanDao" ref="loanBeanDao"/>
+        <property name="reimbursementApplyBeanDao" ref="reimbursementApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>

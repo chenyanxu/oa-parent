@@ -1,13 +1,11 @@
 package com.kalix.oa.workflow.reimbursementapply.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.middleware.workflow.api.model.WorkflowEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * @类描述：报销申请管理
@@ -18,30 +16,39 @@ import java.util.Date;
  * @修改备注：
  */
 @Entity
-@Table(name = "oa_workflow_reimbursementapply")
+@Table(name = "oa_workflow_reimbursementapply_detail")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class DetailBean extends WorkflowEntity {
 
-    private Integer startMonth;
-    private Integer startDay;
-    private String startTime;
-    private String startPlace;
-    private Integer arriveMonth;
-    private Integer arriveDay;
-    private String arriveTime;
-    private String arrivePlace;
-    private Integer personNumber;
-    private String trafficTool;
-    private Float trafficMoney;
-    private Integer dayNumber;
-    private Float subsidyStandard;
-    private Float subsidyMoney;
-    private Float hotelMoney;
-    private Float cityTrafficMoney;
-    private Float otherMoneyOne;
-    private Float otherMoneyTwo;
-    private Float otherMoneyThree;
-    private Float totalMoney;
+    private Long reimbursementApplyId;//主表id
+    private Integer startMonth;//开始月
+    private Integer startDay;//开始日
+    private String startTime;//开始时间
+    private String startPlace;//开始地点
+    private Integer arriveMonth;//到达月
+    private Integer arriveDay;//到达日
+    private String arriveTime;//到达时间
+    private String arrivePlace;//到达地点
+    private Integer personNumber;//人数
+    private String trafficTool;//交通工具
+    private Float trafficMoney;//交通费
+    private Integer dayNumber;//天数
+    private Float subsidyStandard;//补助标准
+    private Float subsidyMoney;//补助金额
+    private Float hotelMoney;//住宿金额
+    private Float cityTrafficMoney;//市内交通费
+    private Float otherMoneyOne;//其他费用1
+    private Float otherMoneyTwo;//其他费用2
+    private Float otherMoneyThree;//其他费用3
+    private Float totalMoney;//费用总额
+
+    public Long getReimbursementApplyId() {
+        return reimbursementApplyId;
+    }
+
+    public void setReimbursementApplyId(Long reimbursementApplyId) {
+        this.reimbursementApplyId = reimbursementApplyId;
+    }
 
     public Integer getStartMonth() {
         return startMonth;

@@ -29,6 +29,9 @@ Ext.define('kalix.workflow.evectionApply.model.EvectionApplyModel', {
         {
             name: 'reason',
             type: 'string'
+        }, {
+            name: 'projectName',
+            type: 'string'
         },
         {
             name: 'depUser',

@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 public class DetailBeanDaoImpl extends GenericDao<DetailBean, Long> implements IDetailBeanDao {
     @Override
-    @PersistenceContext(unitName = "oa-workflow-evectionapply-unit")
+    @PersistenceContext(unitName = "oa-workflow-reimbursementapply-unit")
     public void setEntityManager(EntityManager em) {
         super.setEntityManager(em);
     }

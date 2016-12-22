@@ -28,5 +28,9 @@
             <groupId>com.kalix.oa.workflow.evectionapply</groupId>
             <artifactId>oa-workflow-evectionapply-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.oa.workflow.reimbursementapply</groupId>
+            <artifactId>oa-workflow-reimbursementapply-api</artifactId>
+        </dependency>
     </dependencies>
 </project>

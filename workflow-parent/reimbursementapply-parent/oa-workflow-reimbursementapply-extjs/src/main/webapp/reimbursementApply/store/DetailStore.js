@@ -8,5 +8,5 @@ Ext.define('kalix.workflow.reimbursementApply.store.DetailStore', {
     xtype: 'detailStore',
     storeId: 'detailStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/details',
-    autoLoad: false
+    autoLoad: true
 });

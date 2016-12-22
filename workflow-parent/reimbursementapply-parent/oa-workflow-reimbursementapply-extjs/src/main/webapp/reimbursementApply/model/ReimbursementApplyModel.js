@@ -20,7 +20,8 @@ Ext.define('kalix.workflow.reimbursementApply.model.ReimbursementApplyModel', {
     {name: 'bussinessPeopleId', type: 'int'},//出差人
     {name: 'reason', validators: [{type: 'presence'}]}, //出差事由
     {name: 'projectName', validators: [{type: 'presence'}]},//项目名称
-    {name: 'managerUser', validators: [{type: 'presence'}]},//领导批示
+    {name: 'managerUser'},//领导批示
+    {name: 'chairmanUser'},//董事长
     {name: 'depUser'}, //部门领导
     {name: 'financeUser'}, //财务主管
     {name: 'accountantUser'}, //会计
@@ -28,5 +29,15 @@ Ext.define('kalix.workflow.reimbursementApply.model.ReimbursementApplyModel', {
     {name: 'payeeUser'},//领款人
     {name: 'borrowMoney'},//预借金额
     {name: 'backMoney'}//补退金额
-  ]
+  ],
+  proxy: {
+    type: 'rest',
+    url: CONFIG.restRoot + '/camel/rest/reimbursementapplys',
+    actionMethods: {
+      create: 'POST',
+      read: 'GET',
+      update: 'PUT',
+      destroy: 'DELETE'
+    }
+  }
 });

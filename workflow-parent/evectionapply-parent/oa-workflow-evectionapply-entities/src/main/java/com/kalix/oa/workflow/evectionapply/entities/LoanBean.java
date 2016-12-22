@@ -27,23 +27,23 @@ public class LoanBean extends PersistentEntity {
     /**
      * @describe 交通费用
      */
-    private Integer trafficMoney;
+    private Float trafficMoney;
     /**
      * @describe 餐费
      */
-    private Integer foodMoney;
+    private Float foodMoney;
     /**
      * @describe 住宿费用
      */
-    private Integer hotelMoney;
+    private Float hotelMoney;
     /**
      * @describe 业务费用
      */
-    private Integer bussinessMoney;
+    private Float bussinessMoney;
     /**
      * @describe 其他费用
      */
-    private Integer otherMoney;
+    private Float otherMoney;
     /**
      * @describe 备注说明
      */
@@ -57,43 +57,43 @@ public class LoanBean extends PersistentEntity {
         this.evectionId = evectionId;
     }
 
-    public Integer getTrafficMoney() {
+    public Float getTrafficMoney() {
         return trafficMoney;
     }
 
-    public void setTrafficMoney(Integer trafficMoney) {
+    public void setTrafficMoney(Float trafficMoney) {
         this.trafficMoney = trafficMoney;
     }
 
-    public Integer getFoodMoney() {
+    public Float getFoodMoney() {
         return foodMoney;
     }
 
-    public void setFoodMoney(Integer foodMoney) {
+    public void setFoodMoney(Float foodMoney) {
         this.foodMoney = foodMoney;
     }
 
-    public Integer getHotelMoney() {
+    public Float getHotelMoney() {
         return hotelMoney;
     }
 
-    public void setHotelMoney(Integer hotelMoney) {
+    public void setHotelMoney(Float hotelMoney) {
         this.hotelMoney = hotelMoney;
     }
 
-    public Integer getBussinessMoney() {
+    public Float getBussinessMoney() {
         return bussinessMoney;
     }
 
-    public void setBussinessMoney(Integer bussinessMoney) {
+    public void setBussinessMoney(Float bussinessMoney) {
         this.bussinessMoney = bussinessMoney;
     }
 
-    public Integer getOtherMoney() {
+    public Float getOtherMoney() {
         return otherMoney;
     }
 
-    public void setOtherMoney(Integer otherMoney) {
+    public void setOtherMoney(Float otherMoney) {
         this.otherMoney = otherMoney;
     }
 

@@ -45,6 +45,20 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyViewForm', {
                     }
                 }
             ]
+        }, {
+            html: '项目名称'
+        },
+        {
+            colspan: 5,
+            items: [
+                {
+                    xtype: 'tableFormField',
+                    readOnly: true,
+                    bind: {
+                        value: '{rec.projectName}'
+                    }
+                }
+            ]
         },
         {
             html: '申请部门'
