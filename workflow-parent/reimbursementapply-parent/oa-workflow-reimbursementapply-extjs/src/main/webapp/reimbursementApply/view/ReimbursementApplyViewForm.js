@@ -5,16 +5,10 @@
 Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyViewForm', {
     extend: 'Ext.form.Panel',
     requires: [
-        //'kalix.workflow.reimbursementApply.controller.ReimbursementApplyWindowController',
-        //'kalix.workflow.reimbursementApply.controller.DetailGridController',
         'kalix.workflow.reimbursementApply.store.DetailStore'
     ],
     alias: 'widget.reimbursementApplyViewForm',
     xtype: 'reimbursementApplyViewForm',
-    //controller: {
-    //    type: 'reimbursementApplyWindowController',
-    //    storeId: 'reimbursementApplyStore'
-    //},
     width: 900,
     layout: {
         type: 'vbox',
@@ -125,12 +119,6 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyViewForm', 
                             this.store.load();
                         }
                     },
-                    //plugins: [
-                    //    Ext.create('Ext.grid.plugin.RowEditing', {
-                    //        clicksToEdit: 2,
-                    //        autoCancel: false
-                    //    })
-                    //],
                     features: [
                         {
                             ftype: 'summary',
@@ -138,7 +126,6 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyViewForm', 
                         }
                     ],
                     textAlign: 'center',
-                    //store: 'detailStore',
                     store: Ext.create('kalix.workflow.reimbursementApply.store.DetailStore'),
                     columns: [
                         {
