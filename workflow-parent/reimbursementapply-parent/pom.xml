@@ -33,6 +33,11 @@
                 <artifactId>oa-workflow-reimbursementapply-api</artifactId>
                 <version>${project.oa.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.core</groupId>
+                <artifactId>admin-core-api</artifactId>
+                <version>${project.admin.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

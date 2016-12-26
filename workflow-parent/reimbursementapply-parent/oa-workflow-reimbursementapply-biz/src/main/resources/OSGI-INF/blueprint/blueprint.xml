@@ -10,7 +10,7 @@
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
-
+    <reference id="userBeanService" interface="com.kalix.admin.core.api.biz.IUserBeanService"/>
     <reference id="reimbursementApplyBeanDao" interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IReimbursementApplyBeanDao"/>
     <reference id="detailBeanDao" interface="com.kalix.oa.workflow.reimbursementapply.api.dao.IDetailBeanDao"/>
 
@@ -22,6 +22,7 @@
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
         <property name="repositoryService" ref="repositoryService"/>
+        <property name="userBeanService" ref="userBeanService"/>
     </bean>
     <bean id="detailBeanService" class="com.kalix.oa.workflow.reimbursementapply.biz.DetailBeanServiceImpl">
         <!--<tx:transaction method="*" value="Required"/>-->

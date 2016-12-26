@@ -1,26 +1,38 @@
 package com.kalix.oa.workflow.reimbursementapply.biz;
 
+import com.kalix.admin.core.api.biz.IUserBeanService;
 import com.kalix.framework.core.api.persistence.JsonData;
+import com.kalix.framework.core.util.BeanUtil;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.workflow.reimbursementapply.api.biz.IReimbursementApplyBeanService;
 import com.kalix.oa.workflow.reimbursementapply.api.dao.IReimbursementApplyBeanDao;
 import com.kalix.oa.workflow.reimbursementapply.entities.ReimbursementApplyBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * @author chenyanxu
  */
 public class ReimbursementApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IReimbursementApplyBeanDao, ReimbursementApplyBean> implements IReimbursementApplyBeanService {
+    private IUserBeanService userBeanService;
+
+    public void setUserBeanService(IUserBeanService userBeanService) {
+        this.userBeanService = userBeanService;
+    }
+
     @Override
     public JsonData getAllEntityByQuery(Integer page, Integer limit, String jsonStr, String sort){
-        return super.getAllEntityByQuery(page, limit, jsonStr, sort);
-//        JsonData jsonData = new JsonData();
-//        List<ReimbursementApplyDTO> dtoList = dao.findByNativeSql(getNativeQueryStr(),ReimbursementApplyDTO.class,null);
-//
-//        jsonData.setTotalCount((long)dtoList.size());
-//        jsonData.setData(dtoList);
-//        return jsonData;
+        JsonData jsonData = super.getAllEntityByQuery(page, limit, jsonStr, sort);
+        List beanList = jsonData.getData();
+        //翻译任务负责人
+        List ids = BeanUtil.getBeanFieldValueList(beanList, "bussinessPeopleId");
+        List values = this.userBeanService.getFieldValuesByIds(ids.toArray(), "name");
+        BeanUtil.setBeanListFieldValues(beanList, "bussinessPeopleName", values);
+
+        jsonData.setData(beanList);
+
+        return jsonData;
     }
 
     @Override

@@ -3,10 +3,7 @@ package com.kalix.oa.workflow.reimbursementapply.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.middleware.workflow.api.model.WorkflowEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -27,6 +24,8 @@ public class ReimbursementApplyBean extends WorkflowEntity {
     private Date reimbursementDate;//报销日期
     private String reimbursementNo;//编号
     private Long bussinessPeopleId;//出差人
+    @Transient
+    private String bussinessPeopleName;//出差人
     private String reason;//出差事由
     private String projectName;//项目名称
     private String managerUser;//领导批示
@@ -69,6 +68,14 @@ public class ReimbursementApplyBean extends WorkflowEntity {
 
     public void setBussinessPeopleId(Long bussinessPeopleId) {
         this.bussinessPeopleId = bussinessPeopleId;
+    }
+
+    public String getBussinessPeopleName() {
+        return bussinessPeopleName;
+    }
+
+    public void setBussinessPeopleName(String bussinessPeopleName) {
+        this.bussinessPeopleName = bussinessPeopleName;
     }
 
     public String getReason() {

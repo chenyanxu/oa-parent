@@ -18,6 +18,7 @@ Ext.define('kalix.workflow.reimbursementApply.model.ReimbursementApplyModel', {
     {name: 'reimbursementDate', type: 'date', dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]}, //报销日期
     {name: 'reimbursementNo'}, //编号
     {name: 'bussinessPeopleId', type: 'int'},//出差人
+    {name: 'bussinessPeopleName', type: 'string'},//出差人
     {name: 'reason', validators: [{type: 'presence'}]}, //出差事由
     {name: 'projectName', validators: [{type: 'presence'}]},//项目名称
     {name: 'managerUser'},//领导批示

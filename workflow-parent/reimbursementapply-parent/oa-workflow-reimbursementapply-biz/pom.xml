@@ -24,5 +24,9 @@
             <groupId>com.kalix.middleware.workflow</groupId>
             <artifactId>middleware-workflow-biz</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.core</groupId>
+            <artifactId>admin-core-api</artifactId>
+        </dependency>
     </dependencies>
 </project>

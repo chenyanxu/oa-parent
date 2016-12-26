@@ -12,7 +12,8 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
         'kalix.controller.BaseWindowController',
         'kalix.view.components.common.TableFormDateTimeField',
         'kalix.admin.user.component.UserOrgComboBox',
-        'kalix.workflow.reimbursementApply.store.DetailStore'
+        'kalix.workflow.reimbursementApply.store.DetailStore',
+        'kalix.admin.user.component.UserComboBox'
     ],
     alias: 'widget.reimbursementApplyWindow',
     xtype: "reimbursementApplyWindow",

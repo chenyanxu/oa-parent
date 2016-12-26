@@ -3,121 +3,421 @@
  */
 
 Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyViewForm', {
-    extend: 'kalix.view.components.common.TableFormPanel',
+    extend: 'Ext.form.Panel',
     requires: [
-        'kalix.view.components.common.TableFormField',
-        'kalix.view.components.common.TableFormDateTimeField'
+        //'kalix.workflow.reimbursementApply.controller.ReimbursementApplyWindowController',
+        //'kalix.workflow.reimbursementApply.controller.DetailGridController',
+        'kalix.workflow.reimbursementApply.store.DetailStore'
     ],
     alias: 'widget.reimbursementApplyViewForm',
     xtype: 'reimbursementApplyViewForm',
+    //controller: {
+    //    type: 'reimbursementApplyWindowController',
+    //    storeId: 'reimbursementApplyStore'
+    //},
+    width: 900,
     layout: {
-        type: 'table',
-        columns: 6
+        type: 'vbox',
+        align: 'stretch'
     },
-    constructor: function () {
-        if (arguments.length == 1 && arguments[0].layout == 'form') {
-            arguments[0].layout =
-            {
-                type: 'table',
-                columns: 6
-            }
-        }
-        this.callParent(arguments);
+    defaults: {
+        border: 0,
+        bodyStyle: 'text-align:center;'
     },
     items: [
         {
-            html: '吉林动画学院出差报销申请表',
-            colspan: 6,
-            customStyle: true,
-            bodyStyle: 'padding:10px 0px 15px 0px;font-size:25px;font-weight:bold;'
+            height: 40,
+            html: '<div style="' +
+            'padding-top: 10px;' +
+            'font-size: 25px;' +
+            'text-decoration: underline;' +
+            '">差旅费用报销单</div>'
         },
         {
-            html: '名称'
-        },
-        {
-            colspan: 5,
-            items: [
-                {
-                    xtype: 'tableFormField',
-                    readOnly: true,
-                    bind: {
-                        value: '{rec.title}'
-                    }
+            margin: '5 0 0 0',
+            layout: {
+                type: 'table',
+                columns: 6,
+                tableAttrs: {
+                    style: {
+                        width: '100%'
+                    },
+                    border: 1
+                },
+                tdAttrs: {
+                    align: 'center'
                 }
-            ]
-        },
-        {
-            html: '申请部门'
-        },
-        {
-            colspan: 2,
+            },
+            defaults: {
+                border: 0,
+                margin: 0,
+                readOnly: true
+            },
             items: [
                 {
-                    xtype: 'tableFormField',
-                    readOnly: true,
+                    html: '部门'
+                },
+                {
+                    xtype: 'textfield',
                     bind: {
                         value: '{rec.orgName}'
                     }
-                }
-            ]
-        },
-        {
-            html: '报销时间'
-        },
-        {
-            colspan: 2,
-            items: [
+                },
                 {
-                    xtype: 'tableFormDateTimeField',
-                    readOnly: true,
+                    html: '报销日期'
+                },
+                {
+                    xtype: 'datefield',
+                    format: 'Y年m月d日',
                     bind: {
                         value: '{rec.reimbursementDate}'
                     }
-                }
-            ]
-        },
-        {
-            html: '报销事由'
-        },
-        {
-            colspan: 5,
-            items: [
+                },
                 {
-                    xtype: 'tableFormField',
-                    readOnly: true,
+                    html: '编号'
+                },
+                {
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.reimbursementNo}'
+                    }
+                },
+                {
+                    html: '出差人'
+                },
+                {
+                    xtype: 'textfield',
+
+                    bind: {
+                        value: '{rec.bussinessPeopleName}'
+                    }
+                },
+                {
+                    html: '出差事由'
+                },
+                {
+                    xtype: 'textfield',
                     bind: {
                         value: '{rec.reason}'
                     }
-                }
-            ]
-        },
-        {
-            html: '申请人'
-        },
-        {
-            colspan: 2,
-            items: [
+                },
                 {
-                    xtype: 'tableFormField',
-                    readOnly: true,
+                    html: '项目名称'
+                },
+                {
+                    xtype: 'textfield',
                     bind: {
-                        value: '{rec.createBy}'
+                        value: '{rec.projectName}'
+                    }
+                },
+                {
+                    colspan: 6,
+                    xtype: 'grid',
+                    id: 'custom_expense_grid',
+                    height: 285,
+                    columnLines: true,
+                    autoLoad: false,
+                    //controller:'detailGridController',
+                    listeners: {
+                        beforerender: function () {
+                            var jsonStr = Ext.JSON.encode({'reimbursementApplyId': this.lookupViewModel().get('rec').id});
+                            this.store.proxy.extraParams = {'jsonStr': jsonStr};
+                            this.store.load();
+                        }
+                    },
+                    //plugins: [
+                    //    Ext.create('Ext.grid.plugin.RowEditing', {
+                    //        clicksToEdit: 2,
+                    //        autoCancel: false
+                    //    })
+                    //],
+                    features: [
+                        {
+                            ftype: 'summary',
+                            dock: 'bottom'
+                        }
+                    ],
+                    textAlign: 'center',
+                    //store: 'detailStore',
+                    store: Ext.create('kalix.workflow.reimbursementApply.store.DetailStore'),
+                    columns: [
+                        {
+                            header: '出发',
+                            menuDisabled: true,
+                            columns: [
+                                {
+                                    text: '月',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'startMonth'
+                                },
+                                {
+                                    text: '日',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'startDay'
+                                },
+                                {
+                                    text: '时',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'startTime'
+                                },
+                                {
+                                    text: '地点',
+                                    menuDisabled: true,
+                                    width: 70,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'startPlace',
+                                    summaryRenderer: function (value, summaryData, dataIndex) {
+                                        return '合计：';
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            header: '到达',
+                            menuDisabled: true,
+                            sortable: false,
+                            columns: [
+                                {
+                                    text: '月',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'arriveMonth'
+                                },
+                                {
+                                    text: '日',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'arriveDay'
+                                },
+                                {
+                                    text: '时',
+                                    menuDisabled: true,
+                                    width: 40,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'arriveTime'
+                                },
+                                {
+                                    text: '地点',
+                                    menuDisabled: true,
+                                    width: 70,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'arrivePlace'
+                                }
+                            ]
+                        },
+                        {
+                            text: '人<br>数',
+                            menuDisabled: true,
+                            width: 40,
+                            sortable: false,
+                            editor: {
+                                allowBlank: false
+                            },
+                            dataIndex: 'personNumber'
+                        },
+                        {
+                            header: '交通',
+                            menuDisabled: true,
+                            sortable: false,
+                            columns: [
+                                {
+                                    text: '工具',
+                                    menuDisabled: true,
+                                    width: 70,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'trafficTool'
+                                },
+                                {
+                                    text: '金额',
+                                    menuDisabled: true,
+                                    width: 60,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false,
+                                        xtype: 'numberfield'
+                                    },
+                                    dataIndex: 'trafficMoney',
+                                    summaryType: 'sum'
+                                }
+                            ]
+                        },
+                        {
+                            text: '天<br>数',
+                            menuDisabled: true,
+                            width: 40,
+                            sortable: false,
+                            editor: {
+                                allowBlank: false
+                            },
+                            dataIndex: 'dayNumber',
+                            summaryType: 'sum'
+                        },
+                        {
+                            header: '出差补助',
+                            menuDisabled: true,
+                            columns: [
+                                {
+                                    text: '补助<br>标准',
+                                    menuDisabled: true,
+                                    width: 60,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'subsidyStandard'
+                                },
+                                {
+                                    text: '金额',
+                                    menuDisabled: true,
+                                    width: 60,
+                                    sortable: false,
+                                    dataIndex: 'subsidyMoney',
+                                    summaryType: 'sum'
+                                }
+                            ]
+                        },
+                        {
+                            header: '其他费用金额',
+                            menuDisabled: true,
+                            columns: [
+                                {
+                                    text: '住宿',
+                                    menuDisabled: true,
+                                    width: 60,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'hotelMoney',
+                                    summaryType: 'sum'
+                                },
+                                {
+                                    text: '市内<br>交通',
+                                    menuDisabled: true,
+                                    width: 60,
+                                    sortable: false,
+                                    editor: {
+                                        allowBlank: false
+                                    },
+                                    dataIndex: 'cityTrafficMoney',
+                                    summaryType: 'sum'
+                                }
+                            ]
+                        },
+                        {
+                            text: '合计',
+                            menuDisabled: true,
+                            width: 64,
+                            sortable: false,
+                            dataIndex: 'totalMoney',
+                            summaryType: 'sum'
+                        }
+                    ]
+                },
+                {
+                    rowspan: 2,
+                    html: '报销<br>总额'
+                },
+                {
+                    rowspan: 2,
+                    colspan: 3
+                },
+                {
+                    html: '预留金额￥'
+                },
+                {
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.borrowMoney}'
+                    }
+                },
+                {
+                    html: '退/补金额￥'
+                },
+                {
+                    xtype: 'textfield',
+                    bind: {
+                        value: '{rec.backMoney}'
                     }
                 }
             ]
         },
         {
-            html: '部门负责人'
-        },
-        {
-            colspan: 2,
+            margin: '5 0 0 0',
+            layout: {
+                type: 'table',
+                columns: 6,
+                tableAttrs: {
+                    style: {
+                        width: '100%'
+                    },
+                    border: 1
+                },
+                tdAttrs: {
+                    align: 'center'
+                }
+            },
+            defaults: {
+                border: 0,
+                margin: 0
+            },
             items: [
                 {
-                    xtype: 'tableFormField',
-                    readOnly: true,
-                    bind: {
-                        value: '{rec.depUser}'
-                    }
+                    html: '附单据张数合计（对应上方的项目）',
+                    width: 320
+                }, {
+                    html: '城际交通：',
+                    width: 120
+                },
+                {
+                    xtype: 'numberfield',
+                    width: 75
+                },
+                {
+                    html: '其他：',
+                    width: 75
+                },
+                {
+                    xtype: 'numberfield',
+                    width: 75
+                }, {
+                    xtype: 'numberfield',
+                    width: 75
                 }
             ]
         }
