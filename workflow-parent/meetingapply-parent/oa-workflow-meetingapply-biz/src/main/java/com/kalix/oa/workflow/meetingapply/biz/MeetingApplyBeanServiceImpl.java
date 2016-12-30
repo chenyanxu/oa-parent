@@ -48,6 +48,8 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public Map getVariantMap(Map map, MeetingApplyBean bean) {
+        map.put("duTime", bean.getApproveDeadline().getTime() - (new Date()).getTime());
+
         return map;
     }
 

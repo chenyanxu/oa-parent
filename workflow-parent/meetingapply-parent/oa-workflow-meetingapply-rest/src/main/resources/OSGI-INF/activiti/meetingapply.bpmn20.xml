@@ -14,9 +14,7 @@
         <startEvent id="startevent1" name="Start" activiti:initiator="initiator"></startEvent>
         <userTask id="usertask1" name="重要出席人审批" activiti:candidateUsers="${assignee}" activiti:formKey="attend.form">
             <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="assigneeList"
-                                              activiti:elementVariable="assignee">
-                <!--<completionCondition>${isAttend}</completionCondition>-->
-            </multiInstanceLoopCharacteristics>
+                                              activiti:elementVariable="assignee"></multiInstanceLoopCharacteristics>
         </userTask>
         <userTask id="usertask2" name="会议发起人审批" activiti:formKey="audit.form">
             <documentation>会议发起人确定是否最终召开会议</documentation>
@@ -49,6 +47,12 @@
             <signalEventDefinition signalRef="decideSignal"></signalEventDefinition>
         </boundaryEvent>
         <sequenceFlow id="flow9" sourceRef="boundarysignal1" targetRef="parallelgateway2"></sequenceFlow>
+        <boundaryEvent id="boundarytimer2" name="Timer" attachedToRef="usertask1" cancelActivity="true">
+            <timerEventDefinition>
+                <timeDuration>${duTime}</timeDuration>
+            </timerEventDefinition>
+        </boundaryEvent>
+        <sequenceFlow id="flow11" name="超时" sourceRef="boundarytimer2" targetRef="usertask2"></sequenceFlow>
         <textAnnotation id="textannotation1">
             <text>会议召开</text>
         </textAnnotation>
@@ -68,6 +72,9 @@
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="boundarysignal1" id="BPMNShape_boundarysignal1">
                 <omgdc:Bounds height="30.0" width="30.0" x="504.0" y="113.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="boundarytimer2" id="BPMNShape_boundarytimer2">
+                <omgdc:Bounds height="30.0" width="30.0" x="440.0" y="128.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">
                 <omgdc:Bounds height="55.0" width="105.0" x="400.0" y="250.0"></omgdc:Bounds>
@@ -136,6 +143,10 @@
                 <omgdi:waypoint x="534.0" y="128.0"></omgdi:waypoint>
                 <omgdi:waypoint x="670.0" y="127.0"></omgdi:waypoint>
                 <omgdi:waypoint x="670.0" y="180.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+                <omgdi:waypoint x="455.0" y="158.0"></omgdi:waypoint>
+                <omgdi:waypoint x="452.0" y="250.0"></omgdi:waypoint>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="association1" id="BPMNEdge_association1">
                 <omgdi:waypoint x="920.0" y="277.0"></omgdi:waypoint>
