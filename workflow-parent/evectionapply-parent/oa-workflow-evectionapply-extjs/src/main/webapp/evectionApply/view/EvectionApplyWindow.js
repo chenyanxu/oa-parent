@@ -47,7 +47,8 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyWindow', {
                         }
                     ]
                 }, {
-                    html: '项目名称'
+                    html: '项目名称',
+                    required: true
                 },
                 {
                     colspan: 5,

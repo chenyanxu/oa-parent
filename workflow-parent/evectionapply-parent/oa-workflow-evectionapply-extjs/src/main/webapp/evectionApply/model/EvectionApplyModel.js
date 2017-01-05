@@ -19,19 +19,21 @@ Ext.define('kalix.workflow.evectionApply.model.EvectionApplyModel', {
         {
             name: 'beginDate',
             type: 'date',
-            dateFormat: 'Y-m-d H:i:s'
+            dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]
         },
         {
             name: 'endDate',
             type: 'date',
-            dateFormat: 'Y-m-d H:i:s'
+            dateFormat: 'Y-m-d H:i:s', validators: [{type: 'presence'}]
         },
         {
             name: 'reason',
-            type: 'string'
+            type: 'string',
+            validators: [{type: 'presence'}]
         }, {
             name: 'projectName',
-            type: 'string'
+            type: 'string',
+            validators: [{type: 'presence'}]
         },
         {
             name: 'depUser',
