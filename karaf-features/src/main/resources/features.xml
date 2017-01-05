@@ -49,8 +49,11 @@
     <feature name="oa-workflow" version="${project.oa.version}">
         <feature>oa-workflow-carapply</feature>
         <feature>oa-workflow-employapply</feature>
+        <feature>oa-workflow-evectionapply</feature>
         <feature>oa-workflow-meetingapply</feature>
+        <feature>oa-workflow-meetingroomapply</feature>
         <feature>oa-workflow-recruitapply</feature>
+        <feature>oa-workflow-reimbursementapply</feature>
         <feature>oa-workflow-sealapply</feature>
     </feature>
 
@@ -72,6 +75,16 @@
         <bundle>mvn:com.kalix.oa.workflow.employapply/oa-workflow-employapply-extjs/${project.oa.version}</bundle>
     </feature>
 
+    <feature name="oa-workflow-evectionapply" version="${project.oa.version}">
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-entities/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-api/${project.oa.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-dao/${project.oa.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-biz/${project.oa.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-rest/${project.oa.version}</bundle>
+        <bundle>mvn:com.kalix.oa.workflow.evectionapply/oa-workflow-evectionapply-extjs/${project.oa.version}</bundle>
+    </feature>
+
     <feature name="oa-workflow-meetingapply" version="${project.oa.version}">
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-entities/${project.oa.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-api/${project.oa.version}</bundle>
@@ -81,6 +94,21 @@
         <bundle>mvn:com.kalix.oa.workflow.meetingapply/oa-workflow-meetingapply-extjs/${project.oa.version}</bundle>
     </feature>
 
+    <feature name="oa-workflow-meetingroomapply" version="${project.oa.version}">
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-entities/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-api/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-dao/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-biz/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-rest/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.meetingroomapply/oa-workflow-meetingroomapply-extjs/${project.oa.version}
+        </bundle>
+    </feature>
+
     <feature name="oa-workflow-recruitapply" version="${project.oa.version}">
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-entities/${project.oa.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-api/${project.oa.version}</bundle>
@@ -88,6 +116,23 @@
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-biz/${project.oa.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-rest/${project.oa.version}</bundle>
         <bundle>mvn:com.kalix.oa.workflow.recruitapply/oa-workflow-recruitapply-extjs/${project.oa.version}</bundle>
+    </feature>
+
+    <feature name="oa-workflow-reimbursementapply" version="${project.oa.version}">
+        <bundle>
+            mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-entities/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-api/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-dao/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-biz/${project.oa.version}
+        </bundle>
+        <bundle>mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-rest/${project.oa.version}
+        </bundle>
+        <bundle>
+            mvn:com.kalix.oa.workflow.reimbursementapply/oa-workflow-reimbursementapply-extjs/${project.oa.version}
+        </bundle>
     </feature>
 
     <feature name="oa-workflow-sealapply" version="${project.oa.version}">
