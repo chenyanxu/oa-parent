@@ -10,6 +10,7 @@
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="statemachineService" interface="com.kalix.middleware.statemachine.api.biz.IStatemachineService"/>
 
     <reference id="carApplyBeanDao" interface="com.kalix.oa.workflow.carapply.api.dao.ICarApplyBeanDao"/>
 
@@ -21,6 +22,7 @@
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
         <property name="repositoryService" ref="repositoryService"/>
+        <property name="statemachineService" ref="statemachineService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.carapply.api.biz.ICarApplyBeanService" ref="carApplyBeanService"/>
 
