@@ -12,7 +12,7 @@ Ext.define('kalix.workflow.meetingApply.controller.MeetingApplyWindowController'
             Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, '请输入申请部门');
             return;
         }
-        if(model.data.meetingroomId == 0){
+        if (model.data.meetingroomId == 0 || model.data.meetingroomId == null) {
             Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, '请选择会议地点');
             return;
         }
