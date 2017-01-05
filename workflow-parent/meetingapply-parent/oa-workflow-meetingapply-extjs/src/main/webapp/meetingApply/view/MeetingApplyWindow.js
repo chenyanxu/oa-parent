@@ -121,6 +121,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     items: [
                         {
                             xtype: 'tableFormDateTimeField',
+                            minValue: new Date(),
                             bind: {
                                 value: '{rec.beginTime}'
                             }
@@ -136,6 +137,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     items: [
                         {
                             xtype: 'tableFormDateTimeField',
+                            minValue: new Date(),
                             bind: {
                                 value: '{rec.endTime}'
                             }
@@ -206,12 +208,14 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
                     ]
                 },
                 {
-                    html: '会议申请人'
+                    html: '会议申请人',
+                    readOnly: true
                 },
                 {
                     colspan: 5,
                     items: [
                         {
+                            readOnly: true,
                             xtype: 'tableFormField',
                             bind: {
                                 value: '{rec.createBy}'

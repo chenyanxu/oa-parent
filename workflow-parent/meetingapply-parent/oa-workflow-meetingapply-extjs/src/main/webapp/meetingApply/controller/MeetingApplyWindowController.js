@@ -20,6 +20,10 @@ Ext.define('kalix.workflow.meetingApply.controller.MeetingApplyWindowController'
             Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, '请输入会议议题');
             return;
         }
+        if (model.data.meetingAgenda == null) {
+            Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, '请输入会议议程');
+            return;
+        }
 
         delete model.data['updateDate'];
         var view = this.getView();

@@ -48,7 +48,13 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public Map getVariantMap(Map map, MeetingApplyBean bean) {
-        map.put("duTime", bean.getApproveDeadline().getTime() - (new Date()).getTime());
+        if (bean.getApproveDeadline() == null) {
+            //如果前台没有设置重要参与人的审批超时时间，默认是30分钟
+            map.put("duTime", "PT1M");
+        } else {
+//            map.put("duTime", bean.getApproveDeadline().getTime() - (new Date()).getTime());
+            map.put("duTime", "PT" + (bean.getApproveDeadline().getTime() - (new Date()).getTime()) / 1000 / 60 + "M");
+        }
 
         return map;
     }
