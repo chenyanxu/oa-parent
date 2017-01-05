@@ -122,7 +122,8 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyWindow', {
                     },
                     items: [
                         {
-                            xtype: 'tableFormDateTimeField',
+                            xtype: 'datefield',
+                            minValue: new Date(),
                             bind: {
                                 value: '{rec.beginDate}'
                             }
@@ -133,8 +134,10 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyWindow', {
                             bodyStyle: 'font-size:15px;border:0px;padding:5px 0 0 0;'
                         },
                         {
-                            xtype: 'tableFormDateTimeField',
+                            xtype: 'datefield',
+                            //minValue: new Date(),
                             bind: {
+                                minValue: '{rec.beginDate}',
                                 value: '{rec.endDate}'
                             }
                         }

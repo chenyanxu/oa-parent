@@ -123,7 +123,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyViewForm', {
             },
             items: [
                 {
-                    xtype: 'tableFormDateTimeField',
+                    xtype: 'datefield',
                     bind: {
                         value: '{rec.beginDate}'
                     }
@@ -134,7 +134,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyViewForm', {
                     bodyStyle: 'font-size:15px;border:0px;padding:5px 0 0 0;',
                 },
                 {
-                    xtype: 'tableFormDateTimeField',
+                    xtype: 'datefield',
                     bind: {
                         value: '{rec.endDate}'
                     }
