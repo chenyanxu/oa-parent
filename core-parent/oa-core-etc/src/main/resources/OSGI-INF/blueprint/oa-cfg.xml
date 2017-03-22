@@ -7,7 +7,7 @@
     </bean>
     <service id="managedService" interface="org.osgi.service.cm.ManagedService" ref="oAApplicationConfig">
         <service-properties>
-            <entry key="service.pid" value="ConfigOAApp"/>
+            <entry key="service.pid" value="config.oa.app"/>
         </service-properties>
     </service>
 
@@ -15,7 +15,7 @@
     </bean>
     <service  interface="org.osgi.service.cm.ManagedService" ref="oADictConfig">
         <service-properties>
-            <entry key="service.pid" value="ConfigOADict"/>
+            <entry key="service.pid" value="config.oa.dict"/>
         </service-properties>
     </service>
 </blueprint>

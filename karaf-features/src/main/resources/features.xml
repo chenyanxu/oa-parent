@@ -11,10 +11,10 @@
 
     <feature name="oa-config"  version="${project.oa.version}">
         <configfile finalname="/etc/ConfigOAApp.cfg" override="true">
-            mvn:com.kalix.oa.core/oa-core-etc/${project.oa.version}/cfg/config-oa-app
+            mvn:com.kalix.oa.core/oa-core-etc/${project.oa.version}/cfg/config.oa.app
         </configfile>
         <configfile finalname="/etc/ConfigOADict.cfg" override="true">
-            mvn:com.kalix.oa.core/oa-core-etc/${project.oa.version}/cfg/config-oa-dict
+            mvn:com.kalix.oa.core/oa-core-etc/${project.oa.version}/cfg/config.oa.dict
         </configfile>
     </feature>
 
