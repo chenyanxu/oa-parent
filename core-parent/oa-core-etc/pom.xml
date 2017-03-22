@@ -45,14 +45,14 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/classes/config-oa-app.cfg</file>
+                                    <file>target/classes/config.oa.app.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>config-oa-app</classifier>
+                                    <classifier>config.oa.app</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/config-oa-dict.cfg</file>
+                                    <file>target/classes/config.oa.dict.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>config-oa-dict</classifier>
+                                    <classifier>config.oa.dict</classifier>
                                 </artifact>
                             </artifacts>
                         </configuration>
