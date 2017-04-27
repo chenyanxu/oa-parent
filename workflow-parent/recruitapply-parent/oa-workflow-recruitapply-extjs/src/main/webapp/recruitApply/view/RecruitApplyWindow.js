@@ -13,7 +13,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyWindow', {
         'kalix.oa.oADict.component.OADictCombobox'
     ],
     alias: 'widget.recruitApplyWindow',
-    xtype: "recruitApplyWindow",
+    xtype: 'recruitApplyWindow',
     controller: {
         type: 'baseWorkFlowWindowController',
         storeId: 'recruitApplyStore'

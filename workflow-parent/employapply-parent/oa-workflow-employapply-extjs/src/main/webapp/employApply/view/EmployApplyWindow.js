@@ -9,7 +9,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyWindow', {
         'Ext.ux.DateTimeField'
     ],
     alias: 'widget.employApplyWindow',
-    xtype: "employApplyWindow",
+    xtype: 'employApplyWindow',
     width: 400,
     controller: {
         type: 'baseWorkFlowWindowController',

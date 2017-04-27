@@ -26,8 +26,8 @@ Ext.define('kalix.usecase.lecture.view.LectureGrid', {
         defaults: {flex: 1, renderer: 'addTooltip'},
         items: [
             {
-                xtype: "rownumberer",
-                text: "行号",
+                xtype: 'rownumberer',
+                text: '行号',
                 width: 50,
                 align: 'center',
                 flex: 0,
@@ -89,9 +89,9 @@ Ext.define('kalix.usecase.lecture.view.LectureGrid', {
                         handler: 'onEdit'
                         //getClass: function (v, meta, record) {
                         //    if (record.data.employment == true) {
-                        //        return "kalix_hidden";
+                        //        return 'kalix_hidden';
                         //    }
-                        //    return "iconfont icon-edit-column";
+                        //    return 'iconfont icon-edit-column';
                         //}
                     },
                     {

@@ -16,7 +16,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyWindow', {
         'kalix.admin.user.component.UserComboBox'
     ],
     alias: 'widget.reimbursementApplyWindow',
-    xtype: "reimbursementApplyWindow",
+    xtype: 'reimbursementApplyWindow',
     controller: {
         type: 'reimbursementApplyWindowController',
         storeId: 'reimbursementApplyStore'

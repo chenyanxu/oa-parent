@@ -8,7 +8,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewWindow', {
         'kalix.workflow.carApply.view.CarApplyViewForm'
     ],
     alias: 'widget.carApplyViewWindow',
-    xtype: "carApplyViewWindow",
+    xtype: 'carApplyViewWindow',
     width: 840,
     items: [
         {

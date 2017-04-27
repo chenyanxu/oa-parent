@@ -10,7 +10,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewForm', {
         'kalix.oa.oADict.component.OADictCombobox'
     ],
     alias: 'widget.recruitApplyViewForm',
-    xtype: "recruitApplyViewForm",
+    xtype: 'recruitApplyViewForm',
     layout: {
         type: 'table',
         columns: 6

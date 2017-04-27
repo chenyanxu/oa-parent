@@ -21,7 +21,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
     },
     columns: [
         {
-            xtype: "rownumberer",
+            xtype: 'rownumberer'
         },
         {
             text: '编号',
@@ -48,7 +48,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
             text: '印章类别',
             xtype: 'oADictGridColumn',
             dictType: '印章类型',
-            dataIndex: 'sealType',
+            dataIndex: 'sealType'
             //renderer: null
         },
         {
@@ -91,21 +91,21 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
                     handler: 'onEdit',
                     getClass: function (v, meta, record) {
                         if (0 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-edit-column";
+                        return 'iconfont icon-edit-column';
                     }
                 },
                 {
-                    //icon: "resources/images/workflow.png",
+                    //icon: 'resources/images/workflow.png',
                     permission: 'progress',
                     tooltip: '查看当前流程',
                     handler: 'onViewCurrentProcess',
                     getClass: function (v, meta, record) {
                         if (1 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-workflow-view-column";
+                        return 'iconfont icon-workflow-view-column';
                     }
                 },
                 {
@@ -114,22 +114,22 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyGrid', {
                     handler: 'onDelete',
                     getClass: function (v, meta, record) {
                         if (0 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         } else {
-                            return "iconfont icon-delete";
+                            return 'iconfont icon-delete';
                         }
                     }
                 },
                 {
                     getClass: function (v, meta, record) {
                         if (record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-start";
+                        return 'iconfont icon-start';
                     },
                     getTip: function (value, metadata, record, row, col, store) {
                         if (record.data.status) {
-                            return "停止";
+                            return '停止';
                         }
                         return '启动';
                     },

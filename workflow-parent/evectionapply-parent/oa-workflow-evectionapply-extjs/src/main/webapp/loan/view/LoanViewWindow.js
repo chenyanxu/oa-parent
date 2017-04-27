@@ -8,7 +8,7 @@
 Ext.define('kalix.workflow.loan.view.LoanViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     alias: 'widget.loanViewWindow',
-    xtype: "candidateViewWindow",
+    xtype: 'candidateViewWindow',
     width: 800,
     //todo 在此修改查看字段
     items: [

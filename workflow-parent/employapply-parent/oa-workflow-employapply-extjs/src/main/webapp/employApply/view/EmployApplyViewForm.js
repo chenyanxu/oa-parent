@@ -9,7 +9,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyViewForm', {
         'kalix.view.components.common.TableFormDateTimeField'
     ],
     alias: 'widget.employApplyViewForm',
-    xtype: "employApplyViewForm",
+    xtype: 'employApplyViewForm',
     layout: {
         type: 'table',
         columns: 6

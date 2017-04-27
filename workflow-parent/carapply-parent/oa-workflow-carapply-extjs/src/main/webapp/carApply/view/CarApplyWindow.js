@@ -13,7 +13,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyWindow', {
         'kalix.admin.user.component.UserOrgComboBox'
     ],
     alias: 'widget.carApplyWindow',
-    xtype: "carApplyWindow",
+    xtype: 'carApplyWindow',
     controller: {
         type: 'baseWorkFlowWindowController',
         storeId: 'carApplyStore'

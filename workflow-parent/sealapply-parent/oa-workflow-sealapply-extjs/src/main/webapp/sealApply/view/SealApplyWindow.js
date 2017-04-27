@@ -13,7 +13,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyWindow', {
         'kalix.admin.user.component.UserOrgComboBox'
     ],
     alias: 'widget.sealApplyWindow',
-    xtype: "sealApplyWindow",
+    xtype: 'sealApplyWindow',
     controller: {
         type: 'baseWorkFlowWindowController',
         storeId: 'sealApplyStore'
@@ -34,7 +34,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyWindow', {
                     bodyStyle: 'padding:10px 0px 15px 0px;font-size:24px;font-weight:bold;'
                 },
                 {
-                    html: '名称',
+                    html: '名称'
                 },
                 {
                     colspan: 5,

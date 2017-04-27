@@ -16,7 +16,7 @@ Ext.define('kalix.workflow.meetingRoomApply.view.MeetingRoomApplyWindow', {
         'kalix.admin.user.component.UserOrgComboBox'
     ],
     alias: 'widget.meetingRoomApplyWindow',
-    xtype: "meetingRoomApplyWindow",
+    xtype: 'meetingRoomApplyWindow',
     controller: {
         type: 'meetingRoomApplyWindowController',
         storeId: 'meetingRoomApplyStore'

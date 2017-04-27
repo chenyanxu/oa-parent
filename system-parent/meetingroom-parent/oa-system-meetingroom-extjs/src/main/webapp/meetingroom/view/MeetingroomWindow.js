@@ -13,7 +13,7 @@ Ext.define('kalix.system.meetingroom.view.MeetingroomWindow', {
     controller: {
         type: 'baseWindowController'
     },
-    xtype: "meetingroomWindow",
+    xtype: 'meetingroomWindow',
     width: 400,
     //todo 在此修改表单
     items: [

@@ -129,7 +129,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewForm', {
         {
           html: '至',
           width: 15,
-          bodyStyle: 'font-size:15px;border:0px;padding:5px 0 0 0;',
+            bodyStyle: 'font-size:15px;border:0px;padding:5px 0 0 0;'
         },
         {
           xtype: 'tableFormDateTimeField',

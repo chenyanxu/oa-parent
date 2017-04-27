@@ -13,7 +13,7 @@ Ext.define('kalix.usecase.interview.view.InterviewWindow', {
             'kalix.usecase.interview.store.InterviewStore'
         ],
         alias: 'widget.interviewWindow',
-        xtype: "interviewWindow",
+    xtype: 'interviewWindow',
         viewModel: 'interviewViewModel',
         controller: {
             type: 'baseWindowController',
@@ -54,7 +54,7 @@ Ext.define('kalix.usecase.interview.view.InterviewWindow', {
                         },
                         listeners: {
                             select: function (combo, record, eOpts) {
-                                //Ext.MessageBox.alert(CONFIG.ALTER_TITLE_ERROR, "流程已经启动!");
+                                //Ext.MessageBox.alert(CONFIG.ALTER_TITLE_ERROR, '流程已经启动!');
                             }
                         }
                     },

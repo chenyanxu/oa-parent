@@ -11,7 +11,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyModifyForm', {
         'kalix.admin.user.component.UserOrgComboBox'
     ],
     alias: 'widget.sealApplyViewForm',
-    xtype: "sealApplyModifyForm",
+    xtype: 'sealApplyModifyForm',
     items: [
         {
             html: '吉林动画学院印章使用申请单',

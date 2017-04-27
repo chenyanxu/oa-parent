@@ -27,7 +27,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplySearchForm', {
     //,
     //{
     //  xtype:'imageToolTip',
-    //  tooltip:"<p style='color:blue;font-weight:bold;'>Follow the below instruction to enter valid username</p><dl><dt><b style='color:red;'>Lenght:</b></dt><dd>- Minimum: 4 char</dd><dd>- Maximun: 12 char</dd><dt><b style='color:red;'>Character:</b></dt><dd>- Atleast one numeric char</dd><dd>- Special char not allowed</dd>"
+      //  tooltip:'<p style='color:blue;font-weight:bold;'>Follow the below instruction to enter valid username</p><dl><dt><b style='color:red;'>Lenght:</b></dt><dd>- Minimum: 4 char</dd><dd>- Maximun: 12 char</dd><dt><b style='color:red;'>Character:</b></dt><dd>- Atleast one numeric char</dd><dd>- Special char not allowed</dd>'
     //}
   ]
 });

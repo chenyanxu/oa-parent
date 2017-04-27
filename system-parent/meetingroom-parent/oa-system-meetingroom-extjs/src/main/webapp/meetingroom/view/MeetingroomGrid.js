@@ -26,8 +26,8 @@ Ext.define('kalix.system.meetingroom.view.MeetingroomGrid', {
         defaults: {flex: 1, renderer: 'addTooltip'},
         items: [
             {
-                xtype: "rownumberer",
-                text: "行号",
+                xtype: 'rownumberer',
+                text: '行号',
                 width: 50,
                 flex: 0,
                 align: 'center',

@@ -14,7 +14,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
     controller: {
         type: 'baseWindowController'
     },
-    xtype: "lectureWindow",
+    xtype: 'lectureWindow',
     whichInterview: 'lecture',
     width: 800,
     constructor: function () {
@@ -50,7 +50,7 @@ Ext.define('kalix.usecase.lecture.view.LectureWindow', {
                     },
                     listeners: {
                         select: function (combo, record, eOpts) {
-                            //Ext.MessageBox.alert(CONFIG.ALTER_TITLE_ERROR, "流程已经启动!");
+                            //Ext.MessageBox.alert(CONFIG.ALTER_TITLE_ERROR, '流程已经启动!');
                         }
                     }
                 },

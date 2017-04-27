@@ -8,7 +8,7 @@ Ext.define('kalix.workflow.reimbursementApply.view.ReimbursementApplyViewWindow'
         'kalix.workflow.reimbursementApply.view.ReimbursementApplyViewForm'
     ],
     alias: 'widget.reimbursementApplyViewWindow',
-    xtype: "reimbursementApplyViewWindow",
+    xtype: 'reimbursementApplyViewWindow',
     width: 900,
     items: [
         {

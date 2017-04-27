@@ -16,7 +16,7 @@ Ext.define('kalix.app.leave.view.LeaveWindow', {
         type: 'baseWindowController',
         storeId: 'leaveStore'
     },
-    xtype: "leaveWindow",
+    xtype: 'leaveWindow',
     width: 400,
     //todo 在此修改表单
     items: [{

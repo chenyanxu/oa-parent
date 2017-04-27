@@ -27,8 +27,8 @@ Ext.define('kalix.usecase.candidate.view.CandidateGrid', {
         defaults: {flex: 1, renderer: 'addTooltip'},
         items: [
             {
-                xtype: "rownumberer",
-                text: "行号",
+                xtype: 'rownumberer',
+                text: '行号',
                 width: 50,
                 align: 'center',
                 flex: 0,

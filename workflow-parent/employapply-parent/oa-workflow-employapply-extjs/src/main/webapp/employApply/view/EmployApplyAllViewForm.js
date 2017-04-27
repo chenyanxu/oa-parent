@@ -10,7 +10,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
         'kalix.attachment.view.AttachmentGrid'
     ],
     alias: 'widget.employApplyAllViewForm',
-    xtype: "employApplyAllViewForm",
+    xtype: 'employApplyAllViewForm',
     width: 893,
     height: 400,
     margin: '2 2 0 2',
@@ -155,7 +155,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
             //xtype: 'tabpanel',
             items: [
                 {
-                    "title": '审批信息',
+                    'title': '审批信息',
                     xtype: 'panel',
                     layout: {
                         type: 'vbox',
@@ -281,7 +281,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
                     ]
                 },
                 {
-                    "title": '入职人员基本信息',
+                    'title': '入职人员基本信息',
                     xtype: 'panel',
                     layout: {
                         type: 'vbox',
@@ -540,7 +540,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
                     ]
                 },
                 {
-                    "title": '面试信息',
+                    'title': '面试信息',
                     xtype: 'panel',
                     layout: {
                         type: 'vbox',
@@ -709,7 +709,7 @@ Ext.define('kalix.workflow.employApply.view.EmployApplyAllViewForm', {
                     ]
                 },
                 {
-                    "title": '试讲信息',
+                    'title': '试讲信息',
                     xtype: 'panel',
                     layout: {
                         type: 'vbox',

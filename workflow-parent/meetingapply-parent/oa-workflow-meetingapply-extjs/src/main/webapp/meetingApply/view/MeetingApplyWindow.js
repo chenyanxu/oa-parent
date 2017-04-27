@@ -18,7 +18,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyWindow', {
         'kalix.view.components.common.TableFormDateTimeField'
     ],
     alias: 'widget.meetingApplyWindow',
-    xtype: "meetingApplyWindow",
+    xtype: 'meetingApplyWindow',
     controller: {
         type: 'meetingApplyWindowController',
         storeId: 'meetingApplyStore'

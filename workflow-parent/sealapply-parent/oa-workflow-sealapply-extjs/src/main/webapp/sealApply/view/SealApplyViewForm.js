@@ -10,7 +10,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewForm', {
         'kalix.oa.oADict.component.OADictCombobox'
     ],
     alias: 'widget.sealApplyViewForm',
-    xtype: "sealApplyViewForm",
+    xtype: 'sealApplyViewForm',
     layout: {
         type: 'table',
         columns: 6

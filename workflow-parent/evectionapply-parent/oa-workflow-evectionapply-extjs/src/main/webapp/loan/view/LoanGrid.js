@@ -34,8 +34,8 @@ Ext.define('kalix.workflow.loan.view.LoanGrid', {
     //todo 在此修改grid显示列
     columns: [
         {
-            xtype: "rownumberer",
-            text: "行号",
+            xtype: 'rownumberer',
+            text: '行号',
             width: 50,
             flex: 0,
             align: 'center',
@@ -91,9 +91,9 @@ Ext.define('kalix.workflow.loan.view.LoanGrid', {
                     handler: 'onEdit',
                     getClass: function (v, meta, record) {
                         //if (0 != record.data.status) {
-                        //    return "kalix_hidden";
+                        //    return 'kalix_hidden';
                         //}
-                        return "iconfont icon-edit-column";
+                        return 'iconfont icon-edit-column';
                     }
                 },
                 {
@@ -102,9 +102,9 @@ Ext.define('kalix.workflow.loan.view.LoanGrid', {
                     handler: 'onDelete',
                     getClass: function (v, meta, record) {
                         //if (0 != record.data.status) {
-                        //    return "kalix_hidden";
+                        //    return 'kalix_hidden';
                         //}
-                        return "iconfont icon-delete";
+                        return 'iconfont icon-delete';
                     }
                 },
                 {

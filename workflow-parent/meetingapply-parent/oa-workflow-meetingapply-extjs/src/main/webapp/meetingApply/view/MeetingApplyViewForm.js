@@ -13,7 +13,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewForm', {
         'kalix.view.components.common.TableFormDateTimeField'
     ],
     alias: 'widget.meetingApplyViewForm',
-    xtype: "meetingApplyViewForm",
+    xtype: 'meetingApplyViewForm',
     layout: {
         type: 'table',
         columns: 6

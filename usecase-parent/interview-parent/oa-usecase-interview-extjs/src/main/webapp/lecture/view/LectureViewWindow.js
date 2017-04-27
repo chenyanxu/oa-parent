@@ -8,7 +8,7 @@
 Ext.define('kalix.usecase.lecture.view.LectureViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     alias: 'widget.lectureViewWindow',
-    xtype: "lectureViewWindow",
+    xtype: 'lectureViewWindow',
     width: 800,
     //todo 在此修改查看字段
     items: [

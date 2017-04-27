@@ -8,7 +8,7 @@ Ext.define('kalix.workflow.recruitApply.view.RecruitApplyViewWindow', {
     'kalix.workflow.recruitApply.view.RecruitApplyViewForm'
   ],
   alias: 'widget.recruitApplyViewWindow',
-  xtype: "recruitApplyViewWindow",
+    xtype: 'recruitApplyViewWindow',
   width: 840,
   items: [
     {

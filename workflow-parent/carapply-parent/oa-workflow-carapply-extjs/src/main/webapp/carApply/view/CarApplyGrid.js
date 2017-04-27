@@ -22,7 +22,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
     },
     columns: [
         {
-            xtype: "rownumberer"
+            xtype: 'rownumberer'
         },
         {
             text: '编号',
@@ -104,9 +104,9 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
                     handler: 'onEdit',
                     getClass: function (v, meta, record) {
                         if (0 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-edit-column";
+                        return 'iconfont icon-edit-column';
                     }
                 },
                 {
@@ -115,9 +115,9 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
                     handler: 'onViewCurrentProcess',
                     getClass: function (v, meta, record) {
                         if (1 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-current-process";
+                        return 'iconfont icon-current-process';
                     }
                 },
                 {
@@ -126,21 +126,21 @@ Ext.define('kalix.workflow.carApply.view.CarApplyGrid', {
                     handler: 'onDelete',
                     getClass: function (v, meta, record) {
                         if (0 != record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-delete";
+                        return 'iconfont icon-delete';
                     }
                 },
                 {
                     getClass: function (v, meta, record) {
                         if (record.data.status) {
-                            return "kalix_hidden";
+                            return 'kalix_hidden';
                         }
-                        return "iconfont icon-start";
+                        return 'iconfont icon-start';
                     },
                     getTip: function (value, metadata, record, row, col, store) {
                         if (record.data.status) {
-                            return "停止";
+                            return '停止';
                         }
                         return '启动';
                     },

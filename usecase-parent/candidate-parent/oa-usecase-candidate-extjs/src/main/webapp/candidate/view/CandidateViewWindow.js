@@ -11,7 +11,7 @@ Ext.define('kalix.usecase.candidate.view.CandidateViewWindow', {
     requires: [
         'kalix.oa.oADict.component.OADictCombobox'
     ],
-    xtype: "candidateViewWindow",
+    xtype: 'candidateViewWindow',
     width: 800,
     //todo 在此修改查看字段
     items: [

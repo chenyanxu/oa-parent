@@ -15,7 +15,7 @@ Ext.define('kalix.usecase.candidate.view.CandidateWindow', {
     controller: {
         type: 'baseWindowController'
     },
-    xtype: "candidateWindow",
+    xtype: 'candidateWindow',
     width: 800,
     //todo 在此修改表单
     items: [

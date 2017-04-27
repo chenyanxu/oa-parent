@@ -13,7 +13,7 @@ Ext.define('kalix.workflow.loan.view.LoanWindow', {
     controller: {
         type: 'baseWindowController'
     },
-    xtype: "loanWindow",
+    xtype: 'loanWindow',
     width: 800,
     //todo 在此修改表单
     items: [

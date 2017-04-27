@@ -16,7 +16,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyWindow', {
         type: 'baseWindowController',
         storeId: 'evectionStore'
     },
-    xtype: "evectionWindow",
+    xtype: 'evectionWindow',
     width: 900,
     //todo 在此修改表单
     items: [

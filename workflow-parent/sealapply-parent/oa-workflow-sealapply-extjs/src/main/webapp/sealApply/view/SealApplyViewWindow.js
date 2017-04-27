@@ -8,7 +8,7 @@ Ext.define('kalix.workflow.sealApply.view.SealApplyViewWindow', {
         'kalix.workflow.sealApply.view.SealApplyViewForm'
     ],
     alias: 'widget.sealApplyViewWindow',
-    xtype: "sealApplyViewWindow",
+    xtype: 'sealApplyViewWindow',
     width: 840,
     items: [
         {

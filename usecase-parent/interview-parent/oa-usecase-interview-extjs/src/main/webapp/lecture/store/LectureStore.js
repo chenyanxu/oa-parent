@@ -9,6 +9,6 @@ Ext.define('kalix.usecase.lecture.store.LectureStore', {
     model: 'kalix.usecase.lecture.model.LectureModel',
     alias: 'store.lectureStore',
     xtype: 'lectureStore',
-    storeId: "lectureStore",
+    storeId: 'lectureStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/lectures'
 });

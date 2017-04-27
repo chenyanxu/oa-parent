@@ -6,6 +6,6 @@ Ext.define('kalix.workflow.evectionApply.store.EvectionApplyStore', {
     model: 'kalix.workflow.evectionApply.model.EvectionApplyModel',
     alias: 'store.evectionStore',
     xtype: 'evectionStore',
-    storeId: "evectionStore",
+    storeId: 'evectionStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/evectionapplys'
 });

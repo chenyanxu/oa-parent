@@ -11,7 +11,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyModifyForm', {
         'kalix.admin.user.component.UserOrgComboBox'
     ],
     alias: 'widget.evectionApplyModifyForm',
-    xtype: "evectionApplyModifyForm",
+    xtype: 'evectionApplyModifyForm',
     items: [
         {
             xtype: 'baseTableForm',

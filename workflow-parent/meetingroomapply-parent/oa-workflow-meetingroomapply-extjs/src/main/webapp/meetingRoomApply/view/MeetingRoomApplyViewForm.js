@@ -12,7 +12,7 @@ Ext.define('kalix.workflow.meetingRoomApply.view.MeetingRoomApplyViewForm', {
         'kalix.system.meetingroom.component.MeetingroomComboBox'
     ],
     alias: 'widget.meetingRoomApplyViewForm',
-    xtype: "meetingRoomApplyViewForm",
+    xtype: 'meetingRoomApplyViewForm',
     layout: {
         type: 'table',
         columns: 6

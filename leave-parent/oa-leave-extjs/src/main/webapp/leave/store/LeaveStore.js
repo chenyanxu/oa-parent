@@ -9,6 +9,6 @@ Ext.define('kalix.app.leave.store.LeaveStore', {
     model: 'kalix.app.leave.model.LeaveModel',
     alias: 'store.leaveStore',
     xtype: 'leaveStore',
-    storeId: "leaveStore",
+    storeId: 'leaveStore',
     proxyUrl: CONFIG.restRoot + '/camel/rest/leaves'
 });

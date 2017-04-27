@@ -8,7 +8,7 @@ Ext.define('kalix.workflow.meetingApply.view.MeetingApplyViewWindow', {
         'kalix.workflow.meetingApply.view.MeetingApplyViewForm'
     ],
     alias: 'widget.meetingApplyViewWindow',
-    xtype: "meetingApplyViewWindow",
+    xtype: 'meetingApplyViewWindow',
     width: 840,
     items: [
         {

@@ -9,7 +9,7 @@ Ext.define('kalix.system.meetingroom.store.MeetingroomStore', {
     model: 'kalix.system.meetingroom.model.MeetingroomModel',
     alias: 'store.meetingroomStore',
     xtype: 'meetingroomStore',
-    storeId: "meetingroomStore",
+    storeId: 'meetingroomStore',
     autoLoad:true,
     proxyUrl: CONFIG.restRoot + '/camel/rest/meetingrooms'
 });

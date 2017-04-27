@@ -8,7 +8,7 @@
 Ext.define('kalix.system.meetingroom.view.MeetingroomViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     alias: 'widget.meetingroomViewWindow',
-    xtype: "meetingroomViewWindow",
+    xtype: 'meetingroomViewWindow',
     width: 400,
     //todo 在此修改查看字段
     items: [

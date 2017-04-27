@@ -9,7 +9,7 @@ Ext.define('kalix.usecase.candidate.store.CandidateStore', {
     model: 'kalix.usecase.candidate.model.CandidateModel',
     alias: 'store.candidateStore',
     xtype: 'candidateStore',
-    storeId: "candidateStore",
+    storeId: 'candidateStore',
     autoLoad: true,
     proxyUrl: CONFIG.restRoot + '/camel/rest/candidates'
 });

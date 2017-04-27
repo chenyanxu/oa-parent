@@ -12,7 +12,7 @@ Ext.define('kalix.app.leave.view.LeaveViewWindow', {
         ],
         alias: 'widget.leaveViewWindow',
         viewModel: 'leaveViewModel',
-        xtype: "leaveViewWindow",
+    xtype: 'leaveViewWindow',
         width: 400,
     //todo 在此修改查看字段
     items: [{
