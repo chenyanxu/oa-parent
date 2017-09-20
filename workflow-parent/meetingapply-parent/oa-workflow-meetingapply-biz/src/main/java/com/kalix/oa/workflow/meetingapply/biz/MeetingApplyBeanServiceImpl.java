@@ -127,9 +127,8 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         List values = this.meetingroomBeanService.getFieldValuesByIds(ids.toArray(), "name");
         BeanUtil.setBeanListFieldValues(beans, "meetingroomName", values);
 
-        String meetingSummaryPersonName = "", importantAttendeesName = "", otherAttendeesName = "";
-
         for (int i = 0; i < beans.size(); i++) {
+            String meetingSummaryPersonName = "", importantAttendeesName = "", otherAttendeesName = "";
             MeetingApplyBean meetingApplyBean = (MeetingApplyBean) beans.get(i);
             String[] meetingSummaryPerson = meetingApplyBean.getMeetingSummaryPerson().split(",");
             if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
