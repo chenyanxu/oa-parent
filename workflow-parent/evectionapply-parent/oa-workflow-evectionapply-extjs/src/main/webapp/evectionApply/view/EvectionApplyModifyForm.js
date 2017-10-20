@@ -78,7 +78,7 @@ Ext.define('kalix.workflow.evectionApply.view.EvectionApplyModifyForm', {
                         {
                             xtype: 'tableFormDateTimeField',
                             readOnly: true,
-                            bind: {value: '{rec.applyDate}'}
+                            bind: {value: '{rec.creationDate}'}
                         }
                     ]
                 },

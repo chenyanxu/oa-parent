@@ -71,7 +71,7 @@ Ext.define('kalix.workflow.carApply.view.CarApplyViewForm', {
           xtype: 'tableFormDateTimeField',
           readOnly: true,
           bind: {
-            value: '{rec.applyDate}'
+            value: '{rec.creationDate}'
           }
         }
       ]
