@@ -9,7 +9,8 @@
     <extensionElements>
       <activiti:eventListener events="TASK_ASSIGNED" entityType="task" class="com.kalix.middleware.workflow.engine.listener.MessageEventListener"></activiti:eventListener>
     </extensionElements>
-    <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>
+      <startEvent id="startevent1" name="Start" activiti:formKey="start.form"
+                  activiti:initiator="startUserId"></startEvent>
     <userTask id="departmentHead" name="上级领导审核" activiti:formKey="audit.form">
       <documentation>上级领导审核</documentation>
       <extensionElements>
@@ -43,7 +44,7 @@
     <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow9" sourceRef="generalManager" targetRef="exclusivegateway4"></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
-    <userTask id="modify" name="审批修改" activiti:candidateGroups="审批修改" activiti:formKey="modify.form"></userTask>
+      <userTask id="modify" name="审批修改" activiti:assignee="${startUserId}" activiti:formKey="modify.form"></userTask>
     <sequenceFlow id="flow16" sourceRef="modify" targetRef="departmentHead"></sequenceFlow>
     <sequenceFlow id="flow12" name="不同意" sourceRef="exclusivegateway4" targetRef="modify">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
