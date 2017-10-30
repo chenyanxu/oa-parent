@@ -1,4 +1,4 @@
-package com.kalix.oa.workflow.sealapply.dao.internal;
+package com.kalix.oa.workflow.tempapply.dao.internal;
 
 import com.kalix.framework.core.api.osgi.BaseBundleActivator;
 

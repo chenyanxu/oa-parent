@@ -10,7 +10,7 @@ import com.kalix.middleware.workflow.biz.AbstractModifyFormHandler;
 public class TempApplyModifyFormImpl extends AbstractModifyFormHandler {
     @Override
     public String getFormClass() {
-        return "kalix.workflow.sealApply.view.TempApplyModifyForm";
+        return "kalix.workflow.tempApply.view.TempApplyModifyForm";
     }
 
 }

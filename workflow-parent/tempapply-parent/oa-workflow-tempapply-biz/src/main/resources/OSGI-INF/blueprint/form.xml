@@ -4,18 +4,18 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
     <!-- 用章申请审批页面-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
-        <bean class="com.kalix.oa.workflow.sealapply.biz.form.SealApplyAuditFormImpl"/>
+        <bean class="com.kalix.oa.workflow.tempapply.biz.form.TempApplyAuditFormImpl"/>
     </service>
     <!-- 用章申请业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
-        <bean class="com.kalix.oa.workflow.sealapply.biz.form.SealApplyBizDataFormImpl"/>
+        <bean class="com.kalix.oa.workflow.tempapply.biz.form.TempApplyBizDataFormImpl"/>
     </service>
     <!-- 用章申请业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
-        <bean class="com.kalix.oa.workflow.sealapply.biz.form.TempApplyModifyFormImpl"/>
+        <bean class="com.kalix.oa.workflow.tempapply.biz.form.TempApplyModifyFormImpl"/>
     </service>
     <!-- 用章申请业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
-        <bean class="com.kalix.oa.workflow.sealapply.biz.form.TempApplyEndFormImpl"/>
+        <bean class="com.kalix.oa.workflow.tempapply.biz.form.TempApplyEndFormImpl"/>
     </service>
 </blueprint>

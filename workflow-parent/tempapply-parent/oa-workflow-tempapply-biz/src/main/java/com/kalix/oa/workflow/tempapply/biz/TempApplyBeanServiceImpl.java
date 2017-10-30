@@ -19,6 +19,7 @@ public class TempApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<ITem
 
     @Override
     public Map getVariantMap(Map map, TempApplyBean bean) {
+        map.put("targetDuty", bean.getTargetDuty());
         return map;
     }
 }

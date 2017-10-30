@@ -10,6 +10,6 @@ import com.kalix.middleware.workflow.biz.AbstractEndFormHandler;
 public class TempApplyEndFormImpl extends AbstractEndFormHandler {
     @Override
     public String getFormClass() {
-        return "kalix.workflow.sealApply.view.TempApplyViewForm";
+        return "kalix.workflow.tempApply.view.TempApplyViewForm";
     }
 }

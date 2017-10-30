@@ -9,7 +9,7 @@ import com.kalix.middleware.workflow.biz.AbstractAuditFormHandler;
 public class TempApplyAuditFormImpl extends AbstractAuditFormHandler {
     @Override
     public String getFormClass() {
-        return "kalix.workflow.sealApply.view.TempApplyViewForm";
+        return "kalix.workflow.tempApply.view.TempApplyViewForm";
     }
 }
 

@@ -7,5 +7,5 @@ import com.kalix.oa.workflow.tempapply.entities.TempApplyBean;
  * @author chenyanxu
  */
 public interface ITempApplyBeanService extends IWorkflowBizService<TempApplyBean> {
-    final String PROCESS_KEY_NAME = "sealapply";
+    final String PROCESS_KEY_NAME = "tempapply";
 }
