@@ -5,7 +5,7 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <reference id="tempApplyService" interface="com.kalix.oa.workflow.tempapply.api.biz.ITempApplyBeanService"/>
 
-    <camelContext id="demo-rest-tempapply" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="oa-rest-tempapply" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
             <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>
@@ -14,7 +14,7 @@
                 <description>Find all tempApplys</description>
                 <to uri="bean:tempApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
             </get>
-            <post id="route-addTempApply" type="com.kalix.oa.workflow.tempapply.entities.tempApplyBean"
+            <post id="route-addTempApply" type="com.kalix.oa.workflow.tempapply.entities.TempApplyBean"
                   outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Create a tempApply</description>
                 <to uri="bean:tempApplyService?method=saveEntity"/>
@@ -22,11 +22,11 @@
         </rest>
         <rest path="/tempapplys/{id}" consumes="application/json;charset=utf-8"
               produces="application/json;charset=utf-8">
-            <get id="route-getTempApply" outType="com.kalix.oa.workflow.tempapply.entities.tempApplyBean">
+            <get id="route-getTempApply" outType="com.kalix.oa.workflow.tempapply.entities.TempApplyBean">
                 <description>Find tempApply by id</description>
                 <to uri="bean:tempApplyService?method=getEntity(${header.id})"/>
             </get>
-            <put id="route-updateTempApply" type="com.kalix.oa.workflow.tempapply.entities.tempApplyBean"
+            <put id="route-updateTempApply" type="com.kalix.oa.workflow.tempapply.entities.TempApplyBean"
                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
                 <description>Updates a tempApply</description>
                 <to uri="bean:tempApplyService?method=updateEntity"/>

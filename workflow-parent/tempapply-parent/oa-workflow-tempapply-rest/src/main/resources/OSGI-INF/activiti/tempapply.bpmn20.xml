@@ -12,7 +12,7 @@
         </extensionElements>
         <startEvent id="startevent1" name="Start" activiti:initiator="startUserId"
                     activiti:formKey="start.form"></startEvent>
-        <userTask id="departmentHead" name="上级领导审核" activiti:formKey="audit.form">
+        <userTask id="depUser" name="上级领导审核" activiti:formKey="audit.form">
             <documentation>上级领导审核</documentation>
             <extensionElements>
                 <activiti:taskListener event="create"
@@ -20,19 +20,19 @@
             </extensionElements>
         </userTask>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow3" sourceRef="departmentHead" targetRef="exclusivegateway1"></sequenceFlow>
-        <userTask id="header" name="目标负责人审核" activiti:candidateGroups="${targetDuty}" activiti:formKey="audit.form">
-            <documentation>目标负责人审核</documentation>
+        <sequenceFlow id="flow3" sourceRef="depUser" targetRef="exclusivegateway1"></sequenceFlow>
+        <userTask id="dutyUser" name="审批领导审核" activiti:candidateGroups="${targetDuty}" activiti:formKey="audit.form">
+            <documentation>审批领导审核</documentation>
         </userTask>
         <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow5" name="同意" sourceRef="header" targetRef="exclusivegateway2">
+        <sequenceFlow id="flow5" name="同意" sourceRef="dutyUser" targetRef="exclusivegateway2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
         </sequenceFlow>
         <endEvent id="endevent1" name="End">
             <documentation>同意结束</documentation>
         </endEvent>
-        <sequenceFlow id="flow17" sourceRef="startevent1" targetRef="departmentHead"></sequenceFlow>
-        <sequenceFlow id="flow18" name="同意" sourceRef="exclusivegateway1" targetRef="header">
+        <sequenceFlow id="flow17" sourceRef="startevent1" targetRef="depUser"></sequenceFlow>
+        <sequenceFlow id="flow18" name="同意" sourceRef="exclusivegateway1" targetRef="dutyUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
         </sequenceFlow>
         <endEvent id="endevent2" name="不同意结束">
@@ -51,13 +51,13 @@
             <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
                 <omgdc:Bounds height="35.0" width="35.0" x="117.0" y="133.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="departmentHead" id="BPMNShape_departmentHead">
+            <bpmndi:BPMNShape bpmnElement="depUser" id="BPMNShape_departmentHead">
                 <omgdc:Bounds height="55.0" width="105.0" x="187.0" y="124.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
                 <omgdc:Bounds height="40.0" width="40.0" x="317.0" y="133.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="header" id="BPMNShape_header">
+            <bpmndi:BPMNShape bpmnElement="dutyUser" id="BPMNShape_header">
                 <omgdc:Bounds height="55.0" width="105.0" x="430.0" y="124.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">

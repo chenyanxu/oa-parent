@@ -5,7 +5,7 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <reference id="sealApplyService" interface="com.kalix.oa.workflow.sealapply.api.biz.ISealApplyBeanService"/>
 
-    <camelContext id="demo-rest-sealapply" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="oa-rest-sealapply" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
             <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
         </restConfiguration>

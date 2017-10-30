@@ -14,8 +14,20 @@ import javax.persistence.Table;
 public class TempApplyBean extends WorkflowEntity {
     // 申请事由
     private String content;
-    // 目标职务
+    // 审批领导职务
     private String targetDuty;
+    //审批领导签字
+    private String dutyUser;
+    //上级领导签字
+    private String depUser;
+
+    public String getDepUser() {
+        return depUser;
+    }
+
+    public void setDepUser(String depUser) {
+        this.depUser = depUser;
+    }
 
     public String getContent() {
         return content;
@@ -31,5 +43,13 @@ public class TempApplyBean extends WorkflowEntity {
 
     public void setTargetDuty(String targetDuty) {
         this.targetDuty = targetDuty;
+    }
+
+    public String getDutyUser() {
+        return dutyUser;
+    }
+
+    public void setDutyUser(String dutyUser) {
+        this.dutyUser = dutyUser;
     }
 }
