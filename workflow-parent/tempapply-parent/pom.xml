@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>workflow-parent</artifactId>
+        <groupId>com.kalix.oa.workflow</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.oa.workflow.tempapply</groupId>
+    <artifactId>tempapply-parent</artifactId>
+    <name>Kalix OA Workflow Temp Apply Parent</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>oa-workflow-tempapply-api</module>
+        <module>oa-workflow-tempapply-biz</module>
+        <module>oa-workflow-tempapply-dao</module>
+        <module>oa-workflow-tempapply-entities</module>
+        <module>oa-workflow-tempapply-rest</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.oa.workflow.tempapply</groupId>
+                <artifactId>oa-workflow-tempapply-entities</artifactId>
+                <version>${project.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.oa.workflow.tempapply</groupId>
+                <artifactId>oa-workflow-tempapply-api</artifactId>
+                <version>${project.oa.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
