@@ -12,11 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "oa_candidate")
 public class CandidateBean extends PersistentEntity {
-    private String personCategory;//人员类别
+    private Integer personCategory;//人员类别
     private Long orgId;//部门代码
     private String orgName;//部门名称
     private String xm;//姓名
-    private String sex;//性别
+    private Integer sex;//性别
     private Integer age;//年龄
     private String tel;//联系电话
     private String graduateSchool;//毕业学校
@@ -30,11 +30,11 @@ public class CandidateBean extends PersistentEntity {
 
     private Long employApplyWorkflowId;//入职申请流程id
 
-    public String getPersonCategory() {
+    public Integer getPersonCategory() {
         return personCategory;
     }
 
-    public void setPersonCategory(String personCategory) {
+    public void setPersonCategory(Integer personCategory) {
         this.personCategory = personCategory;
     }
 
@@ -62,11 +62,11 @@ public class CandidateBean extends PersistentEntity {
         this.xm = xm;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
