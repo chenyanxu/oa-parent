@@ -21,6 +21,7 @@
         <module>sealapply-parent</module>
         <module>evectionapply-parent</module>
         <module>reimbursementapply-parent</module>
+        <module>tempapply-parent</module>
     </modules>
 
     <dependencyManagement>
