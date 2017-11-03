@@ -2,6 +2,7 @@ package com.kalix.oa.workflow.employapply.api.query;
 
 import com.kalix.framework.core.api.web.model.BaseDTO;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**
@@ -17,6 +18,7 @@ public class EmployApplyDTO extends BaseDTO {
     private String tel;//联系电话
     private String position;//应聘岗位
     private Long employApplyWorkflowId;//入职申请
+    private Date applyDate;
 
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
@@ -162,5 +164,13 @@ public class EmployApplyDTO extends BaseDTO {
 
     public void setManpower(String manpower) {
         this.manpower = manpower;
+    }
+
+    public Date getApplyDate() {
+        return applyDate;
+    }
+
+    public void setApplyDate(Date applyDate) {
+        this.applyDate = applyDate;
     }
 }

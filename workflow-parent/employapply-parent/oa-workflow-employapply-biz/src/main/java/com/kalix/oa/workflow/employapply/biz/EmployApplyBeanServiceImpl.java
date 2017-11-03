@@ -64,11 +64,11 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         //获得返回的结果类
         Class<? extends BaseDTO> cls = getResultClass();
         Assert.notNull(cls, "返回查询结果类不能为空.");
-        //数据安全
-        if(jsonMap.get("createById")!=null){
+        //数据安全(注释掉数据权限，已经通过数据权限功能实现)
+        /*if(jsonMap.get("createById")!=null){
             sql = sql + " and a.createById=" +jsonMap.get("createById") ;
             jsonMap.remove("createById");
-        }
+        }*/
 
         String posSql = " order by a.creationDate desc";
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
@@ -95,7 +95,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
                 "b.status," +
                 "b.auditResult," +
                 "b.businessNo," +
-                "b.branchSchoolLeader,b.schoolLeader,b.manpower " +
+                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate " +
                 "from oa_candidate a left join oa_workflow_employapply b " +
                 "on a.employApplyWorkflowId = b.id " +
                 "where (case a.personcategory when '1' then a.id in (select candidateid from oa_interview c where c.passfirst=true and c.passsecond=true) " +
