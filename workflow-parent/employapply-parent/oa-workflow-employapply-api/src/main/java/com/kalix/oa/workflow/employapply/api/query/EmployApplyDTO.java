@@ -8,11 +8,11 @@ import java.util.Date;
  * Created by zangyanming on 2016/06/21.
  */
 public class EmployApplyDTO extends BaseDTO {
-    private String personCategory;//人员类别
+    private Integer personCategory;//人员类别
     private Long orgId;//部门
     private String orgName;//部门
     private String xm;//姓名
-    private String sex;//性别
+    private Integer sex;//性别
     private Integer age;//年龄
     private String tel;//联系电话
     private String position;//应聘岗位
@@ -28,11 +28,11 @@ public class EmployApplyDTO extends BaseDTO {
     private String schoolLeader;//校领导审批
     private String manpower;// 人力资源部长签字
 
-    public String getPersonCategory() {
+    public Integer getPersonCategory() {
         return personCategory;
     }
 
-    public void setPersonCategory(String personCategory) {
+    public void setPersonCategory(Integer personCategory) {
         this.personCategory = personCategory;
     }
 
@@ -60,11 +60,11 @@ public class EmployApplyDTO extends BaseDTO {
         this.xm = xm;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
