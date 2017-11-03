@@ -70,12 +70,21 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             jsonMap.remove("createById");
         }*/
 
+
         String posSql = " order by a.creationDate desc";
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
             sql = sql + " and a." + entry.getKey() + " like '%" + entry.getValue() + "%'";
         }
 
-        return dao.findByNativeSql(sql + posSql, page, limit, cls, null);
+        JsonData jsonData = dao.findByNativeSql(sql + posSql, page, limit, cls, null);
+        List<EmployApplyDTO> list = jsonData.getData();
+        for (EmployApplyDTO obj : list) {
+            if (obj.getStatus() == null) {
+                obj.setStatus(WorkflowStaus.INACTIVE);
+                obj.setAuditResult("流程尚未启动");
+            }
+        }
+        return jsonData;
     }
 
     /**
