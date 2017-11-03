@@ -70,7 +70,7 @@ Ext.define('kalix.usecase.lecture.view.LectureGrid', {
                 trueText: '是',
                 falseText: '否',
                 xtype: 'booleancolumn',
-                dataIndex: 'employment',
+                dataIndex: 'pass',
                 renderer: null
             },
             {
