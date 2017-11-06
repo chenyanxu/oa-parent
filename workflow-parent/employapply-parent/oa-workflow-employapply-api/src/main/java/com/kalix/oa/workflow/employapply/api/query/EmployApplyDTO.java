@@ -31,9 +31,10 @@ public class EmployApplyDTO extends BaseDTO {
     private String schoolLeader;//校领导审批
     private String manpower;// 人力资源部长签字
 
-    private String title;   //流程名称
+    private String title;     //流程名称
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date applyDate; //申请日期
+    private Date applyDate;   //申请日期
+    private Long candidateId; // 应聘人员id
 
     public Integer getPersonCategory() {
         return personCategory;
@@ -185,5 +186,13 @@ public class EmployApplyDTO extends BaseDTO {
 
     public void setApplyDate(Date applyDate) {
         this.applyDate = applyDate;
+    }
+
+    public Long getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(Long candidateId) {
+        this.candidateId = candidateId;
     }
 }
