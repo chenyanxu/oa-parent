@@ -135,13 +135,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             candidateBean.setEmployApplyWorkflowId(Long.parseLong(jsonStatus.getTag()));
             candidateBeanService.updateEntity(candidateBean);
 
-            return startProcessSelf(jsonStatus.getTag());
+            return super.startProcess(jsonStatus.getTag());
         }else{
-            return startProcessSelf(String.valueOf(candidateBean.getEmployApplyWorkflowId()));
+            return super.startProcess(String.valueOf(candidateBean.getEmployApplyWorkflowId()));
         }
     }
 
-    protected JsonStatus startProcessSelf(String id) {
+    /*protected JsonStatus startProcessSelf(String id) {
         JsonStatus jsonStatus = new JsonStatus();
 
         jsonStatus.setSuccess(true);
@@ -160,6 +160,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             Map varMap = new HashMap<>();
             //put orgName to variant
             varMap.put(Const.VAR_STARTER_ORG_Name, String.valueOf(bean.getOrgName()));
+            varMap.put(Const.VAR_TITLE, bean.getTitle());
             getVariantMap(varMap,bean);
 
             // 将人员类别varMap传递到工作流中去，用于控制流程的分支
@@ -187,7 +188,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             jsonStatus.setMsg("启动流程失败！");
         }
         return jsonStatus;
-    }
+    }*/
 
     public ICandidateBeanService getCandidateBeanService() {
         return candidateBeanService;
