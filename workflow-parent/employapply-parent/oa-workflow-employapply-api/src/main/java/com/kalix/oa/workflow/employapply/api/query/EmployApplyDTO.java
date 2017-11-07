@@ -35,6 +35,7 @@ public class EmployApplyDTO extends BaseDTO {
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date applyDate;   //申请日期
     private Long candidateId; // 应聘人员id
+    private String candidateName; // 应聘者姓名
 
     public Integer getPersonCategory() {
         return personCategory;
@@ -194,5 +195,13 @@ public class EmployApplyDTO extends BaseDTO {
 
     public void setCandidateId(Long candidateId) {
         this.candidateId = candidateId;
+    }
+
+    public String getCandidateName() {
+        return candidateName;
+    }
+
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
     }
 }

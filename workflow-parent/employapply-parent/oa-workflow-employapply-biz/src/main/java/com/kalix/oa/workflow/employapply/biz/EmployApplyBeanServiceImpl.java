@@ -106,7 +106,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
                 "b.status," +
                 "b.auditResult," +
                 "b.businessNo," +
-                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title " +
+                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title,a.xm as candidateName " +
                 "from oa_candidate a left join oa_workflow_employapply b " +
                 "on a.employApplyWorkflowId = b.id " +
                 "where (case a.personcategory when '1' then a.id in (select candidateid from oa_interview c where c.passfirst=true and c.passsecond=true) " +
