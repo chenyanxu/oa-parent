@@ -1,5 +1,6 @@
 package com.kalix.oa.workflow.employapply.api.query;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.framework.core.api.web.model.BaseDTO;
 import com.kalix.middleware.workflow.api.model.WorkflowStaus;
 
@@ -19,7 +20,6 @@ public class EmployApplyDTO extends BaseDTO {
     private String tel;//联系电话
     private String position;//应聘岗位
     private Long employApplyWorkflowId;//入职申请
-    private Date applyDate;
 
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
@@ -30,6 +30,11 @@ public class EmployApplyDTO extends BaseDTO {
     private String branchSchoolLeader;//分院领导审批
     private String schoolLeader;//校领导审批
     private String manpower;// 人力资源部长签字
+
+    private String title;     //流程名称
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date applyDate;   //申请日期
+    private Long candidateId; // 应聘人员id
 
     public Integer getPersonCategory() {
         return personCategory;
@@ -167,11 +172,27 @@ public class EmployApplyDTO extends BaseDTO {
         this.manpower = manpower;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public Date getApplyDate() {
         return applyDate;
     }
 
     public void setApplyDate(Date applyDate) {
         this.applyDate = applyDate;
+    }
+
+    public Long getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(Long candidateId) {
+        this.candidateId = candidateId;
     }
 }

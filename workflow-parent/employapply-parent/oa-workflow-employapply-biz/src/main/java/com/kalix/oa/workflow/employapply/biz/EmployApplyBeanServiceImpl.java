@@ -18,6 +18,7 @@ import com.kalix.oa.workflow.employapply.entities.EmployApplyBean;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         List<EmployApplyDTO> list = jsonData.getData();
         for (EmployApplyDTO obj : list) {
             if (obj.getStatus() == null) {
+                obj.setTitle("吉林动画学院入职申请表");
                 obj.setStatus(WorkflowStaus.INACTIVE);
                 obj.setAuditResult("流程尚未启动");
             }
@@ -104,7 +106,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
                 "b.status," +
                 "b.auditResult," +
                 "b.businessNo," +
-                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate " +
+                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title " +
                 "from oa_candidate a left join oa_workflow_employapply b " +
                 "on a.employApplyWorkflowId = b.id " +
                 "where (case a.personcategory when '1' then a.id in (select candidateid from oa_interview c where c.passfirst=true and c.passsecond=true) " +
@@ -126,6 +128,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             employApplyBean.setId(0);
             employApplyBean.setOrgId(candidateBean.getOrgId());
             employApplyBean.setOrgName(candidateBean.getOrgName());
+            employApplyBean.setTitle("吉林动画学院入职申请表");
 
             JsonStatus jsonStatus = this.saveEntity(employApplyBean);
 
@@ -168,6 +171,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             bean.setCurrentNode(task.getName());
             bean.setStatus(WorkflowStaus.ACTIVE);
             bean.setAuditResult("审批中...");
+            bean.setApplyDate(new Date());
             //创建流程业务编号
             String bizNo = createBusinessNo();
             bean.setBusinessNo(bizNo);
