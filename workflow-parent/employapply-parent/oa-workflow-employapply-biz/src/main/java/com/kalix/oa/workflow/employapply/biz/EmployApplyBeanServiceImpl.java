@@ -71,11 +71,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             jsonMap.remove("createById");
         }*/
 
-
         String posSql = " order by a.creationDate desc";
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
             sql = sql + " and a." + entry.getKey() + " like '%" + entry.getValue() + "%'";
         }
+
+        // 增加数据权限
+        sql = super.addDataAuthNativeSql(sql, "a", true);
 
         JsonData jsonData = dao.findByNativeSql(sql + posSql, page, limit, cls, null);
         List<EmployApplyDTO> list = jsonData.getData();
