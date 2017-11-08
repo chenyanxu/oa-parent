@@ -22,9 +22,9 @@
         </rest>
         <rest path="/employapplys/{id}" consumes="application/json;charset=utf-8"
               produces="application/json;charset=utf-8">
-            <get id="route-getEmployApply" outType="com.kalix.oa.workflow.employapply.entities.EmployApplyBean">
+            <get id="route-getEmployApply" outType="com.kalix.oa.workflow.employapply.api.query.EmployApplyDTO">
                 <description>Find employApply by id</description>
-                <to uri="bean:employApplyService?method=getEntity(${header.id})"/>
+                <to uri="bean:employApplyService?method=getDTOModel(${header.id})"/>
             </get>
             <put id="route-updateemployApply" type="com.kalix.oa.workflow.employapply.entities.EmployApplyBean"
                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
