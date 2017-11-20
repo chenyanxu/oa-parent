@@ -30,7 +30,6 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
     private ICandidateBeanService candidateBeanService;
 
 
-
     @Override
     public String getProcessKeyName() {
         return PROCESS_KEY_NAME;
@@ -38,6 +37,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
 
     /**
      * 通过招聘人员表与入职审批工作流表的关联，查询出招聘人员的人员类别，传递给工作流
+     *
      * @param map
      * @param bean
      * @return
@@ -45,8 +45,8 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
     @Override
     public Map getVariantMap(Map map, EmployApplyBean bean) {
         List<CandidateBean> candidateBeanList = candidateBeanService.getAllEntity();
-        for (CandidateBean c:candidateBeanList) {
-            if(c.getEmployApplyWorkflowId()!=null) {
+        for (CandidateBean c : candidateBeanList) {
+            if (c.getEmployApplyWorkflowId() != null) {
                 if (c.getEmployApplyWorkflowId() == bean.getId()) {
                     map.put("personCategory", c.getPersonCategory());
                     break;
@@ -71,11 +71,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             jsonMap.remove("createById");
         }*/
 
-
         String posSql = " order by a.creationDate desc";
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
             sql = sql + " and a." + entry.getKey() + " like '%" + entry.getValue() + "%'";
         }
+
+        // 增加数据权限
+        sql = super.addDataAuthNativeSql(sql, "a", true);
 
         JsonData jsonData = dao.findByNativeSql(sql + posSql, page, limit, cls, null);
         List<EmployApplyDTO> list = jsonData.getData();
@@ -89,12 +91,27 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         return jsonData;
     }
 
+    public EmployApplyDTO getDTOModel(Long id) {
+        EmployApplyDTO entity = new EmployApplyDTO();
+        String sql = "select a.id,a.personCategory,a.orgId,a.orgName,a.xm,a.sex,a.age,a.tel,a.position,a.orgId,a.orgName,a.createby,"
+                + "b.id as employApplyWorkflowId,b.processInstanceId,b.currentNode,b.status,b.auditResult,b.businessNo,"
+                + "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title,a.xm as candidateName "
+                + "from oa_candidate a, oa_workflow_employapply b "
+                + "where a.employapplyworkflowid = b.id and b.id = " + id;
+        List<EmployApplyDTO> list = dao.findByNativeSql(sql, entity.getClass(), null);
+        if (list != null && list.size() > 0) {
+            entity = list.get(0);
+        }
+        return entity;
+    }
+
     /**
      * 查询可以入职人员
      * 招聘人员表oa_candidate与入职工作流表employApplyWorkflowId关联查询
      * 当人员类别为1(行政和科研人员)时，那么需要初试面试和复试面试都通过
      * 当人员类别为2(专职教师)时，那么需要进行一次面试通过和试讲通过
      * 当人员类别为3(兼职教师)时，那么需要试讲通过
+     *
      * @return
      */
     @Override
@@ -106,7 +123,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
                 "b.status," +
                 "b.auditResult," +
                 "b.businessNo," +
-                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title " +
+                "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title,a.xm as candidateName " +
                 "from oa_candidate a left join oa_workflow_employapply b " +
                 "on a.employApplyWorkflowId = b.id " +
                 "where (case a.personcategory when '1' then a.id in (select candidateid from oa_interview c where c.passfirst=true and c.passsecond=true) " +
@@ -123,7 +140,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
     @Override
     public JsonStatus startProcess(String id) {
         CandidateBean candidateBean = candidateBeanService.getEntity(Long.parseLong(id));
-        if(candidateBean.getEmployApplyWorkflowId() == null || candidateBean.getEmployApplyWorkflowId() == 0){
+        if (candidateBean.getEmployApplyWorkflowId() == null || candidateBean.getEmployApplyWorkflowId() == 0) {
             EmployApplyBean employApplyBean = new EmployApplyBean();
             employApplyBean.setId(0);
             employApplyBean.setOrgId(candidateBean.getOrgId());
@@ -135,13 +152,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             candidateBean.setEmployApplyWorkflowId(Long.parseLong(jsonStatus.getTag()));
             candidateBeanService.updateEntity(candidateBean);
 
-            return startProcessSelf(jsonStatus.getTag());
-        }else{
-            return startProcessSelf(String.valueOf(candidateBean.getEmployApplyWorkflowId()));
+            return super.startProcess(jsonStatus.getTag());
+        } else {
+            return super.startProcess(String.valueOf(candidateBean.getEmployApplyWorkflowId()));
         }
     }
 
-    protected JsonStatus startProcessSelf(String id) {
+    /*protected JsonStatus startProcessSelf(String id) {
         JsonStatus jsonStatus = new JsonStatus();
 
         jsonStatus.setSuccess(true);
@@ -160,6 +177,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             Map varMap = new HashMap<>();
             //put orgName to variant
             varMap.put(Const.VAR_STARTER_ORG_Name, String.valueOf(bean.getOrgName()));
+            varMap.put(Const.VAR_TITLE, bean.getTitle());
             getVariantMap(varMap,bean);
 
             // 将人员类别varMap传递到工作流中去，用于控制流程的分支
@@ -187,7 +205,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             jsonStatus.setMsg("启动流程失败！");
         }
         return jsonStatus;
-    }
+    }*/
 
     public ICandidateBeanService getCandidateBeanService() {
         return candidateBeanService;
