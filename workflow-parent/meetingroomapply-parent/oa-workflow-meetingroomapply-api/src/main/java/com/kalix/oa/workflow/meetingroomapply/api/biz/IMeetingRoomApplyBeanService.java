@@ -11,7 +11,7 @@ import java.util.Date;
  * @author sunlf
  */
 public interface IMeetingRoomApplyBeanService extends IWorkflowBizService<MeetingRoomApplyBean> {
-    final String PROCESS_KEY_NAME="meetingapply";
+    final String PROCESS_KEY_NAME = "meetingroomapply";
 
     JsonStatus checkDateTime(String jsonStr);
 
