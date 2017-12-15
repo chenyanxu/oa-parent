@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.kalix.oa.workflow</groupId>
+        <artifactId>workflow-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kalix.oa.workflow.redheadapply</groupId>
+    <artifactId>redheadapply-parent</artifactId>
+    <name>Kalix OA Workflow RedHead Apply Parent</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>oa-workflow-redheadapply-entities</module>
+        <module>oa-workflow-redheadapply-api</module>
+        <module>oa-workflow-redheadapply-dao</module>
+        <module>oa-workflow-redheadapply-biz</module>
+        <module>oa-workflow-redheadapply-rest</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kalix.oa.workflow.redheadapply</groupId>
+                <artifactId>oa-workflow-redheadapply-entities</artifactId>
+                <version>${project.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.oa.workflow.redheadapply</groupId>
+                <artifactId>oa-workflow-redheadapply-api</artifactId>
+                <version>${project.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.middleware.statemachine</groupId>
+                <artifactId>middleware-statemachine-api</artifactId>
+                <version>${project.oa.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

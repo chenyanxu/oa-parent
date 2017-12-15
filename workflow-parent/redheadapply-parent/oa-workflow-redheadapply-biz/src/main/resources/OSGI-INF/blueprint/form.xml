@@ -1,0 +1,12 @@
+<blueprint
+        default-activation="eager"
+        xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <!-- 红头文件申请审批页面-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.redheadapply.biz.form.RedHeadApplyAuditFormImpl"/>
+    </service>
+    <!-- 红头文件申请业务数据表单-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.redheadapply.biz.form.RedHeadApplyBizDataFormImpl"/>
+    </service>
+</blueprint>

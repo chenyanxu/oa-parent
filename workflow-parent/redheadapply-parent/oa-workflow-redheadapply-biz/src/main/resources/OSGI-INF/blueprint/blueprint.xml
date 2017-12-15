@@ -1,0 +1,31 @@
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           default-activation="eager"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
+
+    <reference id="shiroService" interface="com.kalix.framework.core.api.security.IShiroService"/>
+    <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="statemachineService" interface="com.kalix.middleware.statemachine.api.biz.IStatemachineService"/>
+
+    <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
+
+    <bean id="redheadApplyBeanService" class="com.kalix.oa.workflow.redheadapply.biz.RedheadApplyBeanServiceImpl">
+        <!--<tx:transaction method="*" value="Required"/>-->
+        <property name="dao" ref="redheadApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="statemachineService" ref="statemachineService"/>
+    </bean>
+    <service interface="com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService"
+             ref="redheadApplyBeanService"/>
+
+</blueprint>
+

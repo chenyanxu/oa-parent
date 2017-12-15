@@ -22,6 +22,7 @@
         <module>evectionapply-parent</module>
         <module>reimbursementapply-parent</module>
         <module>tempapply-parent</module>
+        <module>redheadapply-parent</module>
     </modules>
 
     <dependencyManagement>
