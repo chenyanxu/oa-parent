@@ -11,6 +11,9 @@
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="statemachineService" interface="com.kalix.middleware.statemachine.api.biz.IStatemachineService"/>
+    <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
+    <reference id="documentConfigBeanDao"
+               interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
 
     <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
 
@@ -23,9 +26,17 @@
         <property name="taskService" ref="taskService"/>
         <property name="repositoryService" ref="repositoryService"/>
         <property name="statemachineService" ref="statemachineService"/>
+        <property name="documentBeanDao" ref="documentBeanDao"/>
+        <property name="documentConfigBeanDao" ref="documentConfigBeanDao"/>
     </bean>
     <service interface="com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService"
              ref="redheadApplyBeanService"/>
+
+    <service id="documentBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService"
+             ref="beanServiceImpl"/>
+    <bean id="beanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentBeanServiceImpl">
+        <property name="dao" ref="documentBeanDao"/>
+    </bean>
 
 </blueprint>
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    文号状态机
+-->
+<FSM>
+    <STATE id="初始状态" type="ID">
+        <MESSAGE id="使用" nextState="使用中"/>
+    </STATE>
+    <STATE id="使用中">
+        <MESSAGE id="撤回" nextState="已撤回"/>
+        <MESSAGE id="废除" nextState="已废除"/>
+    </STATE>
+    <STATE id="已撤回">
+        <MESSAGE id="回收" nextState="已回收"/>
+    </STATE>
+    <STATE id="已废除">
+    </STATE>
+    <STATE id="已回收">
+    </STATE>
+</FSM>

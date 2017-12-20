@@ -4,8 +4,8 @@ package com.kalix.oa.workflow.redheadapply.biz.form;
 import com.kalix.middleware.workflow.biz.AbstractBizDataFormHandler;
 
 /**
- * @author chenyanxu
- *         红头文件申请业务数据表单
+ * @author sunlf
+ * 红头文件申请业务数据表单
  */
 public class RedHeadApplyBizDataFormImpl extends AbstractBizDataFormHandler {
     @Override

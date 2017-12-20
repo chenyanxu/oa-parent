@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-workflow-redheadapply-biz</artifactId>
-    <name>Kalix OA Workflow Red Head Apply Biz</name>
+    <name>Kalix OA Workflow RedHead Apply Biz</name>
     <packaging>bundle</packaging>
 
     <properties>

@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-workflow-redheadapply-dao</artifactId>
-    <name>Kalix OA Workflow Red Head Apply DAO</name>
+    <name>Kalix OA Workflow RedHead Apply DAO</name>
     <packaging>bundle</packaging>
 
     <properties>

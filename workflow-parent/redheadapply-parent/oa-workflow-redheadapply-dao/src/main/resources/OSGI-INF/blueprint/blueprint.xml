@@ -6,10 +6,23 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     <jpa:enable/>
     <tx:enable-annotations/>
-    <!--用车申请-->
+
+    <!--红头文件申请-->
     <bean id="redheadApplyBeanDaoImpl" class="com.kalix.oa.workflow.redheadapply.dao.RedheadApplyBeanDaoImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao" ref="redheadApplyBeanDaoImpl"/>
+    <!--文号使用历史-->
+    <bean id="documentBeanDaoImpl" class="com.kalix.oa.workflow.redheadapply.dao.DocumentBeanDaoImpl">
+        <!--<tx:transaction method="*" value="Required"/>-->
+    </bean>
+    <service interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao" ref="documentBeanDaoImpl"/>
+
+    <!--文号配置-->
+    <bean id="documentConfigBeanDaoImpl" class="com.kalix.oa.workflow.redheadapply.dao.DocumentConfigBeanDaoImpl">
+        <!--<tx:transaction method="*" value="Required"/>-->
+    </bean>
+    <service interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"
+             ref="documentConfigBeanDaoImpl"/>
 </blueprint>
 

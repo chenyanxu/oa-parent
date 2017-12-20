@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
-             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
-             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema"
-             expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/redhead">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/redhead">
     <process id="redheadApply" name="红头文件申请流程" isExecutable="true">
         <documentation>红头文件申请流程</documentation>
         <startEvent id="startevent1" name="Start"></startEvent>
         <userTask id="departmentHead" name="部门领导审批"></userTask>
-        <userTask id="schoolLeader" name="校领导审批"></userTask>
-        <userTask id="chairmanUser" name="董事长审批"></userTask>
+        <userTask id="schoolLeader" name="校务部审批"></userTask>
+        <userTask id="chairmanUser" name="校领导审批"></userTask>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow11" sourceRef="departmentHead" targetRef="exclusivegateway1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow17" sourceRef="chairmanUser" targetRef="exclusivegateway3"></sequenceFlow>
-        <userTask id="usertask7" name="校务部文秘综合"></userTask>
+        <userTask id="usertask7" name="董事长审批"></userTask>
         <endEvent id="endevent1" name="End"></endEvent>
         <sequenceFlow id="flow20" name="同意" sourceRef="exclusivegateway3" targetRef="usertask7"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
@@ -35,6 +34,7 @@
         <sequenceFlow id="flow35" name="同意" sourceRef="exclusivegateway1" targetRef="schoolLeader"></sequenceFlow>
         <sequenceFlow id="flow36" sourceRef="schoolLeader" targetRef="exclusivegateway4"></sequenceFlow>
         <sequenceFlow id="flow37" name="同意" sourceRef="exclusivegateway4" targetRef="chairmanUser"></sequenceFlow>
+        <sequenceFlow id="flow38" sourceRef="exclusivegateway5" targetRef="modify"></sequenceFlow>
     </process>
     <bpmndi:BPMNDiagram id="BPMNDiagram_redheadApply">
         <bpmndi:BPMNPlane bpmnElement="redheadApply" id="BPMNPlane_redheadApply">
@@ -112,7 +112,7 @@
                 <omgdi:waypoint x="956.0" y="383.0"></omgdi:waypoint>
                 <omgdi:waypoint x="232.0" y="383.0"></omgdi:waypoint>
                 <bpmndi:BPMNLabel>
-                    <omgdc:Bounds height="14.0" width="24.0" x="578.0" y="385.0"></omgdc:Bounds>
+                    <omgdc:Bounds height="14.0" width="24.0" x="758.0" y="389.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
@@ -163,6 +163,11 @@
                 <bpmndi:BPMNLabel>
                     <omgdc:Bounds height="14.0" width="100.0" x="709.0" y="226.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow38" id="BPMNEdge_flow38">
+                <omgdi:waypoint x="1207.0" y="263.0"></omgdi:waypoint>
+                <omgdi:waypoint x="1206.0" y="383.0"></omgdi:waypoint>
+                <omgdi:waypoint x="232.0" y="383.0"></omgdi:waypoint>
             </bpmndi:BPMNEdge>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>

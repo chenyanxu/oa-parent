@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * @类描述：用车申请管理
+ * @类描述：红头文件申请管理
  * @创建人： sunlf
  * @创建时间：2016/2/24
  * @修改人：
@@ -21,74 +21,114 @@ import java.util.Date;
 @Table(name = "oa_workflow_redheadapply")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class RedheadApplyBean extends WorkflowEntity {
-    private String reason;//用车事由
-    private Integer usageCount; //乘车人数
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date beginDate;//用车时段,开始时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date endDate;//用车时段，结束时间
-    private String address;//用车起始地点
-    private boolean city;//是否市内用车
-    private String operatorPhone;//申请人联系电话
+    private Date docDate;//发文时间
+    private String docDept; //发文部门
+    private String docType; //发文类型，多种类型，数据字典中配置
+    //    private String title; //文题，使用父类的title字段
+    private String docUrl;//发文地址，需要在审批通过后填写
+    private String docContent;//文档内容
+    private String docStatus; //文档状态，需要状态机统一进行控制
+    //    private String docNumber; //发文编号，使用父类的businessNo字段
+//    private String editor; //拟稿人 使用父类的createBy字段
+//    private String editorDept; //拟稿部门  使用父类的orgName字段
+    private String printer; //打印人
+    private String checker; //校对
+    private Integer page; //页数
+    private Integer number; //份数
+    private String other; //抄送
     private String depUser;//申请部门负责人签字
-    private String managerUser;//副校级领导审核
     private String schoolUser;//校务部签字
-    private String schoolManagerUser;//校务部主管领导审批（市外）
+    private String managerUser;//校级领导
+    private String charimanUser;//董事长审核
 
-    public String getReason() {
-        return reason;
+    public Date getDocDate() {
+        return docDate;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setDocDate(Date docDate) {
+        this.docDate = docDate;
     }
 
-    public Integer getUsageCount() {
-        return usageCount;
+    public String getDocDept() {
+        return docDept;
     }
 
-    public void setUsageCount(Integer usageCount) {
-        this.usageCount = usageCount;
+    public void setDocDept(String docDept) {
+        this.docDept = docDept;
     }
 
-    public Date getBeginDate() {
-        return beginDate;
+    public String getDocType() {
+        return docType;
     }
 
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
+    public void setDocType(String docType) {
+        this.docType = docType;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getDocUrl() {
+        return docUrl;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDocUrl(String docUrl) {
+        this.docUrl = docUrl;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDocContent() {
+        return docContent;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDocContent(String docContent) {
+        this.docContent = docContent;
     }
 
-    public boolean isCity() {
-        return city;
+    public String getDocStatus() {
+        return docStatus;
     }
 
-    public void setCity(boolean city) {
-        this.city = city;
+    public void setDocStatus(String docStatus) {
+        this.docStatus = docStatus;
     }
 
-    public String getOperatorPhone() {
-        return operatorPhone;
+    public String getPrinter() {
+        return printer;
     }
 
-    public void setOperatorPhone(String operatorPhone) {
-        this.operatorPhone = operatorPhone;
+    public void setPrinter(String printer) {
+        this.printer = printer;
+    }
+
+    public String getChecker() {
+        return checker;
+    }
+
+    public void setChecker(String checker) {
+        this.checker = checker;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
     }
 
     public String getDepUser() {
@@ -99,14 +139,6 @@ public class RedheadApplyBean extends WorkflowEntity {
         this.depUser = depUser;
     }
 
-    public String getManagerUser() {
-        return managerUser;
-    }
-
-    public void setManagerUser(String managerUser) {
-        this.managerUser = managerUser;
-    }
-
     public String getSchoolUser() {
         return schoolUser;
     }
@@ -115,11 +147,19 @@ public class RedheadApplyBean extends WorkflowEntity {
         this.schoolUser = schoolUser;
     }
 
-    public String getSchoolManagerUser() {
-        return schoolManagerUser;
+    public String getManagerUser() {
+        return managerUser;
     }
 
-    public void setSchoolManagerUser(String schoolManagerUser) {
-        this.schoolManagerUser = schoolManagerUser;
+    public void setManagerUser(String managerUser) {
+        this.managerUser = managerUser;
+    }
+
+    public String getCharimanUser() {
+        return charimanUser;
+    }
+
+    public void setCharimanUser(String charimanUser) {
+        this.charimanUser = charimanUser;
     }
 }

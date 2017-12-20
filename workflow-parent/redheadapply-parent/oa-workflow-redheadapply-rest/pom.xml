@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>oa-workflow-redheadapply-rest</artifactId>
-    <name>Kalix OA Workflow Red Head Apply REST</name>
+    <name>Kalix OA Workflow RedHead Apply REST</name>
     <packaging>bundle</packaging>
 
     <properties>
