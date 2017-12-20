@@ -1,5 +1,6 @@
 package com.kalix.oa.workflow.redheadapply.biz;
 
+import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.middleware.statemachine.api.biz.IStatemachineService;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService;
@@ -8,6 +9,7 @@ import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao;
 import com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao;
 import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -36,7 +38,40 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
      */
     @Override
     public synchronized String createBusinessNo(RedheadApplyBean bean) {
-        return null;
+        return super.createBusinessNo(bean);
+    }
+
+    @Override
+    public void beforeSaveEntity(RedheadApplyBean entity, JsonStatus status) {
+        if (entity.getId() > 0) {
+//            update
+        } else {
+//            add
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+            statemachineService.initFSM(is, "新建");
+            entity.setDocStatus(statemachineService.getCurrentState());
+        }
+        super.beforeSaveEntity(entity, status);
+    }
+
+    @Override
+    public void afterFinishProcess(RedheadApplyBean bean, String result) {
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+        statemachineService.initFSM(is, bean.getDocStatus());
+        if (result.equals("同意")) {
+            statemachineService.processFSM("通过");
+        } else if (result.equals("撤回")) {
+            statemachineService.processFSM("撤回");
+        }
+        bean.setDocStatus(statemachineService.getCurrentState());
+    }
+
+    @Override
+    public void beforeStartProcess(RedheadApplyBean bean) {
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+        statemachineService.initFSM(is, bean.getDocStatus());
+        statemachineService.processFSM("审批");
+        bean.setDocStatus(statemachineService.getCurrentState());
     }
 
     @Override
@@ -68,4 +103,6 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     public void setDocumentConfigBeanDao(IDocumentConfigBeanDao documentConfigBeanDao) {
         this.documentConfigBeanDao = documentConfigBeanDao;
     }
+
+
 }

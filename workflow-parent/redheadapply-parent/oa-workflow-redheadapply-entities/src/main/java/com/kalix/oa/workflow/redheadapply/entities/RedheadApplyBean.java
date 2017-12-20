@@ -25,7 +25,7 @@ public class RedheadApplyBean extends WorkflowEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date docDate;//发文时间
     private String docDept; //发文部门
-    private String docType; //发文类型，多种类型，数据字典中配置
+    private Integer docType; //发文类型，多种类型，数据字典中配置
     //    private String title; //文题，使用父类的title字段
     private String docUrl;//发文地址，需要在审批通过后填写
     private String docContent;//文档内容
@@ -38,10 +38,10 @@ public class RedheadApplyBean extends WorkflowEntity {
     private Integer page; //页数
     private Integer number; //份数
     private String other; //抄送
-    private String depUser;//申请部门负责人签字
+    private String depUser;//部门领导签字
     private String schoolUser;//校务部签字
-    private String managerUser;//校级领导
-    private String charimanUser;//董事长审核
+    private String managerUser;//校领导签字
+    private String chairmanUser;//董事长审核
 
     public Date getDocDate() {
         return docDate;
@@ -59,11 +59,11 @@ public class RedheadApplyBean extends WorkflowEntity {
         this.docDept = docDept;
     }
 
-    public String getDocType() {
+    public Integer getDocType() {
         return docType;
     }
 
-    public void setDocType(String docType) {
+    public void setDocType(Integer docType) {
         this.docType = docType;
     }
 
@@ -155,11 +155,13 @@ public class RedheadApplyBean extends WorkflowEntity {
         this.managerUser = managerUser;
     }
 
-    public String getCharimanUser() {
-        return charimanUser;
+    public String getChairmanUser() {
+        return chairmanUser;
     }
 
-    public void setCharimanUser(String charimanUser) {
-        this.charimanUser = charimanUser;
+    public void setChairmanUser(String chairmanUser) {
+        this.chairmanUser = chairmanUser;
     }
 }
+
+

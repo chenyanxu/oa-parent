@@ -31,6 +31,7 @@ public class DocumentBean extends PersistentEntity {
     private String docUrl;//发文地址，需要在审批通过后填写
     private String docContent;//文档内容
     private String status; //文号状态，需要状态机统一进行控制
+    private Long redheadId; //红头文件id
 
     public Date getDocDate() {
         return docDate;
@@ -94,5 +95,13 @@ public class DocumentBean extends PersistentEntity {
 
     public void setBusinessNo(String businessNo) {
         this.businessNo = businessNo;
+    }
+
+    public Long getRedheadId() {
+        return redheadId;
+    }
+
+    public void setRedheadId(Long redheadId) {
+        this.redheadId = redheadId;
     }
 }

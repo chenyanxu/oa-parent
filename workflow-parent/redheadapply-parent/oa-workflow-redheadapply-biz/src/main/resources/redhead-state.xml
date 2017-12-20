@@ -3,7 +3,7 @@
     红头文件状态机
 -->
 <FSM>
-    <STATE id="初始状态" type="ID">
+    <STATE id="新建" type="ID">
         <MESSAGE id="审批" nextState="审批中"/>
     </STATE>
     <STATE id="审批中">

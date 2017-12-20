@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
-             targetNamespace="http://www.activiti.org/redhead">
-    <process id="redheadApply" name="红头文件申请流程" isExecutable="true">
+             targetNamespace="http://www.activiti.org/admin">
+    <process id="redheadapply" name="红头文件申请流程" isExecutable="true">
         <documentation>红头文件申请流程</documentation>
-        <startEvent id="startevent1" name="Start"></startEvent>
-        <userTask id="departmentHead" name="部门领导审批"></userTask>
-        <userTask id="schoolLeader" name="校务部审批"></userTask>
-        <userTask id="chairmanUser" name="校领导审批"></userTask>
+        <extensionElements>
+            <activiti:eventListener events="TASK_ASSIGNED" entityType="task"
+                                    class="com.kalix.middleware.workflow.engine.listener.MessageEventListener"></activiti:eventListener>
+        </extensionElements>
+        <startEvent id="startevent1" name="Start" activiti:formKey="start.form"
+                    activiti:initiator="startUserId"></startEvent>
+        <userTask id="depUser" name="上级领导审批" activiti:formKey="audit.form">
+            <documentation>上级领导审核</documentation>
+            <extensionElements>
+                <activiti:taskListener event="create"
+                                       class="com.kalix.middleware.workflow.engine.listener.LeaderListener"></activiti:taskListener>
+            </extensionElements>
+        </userTask>
+        <userTask id="schoolUser" name="校务部审批" activiti:candidateGroups="校务部" activiti:formKey="audit.form">
+            <documentation>校务部审批</documentation>
+        </userTask>
+        <userTask id="managerUser" name="校领导审批" activiti:candidateGroups="校领导" activiti:formKey="audit.form">
+            <documentation>校领导审批</documentation>
+        </userTask>
+        <userTask id="chairmanUser" name="董事长审批" activiti:candidateGroups="董事长" activiti:formKey="audit.form">
+            <documentation>董事长审批</documentation>
+        </userTask>
+        <userTask id="modify" name="部门拟稿修改" activiti:assignee="${startUserId}" activiti:formKey="modify.form">
+            <documentation>部门拟稿修改</documentation>
+        </userTask>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow11" sourceRef="departmentHead" targetRef="exclusivegateway1"></sequenceFlow>
+        <sequenceFlow id="flow11" sourceRef="depUser" targetRef="exclusivegateway1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow17" sourceRef="chairmanUser" targetRef="exclusivegateway3"></sequenceFlow>
-        <userTask id="usertask7" name="董事长审批"></userTask>
+        <sequenceFlow id="flow17" sourceRef="managerUser" targetRef="exclusivegateway3"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
-        <sequenceFlow id="flow20" name="同意" sourceRef="exclusivegateway3" targetRef="usertask7"></sequenceFlow>
+        <sequenceFlow id="flow20" name="同意" sourceRef="exclusivegateway3" targetRef="chairmanUser"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow24" sourceRef="startevent1" targetRef="departmentHead"></sequenceFlow>
-        <userTask id="modify" name="部门拟稿修改"></userTask>
-        <sequenceFlow id="flow25" sourceRef="modify" targetRef="departmentHead"></sequenceFlow>
+        <sequenceFlow id="flow24" sourceRef="startevent1" targetRef="depUser"></sequenceFlow>
+        <sequenceFlow id="flow25" sourceRef="modify" targetRef="depUser"></sequenceFlow>
         <sequenceFlow id="flow26" sourceRef="exclusivegateway1" targetRef="modify"></sequenceFlow>
         <sequenceFlow id="flow27" sourceRef="exclusivegateway4" targetRef="modify"></sequenceFlow>
         <sequenceFlow id="flow28" name="修改" sourceRef="exclusivegateway3" targetRef="modify"></sequenceFlow>
@@ -28,12 +48,14 @@
         <sequenceFlow id="flow30" sourceRef="exclusivegateway4" targetRef="endevent2"></sequenceFlow>
         <sequenceFlow id="flow31" name="撤回" sourceRef="exclusivegateway1" targetRef="endevent2"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway5" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow32" sourceRef="usertask7" targetRef="exclusivegateway5"></sequenceFlow>
+        <sequenceFlow id="flow32" sourceRef="chairmanUser" targetRef="exclusivegateway5"></sequenceFlow>
         <sequenceFlow id="flow33" sourceRef="exclusivegateway5" targetRef="endevent2"></sequenceFlow>
         <sequenceFlow id="flow34" sourceRef="exclusivegateway5" targetRef="endevent1"></sequenceFlow>
-        <sequenceFlow id="flow35" name="同意" sourceRef="exclusivegateway1" targetRef="schoolLeader"></sequenceFlow>
-        <sequenceFlow id="flow36" sourceRef="schoolLeader" targetRef="exclusivegateway4"></sequenceFlow>
-        <sequenceFlow id="flow37" name="同意" sourceRef="exclusivegateway4" targetRef="chairmanUser"></sequenceFlow>
+        <sequenceFlow id="flow35" name="同意" sourceRef="exclusivegateway1" targetRef="schoolUser">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow36" sourceRef="schoolUser" targetRef="exclusivegateway4"></sequenceFlow>
+        <sequenceFlow id="flow37" name="同意" sourceRef="exclusivegateway4" targetRef="managerUser"></sequenceFlow>
         <sequenceFlow id="flow38" sourceRef="exclusivegateway5" targetRef="modify"></sequenceFlow>
     </process>
     <bpmndi:BPMNDiagram id="BPMNDiagram_redheadApply">
@@ -41,13 +63,13 @@
             <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
                 <omgdc:Bounds height="35.0" width="35.0" x="37.0" y="226.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="departmentHead" id="BPMNShape_departmentHead">
+            <bpmndi:BPMNShape bpmnElement="depUser" id="BPMNShape_depUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="127.0" y="216.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="schoolLeader" id="BPMNShape_schoolLeader">
+            <bpmndi:BPMNShape bpmnElement="schoolUser" id="BPMNShape_schoolUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="457.0" y="216.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="chairmanUser" id="BPMNShape_chairmanUser">
+            <bpmndi:BPMNShape bpmnElement="managerUser" id="BPMNShape_managerUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="777.0" y="216.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
@@ -56,7 +78,7 @@
             <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">
                 <omgdc:Bounds height="40.0" width="40.0" x="937.0" y="223.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="usertask7" id="BPMNShape_usertask7">
+            <bpmndi:BPMNShape bpmnElement="chairmanUser" id="BPMNShape_chairmanUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="1047.0" y="216.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
