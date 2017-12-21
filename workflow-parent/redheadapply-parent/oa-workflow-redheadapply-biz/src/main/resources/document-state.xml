@@ -3,7 +3,7 @@
     文号状态机
 -->
 <FSM>
-    <STATE id="初始状态" type="ID">
+    <STATE id="新建" type="ID">
         <MESSAGE id="使用" nextState="使用中"/>
     </STATE>
     <STATE id="使用中">
