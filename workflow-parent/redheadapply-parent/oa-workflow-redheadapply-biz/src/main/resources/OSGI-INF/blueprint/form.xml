@@ -5,8 +5,14 @@
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
         <bean class="com.kalix.oa.workflow.redheadapply.biz.form.RedHeadApplyAuditFormImpl"/>
     </service>
+
     <!-- 红头文件申请业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
         <bean class="com.kalix.oa.workflow.redheadapply.biz.form.RedHeadApplyBizDataFormImpl"/>
+    </service>
+
+    <!-- 红头文件申请修改业务数据表单-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.redheadapply.biz.form.ReadheadApplyModifyFormImpl"/>
     </service>
 </blueprint>

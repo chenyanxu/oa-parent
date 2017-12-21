@@ -9,6 +9,6 @@ import com.kalix.middleware.workflow.biz.AbstractAuditFormHandler;
 public class RedHeadApplyAuditFormImpl extends AbstractAuditFormHandler {
     @Override
     public String getFormClass() {
-        return "kalix.workflow.redheadapply.view.RedHeadApplyViewForm";
+        return "kalix.workflow.redheadapply.view.RedheadApplyViewForm";
     }
 }
