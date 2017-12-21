@@ -25,6 +25,7 @@ public class RedheadApplyBean extends WorkflowEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date docDate;//发文时间
     private String docDept; //发文部门
+    private String docCategory; // 文件分类，对内或对外
     private Integer docType; //发文类型，多种类型，数据字典中配置
     //    private String title; //文题，使用父类的title字段
     private String docUrl;//发文地址，需要在审批通过后填写
@@ -161,6 +162,14 @@ public class RedheadApplyBean extends WorkflowEntity {
 
     public void setChairmanUser(String chairmanUser) {
         this.chairmanUser = chairmanUser;
+    }
+
+    public String getDocCategory() {
+        return docCategory;
+    }
+
+    public void setDocCategory(String docCategory) {
+        this.docCategory = docCategory;
     }
 }
 

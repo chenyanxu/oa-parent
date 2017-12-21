@@ -38,6 +38,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
      */
     @Override
     public synchronized String createBusinessNo(RedheadApplyBean bean) {
+        if (bean.getDocCategory().equals("对内")) { // 吉动X字〔2017〕X号
+
+        } else if (bean.getDocCategory().equals("对外")) { //吉动院字〔2017〕X号
+
+        }
         return super.createBusinessNo(bean);
     }
 
