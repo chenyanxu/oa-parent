@@ -8,8 +8,6 @@ import com.kalix.oa.system.dict.entities.OADictBean;
 import com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService;
 import com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService;
 import com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService;
-import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao;
-import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao;
 import com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentConfigBean;
@@ -24,8 +22,6 @@ import java.util.Map;
  */
 public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IRedheadApplyBeanDao, RedheadApplyBean> implements IRedheadApplyBeanService {
     private IStatemachineService statemachineService;
-    private IDocumentBeanDao documentBeanDao;
-    private IDocumentConfigBeanDao documentConfigBeanDao;
     private IDocumentBeanService documentBeanService;
     private IDocumentConfigBeanService documentConfigBeanService;
     private IOADictBeanService oaDictBeanService;
@@ -59,23 +55,24 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         Calendar c = Calendar.getInstance();
         String year = String.valueOf(c.get(Calendar.YEAR));
         //获取最小文号发文信息
-        DocumentBean documentBean = documentBeanDao.getMinEntity(bean.getDocType(), year, "已撤回");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
+        statemachineService.initFSM(is, "已撤回");
+        DocumentBean documentBean = documentBeanService.getMinEntity(bean.getDocType(), year, statemachineService.getCurrentState());
         //存在记录，使用最小文号(状态为已回收)
         if (documentBean != null) {
-
             businessNo = documentBean.getBusinessNo();
             //修改记录状态
-            documentBean.setStatus("已回收");
+            statemachineService.processFSM("回收");
+            documentBean.setStatus(statemachineService.getCurrentState());
             documentBeanService.updateEntity(documentBean);
-        } else {
-            //不存在记录,使用配置表文号(取号码)
+        } else { //不存在记录,使用配置表文号(取号码)
             Integer num = 1;
-            DocumentConfigBean documentConfigBean = documentConfigBeanDao.getEntity(bean.getDocType(), year);
+            DocumentConfigBean documentConfigBean = documentConfigBeanService.getEntity(bean.getDocType(), year);
             if (documentConfigBean != null) {
                 //存在配置信息,取号码
                 num = documentConfigBean.getNumber();
                 //修改配置信息
-                documentConfigBeanDao.updateNumber(documentConfigBean.getId(), (num + 1));
+                documentConfigBeanService.updateNumber(documentConfigBean.getId(), (num + 1));
             } else {
                 //不存在配置信息,生成并保存配置信息
                 documentConfigBean = new DocumentConfigBean();
@@ -86,7 +83,22 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             }
             //生成文号【吉动X字〔2017〕X号】【吉动院字〔2017〕X号】
             OADictBean oaDictBean = oaDictBeanService.getByTypeAndValue("文号类型", bean.getDocType());
-            businessNo = oaDictBean.getLabel() + "[" + year + "]" + num + "号";
+            businessNo = oaDictBean.getLabel() + "[" + year + "]" + num.toString() + "号";
+            //保存发文信息
+            documentBean = new DocumentBean();
+            documentBean.setRedheadId(bean.getId());
+            documentBean.setDocDate(bean.getDocDate());
+            documentBean.setDocDept(bean.getDocDept());
+            documentBean.setDocType(bean.getDocType());
+            documentBean.setTitle(bean.getTitle());
+            documentBean.setYear(year);
+            documentBean.setNumber(num);
+            documentBean.setBusinessNo(businessNo);
+            documentBean.setDocUrl(bean.getDocUrl());
+            documentBean.setDocContent(bean.getDocContent());
+            statemachineService.initFSM(is, "新建");
+            statemachineService.processFSM("使用");
+            documentBean.setStatus(statemachineService.getCurrentState());
         }
 
         return businessNo;
@@ -145,14 +157,6 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     public void setStatemachineService(IStatemachineService statemachineService) {
         this.statemachineService = statemachineService;
-    }
-
-    public void setDocumentBeanDao(IDocumentBeanDao documentBeanDao) {
-        this.documentBeanDao = documentBeanDao;
-    }
-
-    public void setDocumentConfigBeanDao(IDocumentConfigBeanDao documentConfigBeanDao) {
-        this.documentConfigBeanDao = documentConfigBeanDao;
     }
 
     public void setDocumentBeanService(IDocumentBeanService documentBeanService) {

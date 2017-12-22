@@ -11,13 +11,10 @@
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="statemachineService" interface="com.kalix.middleware.statemachine.api.biz.IStatemachineService"/>
-    <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
-    <reference id="documentConfigBeanDao"
-               interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
     <reference id="oaDictBeanService" interface="com.kalix.oa.system.dict.api.biz.IOADictBeanService"/>
-
+    <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
+    <reference id="documentConfigBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
     <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
-    <!--<reference id="documentConfigBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"/>-->
 
     <bean id="redheadApplyBeanService" class="com.kalix.oa.workflow.redheadapply.biz.RedheadApplyBeanServiceImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
@@ -28,19 +25,18 @@
         <property name="taskService" ref="taskService"/>
         <property name="repositoryService" ref="repositoryService"/>
         <property name="statemachineService" ref="statemachineService"/>
-        <property name="documentBeanDao" ref="documentBeanDao"/>
-        <property name="documentConfigBeanDao" ref="documentConfigBeanDao"/>
+        <property name="documentBeanService" ref="documentBeanServiceImpl"/>
         <property name="documentConfigBeanService" ref="documentConfigBeanServiceImpl"/>
         <property name="oaDictBeanService" ref="oaDictBeanService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService"
              ref="redheadApplyBeanService"/>
 
-    <service id="documentBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService"
-             ref="beanServiceImpl"/>
-    <bean id="beanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentBeanServiceImpl">
+    <bean id="documentBeanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentBeanServiceImpl">
         <property name="dao" ref="documentBeanDao"/>
     </bean>
+    <service id="documentBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService"
+             ref="beanServiceImpl"/>
 
     <bean id="documentConfigBeanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentConfigBeanServiceImpl">
         <property name="dao" ref="documentConfigBeanDao"/>

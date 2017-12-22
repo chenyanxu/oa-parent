@@ -11,4 +11,8 @@ import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
  */
 public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumentBeanDao, DocumentBean> implements IDocumentBeanService {
 
+    @Override
+    public DocumentBean getMinEntity(Integer docType, String year, String status) {
+        return this.dao.getMinEntity(docType, year, status);
+    }
 }

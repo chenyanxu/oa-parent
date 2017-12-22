@@ -10,4 +10,13 @@ import com.kalix.oa.workflow.redheadapply.entities.DocumentConfigBean;
  */
 public class DocumentConfigBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumentConfigBeanDao, DocumentConfigBean> implements IDocumentConfigBeanService {
 
+    @Override
+    public DocumentConfigBean getEntity(Integer docType, String year) {
+        return this.dao.getEntity(docType, year);
+    }
+
+    @Override
+    public Integer updateNumber(Long id, Integer number) {
+        return this.dao.updateNumber(id, number);
+    }
 }
