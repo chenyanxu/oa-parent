@@ -96,9 +96,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             documentBean.setBusinessNo(businessNo);
             documentBean.setDocUrl(bean.getDocUrl());
             documentBean.setDocContent(bean.getDocContent());
+            is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
             statemachineService.initFSM(is, "新建");
             statemachineService.processFSM("使用");
             documentBean.setStatus(statemachineService.getCurrentState());
+            documentBeanService.saveEntity(documentBean);
         }
 
         return businessNo;
