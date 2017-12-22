@@ -14,7 +14,6 @@ import com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentConfigBean;
 import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
-import org.apache.commons.lang.StringUtils;
 
 import java.io.InputStream;
 import java.util.Calendar;
@@ -58,11 +57,12 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         String businessNo = "";
         //获取年份信息
         Calendar c = Calendar.getInstance();
-        String y = String.valueOf(c.get(Calendar.YEAR));
+        String year = String.valueOf(c.get(Calendar.YEAR));
         //获取最小文号发文信息
-        DocumentBean documentBean = documentBeanDao.getMinEntity(bean.getDocType(), y, "已撤回");
+        DocumentBean documentBean = documentBeanDao.getMinEntity(bean.getDocType(), year, "已撤回");
+        //存在记录，使用最小文号(状态为已回收)
         if (documentBean != null) {
-            //存在记录，使用最小文号
+
             businessNo = documentBean.getBusinessNo();
             //修改记录状态
             documentBean.setStatus("已回收");
@@ -70,7 +70,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         } else {
             //不存在记录,使用配置表文号(取号码)
             Integer num = 1;
-            DocumentConfigBean documentConfigBean = documentConfigBeanDao.getEntity(bean.getDocType(), y);
+            DocumentConfigBean documentConfigBean = documentConfigBeanDao.getEntity(bean.getDocType(), year);
             if (documentConfigBean != null) {
                 //存在配置信息,取号码
                 num = documentConfigBean.getNumber();
@@ -80,14 +80,15 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                 //不存在配置信息,生成并保存配置信息
                 documentConfigBean = new DocumentConfigBean();
                 documentConfigBean.setDocType(bean.getDocType());
-                documentConfigBean.setYear(y);
-                documentConfigBean.setNumber(num + 1);
+                documentConfigBean.setYear(year);
+                documentConfigBean.setNumber(num.intValue() + 1);
                 documentConfigBeanService.saveEntity(documentConfigBean);
             }
             //生成文号【吉动X字〔2017〕X号】【吉动院字〔2017〕X号】
             OADictBean oaDictBean = oaDictBeanService.getByTypeAndValue("文号类型", bean.getDocType());
-            businessNo = oaDictBean.getLabel() + "[" + y + "]" + num + "号";
+            businessNo = oaDictBean.getLabel() + "[" + year + "]" + num + "号";
         }
+
         return businessNo;
     }
 

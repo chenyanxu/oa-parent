@@ -14,8 +14,10 @@
     <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
     <reference id="documentConfigBeanDao"
                interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
+    <reference id="oaDictBeanService" interface="com.kalix.oa.system.dict.api.biz.IOADictBeanService"/>
 
     <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
+    <!--<reference id="documentConfigBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"/>-->
 
     <bean id="redheadApplyBeanService" class="com.kalix.oa.workflow.redheadapply.biz.RedheadApplyBeanServiceImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
@@ -28,6 +30,8 @@
         <property name="statemachineService" ref="statemachineService"/>
         <property name="documentBeanDao" ref="documentBeanDao"/>
         <property name="documentConfigBeanDao" ref="documentConfigBeanDao"/>
+        <property name="documentConfigBeanService" ref="documentConfigBeanServiceImpl"/>
+        <property name="oaDictBeanService" ref="oaDictBeanService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService"
              ref="redheadApplyBeanService"/>

@@ -19,7 +19,7 @@ public class DocumentConfigBeanDaoImpl extends GenericDao<DocumentConfigBean, Lo
 
     @Override
     public DocumentConfigBean getEntity(Integer docType, String year) {
-        String hql = "select c from DocumentConfigBean c where c.docType = ?1 and d.year = ?2";
+        String hql = "select c from DocumentConfigBean c where c.docType = ?1 and c.year = ?2";
         return this.findUnique(hql, docType, year);
     }
 
