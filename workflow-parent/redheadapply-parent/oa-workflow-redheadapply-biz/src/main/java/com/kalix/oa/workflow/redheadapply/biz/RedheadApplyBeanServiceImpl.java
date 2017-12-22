@@ -3,13 +3,21 @@ package com.kalix.oa.workflow.redheadapply.biz;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.middleware.statemachine.api.biz.IStatemachineService;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
+import com.kalix.oa.system.dict.api.biz.IOADictBeanService;
+import com.kalix.oa.system.dict.entities.OADictBean;
+import com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService;
+import com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService;
 import com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService;
 import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao;
 import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao;
 import com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao;
+import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
+import com.kalix.oa.workflow.redheadapply.entities.DocumentConfigBean;
 import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Map;
 
 /**
@@ -19,6 +27,9 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     private IStatemachineService statemachineService;
     private IDocumentBeanDao documentBeanDao;
     private IDocumentConfigBeanDao documentConfigBeanDao;
+    private IDocumentBeanService documentBeanService;
+    private IDocumentConfigBeanService documentConfigBeanService;
+    private IOADictBeanService oaDictBeanService;
 
     /**
      * 创建流程业务编号-----文号
@@ -38,12 +49,46 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
      */
     @Override
     public synchronized String createBusinessNo(RedheadApplyBean bean) {
-        if (bean.getDocCategory().equals("对内")) { // 吉动X字〔2017〕X号
+        /*if (bean.getDocCategory().equals("对内")) { // 吉动X字〔2017〕X号
 
         } else if (bean.getDocCategory().equals("对外")) { //吉动院字〔2017〕X号
 
         }
-        return super.createBusinessNo(bean);
+        return super.createBusinessNo(bean);*/
+        String businessNo = "";
+        //获取年份信息
+        Calendar c = Calendar.getInstance();
+        String y = String.valueOf(c.get(Calendar.YEAR));
+        //获取最小文号发文信息
+        DocumentBean documentBean = documentBeanDao.getMinEntity(bean.getDocType(), y, "已撤回");
+        if (documentBean != null) {
+            //存在记录，使用最小文号
+            businessNo = documentBean.getBusinessNo();
+            //修改记录状态
+            documentBean.setStatus("已回收");
+            documentBeanService.updateEntity(documentBean);
+        } else {
+            //不存在记录,使用配置表文号(取号码)
+            Integer num = 1;
+            DocumentConfigBean documentConfigBean = documentConfigBeanDao.getEntity(bean.getDocType(), y);
+            if (documentConfigBean != null) {
+                //存在配置信息,取号码
+                num = documentConfigBean.getNumber();
+                //修改配置信息
+                documentConfigBeanDao.updateNumber(documentConfigBean.getId(), (num + 1));
+            } else {
+                //不存在配置信息,生成并保存配置信息
+                documentConfigBean = new DocumentConfigBean();
+                documentConfigBean.setDocType(bean.getDocType());
+                documentConfigBean.setYear(y);
+                documentConfigBean.setNumber(num + 1);
+                documentConfigBeanService.saveEntity(documentConfigBean);
+            }
+            //生成文号【吉动X字〔2017〕X号】【吉动院字〔2017〕X号】
+            OADictBean oaDictBean = oaDictBeanService.getByTypeAndValue("文号类型", bean.getDocType());
+            businessNo = oaDictBean.getLabel() + "[" + y + "]" + num + "号";
+        }
+        return businessNo;
     }
 
     @Override
@@ -109,5 +154,15 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         this.documentConfigBeanDao = documentConfigBeanDao;
     }
 
+    public void setDocumentBeanService(IDocumentBeanService documentBeanService) {
+        this.documentBeanService = documentBeanService;
+    }
 
+    public void setDocumentConfigBeanService(IDocumentConfigBeanService documentConfigBeanService) {
+        this.documentConfigBeanService = documentConfigBeanService;
+    }
+
+    public void setOaDictBeanService(IOADictBeanService oaDictBeanService) {
+        this.oaDictBeanService = oaDictBeanService;
+    }
 }

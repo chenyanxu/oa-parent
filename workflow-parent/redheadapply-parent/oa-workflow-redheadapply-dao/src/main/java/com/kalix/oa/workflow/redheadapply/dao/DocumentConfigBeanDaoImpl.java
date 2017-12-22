@@ -16,4 +16,16 @@ public class DocumentConfigBeanDaoImpl extends GenericDao<DocumentConfigBean, Lo
     public void setEntityManager(EntityManager em) {
         super.setEntityManager(em);
     }
+
+    @Override
+    public DocumentConfigBean getEntity(Integer docType, String year) {
+        String hql = "select c from DocumentConfigBean c where c.docType = ?1 and d.year = ?2";
+        return this.findUnique(hql, docType, year);
+    }
+
+    @Override
+    public Integer updateNumber(Long id, Integer number) {
+        String sql = "update " + this.getTableName() + " set number = " + number + " where id = " + id;
+        return this.updateNativeQuery(sql);
+    }
 }

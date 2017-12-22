@@ -20,15 +20,15 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class DocumentConfigBean extends PersistentEntity {
 
-    private String docType; //发文类型，多种类型，数据字典中配置
+    private Integer docType; //发文类型，多种类型，数据字典中配置
     private Integer number; //可用编号
     private String year;//年份
 
-    public String getDocType() {
+    public Integer getDocType() {
         return docType;
     }
 
-    public void setDocType(String docType) {
+    public void setDocType(Integer docType) {
         this.docType = docType;
     }
 

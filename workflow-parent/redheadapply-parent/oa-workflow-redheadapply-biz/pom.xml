@@ -29,5 +29,10 @@
             <groupId>com.kalix.middleware.statemachine</groupId>
             <artifactId>middleware-statemachine-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.oa.system.dict</groupId>
+            <artifactId>oa-system-dict-api</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

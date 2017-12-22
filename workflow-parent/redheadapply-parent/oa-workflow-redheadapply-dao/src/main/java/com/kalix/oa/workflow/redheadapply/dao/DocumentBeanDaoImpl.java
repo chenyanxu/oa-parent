@@ -6,6 +6,7 @@ import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * @author sunlf
@@ -15,5 +16,17 @@ public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, Long> implemen
     @PersistenceContext(unitName = "oa-workflow-redheadapply-unit")
     public void setEntityManager(EntityManager em) {
         super.setEntityManager(em);
+    }
+
+    @Override
+    public DocumentBean getMinEntity(Integer docType, String year, String status) {
+        DocumentBean documentBean = null;
+        //String sql = "select Min(d.number) number, d.businessNo from " + this.getTableName() + " d where d.docType = ?1 and d.status = ?2";
+        String hql = "select d from DocumentBean d where d.docType = ?1 and d.year = ?2 and d.status = ?3 order by d.number";
+        List<DocumentBean> lists = this.find(hql,docType, year, status);
+        if (lists != null && lists.size() > 0) {
+            documentBean = lists.get(0);
+        }
+        return documentBean;
     }
 }

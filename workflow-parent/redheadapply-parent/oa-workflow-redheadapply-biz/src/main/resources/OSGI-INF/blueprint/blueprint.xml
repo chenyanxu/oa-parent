@@ -38,5 +38,10 @@
         <property name="dao" ref="documentBeanDao"/>
     </bean>
 
+    <bean id="documentConfigBeanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentConfigBeanServiceImpl">
+        <property name="dao" ref="documentConfigBeanDao"/>
+    </bean>
+    <service id="documentConfigBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"
+             ref="documentConfigBeanServiceImpl"/>
 </blueprint>
 
