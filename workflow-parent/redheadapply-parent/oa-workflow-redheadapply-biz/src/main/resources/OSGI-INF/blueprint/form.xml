@@ -13,6 +13,6 @@
 
     <!-- 红头文件申请修改业务数据表单-->
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
-        <bean class="com.kalix.oa.workflow.redheadapply.biz.form.ReadheadApplyModifyFormImpl"/>
+        <bean class="com.kalix.oa.workflow.redheadapply.biz.form.RedHeadApplyModifyFormImpl"/>
     </service>
 </blueprint>
