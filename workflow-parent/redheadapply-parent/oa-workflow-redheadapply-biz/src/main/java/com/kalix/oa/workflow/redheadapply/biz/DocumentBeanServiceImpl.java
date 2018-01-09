@@ -15,4 +15,9 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
     public DocumentBean getMinEntity(Integer docType, String year, String status) {
         return this.dao.getMinEntity(docType, year, status);
     }
+
+    @Override
+    public DocumentBean getEntityByBusinessNo(String businessNo) {
+        return this.dao.getEntityByBusinessNo(businessNo);
+    }
 }

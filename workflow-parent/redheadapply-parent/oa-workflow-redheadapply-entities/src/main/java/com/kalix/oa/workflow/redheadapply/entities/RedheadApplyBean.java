@@ -28,6 +28,7 @@ public class RedheadApplyBean extends WorkflowEntity {
     private String docCategory; // 文件分类，对内或对外
     private Integer docType; //发文类型，多种类型，数据字典中配置
     //    private String title; //文题，使用父类的title字段
+    private Boolean editDocType = true; //是否允许修改发文类型字段，默认t允许修改
     private String docUrl;//发文地址，需要在审批通过后填写
     private String docContent;//文档内容
     private String docStatus; //文档状态，需要状态机统一进行控制
@@ -66,6 +67,14 @@ public class RedheadApplyBean extends WorkflowEntity {
 
     public void setDocType(Integer docType) {
         this.docType = docType;
+    }
+
+    public Boolean getEditDocType() {
+        return editDocType;
+    }
+
+    public void setEditDocType(Boolean editDocType) {
+        this.editDocType = editDocType;
     }
 
     public String getDocUrl() {

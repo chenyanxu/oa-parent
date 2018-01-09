@@ -58,12 +58,19 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         InputStream is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
         statemachineService.initFSM(is, "已撤回");
         DocumentBean documentBean = documentBeanService.getMinEntity(bean.getDocType(), year, statemachineService.getCurrentState());
-        //存在记录，使用最小文号(状态为已回收)
+        //存在记录，使用最小文号(状态重置为【使用中】且更新记录为当前业务，注保证最新)
         if (documentBean != null) {
             businessNo = documentBean.getBusinessNo();
-            //修改记录状态
+            //修改记录状态(状态重置为【使用中】)
             statemachineService.processFSM("回收");
             documentBean.setStatus(statemachineService.getCurrentState());
+            //更新业务数据
+            documentBean.setRedheadId(bean.getId());
+            documentBean.setDocDate(bean.getDocDate());
+            documentBean.setDocDept(bean.getDocDept());
+            documentBean.setTitle(bean.getTitle());
+            documentBean.setDocUrl(bean.getDocUrl());
+            documentBean.setDocContent(bean.getDocContent());
             documentBeanService.updateEntity(documentBean);
         } else { //不存在记录,使用配置表文号(取号码)
             Integer num = 1;
@@ -89,20 +96,19 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             documentBean.setRedheadId(bean.getId());
             documentBean.setDocDate(bean.getDocDate());
             documentBean.setDocDept(bean.getDocDept());
-            documentBean.setDocType(bean.getDocType());
             documentBean.setTitle(bean.getTitle());
+            documentBean.setDocUrl(bean.getDocUrl());
+            documentBean.setDocContent(bean.getDocContent());
+            documentBean.setDocType(bean.getDocType());
             documentBean.setYear(year);
             documentBean.setNumber(num);
             documentBean.setBusinessNo(businessNo);
-            documentBean.setDocUrl(bean.getDocUrl());
-            documentBean.setDocContent(bean.getDocContent());
             is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
             statemachineService.initFSM(is, "新建");
             statemachineService.processFSM("使用");
             documentBean.setStatus(statemachineService.getCurrentState());
             documentBeanService.saveEntity(documentBean);
         }
-
         return businessNo;
     }
 
@@ -117,6 +123,35 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             entity.setDocStatus(statemachineService.getCurrentState());
         }
         super.beforeSaveEntity(entity, status);
+    }
+
+    @Override
+    public void beforeUpdateEntity(RedheadApplyBean entity, JsonStatus status) {
+        // 判断entity.editDocType，是否允许修改文号（处理逻辑放在流程里处理，通过环境变量配置处理entity.editDocType）
+        // 如果允许修改，根据主键entity.id查找RedheadApplyBean对象，比较文号类型是否改变
+        // 文号类型改变，设置文号状态为【已撤回】，调用createBusinessNo方法生成新文号
+        // 是否修改文号
+        if (entity.getEditDocType()) {
+            RedheadApplyBean oldRedheadApplyBean = this.getEntity(entity.getId());
+            // 比较新旧文号类型是否改变,如果改变
+            if (!oldRedheadApplyBean.getDocType().equals(entity.getDocType())) {
+                InputStream is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
+                statemachineService.initFSM(is, "使用中");
+                statemachineService.processFSM("撤回");
+                DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(oldRedheadApplyBean.getBusinessNo());
+                // 文号使用记录表中存在记录，修改状态为【已撤回】，保证该文号下次生成可用
+                if (documentBean != null) {
+                    documentBean.setStatus(statemachineService.getCurrentState());
+                    documentBeanService.updateEntity(documentBean);
+                } else {
+                    // 文号记录表中无记录（正常不应该存在该情况，可以insert补充）
+                }
+                // 取新的文号
+                String newBusinessNo = this.createBusinessNo(entity);
+                entity.setBusinessNo(newBusinessNo);
+                super.beforeUpdateEntity(entity, status);
+            }
+        }
     }
 
     @Override

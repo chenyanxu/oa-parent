@@ -3,10 +3,7 @@ package com.kalix.oa.workflow.redheadapply.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.framework.core.api.persistence.PersistentEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -29,6 +26,7 @@ public class DocumentBean extends PersistentEntity {
     private String title; //文题，使用父类的title字段
     private String year;    //年份
     private Integer number; //可用编号
+    @Column(unique = true)
     private String businessNo; //文号
     private String docUrl;//发文地址，需要在审批通过后填写
     private String docContent;//文档内容
