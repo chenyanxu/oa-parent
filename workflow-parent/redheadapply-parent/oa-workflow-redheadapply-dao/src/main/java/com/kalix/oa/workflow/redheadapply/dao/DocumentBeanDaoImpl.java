@@ -23,7 +23,18 @@ public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, Long> implemen
         DocumentBean documentBean = null;
         //String sql = "select Min(d.number) number, d.businessNo from " + this.getTableName() + " d where d.docType = ?1 and d.status = ?2";
         String hql = "select d from DocumentBean d where d.docType = ?1 and d.year = ?2 and d.status = ?3 order by d.number";
-        List<DocumentBean> lists = this.find(hql,docType, year, status);
+        List<DocumentBean> lists = this.find(hql, docType, year, status);
+        if (lists != null && lists.size() > 0) {
+            documentBean = lists.get(0);
+        }
+        return documentBean;
+    }
+
+    @Override
+    public DocumentBean getEntityByBusinessNo(String businessNo) {
+        DocumentBean documentBean = null;
+        String hql = "select d from DocumentBean d where d.businessNo = ?1";
+        List<DocumentBean> lists = this.find(hql, businessNo);
         if (lists != null && lists.size() > 0) {
             documentBean = lists.get(0);
         }
