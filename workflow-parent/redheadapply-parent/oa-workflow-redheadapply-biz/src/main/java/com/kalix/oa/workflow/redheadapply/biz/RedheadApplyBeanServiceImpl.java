@@ -149,9 +149,9 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                 // 取新的文号
                 String newBusinessNo = this.createBusinessNo(entity);
                 entity.setBusinessNo(newBusinessNo);
-                super.beforeUpdateEntity(entity, status);
             }
         }
+        super.beforeUpdateEntity(entity, status);
     }
 
     @Override

@@ -19,13 +19,13 @@
                                        class="com.kalix.middleware.workflow.engine.listener.LeaderListener"></activiti:taskListener>
             </extensionElements>
         </userTask>
-        <userTask id="schoolUser" name="校务部审批" activiti:candidateGroups="校务部" activiti:formKey="audit.form">
+        <userTask id="schoolUser" name="校务部审批" activiti:candidateGroups="校务部::部长（中心主任）" activiti:formKey="audit.form">
             <documentation>校务部审批</documentation>
         </userTask>
-        <userTask id="managerUser" name="校领导审批" activiti:candidateGroups="校领导" activiti:formKey="audit.form">
+        <userTask id="managerUser" name="校领导审批" activiti:candidateGroups="吉林动画学院::校领导" activiti:formKey="audit.form">
             <documentation>校领导审批</documentation>
         </userTask>
-        <userTask id="chairmanUser" name="董事长审批" activiti:candidateGroups="董事长" activiti:formKey="audit.form">
+        <userTask id="chairmanUser" name="董事长审批" activiti:candidateGroups="吉林动画学院::董事长" activiti:formKey="audit.form">
             <documentation>董事长审批</documentation>
         </userTask>
         <userTask id="modify" name="部门拟稿修改" activiti:assignee="${startUserId}" activiti:formKey="modify.form">
