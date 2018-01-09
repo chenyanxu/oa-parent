@@ -11,10 +11,8 @@
         <MESSAGE id="废除" nextState="已废除"/>
     </STATE>
     <STATE id="已撤回">
-        <MESSAGE id="回收" nextState="已回收"/>
+        <MESSAGE id="回收" nextState="使用中"/>
     </STATE>
     <STATE id="已废除">
-    </STATE>
-    <STATE id="已回收">
     </STATE>
 </FSM>
