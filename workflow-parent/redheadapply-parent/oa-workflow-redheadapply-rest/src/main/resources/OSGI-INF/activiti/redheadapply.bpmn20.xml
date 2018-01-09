@@ -61,7 +61,11 @@
         </sequenceFlow>
         <sequenceFlow id="flow36" sourceRef="schoolUser" targetRef="exclusivegateway4"></sequenceFlow>
         <sequenceFlow id="flow37" name="同意" sourceRef="exclusivegateway4" targetRef="managerUser">
-            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
+            <extensionElements>
+                <activiti:executionListener event="take"
+                                            class="com.kalix.oa.workflow.redheadapply.biz.listener.DocExecutionListener"></activiti:executionListener>
+                <activiti:executionListener event="take" expression="${accepted=='同意'}"></activiti:executionListener>
+            </extensionElements>
         </sequenceFlow>
         <sequenceFlow id="flow38" sourceRef="exclusivegateway5" targetRef="modify">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='不同意'}]]></conditionExpression>
