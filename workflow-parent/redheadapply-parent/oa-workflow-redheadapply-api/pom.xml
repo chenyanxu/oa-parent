@@ -21,5 +21,9 @@
             <groupId>com.kalix.oa.workflow.redheadapply</groupId>
             <artifactId>oa-workflow-redheadapply-entities</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.oa.workflow.redheadapply</groupId>
+            <artifactId>oa-workflow-redheadapply-dto</artifactId>
+        </dependency>
     </dependencies>
 </project>

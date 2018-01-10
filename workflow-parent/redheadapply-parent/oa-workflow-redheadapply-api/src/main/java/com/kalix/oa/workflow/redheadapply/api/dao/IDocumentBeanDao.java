@@ -1,7 +1,7 @@
 package com.kalix.oa.workflow.redheadapply.api.dao;
 
-
 import com.kalix.framework.core.api.dao.IGenericDao;
+import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 
 /**
@@ -23,4 +23,6 @@ public interface IDocumentBeanDao extends IGenericDao<DocumentBean, Long> {
      * @return
      */
     DocumentBean getEntityByBusinessNo(String businessNo);
+
+    JsonData getAllRelations(Integer page, Integer limit, String jsonStr, String sort);
 }

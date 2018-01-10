@@ -3,4 +3,6 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Bundle-Category: Kalix OA Workflow Red Head Apply
+#Import-Package:com.kalix.framework.core.api.biz,com.kalix.framework.core.api.persistence,cn.com.rexen.admin.entities,*
+Import-Package:*
+Bundle-Category:Kalix OA Workflow Red Head Apply

@@ -66,11 +66,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             documentBean.setStatus(statemachineService.getCurrentState());
             //更新业务数据
             documentBean.setRedheadId(bean.getId());
-            documentBean.setDocDate(bean.getDocDate());
+            /*documentBean.setDocDate(bean.getDocDate());
             documentBean.setDocDept(bean.getDocDept());
             documentBean.setTitle(bean.getTitle());
             documentBean.setDocUrl(bean.getDocUrl());
-            documentBean.setDocContent(bean.getDocContent());
+            documentBean.setDocContent(bean.getDocContent());*/
             documentBeanService.updateEntity(documentBean);
         } else { //不存在记录,使用配置表文号(取号码)
             Integer num = 1;
@@ -94,11 +94,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             //保存发文信息
             documentBean = new DocumentBean();
             documentBean.setRedheadId(bean.getId());
-            documentBean.setDocDate(bean.getDocDate());
+            /*documentBean.setDocDate(bean.getDocDate());
             documentBean.setDocDept(bean.getDocDept());
             documentBean.setTitle(bean.getTitle());
             documentBean.setDocUrl(bean.getDocUrl());
-            documentBean.setDocContent(bean.getDocContent());
+            documentBean.setDocContent(bean.getDocContent());*/
             documentBean.setDocType(bean.getDocType());
             documentBean.setYear(year);
             documentBean.setNumber(num);

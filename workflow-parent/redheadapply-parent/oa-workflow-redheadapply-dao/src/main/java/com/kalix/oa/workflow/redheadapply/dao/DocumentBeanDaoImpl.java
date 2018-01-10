@@ -1,7 +1,10 @@
 package com.kalix.oa.workflow.redheadapply.dao;
 
+import com.kalix.framework.core.api.persistence.JsonData;
+import com.kalix.framework.core.impl.dao.CommonMethod;
 import com.kalix.framework.core.impl.dao.GenericDao;
 import com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao;
+import com.kalix.oa.workflow.redheadapply.dto.model.DocumentDTO;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 
 import javax.persistence.EntityManager;
@@ -39,5 +42,17 @@ public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, Long> implemen
             documentBean = lists.get(0);
         }
         return documentBean;
+    }
+
+    @Override
+    public JsonData getAllRelations(Integer page, Integer limit, String jsonStr, String sort) {
+        String sql = "select t.* from " +
+                " (select a.id, a.docType, a.year, a.number, a.businessNo, a.status, a.redheadId, " +
+                " a.creationDate, a.updateDate, b.docDate, b.docDept, b.title, b.docUrl, b.docContent " +
+                " from " + super.getTableName() + " a " +
+                " left join oa_workflow_redheadapply b on b.id = a.redheadId) t ";
+        sql += CommonMethod.createWhereCondition(jsonStr, sort);
+        JsonData jsonData = this.findByNativeSql(sql, page, limit, DocumentDTO.class);
+        return jsonData;
     }
 }
