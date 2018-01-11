@@ -7,18 +7,16 @@
         <MESSAGE id="审批" nextState="审批中"/>
     </STATE>
     <STATE id="审批中">
-        <MESSAGE id="撤回" nextState="撤回文号"/>
+        <MESSAGE id="废除" nextState="已废除"/>
         <MESSAGE id="通过" nextState="审批通过"/>
     </STATE>
     <STATE id="审批通过">
-        <MESSAGE id="撤回" nextState="撤回文号"/>
+        <MESSAGE id="废除" nextState="已废除"/>
         <MESSAGE id="发文" nextState="已发文"/>
     </STATE>
     <STATE id="已发文">
-        <MESSAGE id="废除" nextState="废除文号"/>
+        <MESSAGE id="废除" nextState="已废除"/>
     </STATE>
-    <STATE id="撤回文号">
-    </STATE>
-    <STATE id="废除文号">
+    <STATE id="已废除">
     </STATE>
 </FSM>
