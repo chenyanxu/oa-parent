@@ -158,11 +158,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     public void afterFinishProcess(RedheadApplyBean bean, String result) {
         InputStream is = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
         statemachineService.initFSM(is, bean.getDocStatus());
-        if (result.equals("同意")) {
-            statemachineService.processFSM("通过");
-        } else if (result.equals("撤回")) {
-            statemachineService.processFSM("撤回");
-        }
+        statemachineService.processFSM("通过");
         bean.setDocStatus(statemachineService.getCurrentState());
     }
 

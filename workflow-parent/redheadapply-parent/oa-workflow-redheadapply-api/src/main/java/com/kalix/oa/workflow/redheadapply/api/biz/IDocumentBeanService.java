@@ -3,6 +3,7 @@ package com.kalix.oa.workflow.redheadapply.api.biz;
 
 import com.kalix.framework.core.api.biz.IBizService;
 import com.kalix.framework.core.api.persistence.JsonData;
+import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 
 /**
@@ -24,4 +25,11 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
      * @return
      */
     DocumentBean getEntityByBusinessNo(String businessNo);
+
+    /**
+     * 废除文号
+     * @param id 文号实体id
+     * @return
+     */
+    JsonStatus abolishBusinessNo(Long id);
 }

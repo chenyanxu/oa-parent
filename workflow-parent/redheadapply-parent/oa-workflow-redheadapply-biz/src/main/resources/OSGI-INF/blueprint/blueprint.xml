@@ -34,6 +34,8 @@
 
     <bean id="documentBeanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentBeanServiceImpl">
         <property name="dao" ref="documentBeanDao"/>
+        <property name="statemachineService" ref="statemachineService"/>
+        <property name="redheadApplyBeanService" ref="redheadApplyBeanService"/>
     </bean>
     <service id="documentBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService"
              ref="documentBeanServiceImpl"/>
