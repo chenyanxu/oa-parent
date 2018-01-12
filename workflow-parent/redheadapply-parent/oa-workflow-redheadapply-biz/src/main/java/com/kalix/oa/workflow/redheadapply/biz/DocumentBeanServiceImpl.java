@@ -42,6 +42,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
             // 判断文件使用状态（处于工作流中和工作流结束）
             if (redheadApplyBean.getDocStatus().equals("审批中")){
                 // 处于工作流中，调用停止工作流服务
+                redheadApplyBeanService.deleteProcess(redheadApplyBean.getProcessInstanceId(), "废除文号");
             }
 
             // 修改文件使用状态
