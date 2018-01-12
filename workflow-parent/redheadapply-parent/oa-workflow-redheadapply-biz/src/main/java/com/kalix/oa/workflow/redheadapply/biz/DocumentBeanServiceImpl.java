@@ -1,5 +1,6 @@
 package com.kalix.oa.workflow.redheadapply.biz;
 
+import com.kalix.framework.core.api.exception.KalixRuntimeException;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.impl.biz.ShiroGenericBizServiceImpl;
@@ -41,7 +42,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
             RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(documentBean.getRedheadId());
             // 判断文件使用状态（处于工作流中和工作流结束）
             if (redheadApplyBean.getDocStatus().equals("审批中")){
-                // 处于工作流中，调用停止工作流服务
+                // 处于工作流中，调用工作流中止服务
                 redheadApplyBeanService.deleteProcess(redheadApplyBean.getProcessInstanceId(), "废除文号");
             }
 
@@ -63,9 +64,8 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
             jsonStatus.setMsg("文号废除成功!");
         }
         catch (Exception e) {
-            jsonStatus.setSuccess(false);
-            jsonStatus.setMsg("文号删除失败,原因:" + e.getMessage());
             e.printStackTrace();
+            throw new RuntimeException("文号废除失败！");
         }
         return jsonStatus;
     }
