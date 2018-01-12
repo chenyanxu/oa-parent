@@ -2,7 +2,6 @@ package com.kalix.oa.workflow.reimbursementapply.api.query;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.framework.core.api.web.model.BaseDTO;
-import com.kalix.middleware.workflow.api.model.WorkflowStaus;
 
 import java.util.Date;
 

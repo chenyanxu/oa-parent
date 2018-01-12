@@ -5,9 +5,7 @@ import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.web.model.BaseDTO;
 import com.kalix.framework.core.util.Assert;
 import com.kalix.framework.core.util.SerializeUtil;
-import com.kalix.middleware.workflow.api.Const;
-import com.kalix.middleware.workflow.api.exception.NotSameStarterException;
-import com.kalix.middleware.workflow.api.model.WorkflowStaus;
+import com.kalix.middleware.workflow.api.model.WorkflowStatus;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.usecase.candidate.api.biz.ICandidateBeanService;
 import com.kalix.oa.usecase.candidate.entities.CandidateBean;
@@ -15,11 +13,7 @@ import com.kalix.oa.workflow.employapply.api.biz.IEmployApplyBeanService;
 import com.kalix.oa.workflow.employapply.api.dao.IEmployApplyBeanDao;
 import com.kalix.oa.workflow.employapply.api.query.EmployApplyDTO;
 import com.kalix.oa.workflow.employapply.entities.EmployApplyBean;
-import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Task;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -84,7 +78,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         for (EmployApplyDTO obj : list) {
             if (obj.getStatus() == null) {
                 obj.setTitle("吉林动画学院入职申请表");
-                obj.setStatus(WorkflowStaus.INACTIVE);
+                obj.setStatus(WorkflowStatus.INACTIVE);
                 obj.setAuditResult("流程尚未启动");
             }
         }
@@ -187,7 +181,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
             //设置实体状态
             bean.setProcessInstanceId(instance.getProcessInstanceId());
             bean.setCurrentNode(task.getName());
-            bean.setStatus(WorkflowStaus.ACTIVE);
+            bean.setStatus(WorkflowStatus.ACTIVE);
             bean.setAuditResult("审批中...");
             bean.setApplyDate(new Date());
             //创建流程业务编号
