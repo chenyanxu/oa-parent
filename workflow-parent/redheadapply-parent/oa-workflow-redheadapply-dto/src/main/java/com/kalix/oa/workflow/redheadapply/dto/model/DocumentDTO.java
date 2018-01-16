@@ -23,6 +23,7 @@ public class DocumentDTO extends BaseDTO {
     private String title;      //文题，使用父类的title字段
     private String docUrl;     //发文地址，需要在审批通过后填写
     private String docContent; //文档内容
+    private String docStatus;  //文档状态，需要状态机统一进行控制
 
     public Integer getDocType() {
         return docType;
@@ -110,5 +111,13 @@ public class DocumentDTO extends BaseDTO {
 
     public void setDocContent(String docContent) {
         this.docContent = docContent;
+    }
+
+    public String getDocStatus() {
+        return docStatus;
+    }
+
+    public void setDocStatus(String docStatus) {
+        this.docStatus = docStatus;
     }
 }

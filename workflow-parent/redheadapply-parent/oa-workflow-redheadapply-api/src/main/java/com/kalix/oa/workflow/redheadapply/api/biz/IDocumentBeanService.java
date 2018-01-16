@@ -32,4 +32,11 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
      * @return
      */
     JsonStatus abolishBusinessNo(Long id);
+
+    /**
+     * 发文
+     * @param id 文号实体id
+     * @return
+     */
+    JsonStatus publishRedhead(Long id);
 }

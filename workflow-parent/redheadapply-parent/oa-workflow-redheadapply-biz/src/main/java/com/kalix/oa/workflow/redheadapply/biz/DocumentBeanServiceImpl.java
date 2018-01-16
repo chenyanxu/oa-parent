@@ -71,6 +71,37 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
     }
 
     @Override
+    @Transactional
+    public JsonStatus publishRedhead(Long id) {
+        JsonStatus jsonStatus = new JsonStatus();
+        jsonStatus.setSuccess(true);
+        try {
+            DocumentBean documentBean = this.getEntity(id);
+            RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(documentBean.getRedheadId());
+            // 判断文件使用状态（处于工作流结束,审批通过）
+            if (redheadApplyBean.getDocStatus().equals("审批通过")){
+                // 可以发文
+                // 修改文件使用状态
+                InputStream isRedhead = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+                statemachineService.initFSM(isRedhead, redheadApplyBean.getDocStatus());
+                statemachineService.processFSM("发文");
+                redheadApplyBean.setDocStatus(statemachineService.getCurrentState());
+                redheadApplyBeanService.updateEntity(redheadApplyBean);
+
+                jsonStatus.setMsg("发文成功!");
+            } else {
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg("发文失败!原因:文件未审批通过,不允许发文!");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("发文失败！");
+        }
+        return jsonStatus;
+    }
+
+    @Override
     public JsonData getAllEntityByQuery(Integer page, Integer limit, String jsonStr, String sort) {
         return dao.getAllRelations(page, limit, jsonStr, sort);
     }

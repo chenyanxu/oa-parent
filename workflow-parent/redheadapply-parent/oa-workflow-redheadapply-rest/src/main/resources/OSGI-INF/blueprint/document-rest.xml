@@ -15,6 +15,12 @@
                     <property name="getOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
                     <property name="getToUri" value="bean:documentService?method=abolishBusinessNo(${header.id})"/>
                 </bean>
+                <bean class="com.kalix.framework.core.api.camel.CustomRest">
+                    <property name="path" value="/documents/publish"/>
+                    <property name="getDescription" value="发文"/>
+                    <property name="getOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
+                    <property name="getToUri" value="bean:documentService?method=publishRedhead(${header.id})"/>
+                </bean>
             </list>
         </property>
     </bean>
