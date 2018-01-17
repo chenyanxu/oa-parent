@@ -47,8 +47,9 @@ public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, Long> implemen
     @Override
     public JsonData getAllRelations(Integer page, Integer limit, String jsonStr, String sort) {
         String sql = "select t.* from " +
-                " (select a.id, a.docType, a.year, a.number, a.businessNo, a.status, a.redheadId, " +
-                " a.creationDate, a.updateDate, b.docDate, b.docDept, b.title, b.docUrl, b.docContent, b.docStatus " +
+                " (select a.id, a.docType, a.year, a.number, a.businessNo, a.status, a.docDate, a.docDept, " +
+                " a.printer, a.checker, a.page, a.copy, a.other, a.redheadId, a.creationDate, a.updateDate, " +
+                " b.title, b.docUrl, b.docContent, b.docStatus " +
                 " from " + super.getTableName() + " a " +
                 " left join oa_workflow_redheadapply b on b.id = a.redheadId) t ";
         sql += CommonMethod.createWhereCondition(jsonStr, sort);

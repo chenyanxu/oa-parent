@@ -21,10 +21,6 @@ import java.util.Date;
 @Table(name = "oa_workflow_redheadapply")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class RedheadApplyBean extends WorkflowEntity {
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date docDate;//发文时间
-    private String docDept; //发文部门
     private String docCategory; // 文件分类，对内或对外
     private Integer docType; //发文类型，多种类型，数据字典中配置
     //    private String title; //文题，使用父类的title字段
@@ -35,31 +31,10 @@ public class RedheadApplyBean extends WorkflowEntity {
     //    private String docNumber; //发文编号，使用父类的businessNo字段
 //    private String editor; //拟稿人 使用父类的createBy字段
 //    private String editorDept; //拟稿部门  使用父类的orgName字段
-    private String printer; //打印人
-    private String checker; //校对
-    private Integer page; //页数
-    private Integer number; //份数
-    private String other; //抄送
     private String depUser;//部门领导签字
     private String schoolUser;//校务部签字
     private String managerUser;//校领导签字
     private String chairmanUser;//董事长审核
-
-    public Date getDocDate() {
-        return docDate;
-    }
-
-    public void setDocDate(Date docDate) {
-        this.docDate = docDate;
-    }
-
-    public String getDocDept() {
-        return docDept;
-    }
-
-    public void setDocDept(String docDept) {
-        this.docDept = docDept;
-    }
 
     public Integer getDocType() {
         return docType;
@@ -99,46 +74,6 @@ public class RedheadApplyBean extends WorkflowEntity {
 
     public void setDocStatus(String docStatus) {
         this.docStatus = docStatus;
-    }
-
-    public String getPrinter() {
-        return printer;
-    }
-
-    public void setPrinter(String printer) {
-        this.printer = printer;
-    }
-
-    public String getChecker() {
-        return checker;
-    }
-
-    public void setChecker(String checker) {
-        this.checker = checker;
-    }
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public String getOther() {
-        return other;
-    }
-
-    public void setOther(String other) {
-        this.other = other;
     }
 
     public String getDepUser() {

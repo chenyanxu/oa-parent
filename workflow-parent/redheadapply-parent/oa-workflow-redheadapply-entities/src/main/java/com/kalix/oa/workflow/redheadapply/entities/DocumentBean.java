@@ -24,18 +24,15 @@ public class DocumentBean extends PersistentEntity {
     @Column(unique = true)
     private String businessNo; //文号
     private String status;     //文号状态，需要状态机统一进行控制
-    private Long redheadId;    //红头文件id
-    @Transient
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date docDate;      //发文时间
-    @Transient
     private String docDept;    //发文部门
-    @Transient
-    private String title;      //文题，使用父类的title字段
-    @Transient
-    private String docUrl;     //发文地址，需要在审批通过后填写
-    @Transient
-    private String docContent; //文档内容
+    private String printer;    //打印人
+    private String checker;    //校对
+    private Integer page;      //页数
+    private Integer copy;      //份数
+    private String other;      //抄送
+    private Long redheadId;    //红头文件id
 
     public Integer getDocType() {
         return docType;
@@ -77,14 +74,6 @@ public class DocumentBean extends PersistentEntity {
         this.status = status;
     }
 
-    public Long getRedheadId() {
-        return redheadId;
-    }
-
-    public void setRedheadId(Long redheadId) {
-        this.redheadId = redheadId;
-    }
-
     public Date getDocDate() {
         return docDate;
     }
@@ -101,27 +90,51 @@ public class DocumentBean extends PersistentEntity {
         this.docDept = docDept;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPrinter() {
+        return printer;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPrinter(String printer) {
+        this.printer = printer;
     }
 
-    public String getDocUrl() {
-        return docUrl;
+    public String getChecker() {
+        return checker;
     }
 
-    public void setDocUrl(String docUrl) {
-        this.docUrl = docUrl;
+    public void setChecker(String checker) {
+        this.checker = checker;
     }
 
-    public String getDocContent() {
-        return docContent;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setDocContent(String docContent) {
-        this.docContent = docContent;
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getCopy() {
+        return copy;
+    }
+
+    public void setCopy(Integer copy) {
+        this.copy = copy;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public Long getRedheadId() {
+        return redheadId;
+    }
+
+    public void setRedheadId(Long redheadId) {
+        this.redheadId = redheadId;
     }
 }

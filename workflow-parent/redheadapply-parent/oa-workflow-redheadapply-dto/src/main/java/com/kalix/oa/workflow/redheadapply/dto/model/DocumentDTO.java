@@ -16,10 +16,16 @@ public class DocumentDTO extends BaseDTO {
     private Integer number;    //可用编号
     private String businessNo; //文号
     private String status;     //文号状态，需要状态机统一进行控制
-    private Long redheadId;    //红头文件id
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date docDate;      //发文时间
     private String docDept;    //发文部门
+    private String printer;    //打印人
+    private String checker;    //校对
+    private Integer page;      //页数
+    private Integer copy;      //份数
+    private String other;      //抄送
+    private Long redheadId;    //红头文件id
+
     private String title;      //文题，使用父类的title字段
     private String docUrl;     //发文地址，需要在审批通过后填写
     private String docContent; //文档内容
@@ -65,14 +71,6 @@ public class DocumentDTO extends BaseDTO {
         this.status = status;
     }
 
-    public Long getRedheadId() {
-        return redheadId;
-    }
-
-    public void setRedheadId(Long redheadId) {
-        this.redheadId = redheadId;
-    }
-
     public Date getDocDate() {
         return docDate;
     }
@@ -87,6 +85,54 @@ public class DocumentDTO extends BaseDTO {
 
     public void setDocDept(String docDept) {
         this.docDept = docDept;
+    }
+
+    public String getPrinter() {
+        return printer;
+    }
+
+    public void setPrinter(String printer) {
+        this.printer = printer;
+    }
+
+    public String getChecker() {
+        return checker;
+    }
+
+    public void setChecker(String checker) {
+        this.checker = checker;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getCopy() {
+        return copy;
+    }
+
+    public void setCopy(Integer copy) {
+        this.copy = copy;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public Long getRedheadId() {
+        return redheadId;
+    }
+
+    public void setRedheadId(Long redheadId) {
+        this.redheadId = redheadId;
     }
 
     public String getTitle() {

@@ -13,6 +13,7 @@ import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
 
 import javax.transaction.Transactional;
 import java.io.InputStream;
+import java.util.Date;
 
 
 /**
@@ -72,12 +73,11 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
     @Override
     @Transactional
-    public JsonStatus publishRedhead(Long id) {
+    public JsonStatus publishRedhead(Long id, DocumentBean entity) {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
         try {
-            DocumentBean documentBean = this.getEntity(id);
-            RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(documentBean.getRedheadId());
+            RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(entity.getRedheadId());
             // 判断文件使用状态（处于工作流结束,审批通过）
             if (redheadApplyBean.getDocStatus().equals("审批通过")){
                 // 可以发文
@@ -87,6 +87,11 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
                 statemachineService.processFSM("发文");
                 redheadApplyBean.setDocStatus(statemachineService.getCurrentState());
                 redheadApplyBeanService.updateEntity(redheadApplyBean);
+
+                // 修改文号实体类
+                entity.setDocDate(new Date());
+                entity.setDocDept("123");
+                this.updateEntity(entity);
 
                 jsonStatus.setMsg("发文成功!");
             } else {
