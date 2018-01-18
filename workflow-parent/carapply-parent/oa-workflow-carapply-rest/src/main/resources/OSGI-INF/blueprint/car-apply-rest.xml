@@ -48,6 +48,13 @@
                 <to uri="bean:carApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/carapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getCarStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get carStatistic</description>
+                <to uri="bean:carApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

@@ -55,6 +55,13 @@
                 <to uri="bean:detailService?method=getDetailByReimbursementId(${header.id})"/>
             </get>
         </rest>
+        <rest path="/reimbursementapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getReimbursementStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get ReimbursementStatistic</description>
+                <to uri="bean:reimbursementApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

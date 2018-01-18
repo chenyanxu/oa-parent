@@ -59,5 +59,12 @@
                 <to uri="bean:evectionApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/evectionapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getEvectionStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get evectionStatistic</description>
+                <to uri="bean:evectionApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>

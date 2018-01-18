@@ -67,6 +67,13 @@
                 <to uri="bean:meetingApplyService?method=reservation(${header.id},${header.date})"/>
             </get>
         </rest>
+        <rest path="/meetingapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getMeetingStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get meetingStatistic</description>
+                <to uri="bean:meetingApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 
