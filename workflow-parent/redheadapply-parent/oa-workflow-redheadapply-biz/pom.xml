@@ -30,6 +30,14 @@
             <artifactId>middleware-statemachine-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.abel533</groupId>
+            <artifactId>ECharts</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.kalix.oa.system.dict</groupId>
             <artifactId>oa-system-dict-api</artifactId>
             <version>1.0.1-SNAPSHOT</version>
