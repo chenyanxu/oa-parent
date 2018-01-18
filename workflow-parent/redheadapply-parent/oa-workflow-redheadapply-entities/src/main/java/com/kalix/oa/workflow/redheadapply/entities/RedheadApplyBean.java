@@ -3,10 +3,7 @@ package com.kalix.oa.workflow.redheadapply.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.middleware.workflow.api.model.WorkflowEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -26,6 +23,7 @@ public class RedheadApplyBean extends WorkflowEntity {
     //    private String title; //文题，使用父类的title字段
     private Boolean editDocType = true; //是否允许修改发文类型字段，默认t允许修改
     private String docUrl;//发文地址，需要在审批通过后填写
+    @Column(length = 3000)
     private String docContent;//文档内容
     private String docStatus; //文档状态，需要状态机统一进行控制
     //    private String docNumber; //发文编号，使用父类的businessNo字段
