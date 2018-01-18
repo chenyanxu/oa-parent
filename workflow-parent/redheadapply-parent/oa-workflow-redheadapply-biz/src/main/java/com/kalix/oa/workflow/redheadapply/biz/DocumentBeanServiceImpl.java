@@ -35,34 +35,84 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
     @Override
     @Transactional
+    public JsonStatus revokeBusinessNo(Long id) {
+        JsonStatus jsonStatus = new JsonStatus();
+        jsonStatus.setSuccess(true);
+        try {
+            DocumentBean documentBean = this.getEntity(id);
+            RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(documentBean.getRedheadId());
+            // 判断文件状态,未发文前才能撤回,即[审批中]和[审批通过]均可撤回
+            if (redheadApplyBean.getDocStatus().equals("已发文")){
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg("文号撤回失败!原因:文件已发文,文号不允许撤回,只能废除!");
+            } else {
+                // 判断文件使用状态（处于工作流中和工作流结束）
+                if (redheadApplyBean.getDocStatus().equals("审批中")){
+                    // 处于工作流中，调用工作流中止服务
+                    redheadApplyBeanService.deleteProcess(redheadApplyBean.getProcessInstanceId(), "撤回文号");
+                }
+
+                // 修改文件使用状态，撤回后废除
+                InputStream isRedhead = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+                statemachineService.initFSM(isRedhead, redheadApplyBean.getDocStatus());
+                statemachineService.processFSM("撤回");
+                redheadApplyBean.setDocStatus(statemachineService.getCurrentState());
+                redheadApplyBeanService.updateEntity(redheadApplyBean);
+
+                // 修改文号状态，撤回后可继续使用
+                // 要求初始状态必须[使用中]才能[撤回],否则会出错
+                InputStream isDocument = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
+                statemachineService.initFSM(isDocument, documentBean.getStatus());
+                statemachineService.processFSM("撤回");
+                documentBean.setStatus(statemachineService.getCurrentState());
+                this.updateEntity(documentBean);
+
+                jsonStatus.setMsg("文号撤回成功!");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("文号撤回失败！");
+        }
+        return jsonStatus;
+    }
+
+    @Override
+    @Transactional
     public JsonStatus abolishBusinessNo(Long id) {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
         try {
             DocumentBean documentBean = this.getEntity(id);
             RedheadApplyBean redheadApplyBean = redheadApplyBeanService.getEntity(documentBean.getRedheadId());
-            // 判断文件使用状态（处于工作流中和工作流结束）
+            /*// 判断文件使用状态（处于工作流中和工作流结束）
             if (redheadApplyBean.getDocStatus().equals("审批中")){
                 // 处于工作流中，调用工作流中止服务
                 redheadApplyBeanService.deleteProcess(redheadApplyBean.getProcessInstanceId(), "废除文号");
+            }*/
+
+            // 判断文件状态，[已发文]才能废除
+            if (redheadApplyBean.getDocStatus().equals("已发文")) {
+                // 修改文件使用状态
+                InputStream isRedhead = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
+                statemachineService.initFSM(isRedhead, redheadApplyBean.getDocStatus());
+                statemachineService.processFSM("废除");
+                redheadApplyBean.setDocStatus(statemachineService.getCurrentState());
+                redheadApplyBeanService.updateEntity(redheadApplyBean);
+
+                // 修改文号状态
+                // 要求初始状态必须[使用中]才能[废除],否则会出错
+                InputStream isDocument = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
+                statemachineService.initFSM(isDocument, documentBean.getStatus());
+                statemachineService.processFSM("废除");
+                documentBean.setStatus(statemachineService.getCurrentState());
+                this.updateEntity(documentBean);
+
+                jsonStatus.setMsg("文号废除成功!");
+            } else {
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg("文号废除失败!原因:文件未发文,文号不允许废除!");
             }
-
-            // 修改文件使用状态
-            InputStream isRedhead = this.getClass().getClassLoader().getResourceAsStream("redhead-state.xml");
-            statemachineService.initFSM(isRedhead, redheadApplyBean.getDocStatus());
-            statemachineService.processFSM("废除");
-            redheadApplyBean.setDocStatus(statemachineService.getCurrentState());
-            redheadApplyBeanService.updateEntity(redheadApplyBean);
-
-            // 修改文号状态
-            // 要求初始状态必须[使用中]才能[废除],否则会出错
-            InputStream isDocument = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
-            statemachineService.initFSM(isDocument, documentBean.getStatus());
-            statemachineService.processFSM("废除");
-            documentBean.setStatus(statemachineService.getCurrentState());
-            this.updateEntity(documentBean);
-
-            jsonStatus.setMsg("文号废除成功!");
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +140,6 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
                 // 修改文号实体类
                 entity.setDocDate(new Date());
-                entity.setDocDept("123");
                 this.updateEntity(entity);
 
                 jsonStatus.setMsg("发文成功!");

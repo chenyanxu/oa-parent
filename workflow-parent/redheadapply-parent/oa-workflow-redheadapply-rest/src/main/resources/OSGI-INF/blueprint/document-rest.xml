@@ -10,6 +10,12 @@
         <property name="rests">
             <list>
                 <bean class="com.kalix.framework.core.api.camel.CustomRest">
+                    <property name="path" value="/documents/revoke"/>
+                    <property name="getDescription" value="撤回文号"/>
+                    <property name="getOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
+                    <property name="getToUri" value="bean:documentService?method=revokeBusinessNo(${header.id})"/>
+                </bean>
+                <bean class="com.kalix.framework.core.api.camel.CustomRest">
                     <property name="path" value="/documents/abolish"/>
                     <property name="getDescription" value="废除文号"/>
                     <property name="getOutType" value="com.kalix.framework.core.api.persistence.JsonStatus"/>
