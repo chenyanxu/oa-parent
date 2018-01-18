@@ -224,7 +224,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
      */
     public JsonData getStatisticByDocType(String jsonStr) {
         Map<String, String> jsonMap = null;
-        Map<String, String> barmap = new HashMap<>();
+        Map<String, String> barMap = new HashMap<>();
         if (jsonStr != null && !jsonStr.isEmpty()) {
             jsonMap = SerializeUtil.json2Map(jsonStr);
         }
@@ -251,8 +251,8 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 //        String barData = testBar(true);
         String barData = BarChart(list);
 
-        barmap.put("option", barData);
-        dataList.add(barmap);
+        barMap.put("option", barData);
+        dataList.add(barMap);
         d1.setData(dataList);
         return d1;
     }
