@@ -51,6 +51,13 @@
                 <to uri="bean:redheadApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/redheadapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getRedheadStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get redheadStatistic</description>
+                <to uri="bean:redheadApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 
