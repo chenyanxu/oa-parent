@@ -217,6 +217,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         this.oaDictBeanService = oaDictBeanService;
     }
 
+    /**
+     * 图表展现demo
+     * @param jsonStr
+     * @return
+     */
     public JsonData getStatisticByDocType(String jsonStr) {
         Map<String, String> jsonMap = null;
         Map<String, String> barmap = new HashMap<>();
@@ -244,7 +249,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         JsonData d1 = new JsonData();
         List<Map<String, String>> dataList = new ArrayList<>();
 //        String barData = testBar(true);
-        String barData = testBar1(list);
+        String barData = BarChart(list);
 
         barmap.put("option", barData);
         dataList.add(barmap);
@@ -252,7 +257,12 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         return d1;
     }
 
-    private String testBar1(List<Tuple> list){
+    /**
+     * 柱状图显示demo
+     * @param list
+     * @return
+     */
+    private String BarChart(List<Tuple> list){
         String[] types = new String[list.size()];
         int[] datas = new int[list.size()];
         for (int i=0; i<list.size(); i++) {
@@ -282,48 +292,6 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         }
         option.xAxis(category);// x轴
         option.yAxis(new ValueAxis());// y轴
-        option.series(bar);
-        return option.toString();
-    }
-
-    private String testBar(Boolean isHorizontal){
-        String[] citis = { "广州", "深圳", "珠海", "汕头", "韶关", "佛山" };
-        int[] datas = { 6030, 7800, 5200, 3444, 2666, 5708 };
-        String[] colors = { "rgb(2,111,230)", "rgb(186,73,46)", "rgb(78,154,97)", "rgb(2,111,230)", "rgb(186,73,46)", "rgb(78,154,97)" };
-        String title = "地市数据";
-        GsonOption option = new GsonOption();
-        option.title(title); // 标题
-        // 工具栏
-        option.toolbox().show(true).feature(Tool.mark, // 辅助线
-        Tool.dataView, // 数据视图
-        new MagicType(Magic.line, Magic.bar),// 线图、柱状图切换
-        Tool.restore,// 还原
-        Tool.saveAsImage);// 保存为图片
-
-        option.tooltip().show(true).formatter("{a} <br/>{b} : {c}");//显示工具提示,设置提示格式
-
-        option.legend(title);// 图例
-        Bar bar = new Bar("城市数据");// 图类别(柱状图)
-        CategoryAxis category = new CategoryAxis();// 轴分类
-        category.data(citis);// 轴数据类别
-        // 循环数据
-        for (int i = 0; i < citis.length; i++) {
-            int data = datas[i];
-            String color = colors[i];
-            // 类目对应的柱状图
-            Map<String, Object> map = new HashMap<String, Object>(2);
-            map.put("value", data);
-            map.put("itemStyle", new ItemStyle().normal(new Normal().color(color)));
-            bar.data(map);
-        }
-        if (isHorizontal) {// 横轴为类别、纵轴为值
-            option.xAxis(category);// x轴
-            option.yAxis(new ValueAxis());// y轴
-        } else {// 横轴为值、纵轴为类别
-            option.xAxis(new ValueAxis());// x轴
-            option.yAxis(category);// y轴
-        }
-
         option.series(bar);
         return option.toString();
     }
