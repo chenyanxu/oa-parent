@@ -29,6 +29,14 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
     DocumentBean getEntityByBusinessNo(String businessNo);
 
     /**
+     * 撤回文号
+     *
+     * @param id 文号实体id
+     * @return
+     */
+    JsonStatus revokeBusinessNo(Long id);
+
+    /**
      * 废除文号
      *
      * @param id 文号实体id
