@@ -25,5 +25,10 @@
             <groupId>com.kalix.framework.core</groupId>
             <artifactId>framework-core-impl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kalix.oa.workflow.redheadapply</groupId>
+            <artifactId>oa-workflow-redheadapply-dto</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

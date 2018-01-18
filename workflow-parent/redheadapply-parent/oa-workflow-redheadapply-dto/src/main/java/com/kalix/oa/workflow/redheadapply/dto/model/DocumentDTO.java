@@ -1,27 +1,19 @@
-package com.kalix.oa.workflow.redheadapply.entities;
+package com.kalix.oa.workflow.redheadapply.dto.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kalix.framework.core.api.persistence.PersistentEntity;
+import com.kalix.framework.core.api.web.model.BaseDTO;
 
-import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @类描述：红头文件文号管理(文号使用历史log)
- * @创建人： sunlf
- * @创建时间：2016/2/24
- * @修改人：
- * @修改时间：
- * @修改备注：
+ * 红头文件文号管理模型类
+ * @author hqj date:2018-01-10
+ * @version 1.0.0
  */
-@Entity
-@Table(name = "oa_workflow_document")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class DocumentBean extends PersistentEntity {
+public class DocumentDTO extends BaseDTO {
     private Integer docType;   //发文类型，多种类型，数据字典中配置[文号类型]
     private String year;       //年份
     private Integer number;    //可用编号
-    @Column(unique = true)
     private String businessNo; //文号
     private String status;     //文号状态，需要状态机统一进行控制
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -33,6 +25,11 @@ public class DocumentBean extends PersistentEntity {
     private Integer copy;      //份数
     private String other;      //抄送
     private Long redheadId;    //红头文件id
+
+    private String title;      //文题，使用父类的title字段
+    private String docUrl;     //发文地址，需要在审批通过后填写
+    private String docContent; //文档内容
+    private String docStatus;  //文档状态，需要状态机统一进行控制
 
     public Integer getDocType() {
         return docType;
@@ -136,5 +133,37 @@ public class DocumentBean extends PersistentEntity {
 
     public void setRedheadId(Long redheadId) {
         this.redheadId = redheadId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDocUrl() {
+        return docUrl;
+    }
+
+    public void setDocUrl(String docUrl) {
+        this.docUrl = docUrl;
+    }
+
+    public String getDocContent() {
+        return docContent;
+    }
+
+    public void setDocContent(String docContent) {
+        this.docContent = docContent;
+    }
+
+    public String getDocStatus() {
+        return docStatus;
+    }
+
+    public void setDocStatus(String docStatus) {
+        this.docStatus = docStatus;
     }
 }

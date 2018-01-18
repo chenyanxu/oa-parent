@@ -2,9 +2,8 @@ package com.kalix.oa.workflow.employapply.api.query;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.framework.core.api.web.model.BaseDTO;
-import com.kalix.middleware.workflow.api.model.WorkflowStaus;
+import com.kalix.middleware.workflow.api.model.WorkflowStatus;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 /**
@@ -23,7 +22,7 @@ public class EmployApplyDTO extends BaseDTO {
 
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
-    private Short status= WorkflowStaus.INACTIVE;//工作流状态
+    private Short status = WorkflowStatus.INACTIVE;//工作流状态
     private String auditResult="流程尚未启动";//审批最终结果
 
     private String businessNo;
