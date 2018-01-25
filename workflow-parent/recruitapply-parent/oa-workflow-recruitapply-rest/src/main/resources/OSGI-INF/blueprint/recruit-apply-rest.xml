@@ -48,6 +48,13 @@
                 <to uri="bean:recruitApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/recruitapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getrecruitStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get recruitStatistic</description>
+                <to uri="bean:recruitApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

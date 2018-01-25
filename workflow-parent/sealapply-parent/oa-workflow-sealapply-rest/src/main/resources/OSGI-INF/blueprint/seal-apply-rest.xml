@@ -48,6 +48,13 @@
                 <to uri="bean:sealApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/sealapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getSealApplyStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get sealApplyStatistic</description>
+                <to uri="bean:sealApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

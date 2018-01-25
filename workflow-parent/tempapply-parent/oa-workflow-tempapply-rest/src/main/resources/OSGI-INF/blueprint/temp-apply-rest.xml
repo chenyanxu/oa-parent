@@ -50,6 +50,13 @@
                 <to uri="bean:tempApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/tempapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getTempStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get tempStatistic</description>
+                <to uri="bean:tempApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

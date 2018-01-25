@@ -48,6 +48,13 @@
                 <to uri="bean:employApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/employapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getEmployStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get employStatistic</description>
+                <to uri="bean:employApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 
