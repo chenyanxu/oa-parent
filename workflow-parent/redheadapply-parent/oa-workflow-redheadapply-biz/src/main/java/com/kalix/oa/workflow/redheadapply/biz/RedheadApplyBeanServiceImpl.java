@@ -7,8 +7,6 @@ import com.github.abel533.echarts.code.Tool;
 import com.github.abel533.echarts.feature.MagicType;
 import com.github.abel533.echarts.json.GsonOption;
 import com.github.abel533.echarts.series.Bar;
-import com.github.abel533.echarts.style.ItemStyle;
-import com.github.abel533.echarts.style.itemstyle.Normal;
 import com.kalix.framework.core.api.persistence.JpaStatistic;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
@@ -200,7 +198,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 //        statemachineService.processFSM("MOVELEFT");
 //        currentState = statemachineService.getCurrentState();
 
-//        map.put("city", bean.isCity());
+        map.put("needHeader", bean.getNeedHeader());
         return map;
     }
 

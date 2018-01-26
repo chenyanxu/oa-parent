@@ -1,10 +1,8 @@
 package com.kalix.oa.workflow.redheadapply.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalix.middleware.workflow.api.model.WorkflowEntity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * @类描述：红头文件申请管理
@@ -29,6 +27,7 @@ public class RedheadApplyBean extends WorkflowEntity {
     //    private String docNumber; //发文编号，使用父类的businessNo字段
 //    private String editor; //拟稿人 使用父类的createBy字段
 //    private String editorDept; //拟稿部门  使用父类的orgName字段
+    private Boolean needHeader; // 是否需要校领导审批
     private String depUser;//部门领导签字
     private String schoolUser;//校务部签字
     private String managerUser;//校领导签字
@@ -112,6 +111,14 @@ public class RedheadApplyBean extends WorkflowEntity {
 
     public void setDocCategory(String docCategory) {
         this.docCategory = docCategory;
+    }
+
+    public Boolean getNeedHeader() {
+        return needHeader;
+    }
+
+    public void setNeedHeader(Boolean needHeader) {
+        this.needHeader = needHeader;
     }
 }
 
