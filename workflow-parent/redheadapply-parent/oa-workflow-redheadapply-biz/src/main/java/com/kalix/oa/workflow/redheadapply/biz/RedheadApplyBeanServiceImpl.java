@@ -164,6 +164,8 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                     // 取新的文号
                     String newBusinessNo = this.createBusinessNo(entity);
                     entity.setBusinessNo(newBusinessNo);
+                    // 修改流程运行时名称
+                    runtimeService.setProcessInstanceName(entity.getProcessInstanceId(), newBusinessNo);
                 }
             }
             // 流程启动，判断是否修改审批选项
