@@ -138,9 +138,9 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void beforeUpdateEntity(RedheadApplyBean entity, JsonStatus status) {
-        // 判断如果流程未启动，编辑时，不生成businessNo字段
+        // 判断如果流程启动，编辑时，生成businessNo字段
         // 流程启动
-        if (entity.getStatus() > 0) {
+        if (entity.getStatus() == 1) {
             // 判断entity.editDocType，是否允许修改文号（处理逻辑放在流程里处理，通过环境变量配置处理entity.editDocType）
             // 如果允许修改，根据主键entity.id查找RedheadApplyBean对象，比较文号类型是否改变
             // 文号类型改变，设置文号状态为【已撤回】，调用createBusinessNo方法生成新文号
@@ -168,7 +168,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             }
             // 流程启动，判断是否修改审批选项
             if (!oldRedheadApplyBean.getNeedHeader().equals(entity.getNeedHeader())) {
-                // 处理流程
+                // 处理流程(暂不需要处理，已经在流程中处理)
             }
         }
         super.beforeUpdateEntity(entity, status);
