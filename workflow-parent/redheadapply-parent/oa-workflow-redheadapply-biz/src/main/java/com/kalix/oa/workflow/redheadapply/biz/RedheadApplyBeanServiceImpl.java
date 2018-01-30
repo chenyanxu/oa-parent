@@ -137,6 +137,12 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     }
 
     @Override
+    public void getStartMap(Map map, RedheadApplyBean bean) {
+        List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
+        map.put("assigneeList", assigneeList);
+    }
+
+    @Override
     public void beforeUpdateEntity(RedheadApplyBean entity, JsonStatus status) {
         // 判断如果流程启动，编辑时，生成businessNo字段
         // 流程启动
@@ -228,6 +234,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 图表展现demo
+     *
      * @param jsonStr
      * @return
      */
@@ -247,7 +254,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         Map<String, String> params = jpaStatistic.getStatisticParam();
         if (jsonMap != null && !jsonMap.isEmpty()) {
             for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-                params.put(entry.getKey(),entry.getValue());
+                params.put(entry.getKey(), entry.getValue());
             }
         }
         //params.put("docType:in","5,6");
@@ -268,13 +275,14 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 柱状图显示demo
+     *
      * @param list
      * @return
      */
-    private String BarChart(List<Tuple> list){
+    private String BarChart(List<Tuple> list) {
         String[] types = new String[list.size()];
         int[] datas = new int[list.size()];
-        for (int i=0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             types[i] = String.valueOf(list.get(i).get(0));
             datas[i] = Integer.parseInt(list.get(i).get(1).toString());
         }
