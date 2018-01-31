@@ -140,6 +140,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     public void getStartMap(Map map, RedheadApplyBean bean) {
         List<String> assigneeList = Arrays.asList("郑立国", "王静", "纪雪莲");
         map.put("assigneeList", assigneeList);
+        super.getStartMap(map, bean);
     }
 
     @Override
