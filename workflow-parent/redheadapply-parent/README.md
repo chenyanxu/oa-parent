@@ -17,3 +17,12 @@
 
 * 本流程使用了流程变量，根据条件，跳过usertask
 * 使用了多实例UserTask，用于会签的实现
+```batch
+<multiInstanceLoopCharacteristics isSequential="false" activiti:collection="assigneeList"
+                                              activiti:elementVariable="assignee">
+                <completionCondition>${nrOfCompletedInstances==nrOfInstances||accepted=='不同意' }</completionCondition>
+            </multiInstanceLoopCharacteristics>
+```
+
+> 会签条件，所有实例全部通过流程才向下流转
+> 当有一个审批人不同意时候，其他流程实例结束，流程流转
