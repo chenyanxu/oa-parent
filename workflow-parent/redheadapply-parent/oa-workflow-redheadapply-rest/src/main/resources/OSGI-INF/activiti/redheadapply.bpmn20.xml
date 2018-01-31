@@ -25,7 +25,9 @@
         <userTask id="managerUser" name="校领导审批" activiti:candidateUsers="${assignee}" activiti:formKey="audit.form">
             <documentation>校领导审批</documentation>
             <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="assigneeList"
-                                              activiti:elementVariable="assignee"></multiInstanceLoopCharacteristics>
+                                              activiti:elementVariable="assignee">
+                <completionCondition>${nrOfCompletedInstances==nrOfInstances||accepted=='不同意' }</completionCondition>
+            </multiInstanceLoopCharacteristics>
         </userTask>
         <userTask id="chairmanUser" name="董事长审批" activiti:candidateGroups="吉林动画学院::董事长" activiti:formKey="audit.form">
             <documentation>董事长审批</documentation>
