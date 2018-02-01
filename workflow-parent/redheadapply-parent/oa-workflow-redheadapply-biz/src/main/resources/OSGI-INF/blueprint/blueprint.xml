@@ -15,6 +15,7 @@
     <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
     <reference id="documentConfigBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
     <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
+    <reference id="templateBeanService" interface="com.kalix.admin.template.api.biz.ITemplateBeanService"/>
 
     <bean id="redheadApplyBeanService" class="com.kalix.oa.workflow.redheadapply.biz.RedheadApplyBeanServiceImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
@@ -45,5 +46,17 @@
     </bean>
     <service id="documentConfigBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"
              ref="documentConfigBeanServiceImpl"/>
+
+    <bean id="downloadServlet" class="com.kalix.oa.workflow.redheadapply.biz.servlet.DownloadServlet">
+        <property name="redheadApplyBeanService" ref="redheadApplyBeanService"/>
+        <property name="templateBeanService" ref="templateBeanService"/>
+    </bean>
+    <service interface="javax.servlet.Servlet" ref="downloadServlet">
+        <service-properties>
+            <entry key="alias" value="/camel/servlet/download" />
+            <entry key="matchOnUriPrefix" value="true" />
+            <entry key="servlet-name" value="DownloadServlet"/>
+        </service-properties>
+    </service>
 </blueprint>
 

@@ -207,7 +207,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 //        currentState = statemachineService.getCurrentState();
 
         map.put("needHeader", bean.getNeedHeader());
-        return map;
+        return super.getVariantMap(map, bean);
     }
 
     public void setStatemachineService(IStatemachineService statemachineService) {
@@ -228,6 +228,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 图表展现demo
+     *
      * @param jsonStr
      * @return
      */
@@ -247,7 +248,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         Map<String, String> params = jpaStatistic.getStatisticParam();
         if (jsonMap != null && !jsonMap.isEmpty()) {
             for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-                params.put(entry.getKey(),entry.getValue());
+                params.put(entry.getKey(), entry.getValue());
             }
         }
         //params.put("docType:in","5,6");
@@ -268,13 +269,14 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 柱状图显示demo
+     *
      * @param list
      * @return
      */
-    private String BarChart(List<Tuple> list){
+    private String BarChart(List<Tuple> list) {
         String[] types = new String[list.size()];
         int[] datas = new int[list.size()];
-        for (int i=0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             types[i] = String.valueOf(list.get(i).get(0));
             datas[i] = Integer.parseInt(list.get(i).get(1).toString());
         }

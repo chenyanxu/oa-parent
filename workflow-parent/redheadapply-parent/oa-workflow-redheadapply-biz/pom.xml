@@ -40,7 +40,10 @@
         <dependency>
             <groupId>com.kalix.oa.system.dict</groupId>
             <artifactId>oa-system-dict-api</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kalix.admin.template</groupId>
+            <artifactId>admin-template-api</artifactId>
         </dependency>
     </dependencies>
 </project>
