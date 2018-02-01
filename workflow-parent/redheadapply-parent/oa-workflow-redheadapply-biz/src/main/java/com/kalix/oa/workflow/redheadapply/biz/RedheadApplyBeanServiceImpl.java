@@ -137,6 +137,21 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     }
 
     @Override
+    public void getStartMap(Map map, RedheadApplyBean bean) {
+        List<String> assigneeList = Arrays.asList("蔡志忠", "马世硕");
+       /*List<String> assigneeList = new ArrayList<>();
+        String importantAttendees = bean.getManagerUser();
+        if (importantAttendees.length() > 0) {
+            String[] split = importantAttendees.split(",");
+            for (int i = 0; i < split.length; i++) {
+                assigneeList.add(split[i]);
+            }
+        }*/
+        map.put("assigneeList", assigneeList);
+        super.getStartMap(map, bean);
+    }
+
+    @Override
     public void beforeUpdateEntity(RedheadApplyBean entity, JsonStatus status) {
         // 判断如果流程启动，编辑时，生成businessNo字段
         // 流程启动
