@@ -13,7 +13,8 @@
     <reference id="statemachineService" interface="com.kalix.middleware.statemachine.api.biz.IStatemachineService"/>
     <reference id="oaDictBeanService" interface="com.kalix.oa.system.dict.api.biz.IOADictBeanService"/>
     <reference id="documentBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentBeanDao"/>
-    <reference id="documentConfigBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
+    <reference id="documentConfigBeanDao"
+               interface="com.kalix.oa.workflow.redheadapply.api.dao.IDocumentConfigBeanDao"/>
     <reference id="redheadApplyBeanDao" interface="com.kalix.oa.workflow.redheadapply.api.dao.IRedheadApplyBeanDao"/>
     <reference id="templateBeanService" interface="com.kalix.admin.template.api.biz.ITemplateBeanService"/>
 
@@ -29,6 +30,7 @@
         <property name="documentBeanService" ref="documentBeanServiceImpl"/>
         <property name="documentConfigBeanService" ref="documentConfigBeanServiceImpl"/>
         <property name="oaDictBeanService" ref="oaDictBeanService"/>
+        <property name="templateBeanService" ref="templateBeanService"/>
     </bean>
     <service interface="com.kalix.oa.workflow.redheadapply.api.biz.IRedheadApplyBeanService"
              ref="redheadApplyBeanService"/>
@@ -41,22 +43,18 @@
     <service id="documentBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentBeanService"
              ref="documentBeanServiceImpl"/>
 
-    <bean id="documentConfigBeanServiceImpl" class="com.kalix.oa.workflow.redheadapply.biz.DocumentConfigBeanServiceImpl">
+    <bean id="documentConfigBeanServiceImpl"
+          class="com.kalix.oa.workflow.redheadapply.biz.DocumentConfigBeanServiceImpl">
         <property name="dao" ref="documentConfigBeanDao"/>
     </bean>
-    <service id="documentConfigBeanService" interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"
+    <service id="documentConfigBeanService"
+             interface="com.kalix.oa.workflow.redheadapply.api.biz.IDocumentConfigBeanService"
              ref="documentConfigBeanServiceImpl"/>
 
-    <bean id="downloadServlet" class="com.kalix.oa.workflow.redheadapply.biz.servlet.DownloadServlet">
-        <property name="redheadApplyBeanService" ref="redheadApplyBeanService"/>
-        <property name="templateBeanService" ref="templateBeanService"/>
-    </bean>
-    <service interface="javax.servlet.Servlet" ref="downloadServlet">
+    <service interface="com.kalix.framework.core.api.biz.IDownloadService"
+             ref="redheadApplyBeanService">
         <service-properties>
-            <entry key="alias" value="/camel/servlet/download" />
-            <entry key="matchOnUriPrefix" value="true" />
-            <entry key="servlet-name" value="DownloadServlet"/>
+            <entry key="beanName" value="RedheadApply"/>
         </service-properties>
     </service>
 </blueprint>
-

@@ -7,11 +7,14 @@ import com.github.abel533.echarts.code.Tool;
 import com.github.abel533.echarts.feature.MagicType;
 import com.github.abel533.echarts.json.GsonOption;
 import com.github.abel533.echarts.series.Bar;
+import com.kalix.admin.template.api.biz.ITemplateBeanService;
+import com.kalix.framework.core.api.biz.IDownloadService;
 import com.kalix.framework.core.api.persistence.JpaStatistic;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.web.model.QueryDTO;
 import com.kalix.framework.core.util.SerializeUtil;
+import com.kalix.framework.core.util.StringUtils;
 import com.kalix.middleware.statemachine.api.biz.IStatemachineService;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.system.dict.api.biz.IOADictBeanService;
@@ -31,7 +34,7 @@ import java.util.*;
 /**
  * @author sunlf
  */
-public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IRedheadApplyBeanDao, RedheadApplyBean> implements IRedheadApplyBeanService {
+public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IRedheadApplyBeanDao, RedheadApplyBean> implements IRedheadApplyBeanService, IDownloadService {
     private IStatemachineService statemachineService;
     private IDocumentBeanService documentBeanService;
     private IDocumentConfigBeanService documentConfigBeanService;
@@ -138,15 +141,15 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void getStartMap(Map map, RedheadApplyBean bean) {
-        List<String> assigneeList = Arrays.asList("蔡志忠", "马世硕");
-       /*List<String> assigneeList = new ArrayList<>();
+        List<String> assigneeList = new ArrayList<>();
         String importantAttendees = bean.getManagerUser();
         if (importantAttendees.length() > 0) {
             String[] split = importantAttendees.split(",");
             for (int i = 0; i < split.length; i++) {
                 assigneeList.add(split[i]);
             }
-        }*/
+        }
+        assigneeList = Arrays.asList("蔡志忠", "马世硕");
         map.put("assigneeList", assigneeList);
         super.getStartMap(map, bean);
     }
@@ -320,5 +323,44 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         option.yAxis(new ValueAxis());// y轴
         option.series(bar);
         return option.toString();
+    }
+
+    /*************** 以下是红头文件通过模板进行下载生成doc格式文件代码 ***************/
+
+    private static final String REDHEAD_TEMPLATE_NAME = "红头文件下载模板";
+    private ITemplateBeanService templateBeanService;
+
+    @Override
+    public String[] createDownloadFile(Long entityId) {
+        String[] fileInfo = new String[2];
+        String docCaption = "";
+        String docTypeName = "";
+        String title = "";
+        String content = "";
+        RedheadApplyBean redheadApplyBean = this.getEntity(entityId);
+        if (redheadApplyBean != null) {
+            OADictBean oaDictBean = oaDictBeanService.getByTypeAndValue("文号标题", redheadApplyBean.getDocType());
+            docCaption = oaDictBean.getLabel();
+            docTypeName = redheadApplyBean.getBusinessNo();
+            title = redheadApplyBean.getTitle();
+            content = redheadApplyBean.getDocContent();
+        }
+        if (StringUtils.isEmpty(title)) {
+            fileInfo[0] = "吉林动画学院红头文件未命名.doc";
+        } else {
+            fileInfo[0] = title + ".doc";
+        }
+        // 根据模板生成文件内容
+        Map<String, String> map = new HashMap<>();
+        map.put("docCaption", docCaption);
+        map.put("docTypeName", docTypeName);
+        map.put("title", title);
+        map.put("a", content);
+        fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, map);
+        return fileInfo;
+    }
+
+    public void setTemplateBeanService(ITemplateBeanService templateBeanService) {
+        this.templateBeanService = templateBeanService;
     }
 }
