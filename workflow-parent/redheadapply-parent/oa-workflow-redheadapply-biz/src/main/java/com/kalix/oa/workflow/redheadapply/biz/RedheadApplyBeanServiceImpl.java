@@ -143,7 +143,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     public void getStartMap(Map map, RedheadApplyBean bean) {
         if(bean.getNeedHeader()){
             List<String> assigneeList = new ArrayList<>();
-            String importantAttendees = bean.getManagerUser();
+            String importantAttendees = bean.getNeedManagerUser();
             if (importantAttendees.length() > 0) {
                 String[] split = importantAttendees.split(",");
                 for (int i = 0; i < split.length; i++) {
