@@ -328,11 +328,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /*************** 以下是红头文件通过模板进行下载生成doc格式文件代码 ***************/
 
-    private static final String REDHEAD_TEMPLATE_NAME = "红头文件下载模板";
+    private static final String REDHEAD_TEMPLATE_NAME = "红头文件使用模板";
     private ITemplateBeanService templateBeanService;
 
     @Override
-    public String[] createDownloadFile(Long entityId) {
+    public String[] createDownloadFile(Long entityId, String fileType) {
         String[] fileInfo = new String[2];
         String docCaption = "";
         String docTypeName = "";
@@ -347,17 +347,30 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             content = redheadApplyBean.getDocContent();
         }
         if (StringUtils.isEmpty(title)) {
-            fileInfo[0] = "吉林动画学院红头文件未命名.doc";
+            fileInfo[0] = "吉林动画学院红头文件未命名";
         } else {
-            fileInfo[0] = title + ".doc";
+            fileInfo[0] = title;
         }
+        // 根据文件类型查找对应模板，同时根据模板生成文件内容
         // 根据模板生成文件内容
         Map<String, String> map = new HashMap<>();
         map.put("docCaption", docCaption);
         map.put("docTypeName", docTypeName);
         map.put("title", title);
         map.put("a", content);
-        fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, map);
+        switch (fileType.toLowerCase()) {
+            // html类型，字典0
+            case "html":
+                fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, 0, map);
+                break;
+            // word类型，字典1
+            case "word":
+                fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, 1, map);
+                break;
+            default:
+                fileInfo[1] = "";
+                break;
+        }
         return fileInfo;
     }
 
