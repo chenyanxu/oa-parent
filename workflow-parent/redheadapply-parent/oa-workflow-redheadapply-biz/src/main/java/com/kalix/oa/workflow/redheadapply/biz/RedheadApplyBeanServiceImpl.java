@@ -141,6 +141,11 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void getStartMap(Map map, RedheadApplyBean bean) {
+        setAssignee(map, bean);
+        super.getStartMap(map, bean);
+    }
+
+    private void setAssignee(Map map, RedheadApplyBean bean) {
         if(bean.getNeedHeader()){
             List<String> assigneeList = new ArrayList<>();
             String importantAttendees = bean.getNeedManagerUser();
@@ -152,7 +157,6 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             }
             map.put("assigneeList", assigneeList);
         }
-        super.getStartMap(map, bean);
     }
 
     @Override
@@ -224,7 +228,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 //        String currentState = statemachineService.getCurrentState();
 //        statemachineService.processFSM("MOVELEFT");
 //        currentState = statemachineService.getCurrentState();
-
+        setAssignee(map, bean);
         map.put("needHeader", bean.getNeedHeader());
         return super.getVariantMap(map, bean);
     }
