@@ -29,6 +29,7 @@ import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
 
 import javax.persistence.Tuple;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -361,7 +362,25 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         map.put("docCaption", docCaption);
         map.put("docTypeName", docTypeName);
         map.put("title", title);
-        map.put("a", content);
+        map.put("content", content);
+        // 查找发文信息
+        String other = "";
+        String docDept = "";
+        String docDate = "";
+        if (StringUtils.isNotEmpty(docTypeName)) {
+            DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(docTypeName);
+            if (documentBean != null) {
+                if (documentBean.getRedheadId().longValue() == entityId.longValue()) {
+                    other = documentBean.getOther();
+                    docDept = documentBean.getDocDept();
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
+                    docDate = df.format(documentBean.getDocDate());
+                }
+            }
+        }
+        map.put("other", other);
+        map.put("docDept", docDept);
+        map.put("docDate", docDate);
         switch (fileType.toLowerCase()) {
             // html类型，字典0
             case "html":
