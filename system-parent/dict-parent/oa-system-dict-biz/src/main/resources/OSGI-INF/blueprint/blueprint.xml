@@ -16,4 +16,13 @@
 
     <service id="oADictBeanService"  interface="com.kalix.oa.system.dict.api.biz.IOADictBeanService" ref="oADictBeanServiceImpl">
     </service>
+
+    <bean id="userDefaultRoleImpl" class="com.kalix.oa.system.dict.biz.UserDefaultRoleImpl">
+    </bean>
+    <service id="userDefaultRole" interface="com.kalix.framework.core.api.extend.IUserDefaultRole"
+             ref="userDefaultRoleImpl">
+        <service-properties>
+            <entry key="userType" value="1"/>
+        </service-properties>
+    </service>
 </blueprint>
