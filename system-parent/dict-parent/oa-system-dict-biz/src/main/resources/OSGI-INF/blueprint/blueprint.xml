@@ -22,7 +22,7 @@
     <service id="userDefaultRole" interface="com.kalix.framework.core.api.extend.IUserDefaultRole"
              ref="userDefaultRoleImpl">
         <service-properties>
-            <!--教师的用户类型为1-->
+            <!--教师的用户类型为0-->
             <entry key="userType" value="0"/>
         </service-properties>
     </service>
