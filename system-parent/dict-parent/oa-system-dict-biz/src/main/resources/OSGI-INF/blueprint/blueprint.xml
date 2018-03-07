@@ -22,7 +22,8 @@
     <service id="userDefaultRole" interface="com.kalix.framework.core.api.extend.IUserDefaultRole"
              ref="userDefaultRoleImpl">
         <service-properties>
-            <entry key="userType" value="1"/>
+            <!--教师的用户类型为1-->
+            <entry key="userType" value="0"/>
         </service-properties>
     </service>
 </blueprint>
