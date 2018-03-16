@@ -366,7 +366,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         // 查找发文信息
         String other = "";
         String docDept = "";
-        String docDate = "年  月  日";
+        String docDate = "";
         if (StringUtils.isNotEmpty(docTypeName)) {
             DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(docTypeName);
             if (documentBean != null) {
@@ -380,6 +380,9 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                 }
             }
         }
+        if (other == null) other = "";
+        if (docDept == null) docDept = "";
+        if (StringUtils.isEmpty(docDate)) docDate = "年  月  日";
         map.put("other", other);
         map.put("docDept", docDept);
         map.put("docDate", docDate);
