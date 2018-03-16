@@ -366,7 +366,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         // 查找发文信息
         String other = "";
         String docDept = "";
-        String docDate = null;
+        String docDate = "年  月  日";
         if (StringUtils.isNotEmpty(docTypeName)) {
             DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(docTypeName);
             if (documentBean != null) {
