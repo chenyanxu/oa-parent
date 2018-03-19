@@ -42,7 +42,17 @@
             <dependency>
                 <groupId>com.kalix.middleware.statemachine</groupId>
                 <artifactId>middleware-statemachine-api</artifactId>
+                <version>${project.middleware.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.oa.system.dict</groupId>
+                <artifactId>oa-system-dict-api</artifactId>
                 <version>${project.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kalix.admin.template</groupId>
+                <artifactId>admin-template-api</artifactId>
+                <version>${project.admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

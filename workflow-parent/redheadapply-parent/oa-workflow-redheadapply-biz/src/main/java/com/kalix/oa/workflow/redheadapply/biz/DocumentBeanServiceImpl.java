@@ -139,7 +139,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
                 redheadApplyBeanService.updateEntity(redheadApplyBean);
 
                 // 修改文号实体类
-                entity.setDocDate(new Date());
+                //entity.setDocDate(new Date()); //日期前台可以设置
                 this.updateEntity(entity);
 
                 jsonStatus.setMsg("发文成功!");

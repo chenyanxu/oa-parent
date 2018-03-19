@@ -7,13 +7,14 @@ import com.github.abel533.echarts.code.Tool;
 import com.github.abel533.echarts.feature.MagicType;
 import com.github.abel533.echarts.json.GsonOption;
 import com.github.abel533.echarts.series.Bar;
-import com.github.abel533.echarts.style.ItemStyle;
-import com.github.abel533.echarts.style.itemstyle.Normal;
+import com.kalix.admin.template.api.biz.ITemplateBeanService;
+import com.kalix.framework.core.api.biz.IDownloadService;
 import com.kalix.framework.core.api.persistence.JpaStatistic;
 import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.api.persistence.JsonStatus;
 import com.kalix.framework.core.api.web.model.QueryDTO;
 import com.kalix.framework.core.util.SerializeUtil;
+import com.kalix.framework.core.util.StringUtils;
 import com.kalix.middleware.statemachine.api.biz.IStatemachineService;
 import com.kalix.middleware.workflow.biz.WorkflowGenericBizServiceImpl;
 import com.kalix.oa.system.dict.api.biz.IOADictBeanService;
@@ -28,12 +29,13 @@ import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
 
 import javax.persistence.Tuple;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
  * @author sunlf
  */
-public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IRedheadApplyBeanDao, RedheadApplyBean> implements IRedheadApplyBeanService {
+public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IRedheadApplyBeanDao, RedheadApplyBean> implements IRedheadApplyBeanService, IDownloadService {
     private IStatemachineService statemachineService;
     private IDocumentBeanService documentBeanService;
     private IDocumentConfigBeanService documentConfigBeanService;
@@ -139,15 +141,37 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     }
 
     @Override
+    public void getStartMap(Map map, RedheadApplyBean bean) {
+        setAssignee(map, bean);
+        super.getStartMap(map, bean);
+    }
+
+    private void setAssignee(Map map, RedheadApplyBean bean) {
+        if(bean.getNeedHeader()){
+            List<String> assigneeList = new ArrayList<>();
+            String importantAttendees = bean.getNeedManagerUser();
+            if (importantAttendees.length() > 0) {
+                String[] split = importantAttendees.split(",");
+                for (int i = 0; i < split.length; i++) {
+                    assigneeList.add(split[i]);
+                }
+            }
+            map.put("assigneeList", assigneeList);
+        }
+    }
+
+    @Override
     public void beforeUpdateEntity(RedheadApplyBean entity, JsonStatus status) {
-        // 判断如果流程未启动，编辑时，不生成businessNo字段
-        if (entity.getStatus() > 0) {
+        // 判断如果流程启动，编辑时，生成businessNo字段
+        // 流程启动
+        if (entity.getStatus() == 1) {
             // 判断entity.editDocType，是否允许修改文号（处理逻辑放在流程里处理，通过环境变量配置处理entity.editDocType）
             // 如果允许修改，根据主键entity.id查找RedheadApplyBean对象，比较文号类型是否改变
             // 文号类型改变，设置文号状态为【已撤回】，调用createBusinessNo方法生成新文号
-            // 是否修改文号
+            // 查找修改前红头文件信息
+            RedheadApplyBean oldRedheadApplyBean = this.getEntity(entity.getId());
+            // 判断是否修改文号
             if (entity.getEditDocType()) {
-                RedheadApplyBean oldRedheadApplyBean = this.getEntity(entity.getId());
                 // 比较新旧文号类型是否改变,如果改变
                 if (!oldRedheadApplyBean.getDocType().equals(entity.getDocType())) {
                     InputStream is = this.getClass().getClassLoader().getResourceAsStream("document-state.xml");
@@ -164,7 +188,13 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                     // 取新的文号
                     String newBusinessNo = this.createBusinessNo(entity);
                     entity.setBusinessNo(newBusinessNo);
+                    // 修改流程运行时名称
+                    runtimeService.setProcessInstanceName(entity.getProcessInstanceId(), newBusinessNo);
                 }
+            }
+            // 流程启动，判断是否修改审批选项
+            if (!oldRedheadApplyBean.getNeedHeader().equals(entity.getNeedHeader())) {
+                // 处理流程(暂不需要处理，已经在流程中处理)
             }
         }
         super.beforeUpdateEntity(entity, status);
@@ -199,9 +229,9 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 //        String currentState = statemachineService.getCurrentState();
 //        statemachineService.processFSM("MOVELEFT");
 //        currentState = statemachineService.getCurrentState();
-
-//        map.put("city", bean.isCity());
-        return map;
+        setAssignee(map, bean);
+        map.put("needHeader", bean.getNeedHeader());
+        return super.getVariantMap(map, bean);
     }
 
     public void setStatemachineService(IStatemachineService statemachineService) {
@@ -222,6 +252,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 图表展现demo
+     *
      * @param jsonStr
      * @return
      */
@@ -241,7 +272,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         Map<String, String> params = jpaStatistic.getStatisticParam();
         if (jsonMap != null && !jsonMap.isEmpty()) {
             for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-                params.put(entry.getKey(),entry.getValue());
+                params.put(entry.getKey(), entry.getValue());
             }
         }
         //params.put("docType:in","5,6");
@@ -262,13 +293,14 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     /**
      * 柱状图显示demo
+     *
      * @param list
      * @return
      */
-    private String BarChart(List<Tuple> list){
+    private String BarChart(List<Tuple> list) {
         String[] types = new String[list.size()];
         int[] datas = new int[list.size()];
-        for (int i=0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             types[i] = String.valueOf(list.get(i).get(0));
             datas[i] = Integer.parseInt(list.get(i).get(1).toString());
         }
@@ -297,5 +329,80 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         option.yAxis(new ValueAxis());// y轴
         option.series(bar);
         return option.toString();
+    }
+
+    /*************** 以下是红头文件通过模板进行下载生成doc格式文件代码 ***************/
+
+    private static final String REDHEAD_TEMPLATE_NAME = "红头文件使用模板";
+    private ITemplateBeanService templateBeanService;
+
+    @Override
+    public String[] createDownloadFile(Long entityId, String fileType) {
+        String[] fileInfo = new String[2];
+        String docCaption = "";
+        String docTypeName = "";
+        String title = "";
+        String content = "";
+        RedheadApplyBean redheadApplyBean = this.getEntity(entityId);
+        if (redheadApplyBean != null) {
+            OADictBean oaDictBean = oaDictBeanService.getByTypeAndValue("文号标题", redheadApplyBean.getDocType());
+            docCaption = oaDictBean.getLabel();
+            docTypeName = redheadApplyBean.getBusinessNo();
+            title = redheadApplyBean.getTitle();
+            content = redheadApplyBean.getDocContent();
+        }
+        if (StringUtils.isEmpty(title)) {
+            fileInfo[0] = "吉林动画学院红头文件未命名";
+        } else {
+            fileInfo[0] = title;
+        }
+        // 根据文件类型查找对应模板，同时根据模板生成文件内容
+        // 根据模板生成文件内容
+        Map<String, String> map = new HashMap<>();
+        map.put("docCaption", docCaption);
+        map.put("docTypeName", docTypeName);
+        map.put("title", title);
+        map.put("content", content);
+        // 查找发文信息
+        String other = "";
+        String docDept = "";
+        String docDate = "";
+        if (StringUtils.isNotEmpty(docTypeName)) {
+            DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(docTypeName);
+            if (documentBean != null) {
+                if (documentBean.getRedheadId().longValue() == entityId.longValue()) {
+                    other = documentBean.getOther();
+                    docDept = documentBean.getDocDept();
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
+                    if (documentBean.getDocDate() != null) {
+                        docDate = df.format(documentBean.getDocDate());
+                    }
+                }
+            }
+        }
+        if (other == null) other = "";
+        if (docDept == null) docDept = "";
+        if (StringUtils.isEmpty(docDate)) docDate = "年  月  日";
+        map.put("other", other);
+        map.put("docDept", docDept);
+        map.put("docDate", docDate);
+        switch (fileType.toLowerCase()) {
+            // html类型，字典0
+            case "html":
+                fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, 0, map);
+                break;
+            // word类型，字典1
+            case "word":
+                fileInfo[1] = templateBeanService.getTemplateResult(REDHEAD_TEMPLATE_NAME, 1, map);
+                break;
+            default:
+                fileInfo[1] = "";
+                break;
+        }
+        return fileInfo;
+    }
+
+    public void setTemplateBeanService(ITemplateBeanService templateBeanService) {
+        this.templateBeanService = templateBeanService;
     }
 }
