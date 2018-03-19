@@ -51,6 +51,8 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
     private String schoolAdminUser;
     //校务部签字
     private String schoolUser;
+    // 是否周历
+    private String weekCalander;
 
     public Integer getMeetingroomId() {
         return meetingroomId;
@@ -188,4 +190,11 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.schoolUser = schoolUser;
     }
 
+    public String getWeekCalander() {
+        return weekCalander;
+    }
+
+    public void setWeekCalander(String weekCalander) {
+        this.weekCalander = weekCalander;
+    }
 }
