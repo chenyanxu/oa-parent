@@ -28,10 +28,13 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
     private String host;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date meetingDate;//会议日期
+    private String meetingDateStr;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
     private Date beginTime;//会议时段,开始时间
+    private String beginTimeStr;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
     private Date endTime;//会议时段，结束时间
+    private String endTimeStr;
     @Transient
     private String weekOfDay;
     //参会人员
@@ -196,5 +199,29 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
 
     public void setWeekCalander(String weekCalander) {
         this.weekCalander = weekCalander;
+    }
+
+    public String getMeetingDateStr() {
+        return meetingDateStr;
+    }
+
+    public void setMeetingDateStr(String meetingDateStr) {
+        this.meetingDateStr = meetingDateStr;
+    }
+
+    public String getBeginTimeStr() {
+        return beginTimeStr;
+    }
+
+    public void setBeginTimeStr(String beginTimeStr) {
+        this.beginTimeStr = beginTimeStr;
+    }
+
+    public String getEndTimeStr() {
+        return endTimeStr;
+    }
+
+    public void setEndTimeStr(String endTimeStr) {
+        this.endTimeStr = endTimeStr;
     }
 }
