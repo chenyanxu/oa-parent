@@ -9,4 +9,12 @@
     <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
         <bean class="com.kalix.oa.workflow.carapply.biz.form.CarApplyBizDataFormImpl"/>
     </service>
+    <!-- 教学用车申请审批页面-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.carapply.biz.form.TeachingCarApplyAuditFormImpl"/>
+    </service>
+    <!-- 教学用车申请业务数据表单-->
+    <service interface="com.kalix.middleware.workflow.api.biz.IFormHandler">
+        <bean class="com.kalix.oa.workflow.carapply.biz.form.TeachingCarApplyBizDataFormImpl"/>
+    </service>
 </blueprint>

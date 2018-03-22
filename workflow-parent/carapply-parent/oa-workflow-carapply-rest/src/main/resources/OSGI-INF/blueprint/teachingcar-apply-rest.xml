@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="teachingCarApplyService" interface="com.kalix.oa.workflow.carapply.api.biz.ITeachingCarApplyBeanService"/>
+
+    <camelContext id="oa-teachingcarapply-rest" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="${rest.pretty}"/>
+        </restConfiguration>
+        <rest path="/teachingcarapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllTeachingCarApply" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find all TeachingCarApplys</description>
+                <to uri="bean:teachingCarApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr},${header.sort})"/>
+            </get>
+            <post id="route-addTeachingCarApply" type="com.kalix.oa.workflow.carapply.entities.TeachingCarApplyBean"
+                  outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Create a TeachingCarApply</description>
+                <to uri="bean:teachingCarApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/teachingcarapplys/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getTeachingCarApply" outType="com.kalix.oa.workflow.carapply.entities.TeachingCarApplyBean">
+                <description>Find TeachingCarApply by id</description>
+                <to uri="bean:teachingCarApplyService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updateTeachingCarApply" type="com.kalix.oa.workflow.carapply.entities.TeachingCarApplyBean"
+                 outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Updates a TeachingCarApply</description>
+                <to uri="bean:teachingCarApplyService?method=updateEntity"/>
+            </put>
+            <delete id="route-removeTeachingCarApply"
+                    outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Delete a TeachingCarApply</description>
+                <to uri="bean:teachingCarApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/teachingcarapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessTeachingCarApply" uri="/startProcess" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Start Process of TeachingCarApply</description>
+                <to uri="bean:teachingCarApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskTeachingCarApply" uri="/completeTask" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>Complete Task of TeachingCarApply</description>
+                <to uri="bean:teachingCarApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+        <rest path="/teachingcarapplys/statistic" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getTeachingCarApplyStatistic" outType="com.kalix.framework.core.api.persistence.JsonStatus">
+                <description>get TeachingCarApplyStatistic</description>
+                <to uri="bean:teachingCarApplyService?method=getWorkFlowStatistic(${header.jsonStr})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
+

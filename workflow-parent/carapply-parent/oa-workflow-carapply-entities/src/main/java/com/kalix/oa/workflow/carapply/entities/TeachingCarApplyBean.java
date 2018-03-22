@@ -10,17 +10,17 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * @类描述：用车申请管理
- * @创建人： sunlf
- * @创建时间：2016/2/24
+ * @类描述：教学用车申请管理
+ * @创建人： hqj
+ * @创建时间：2018/3/22
  * @修改人：
  * @修改时间：
  * @修改备注：
  */
 @Entity
-@Table(name = "oa_workflow_carapply")
+@Table(name = "oa_workflow_teachingcarapply")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class CarApplyBean extends WorkflowEntity {
+public class TeachingCarApplyBean extends WorkflowEntity {
     private String reason;            //用车事由
     private Integer usageCount;       //乘车人数
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -30,15 +30,12 @@ public class CarApplyBean extends WorkflowEntity {
     private String address;           //用车起始地点
     private boolean city = true;      //是否市内用车
     private String operatorPhone;     //申请人联系电话
-    private String depUser;           //申请部门负责人签字
     private String depManageUser;     //申请部门主管领导签批
+    private String teachingUser;      //教务部签批
+    private String manageCenterUser;  //平台建设与管理中心签批
+    private String learningUser;      //学工部签批
     private String schoolUser;        //校务部签字
-    private String schoolManageUser;  //校务部主管领导审批（市外）
-    private String carNo;             //车牌号
-    private String entourage;         //部门陪同人员
-    private String entouragePhone;    //陪同人员电话
-    private Double startKM;           //起车公里数
-    private Double endKM;             //收车公里数
+    private String schoolLeader;      //校领导审批
 
     public String getReason() {
         return reason;
@@ -96,20 +93,36 @@ public class CarApplyBean extends WorkflowEntity {
         this.operatorPhone = operatorPhone;
     }
 
-    public String getDepUser() {
-        return depUser;
-    }
-
-    public void setDepUser(String depUser) {
-        this.depUser = depUser;
-    }
-
     public String getDepManageUser() {
         return depManageUser;
     }
 
     public void setDepManageUser(String depManageUser) {
         this.depManageUser = depManageUser;
+    }
+
+    public String getTeachingUser() {
+        return teachingUser;
+    }
+
+    public void setTeachingUser(String teachingUser) {
+        this.teachingUser = teachingUser;
+    }
+
+    public String getManageCenterUser() {
+        return manageCenterUser;
+    }
+
+    public void setManageCenterUser(String manageCenterUser) {
+        this.manageCenterUser = manageCenterUser;
+    }
+
+    public String getLearningUser() {
+        return learningUser;
+    }
+
+    public void setLearningUser(String learningUser) {
+        this.learningUser = learningUser;
     }
 
     public String getSchoolUser() {
@@ -120,51 +133,11 @@ public class CarApplyBean extends WorkflowEntity {
         this.schoolUser = schoolUser;
     }
 
-    public String getSchoolManageUser() {
-        return schoolManageUser;
+    public String getSchoolLeader() {
+        return schoolLeader;
     }
 
-    public void setSchoolManageUser(String schoolManageUser) {
-        this.schoolManageUser = schoolManageUser;
-    }
-
-    public String getCarNo() {
-        return carNo;
-    }
-
-    public void setCarNo(String carNo) {
-        this.carNo = carNo;
-    }
-
-    public String getEntourage() {
-        return entourage;
-    }
-
-    public void setEntourage(String entourage) {
-        this.entourage = entourage;
-    }
-
-    public String getEntouragePhone() {
-        return entouragePhone;
-    }
-
-    public void setEntouragePhone(String entouragePhone) {
-        this.entouragePhone = entouragePhone;
-    }
-
-    public Double getStartKM() {
-        return startKM;
-    }
-
-    public void setStartKM(Double startKM) {
-        this.startKM = startKM;
-    }
-
-    public Double getEndKM() {
-        return endKM;
-    }
-
-    public void setEndKM(Double endKM) {
-        this.endKM = endKM;
+    public void setSchoolLeader(String schoolLeader) {
+        this.schoolLeader = schoolLeader;
     }
 }
