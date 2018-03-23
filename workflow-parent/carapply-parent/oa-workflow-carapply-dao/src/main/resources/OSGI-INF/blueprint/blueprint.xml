@@ -6,10 +6,16 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     <jpa:enable/>
     <tx:enable-annotations/>
-    <!--用车申请-->
+    <!--公务用车申请-->
     <bean id="carApplyBeanDaoImpl" class="com.kalix.oa.workflow.carapply.dao.CarApplyBeanDaoImpl">
         <!--<tx:transaction method="*" value="Required"/>-->
     </bean>
     <service interface="com.kalix.oa.workflow.carapply.api.dao.ICarApplyBeanDao" ref="carApplyBeanDaoImpl"/>
+
+    <!--教学用车申请-->
+    <bean id="teachingCarApplyBeanDaoImpl" class="com.kalix.oa.workflow.carapply.dao.TeachingCarApplyBeanDaoImpl">
+        <!--<tx:transaction method="*" value="Required"/>-->
+    </bean>
+    <service interface="com.kalix.oa.workflow.carapply.api.dao.ITeachingCarApplyBeanDao" ref="teachingCarApplyBeanDaoImpl"/>
 </blueprint>
 
