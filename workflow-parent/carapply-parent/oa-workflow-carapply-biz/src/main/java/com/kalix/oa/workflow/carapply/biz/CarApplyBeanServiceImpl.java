@@ -32,7 +32,7 @@ public class CarApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<ICarA
 //        statemachineService.processFSM("MOVELEFT");
 //        currentState = statemachineService.getCurrentState();
 
-        map.put("city", bean.isCity());
+        map.put("city", bean.getCity());
         return map;
     }
 }

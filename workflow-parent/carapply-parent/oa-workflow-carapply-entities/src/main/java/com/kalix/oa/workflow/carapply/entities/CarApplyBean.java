@@ -28,7 +28,7 @@ public class CarApplyBean extends WorkflowEntity {
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endDate;             //用车时段，结束时间
     private String address;           //用车起始地点
-    private boolean city = true;      //是否市内用车
+    private Boolean city = true;      //是否市内用车
     private String operatorPhone;     //申请人联系电话
     private String depUser;           //申请部门负责人签字
     private String depManageUser;     //申请部门主管领导签批
@@ -80,11 +80,11 @@ public class CarApplyBean extends WorkflowEntity {
         this.address = address;
     }
 
-    public boolean isCity() {
+    public Boolean getCity() {
         return city;
     }
 
-    public void setCity(boolean city) {
+    public void setCity(Boolean city) {
         this.city = city;
     }
 

@@ -28,9 +28,10 @@ public class TeachingCarApplyBean extends WorkflowEntity {
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endDate;             //用车时段，结束时间
     private String address;           //用车起始地点
-    private boolean city = true;      //是否市内用车
+    private Boolean city = true;      //是否市内用车
     private String operatorPhone;     //申请人联系电话
     private String depManageUser;     //申请部门主管领导签批
+    private Boolean needTeachingUser; //是否需要教务部审批
     private String teachingUser;      //教务部签批
     private String manageCenterUser;  //平台建设与管理中心签批
     private String learningUser;      //学工部签批
@@ -77,11 +78,11 @@ public class TeachingCarApplyBean extends WorkflowEntity {
         this.address = address;
     }
 
-    public boolean isCity() {
+    public Boolean getCity() {
         return city;
     }
 
-    public void setCity(boolean city) {
+    public void setCity(Boolean city) {
         this.city = city;
     }
 
@@ -99,6 +100,14 @@ public class TeachingCarApplyBean extends WorkflowEntity {
 
     public void setDepManageUser(String depManageUser) {
         this.depManageUser = depManageUser;
+    }
+
+    public Boolean getNeedTeachingUser() {
+        return needTeachingUser;
+    }
+
+    public void setNeedTeachingUser(Boolean needTeachingUser) {
+        this.needTeachingUser = needTeachingUser;
     }
 
     public String getTeachingUser() {
