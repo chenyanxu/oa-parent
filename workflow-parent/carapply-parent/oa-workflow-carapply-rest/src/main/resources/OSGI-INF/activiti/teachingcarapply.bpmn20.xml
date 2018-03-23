@@ -37,8 +37,8 @@
     <sequenceFlow id="flow39" name="同意" sourceRef="exclusivegateway6" targetRef="learningUser">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted=='同意'}]]></conditionExpression>
     </sequenceFlow>
-    <userTask id="manageCenterUser" name="平台建设与管理中心）审批" activiti:candidateGroups="平台建设与管理中心::部长（中心主任）" activiti:formKey="audit.form">
-      <documentation>平台建设与管理中心）审批</documentation>
+    <userTask id="manageCenterUser" name="平台建设与管理中心审批" activiti:candidateGroups="平台建设与管理中心::部长（中心主任）" activiti:formKey="audit.form">
+      <documentation>平台建设与管理中心审批</documentation>
     </userTask>
     <exclusiveGateway id="exclusivegateway7" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow41" sourceRef="depManageUser" targetRef="exclusivegateway7"></sequenceFlow>

@@ -21,22 +21,22 @@ import java.util.Date;
 @Table(name = "oa_workflow_teachingcarapply")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class TeachingCarApplyBean extends WorkflowEntity {
-    private String reason;            //用车事由
-    private Integer usageCount;       //乘车人数
+    private String reason;                   //用车事由
+    private Integer usageCount;              //乘车人数
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date beginDate;           //用车时段,开始时间
+    private Date beginDate;                  //用车时段,开始时间
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date endDate;             //用车时段，结束时间
-    private String address;           //用车起始地点
-    private Boolean city = true;      //是否市内用车
-    private String operatorPhone;     //申请人联系电话
-    private String depManageUser;     //申请部门主管领导签批
-    private Boolean needTeachingUser; //是否需要教务部审批
-    private String teachingUser;      //教务部签批
-    private String manageCenterUser;  //平台建设与管理中心签批
-    private String learningUser;      //学工部签批
-    private String schoolUser;        //校务部签字
-    private String schoolLeader;      //校领导审批
+    private Date endDate;                    //用车时段，结束时间
+    private String address;                  //用车起始地点
+    private Boolean city = true;             //是否市内用车
+    private String operatorPhone;            //申请人联系电话
+    private String depManageUser;            //申请部门主管领导签批
+    private Boolean needTeachingUser = true; //是否需要教务部审批
+    private String teachingUser;             //教务部签批
+    private String manageCenterUser;         //平台建设与管理中心签批
+    private String learningUser;             //学工部签批
+    private String schoolUser;               //校务部签字
+    private String schoolLeader;             //校领导审批
 
     public String getReason() {
         return reason;
