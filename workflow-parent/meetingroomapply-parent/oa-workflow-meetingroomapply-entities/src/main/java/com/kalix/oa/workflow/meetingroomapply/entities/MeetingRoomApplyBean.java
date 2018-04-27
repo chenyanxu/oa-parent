@@ -15,47 +15,39 @@ import java.util.Date;
 @Entity
 @Table(name = "oa_workflow_meetingroomapply")
 public class MeetingRoomApplyBean extends WorkflowEntity {
-    //会议地点
-    private Integer meetingroomId;
-    //会议地点
+    private Integer meetingroomId;        //会议地点id
     @Transient
-    private String meetingroomName;
-    //会议名称
-    private String meetingTopic;
-    //宣传需求（企划中心）
-    private Integer requireType;
-    //主持人
-    private String host;
+    private String meetingroomName;       //会议地点
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date meetingDate;//会议日期
+    private Date meetingDate;             //会议日期
     private String meetingDateStr;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
-    private Date beginTime;//会议时段,开始时间
+    private Date beginTime;               //会议时段，开始时间
     private String beginTimeStr;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
-    private Date endTime;//会议时段，结束时间
+    private Date endTime;                 //会议时段，结束时间
     private String endTimeStr;
+    private String meetingTopic;          //会议名称(议题)
+    private String meetingAgenda;         //会议内容(议程)
+    private String participant;           //参会人员
+    private String host;                  //主持人
+    private String securityPerson;        //协调人（联系人（安全责任人））
+    private String securityTel;           //协调人电话（联系人电话）
+    private String operatorPhone;         //申请人联系电话
+
+    private Integer requireType;          //宣传需求（企划中心），字典【会议需求类型】
     @Transient
     private String weekOfDay;
-    //参会人员
-    private String participant;
-    //出席人数
-    private Integer attendance;
-    //设备要求
-    private String equipmentRequirement;
-    //联系人（安全责任人）
-    private String securityPerson;
-    //联系人电话
-    private String securityTel;
-    //申请人联系电话
-    private String operatorPhone;
+    private Integer attendance;           //参会人数（出席人数）
+    private String equipmentRequirement;  //设备要求
 
-    //校务部行政事务办主管
-    private String schoolAdminUser;
-    //校务部签字
-    private String schoolUser;
-    // 是否周历
-    private String weekCalander;
+    private String schoolAdminUser;       //校务部行政事务办主管
+    private String schoolUser;            //校务部签字
+
+    private Boolean weekCalander;         //是否周历
+    private String schoolYear;            //学年
+    private String term;                  //学期
+    private Integer week;                 //学周，字典【学周】
 
     public Integer getMeetingroomId() {
         return meetingroomId;
@@ -73,36 +65,20 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.meetingroomName = meetingroomName;
     }
 
-    public String getMeetingTopic() {
-        return meetingTopic;
-    }
-
-    public void setMeetingTopic(String meetingTopic) {
-        this.meetingTopic = meetingTopic;
-    }
-
-    public Integer getRequireType() {
-        return requireType;
-    }
-
-    public void setRequireType(Integer requireType) {
-        this.requireType = requireType;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
     public Date getMeetingDate() {
         return meetingDate;
     }
 
     public void setMeetingDate(Date meetingDate) {
         this.meetingDate = meetingDate;
+    }
+
+    public String getMeetingDateStr() {
+        return meetingDateStr;
+    }
+
+    public void setMeetingDateStr(String meetingDateStr) {
+        this.meetingDateStr = meetingDateStr;
     }
 
     public Date getBeginTime() {
@@ -113,6 +89,14 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.beginTime = beginTime;
     }
 
+    public String getBeginTimeStr() {
+        return beginTimeStr;
+    }
+
+    public void setBeginTimeStr(String beginTimeStr) {
+        this.beginTimeStr = beginTimeStr;
+    }
+
     public Date getEndTime() {
         return endTime;
     }
@@ -121,12 +105,28 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.endTime = endTime;
     }
 
-    public String getWeekOfDay() {
-        return weekOfDay;
+    public String getEndTimeStr() {
+        return endTimeStr;
     }
 
-    public void setWeekOfDay(String weekOfDay) {
-        this.weekOfDay = weekOfDay;
+    public void setEndTimeStr(String endTimeStr) {
+        this.endTimeStr = endTimeStr;
+    }
+
+    public String getMeetingTopic() {
+        return meetingTopic;
+    }
+
+    public void setMeetingTopic(String meetingTopic) {
+        this.meetingTopic = meetingTopic;
+    }
+
+    public String getMeetingAgenda() {
+        return meetingAgenda;
+    }
+
+    public void setMeetingAgenda(String meetingAgenda) {
+        this.meetingAgenda = meetingAgenda;
     }
 
     public String getParticipant() {
@@ -137,20 +137,12 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.participant = participant;
     }
 
-    public Integer getAttendance() {
-        return attendance;
+    public String getHost() {
+        return host;
     }
 
-    public void setAttendance(Integer attendance) {
-        this.attendance = attendance;
-    }
-
-    public String getEquipmentRequirement() {
-        return equipmentRequirement;
-    }
-
-    public void setEquipmentRequirement(String equipmentRequirement) {
-        this.equipmentRequirement = equipmentRequirement;
+    public void setHost(String host) {
+        this.host = host;
     }
 
     public String getSecurityPerson() {
@@ -177,6 +169,38 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.operatorPhone = operatorPhone;
     }
 
+    public Integer getRequireType() {
+        return requireType;
+    }
+
+    public void setRequireType(Integer requireType) {
+        this.requireType = requireType;
+    }
+
+    public String getWeekOfDay() {
+        return weekOfDay;
+    }
+
+    public void setWeekOfDay(String weekOfDay) {
+        this.weekOfDay = weekOfDay;
+    }
+
+    public Integer getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Integer attendance) {
+        this.attendance = attendance;
+    }
+
+    public String getEquipmentRequirement() {
+        return equipmentRequirement;
+    }
+
+    public void setEquipmentRequirement(String equipmentRequirement) {
+        this.equipmentRequirement = equipmentRequirement;
+    }
+
     public String getSchoolAdminUser() {
         return schoolAdminUser;
     }
@@ -193,35 +217,35 @@ public class MeetingRoomApplyBean extends WorkflowEntity {
         this.schoolUser = schoolUser;
     }
 
-    public String getWeekCalander() {
+    public Boolean getWeekCalander() {
         return weekCalander;
     }
 
-    public void setWeekCalander(String weekCalander) {
+    public void setWeekCalander(Boolean weekCalander) {
         this.weekCalander = weekCalander;
     }
 
-    public String getMeetingDateStr() {
-        return meetingDateStr;
+    public String getSchoolYear() {
+        return schoolYear;
     }
 
-    public void setMeetingDateStr(String meetingDateStr) {
-        this.meetingDateStr = meetingDateStr;
+    public void setSchoolYear(String schoolYear) {
+        this.schoolYear = schoolYear;
     }
 
-    public String getBeginTimeStr() {
-        return beginTimeStr;
+    public String getTerm() {
+        return term;
     }
 
-    public void setBeginTimeStr(String beginTimeStr) {
-        this.beginTimeStr = beginTimeStr;
+    public void setTerm(String term) {
+        this.term = term;
     }
 
-    public String getEndTimeStr() {
-        return endTimeStr;
+    public Integer getWeek() {
+        return week;
     }
 
-    public void setEndTimeStr(String endTimeStr) {
-        this.endTimeStr = endTimeStr;
+    public void setWeek(Integer week) {
+        this.week = week;
     }
 }
