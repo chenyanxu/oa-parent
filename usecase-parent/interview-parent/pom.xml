@@ -16,7 +16,7 @@
         <module>oa-usecase-interview-biz</module>
         <module>oa-usecase-interview-dao</module>
         <module>oa-usecase-interview-entities</module>
-        <module>oa-usecase-interview-extjs</module>
+        <!--<module>oa-usecase-interview-extjs</module>-->
         <module>oa-usecase-interview-rest</module>
         <!--<module>oa-usecase-interview-web</module>-->
     </modules>

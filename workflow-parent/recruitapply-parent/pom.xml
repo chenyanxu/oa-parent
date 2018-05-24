@@ -17,7 +17,7 @@
         <module>oa-workflow-recruitapply-biz</module>
         <module>oa-workflow-recruitapply-dao</module>
         <module>oa-workflow-recruitapply-entities</module>
-        <module>oa-workflow-recruitapply-extjs</module>
+        <!--<module>oa-workflow-recruitapply-extjs</module>-->
         <module>oa-workflow-recruitapply-rest</module>
         <!--<module>oa-workflow-recruitapply-web</module>-->
     </modules>

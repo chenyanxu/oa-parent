@@ -18,7 +18,7 @@
         <module>oa-workflow-reimbursementapply-dao</module>
         <module>oa-workflow-reimbursementapply-biz</module>
         <module>oa-workflow-reimbursementapply-rest</module>
-        <module>oa-workflow-reimbursementapply-extjs</module>
+        <!--<module>oa-workflow-reimbursementapply-extjs</module>-->
     </modules>
 
     <dependencyManagement>

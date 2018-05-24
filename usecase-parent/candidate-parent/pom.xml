@@ -16,7 +16,7 @@
         <module>oa-usecase-candidate-biz</module>
         <module>oa-usecase-candidate-dao</module>
         <module>oa-usecase-candidate-entities</module>
-        <module>oa-usecase-candidate-extjs</module>
+        <!--<module>oa-usecase-candidate-extjs</module>-->
         <module>oa-usecase-candidate-rest</module>
         <!--<module>oa-usecase-candidate-web</module>-->
     </modules>

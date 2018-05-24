@@ -17,7 +17,7 @@
         <module>oa-workflow-meetingroomapply-biz</module>
         <module>oa-workflow-meetingroomapply-dao</module>
         <module>oa-workflow-meetingroomapply-entities</module>
-        <module>oa-workflow-meetingroomapply-extjs</module>
+        <!--<module>oa-workflow-meetingroomapply-extjs</module>-->
         <module>oa-workflow-meetingroomapply-rest</module>
     </modules>
 

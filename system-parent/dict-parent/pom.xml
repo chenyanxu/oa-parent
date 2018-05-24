@@ -16,7 +16,7 @@
         <module>oa-system-dict-dao</module>
         <module>oa-system-dict-biz</module>
         <module>oa-system-dict-rest</module>
-        <module>oa-system-dict-extjs</module>
+        <!--<module>oa-system-dict-extjs</module>-->
     </modules>
     <packaging>pom</packaging>
 

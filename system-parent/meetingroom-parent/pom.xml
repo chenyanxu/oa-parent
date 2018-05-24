@@ -16,7 +16,7 @@
         <module>oa-system-meetingroom-biz</module>
         <module>oa-system-meetingroom-dao</module>
         <module>oa-system-meetingroom-entities</module>
-        <module>oa-system-meetingroom-extjs</module>
+        <!--<module>oa-system-meetingroom-extjs</module>-->
         <module>oa-system-meetingroom-rest</module>
         <!--<module>oa-system-meetingroom-web</module>-->
     </modules>

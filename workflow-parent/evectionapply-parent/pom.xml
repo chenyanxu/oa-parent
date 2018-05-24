@@ -20,7 +20,7 @@
         <module>oa-workflow-evectionapply-biz</module>
         <module>oa-workflow-evectionapply-dao</module>
         <module>oa-workflow-evectionapply-entities</module>
-        <module>oa-workflow-evectionapply-extjs</module>
+        <!--<module>oa-workflow-evectionapply-extjs</module>-->
         <module>oa-workflow-evectionapply-rest</module>
     </modules>
 

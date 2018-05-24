@@ -19,7 +19,7 @@
         <module>oa-workflow-carapply-biz</module>
         <module>oa-workflow-carapply-rest</module>
         <!--<module>oa-workflow-carapply-web</module>-->
-        <module>oa-workflow-carapply-extjs</module>
+        <!--<module>oa-workflow-carapply-extjs</module>-->
     </modules>
 
     <dependencyManagement>

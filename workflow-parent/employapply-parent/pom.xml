@@ -17,7 +17,7 @@
         <module>oa-workflow-employapply-api</module>
         <module>oa-workflow-employapply-biz</module>
         <module>oa-workflow-employapply-dao</module>
-        <module>oa-workflow-employapply-extjs</module>
+        <!--<module>oa-workflow-employapply-extjs</module>-->
         <module>oa-workflow-employapply-rest</module>
         <!--<module>oa-workflow-employapply-web</module>-->
     </modules>

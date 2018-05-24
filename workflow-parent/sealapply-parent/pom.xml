@@ -17,7 +17,7 @@
         <module>oa-workflow-sealapply-biz</module>
         <module>oa-workflow-sealapply-dao</module>
         <module>oa-workflow-sealapply-entities</module>
-        <module>oa-workflow-sealapply-extjs</module>
+        <!--<module>oa-workflow-sealapply-extjs</module>-->
         <module>oa-workflow-sealapply-rest</module>
         <!--<module>oa-workflow-sealapply-web</module>-->
     </modules>
