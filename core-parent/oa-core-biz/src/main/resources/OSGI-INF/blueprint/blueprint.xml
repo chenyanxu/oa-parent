@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
+
+    <bean id="oaDashboardServiceImpl" class="com.kalix.oa.core.biz.OaDashboardServiceImpl">
+    </bean>
+    <service id="oaDashboardService" interface="com.kalix.framework.core.api.biz.IDashboardService"
+             ref="oaDashboardServiceImpl">
+        <service-properties>
+            <entry key="dashboard" value="oa"/>
+        </service-properties>
+    </service>
+</blueprint>
+
