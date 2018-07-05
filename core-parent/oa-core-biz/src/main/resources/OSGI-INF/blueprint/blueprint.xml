@@ -5,7 +5,8 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
-    <bean id="oaDashboardServiceImpl" class="com.kalix.oa.core.biz.OaDashboardServiceImpl">
+    <bean id="oaDashboardServiceImpl" class="com.kalix.oa.core.biz.OaDashboardServiceImpl" init-method="init">
+        <!--<property name="dashboardConfigName" value="config.oa.dashboard"/>-->
     </bean>
     <service id="oaDashboardService" interface="com.kalix.framework.core.api.biz.IDashboardService"
              ref="oaDashboardServiceImpl">
@@ -14,4 +15,3 @@
         </service-properties>
     </service>
 </blueprint>
-

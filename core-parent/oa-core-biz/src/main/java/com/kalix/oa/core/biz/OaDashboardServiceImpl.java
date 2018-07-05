@@ -1,12 +1,9 @@
 package com.kalix.oa.core.biz;
 
 import com.kalix.framework.core.api.biz.IDashboardService;
-import com.kalix.framework.core.api.dto.PanelGroupDTO;
 import com.kalix.framework.core.api.dto.PieSeriesDataDTO;
-import com.kalix.framework.core.api.persistence.JsonData;
 import com.kalix.framework.core.impl.biz.DashboardServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,37 +18,8 @@ import java.util.List;
 public class OaDashboardServiceImpl extends DashboardServiceImpl implements IDashboardService {
 
     @Override
-    public JsonData getPanelGroupData() {
-        JsonData jsonData = new JsonData();
-        List<PanelGroupDTO> list = new ArrayList<PanelGroupDTO>();
-        PanelGroupDTO panelGroupDTO = new PanelGroupDTO();
-        panelGroupDTO.setKey("test1");
-        panelGroupDTO.setIconName("peoples");
-        panelGroupDTO.setText("aaa");
-        panelGroupDTO.setEndVal(102400);
-        panelGroupDTO.setDuration(2600);
-
-        list.add(panelGroupDTO);
-
-        panelGroupDTO = new PanelGroupDTO();
-        panelGroupDTO.setKey("test2");
-        panelGroupDTO.setIconName("message");
-        panelGroupDTO.setText("bbb");
-        panelGroupDTO.setEndVal(81212);
-        panelGroupDTO.setDuration(3000);
-        list.add(panelGroupDTO);
-
-        panelGroupDTO = new PanelGroupDTO();
-        panelGroupDTO.setKey("aaa");
-        panelGroupDTO.setIconName("money");
-        panelGroupDTO.setText("Purchases");
-        panelGroupDTO.setEndVal(9280);
-        panelGroupDTO.setDuration(3200);
-        list.add(panelGroupDTO);
-
-        jsonData.setTotalCount(3L);
-        jsonData.setData(list);
-        return jsonData;
+    public Integer getPanelGroupBizData(String chartKey) {
+        return super.getPanelGroupBizData(chartKey);
     }
 
     @Override
