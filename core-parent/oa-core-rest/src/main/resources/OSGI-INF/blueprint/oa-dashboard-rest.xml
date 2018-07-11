@@ -27,6 +27,24 @@
                 <description>Find LineChartData</description>
                 <to uri="bean:oaDashboardService?method=getLineChartData(${header.chartKey})"/>
             </get>
+
+            <get id="route-oa-getRaddarChartData" uri="/raddarChart"
+                 type="java.lang.String" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find RaddarChartData</description>
+                <to uri="bean:oaDashboardService?method=getRaddarChartData(${header.chartKey})"/>
+            </get>
+
+            <get id="route-oa-getPieChartData" uri="/pieChart"
+                 type="java.lang.String" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find PieChartData</description>
+                <to uri="bean:oaDashboardService?method=getPieChartData(${header.chartKey})"/>
+            </get>
+
+            <get id="route-oa-getBarChartData" uri="/barChart"
+                 type="java.lang.String" outType="com.kalix.framework.core.api.persistence.JsonData">
+                <description>Find BarChartData</description>
+                <to uri="bean:oaDashboardService?method=getBarChartData(${header.chartKey})"/>
+            </get>
         </rest>
     </camelContext>
 </blueprint>
