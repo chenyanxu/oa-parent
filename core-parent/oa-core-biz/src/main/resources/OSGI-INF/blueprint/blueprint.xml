@@ -5,7 +5,9 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
+    <reference id="genericDao" interface="com.kalix.framework.core.api.dao.IGenericDao"/>
     <bean id="oaDashboardServiceImpl" class="com.kalix.oa.core.biz.OaDashboardServiceImpl" init-method="init">
+        <property name="genericDao" ref="genericDao"/>
         <!--<property name="dashboardConfigName" value="config.oa.dashboard"/>-->
     </bean>
     <service id="oaDashboardService" interface="com.kalix.framework.core.api.biz.IDashboardService"
