@@ -50,10 +50,10 @@ public class EvectionApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<
         JsonStatus jsonStatus = super.completeTask(taskId, accepted, comment);
         //出差申请审批流程结束时，并且审批都通过时，向报销表添加记录，以便启动报销流程
         if (jsonStatus.getTag() != null && jsonStatus.getTag().startsWith("流程结束:") && accepted.equals("同意")) {
-            Long evectionApplyId = Long.valueOf(jsonStatus.getTag().split(":")[1]);
+            String evectionApplyId = jsonStatus.getTag().split(":")[1];
 
             //出差人id,组织机构id
-            Long createById, orgId;
+            String createById, orgId;
             //出差人名称,题目,组织机构名称,出差原因,项目名称
             String ceateBy, title, orgName, reason, projectName;
             //借款金额

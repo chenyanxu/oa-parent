@@ -18,5 +18,5 @@ public interface IMeetingRoomApplyBeanService extends IWorkflowBizService<Meetin
     //会议室预约情况
     JsonData reservation(Date date);
 
-    JsonData reservation(long roomId, Date date);
+    JsonData reservation(String roomId, Date date);
 }

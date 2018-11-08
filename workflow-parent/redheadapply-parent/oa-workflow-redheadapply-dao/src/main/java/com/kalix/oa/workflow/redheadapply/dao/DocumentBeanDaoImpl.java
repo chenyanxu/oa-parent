@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author sunlf
  */
-public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, Long> implements IDocumentBeanDao {
+public class DocumentBeanDaoImpl extends GenericDao<DocumentBean, String> implements IDocumentBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-redheadapply-unit")
     public void setEntityManager(EntityManager em) {

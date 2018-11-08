@@ -13,5 +13,5 @@ public interface IEmployApplyBeanService extends IWorkflowBizService<EmployApply
       final String PROCESS_KEY_NAME="employapply";
       JsonData getAllEntityByQuery(Integer page, Integer limit, String jsonStr);
 
-      EmployApplyDTO getDTOModel(Long id);
+      EmployApplyDTO getDTOModel(String id);
 }

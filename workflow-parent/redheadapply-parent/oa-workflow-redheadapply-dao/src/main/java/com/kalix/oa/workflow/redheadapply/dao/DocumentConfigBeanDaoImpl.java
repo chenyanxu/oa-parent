@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author sunlf
  */
-public class DocumentConfigBeanDaoImpl extends GenericDao<DocumentConfigBean, Long> implements IDocumentConfigBeanDao {
+public class DocumentConfigBeanDaoImpl extends GenericDao<DocumentConfigBean, String> implements IDocumentConfigBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-redheadapply-unit")
     public void setEntityManager(EntityManager em) {
@@ -24,8 +24,8 @@ public class DocumentConfigBeanDaoImpl extends GenericDao<DocumentConfigBean, Lo
     }
 
     @Override
-    public Integer updateNumber(Long id, Integer number) {
-        String sql = "update " + this.getTableName() + " set number = " + number + " where id = " + id;
+    public Integer updateNumber(String id, Integer number) {
+        String sql = "update " + this.getTableName() + " set number = " + number + " where id = '" + id + "'";
         return this.updateNativeQuery(sql);
     }
 }

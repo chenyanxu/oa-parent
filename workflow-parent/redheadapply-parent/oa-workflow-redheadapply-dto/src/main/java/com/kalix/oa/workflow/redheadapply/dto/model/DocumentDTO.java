@@ -24,7 +24,7 @@ public class DocumentDTO extends BaseDTO {
     private Integer page;      //页数
     private Integer copy;      //份数
     private String other;      //抄送
-    private Long redheadId;    //红头文件id
+    private String redheadId;    //红头文件id
 
     private String title;      //文题，使用父类的title字段
     private String docUrl;     //发文地址，需要在审批通过后填写
@@ -127,11 +127,11 @@ public class DocumentDTO extends BaseDTO {
         this.other = other;
     }
 
-    public Long getRedheadId() {
+    public String getRedheadId() {
         return redheadId;
     }
 
-    public void setRedheadId(Long redheadId) {
+    public void setRedheadId(String redheadId) {
         this.redheadId = redheadId;
     }
 

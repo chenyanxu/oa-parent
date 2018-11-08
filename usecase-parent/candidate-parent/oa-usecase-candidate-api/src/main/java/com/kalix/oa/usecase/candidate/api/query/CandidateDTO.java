@@ -6,19 +6,19 @@ import com.kalix.framework.core.api.web.model.QueryDTO;
  * Created by zangyanming on 2016/06/21.
  */
 public class CandidateDTO extends QueryDTO {
-    private Long id;
+    private String id;
     private String xm;
-    private Long candidateId;
+    private String candidateId;
 
     public String getXm() {
         return xm;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -26,11 +26,11 @@ public class CandidateDTO extends QueryDTO {
         this.xm = xm;
     }
 
-    public Long getCandidateId() {
+    public String getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(Long candidateId) {
+    public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 }

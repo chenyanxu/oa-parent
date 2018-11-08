@@ -11,6 +11,6 @@ import com.kalix.oa.usecase.interview.entities.LectureBean;
  * @修改时间：
  * @修改备注：
  */
-public interface ILectureBeanDao extends IGenericDao<LectureBean, Long> {
+public interface ILectureBeanDao extends IGenericDao<LectureBean, String> {
     //在此添加新的DAO方法
 }

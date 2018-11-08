@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author zangyanming
  */
-public class ReimbursementApplyBeanDaoImpl extends GenericDao<ReimbursementApplyBean, Long> implements IReimbursementApplyBeanDao {
+public class ReimbursementApplyBeanDaoImpl extends GenericDao<ReimbursementApplyBean, String> implements IReimbursementApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-reimbursementapply-unit")
     public void setEntityManager(EntityManager em) {

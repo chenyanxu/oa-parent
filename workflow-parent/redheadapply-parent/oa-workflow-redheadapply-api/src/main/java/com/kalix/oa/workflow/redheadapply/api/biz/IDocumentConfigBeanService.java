@@ -15,5 +15,5 @@ public interface IDocumentConfigBeanService extends IBizService<DocumentConfigBe
      */
     DocumentConfigBean getEntity(Integer docType, String year);
 
-    Integer updateNumber(Long id, Integer number);
+    Integer updateNumber(String id, Integer number);
 }

@@ -129,7 +129,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void beforeSaveEntity(RedheadApplyBean entity, JsonStatus status) {
-        if (entity.getId() > 0) {
+        if (entity.getId() != null && !entity.getId().isEmpty()) {
 //            update
         } else {
 //            add
@@ -337,7 +337,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     private ITemplateBeanService templateBeanService;
 
     @Override
-    public String[] createDownloadFile(Long entityId, String fileType) {
+    public String[] createDownloadFile(String entityId, String fileType) {
         String[] fileInfo = new String[2];
         String docCaption = "";
         String docTypeName = "";
@@ -370,7 +370,7 @@ public class RedheadApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         if (StringUtils.isNotEmpty(docTypeName)) {
             DocumentBean documentBean = documentBeanService.getEntityByBusinessNo(docTypeName);
             if (documentBean != null) {
-                if (documentBean.getRedheadId().longValue() == entityId.longValue()) {
+                if (documentBean.getRedheadId().equals(entityId)) {
                     other = documentBean.getOther();
                     docDept = documentBean.getDocDept();
                     SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");

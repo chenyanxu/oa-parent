@@ -19,7 +19,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class ReimbursementApplyBean extends WorkflowEntity {
 
-    private Long evectionApplyId;
+    private String evectionApplyId;
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date reimbursementDate;//报销日期
     private String reimbursementNo;//编号
@@ -38,11 +38,11 @@ public class ReimbursementApplyBean extends WorkflowEntity {
     private Float borrowMoney;//预借金额
     private Float backMoney;//补退金额
 
-    public Long getEvectionApplyId() {
+    public String getEvectionApplyId() {
         return evectionApplyId;
     }
 
-    public void setEvectionApplyId(Long evectionApplyId) {
+    public void setEvectionApplyId(String evectionApplyId) {
         this.evectionApplyId = evectionApplyId;
     }
 

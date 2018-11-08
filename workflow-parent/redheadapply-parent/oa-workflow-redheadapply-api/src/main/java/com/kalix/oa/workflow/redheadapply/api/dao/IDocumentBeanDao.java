@@ -7,7 +7,7 @@ import com.kalix.oa.workflow.redheadapply.entities.DocumentBean;
 /**
  * @author sunlf
  */
-public interface IDocumentBeanDao extends IGenericDao<DocumentBean, Long> {
+public interface IDocumentBeanDao extends IGenericDao<DocumentBean, String> {
     /**
      * 查询发文信息
      * @param docType 发文类型【文号类型】

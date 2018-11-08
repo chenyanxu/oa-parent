@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author chenyanxu
  */
-public class SealApplyBeanDaoImpl extends GenericDao<SealApplyBean, Long> implements ISealApplyBeanDao {
+public class SealApplyBeanDaoImpl extends GenericDao<SealApplyBean, String> implements ISealApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-sealapply")
     public void setEntityManager(EntityManager em) {

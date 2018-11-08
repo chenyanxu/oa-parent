@@ -45,7 +45,7 @@ public class DocExecutionListener implements ExecutionListener {
         String businessKey = pi.getBusinessKey();
         //拆分业务键，拆分成“业务对象名称”和“业务对象ID”的数组
         String beanId = WorkflowUtil.getBizId(businessKey);
-        RedheadApplyBean bean = redheadApplyBeanDao.get(new Long(beanId));
+        RedheadApplyBean bean = redheadApplyBeanDao.get(beanId);
         bean.setEditDocType(false);
         redheadApplyBeanDao.save(bean);
 

@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author sunlf
  */
-public class CarApplyBeanDaoImpl extends GenericDao<CarApplyBean, Long> implements ICarApplyBeanDao {
+public class CarApplyBeanDaoImpl extends GenericDao<CarApplyBean, String> implements ICarApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-carapply-unit")
     public void setEntityManager(EntityManager em) {

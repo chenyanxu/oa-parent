@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 /**
  * Created by zangyanming on 2016/6/15.
  */
-public class RecruitApplyBeanDaoImpl extends GenericDao<RecruitApplyBean, Long> implements IRecruitApplyBeanDao {
+public class RecruitApplyBeanDaoImpl extends GenericDao<RecruitApplyBean, String> implements IRecruitApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-recruitapply")
     public void setEntityManager(EntityManager em) {

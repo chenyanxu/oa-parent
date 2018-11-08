@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class LoanBeanDaoImpl extends GenericDao<LoanBean, Long> implements ILoanBeanDao {
+public class LoanBeanDaoImpl extends GenericDao<LoanBean, String> implements ILoanBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-evectionapply-unit")
     public void setEntityManager(EntityManager em) {

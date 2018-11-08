@@ -5,5 +5,5 @@ import com.kalix.oa.workflow.employapply.entities.EmployApplyBean;
 /**
  * @author sunlf
  */
-public interface IEmployApplyBeanDao extends IGenericDao<EmployApplyBean, Long> {
+public interface IEmployApplyBeanDao extends IGenericDao<EmployApplyBean, String> {
 }

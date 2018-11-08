@@ -23,7 +23,7 @@ public class LoanBean extends PersistentEntity {
     /**
      * @describe 出差申请流程ID
      */
-    private Long evectionId;
+    private String evectionId;
     /**
      * @describe 交通费用
      */
@@ -49,11 +49,11 @@ public class LoanBean extends PersistentEntity {
      */
     private String comment;
 
-    public Long getEvectionId() {
+    public String getEvectionId() {
         return evectionId;
     }
 
-    public void setEvectionId(Long evectionId) {
+    public void setEvectionId(String evectionId) {
         this.evectionId = evectionId;
     }
 

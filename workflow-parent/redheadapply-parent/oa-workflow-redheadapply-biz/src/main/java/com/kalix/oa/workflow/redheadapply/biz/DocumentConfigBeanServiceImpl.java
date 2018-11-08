@@ -16,7 +16,7 @@ public class DocumentConfigBeanServiceImpl extends ShiroGenericBizServiceImpl<ID
     }
 
     @Override
-    public Integer updateNumber(Long id, Integer number) {
+    public Integer updateNumber(String id, Integer number) {
         return this.dao.updateNumber(id, number);
     }
 }

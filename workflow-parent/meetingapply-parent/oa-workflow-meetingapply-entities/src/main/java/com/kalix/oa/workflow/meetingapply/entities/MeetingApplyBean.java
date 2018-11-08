@@ -16,7 +16,7 @@ import java.util.Date;
 @Table(name = "oa_workflow_meetingapply")
 public class MeetingApplyBean extends WorkflowEntity {
     //会议地点
-    private Integer meetingroomId;
+    private String meetingroomId;
     //会议地点
     @Transient
     private String meetingroomName;
@@ -46,11 +46,11 @@ public class MeetingApplyBean extends WorkflowEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date approveDeadline;
 
-    public Integer getMeetingroomId() {
+    public String getMeetingroomId() {
         return meetingroomId;
     }
 
-    public void setMeetingroomId(Integer meetingroomId) {
+    public void setMeetingroomId(String meetingroomId) {
         this.meetingroomId = meetingroomId;
     }
 

@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class DetailBean extends WorkflowEntity {
 
-    private Long reimbursementApplyId;//主表id
+    private String reimbursementApplyId;//主表id
     private Integer startMonth;//开始月
     private Integer startDay;//开始日
     private String startTime;//开始时间
@@ -42,11 +42,11 @@ public class DetailBean extends WorkflowEntity {
     private Float otherMoneyThree;//其他费用3
     private Float totalMoney;//费用总额
 
-    public Long getReimbursementApplyId() {
+    public String getReimbursementApplyId() {
         return reimbursementApplyId;
     }
 
-    public void setReimbursementApplyId(Long reimbursementApplyId) {
+    public void setReimbursementApplyId(String reimbursementApplyId) {
         this.reimbursementApplyId = reimbursementApplyId;
     }
 

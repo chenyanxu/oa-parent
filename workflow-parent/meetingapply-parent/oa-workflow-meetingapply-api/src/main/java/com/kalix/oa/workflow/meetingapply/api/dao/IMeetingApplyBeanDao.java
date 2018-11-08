@@ -7,5 +7,5 @@ import com.kalix.oa.workflow.meetingapply.entities.MeetingApplyBean;
 /**
  * @author sunlf
  */
-public interface IMeetingApplyBeanDao extends IGenericDao<MeetingApplyBean, Long> {
+public interface IMeetingApplyBeanDao extends IGenericDao<MeetingApplyBean, String> {
 }

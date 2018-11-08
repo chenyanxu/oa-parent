@@ -11,6 +11,6 @@ import com.kalix.oa.workflow.evectionapply.entities.LoanBean;
  * @修改时间：
  * @修改备注：
  */
-public interface ILoanBeanDao extends IGenericDao<LoanBean, Long> {
+public interface ILoanBeanDao extends IGenericDao<LoanBean, String> {
     //在此添加新的DAO方法
 }

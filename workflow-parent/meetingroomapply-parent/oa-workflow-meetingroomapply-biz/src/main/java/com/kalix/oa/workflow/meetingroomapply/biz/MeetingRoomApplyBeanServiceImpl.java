@@ -71,14 +71,14 @@ public class MeetingRoomApplyBeanServiceImpl extends WorkflowGenericBizServiceIm
         MeetingRoomApplyBean entity = SerializeUtil.unserializeJson(jsonStr, MeetingRoomApplyBean.class);
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setMsg("0");
-        long id;
-        if (entity.getId() == 0) {
-            id = -1;
+        String id;
+        if (entity.getId() == null) {
+            id = "-1";
         } else {
             id = entity.getId();
         }
 
-        long meetingroomId = entity.getMeetingroomId();
+        String meetingroomId = entity.getMeetingroomId();
         //Date meetingDate = entity.getMeetingDate();
 
         Date beginDateTime = new Date();
@@ -169,7 +169,7 @@ public class MeetingRoomApplyBeanServiceImpl extends WorkflowGenericBizServiceIm
      * @return
      */
     @Override
-    public JsonData reservation(long roomId, Date date) {
+    public JsonData reservation(String roomId, Date date) {
         if (date == null) return null;
         JsonData jsonData = new JsonData();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");

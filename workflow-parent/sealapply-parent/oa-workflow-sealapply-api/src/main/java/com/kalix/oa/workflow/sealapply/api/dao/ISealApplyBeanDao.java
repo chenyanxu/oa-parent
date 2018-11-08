@@ -6,5 +6,5 @@ import com.kalix.oa.workflow.sealapply.entities.SealApplyBean;
 /**
  * @author chenyanxu
  */
-public interface ISealApplyBeanDao extends IGenericDao<SealApplyBean, Long> {
+public interface ISealApplyBeanDao extends IGenericDao<SealApplyBean, String> {
 }

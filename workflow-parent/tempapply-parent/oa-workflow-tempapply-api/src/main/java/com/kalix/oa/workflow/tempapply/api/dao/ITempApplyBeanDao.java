@@ -6,5 +6,5 @@ import com.kalix.oa.workflow.tempapply.entities.TempApplyBean;
 /**
  * @author chenyanxu
  */
-public interface ITempApplyBeanDao extends IGenericDao<TempApplyBean, Long> {
+public interface ITempApplyBeanDao extends IGenericDao<TempApplyBean, String> {
 }

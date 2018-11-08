@@ -20,7 +20,7 @@ public class DetailBeanServiceImpl extends ShiroGenericBizServiceImpl<IDetailBea
     }
 
     @Override
-    public JsonData getDetailByReimbursementId(Long reimbursementApplyId){
+    public JsonData getDetailByReimbursementId(String reimbursementApplyId){
         String jsonStr;
         jsonStr = "{\"reimbursementApplyId\":"+reimbursementApplyId+"}";
         return this.getAllEntityByQuery(1,100,jsonStr);

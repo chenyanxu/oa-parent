@@ -12,6 +12,6 @@ import com.kalix.oa.system.meetingroom.entities.MeetingroomBean;
  * @修改时间：
  * @修改备注：
  */
-public interface IMeetingroomBeanDao extends IGenericDao<MeetingroomBean, Long> {
+public interface IMeetingroomBeanDao extends IGenericDao<MeetingroomBean, String> {
     //在此添加新的DAO方法
 }

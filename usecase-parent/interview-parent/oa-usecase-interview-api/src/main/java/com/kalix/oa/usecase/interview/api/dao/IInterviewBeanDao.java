@@ -11,6 +11,6 @@ import com.kalix.oa.usecase.interview.entities.InterviewBean;
  * @修改时间：
  * @修改备注：
  */
-public interface IInterviewBeanDao extends IGenericDao<InterviewBean, Long> {
+public interface IInterviewBeanDao extends IGenericDao<InterviewBean, String> {
     //在此添加新的DAO方法
 }

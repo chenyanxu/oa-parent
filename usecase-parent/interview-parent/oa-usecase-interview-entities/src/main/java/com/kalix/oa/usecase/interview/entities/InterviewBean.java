@@ -15,7 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name = "oa_interview")
 public class InterviewBean extends PersistentEntity {
-    private Long candidateId;//应聘id
+    private String candidateId;//应聘id
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date dateFirst;//初试时间
     private String interviewerFirst;//初试面试官
@@ -31,11 +31,11 @@ public class InterviewBean extends PersistentEntity {
     private String interviewContentSecond;//复试面试内容
     private Boolean passSecond;// 复试是否通过
 
-    public Long getCandidateId() {
+    public String getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(Long candidateId) {
+    public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 

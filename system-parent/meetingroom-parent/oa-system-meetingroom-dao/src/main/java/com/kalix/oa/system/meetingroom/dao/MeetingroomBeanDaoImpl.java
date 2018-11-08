@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class MeetingroomBeanDaoImpl extends GenericDao<MeetingroomBean, Long> implements IMeetingroomBeanDao {
+public class MeetingroomBeanDaoImpl extends GenericDao<MeetingroomBean, String> implements IMeetingroomBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-system-meetingroom")
     public void setEntityManager(EntityManager em) {

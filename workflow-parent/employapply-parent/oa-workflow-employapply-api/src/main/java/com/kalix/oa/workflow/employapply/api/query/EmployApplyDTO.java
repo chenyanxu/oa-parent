@@ -11,14 +11,14 @@ import java.util.Date;
  */
 public class EmployApplyDTO extends BaseDTO {
     private Integer personCategory;//人员类别
-    private Long orgId;//部门
+    private String orgId;//部门
     private String orgName;//部门
     private String xm;//姓名
     private Integer sex;//性别
     private Integer age;//年龄
     private String tel;//联系电话
     private String position;//应聘岗位
-    private Long employApplyWorkflowId;//入职申请
+    private String employApplyWorkflowId;//入职申请
 
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
@@ -33,7 +33,7 @@ public class EmployApplyDTO extends BaseDTO {
     private String title;     //流程名称
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date applyDate;   //申请日期
-    private Long candidateId; // 应聘人员id
+    private String candidateId; // 应聘人员id
     private String candidateName; // 应聘者姓名
 
     public Integer getPersonCategory() {
@@ -44,11 +44,11 @@ public class EmployApplyDTO extends BaseDTO {
         this.personCategory = personCategory;
     }
 
-    public Long getOrgId() {
+    public String getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(Long orgId) {
+    public void setOrgId(String orgId) {
         this.orgId = orgId;
     }
 
@@ -100,11 +100,11 @@ public class EmployApplyDTO extends BaseDTO {
         this.position = position;
     }
 
-    public Long getEmployApplyWorkflowId() {
+    public String getEmployApplyWorkflowId() {
         return employApplyWorkflowId;
     }
 
-    public void setEmployApplyWorkflowId(Long employApplyWorkflowId) {
+    public void setEmployApplyWorkflowId(String employApplyWorkflowId) {
         this.employApplyWorkflowId = employApplyWorkflowId;
     }
 
@@ -188,11 +188,11 @@ public class EmployApplyDTO extends BaseDTO {
         this.applyDate = applyDate;
     }
 
-    public Long getCandidateId() {
+    public String getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(Long candidateId) {
+    public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 

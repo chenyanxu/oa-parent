@@ -7,7 +7,7 @@ import com.kalix.oa.system.dict.entities.OADictBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class OADictBeanDaoImpl extends GenericDao<OADictBean, Long> implements IOADictBeanDao {
+public class OADictBeanDaoImpl extends GenericDao<OADictBean, String> implements IOADictBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-system-dict-unit")
     public void setEntityManager(EntityManager em) {

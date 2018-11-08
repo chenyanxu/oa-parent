@@ -32,7 +32,7 @@ public class DocumentBean extends PersistentEntity {
     private Integer page;      //页数
     private Integer copy;      //份数
     private String other;      //抄送
-    private Long redheadId;    //红头文件id
+    private String redheadId;    //红头文件id
 
     public Integer getDocType() {
         return docType;
@@ -130,11 +130,11 @@ public class DocumentBean extends PersistentEntity {
         this.other = other;
     }
 
-    public Long getRedheadId() {
+    public String getRedheadId() {
         return redheadId;
     }
 
-    public void setRedheadId(Long redheadId) {
+    public void setRedheadId(String redheadId) {
         this.redheadId = redheadId;
     }
 }

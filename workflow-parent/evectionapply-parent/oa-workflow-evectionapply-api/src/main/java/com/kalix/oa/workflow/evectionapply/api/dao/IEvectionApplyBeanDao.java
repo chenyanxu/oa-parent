@@ -11,6 +11,6 @@ import com.kalix.oa.workflow.evectionapply.entities.EvectionApplyBean;
  * @修改时间：
  * @修改备注：
  */
-public interface IEvectionApplyBeanDao extends IGenericDao<EvectionApplyBean, Long> {
+public interface IEvectionApplyBeanDao extends IGenericDao<EvectionApplyBean, String> {
     //在此添加新的DAO方法
 }

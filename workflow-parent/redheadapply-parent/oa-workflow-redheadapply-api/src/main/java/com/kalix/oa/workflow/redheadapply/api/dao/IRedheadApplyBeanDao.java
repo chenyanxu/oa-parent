@@ -7,5 +7,5 @@ import com.kalix.oa.workflow.redheadapply.entities.RedheadApplyBean;
 /**
  * @author sunlf
  */
-public interface IRedheadApplyBeanDao extends IGenericDao<RedheadApplyBean, Long> {
+public interface IRedheadApplyBeanDao extends IGenericDao<RedheadApplyBean, String> {
 }

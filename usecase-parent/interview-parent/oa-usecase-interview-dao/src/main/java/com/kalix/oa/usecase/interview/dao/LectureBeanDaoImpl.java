@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class LectureBeanDaoImpl extends GenericDao<LectureBean, Long> implements ILectureBeanDao {
+public class LectureBeanDaoImpl extends GenericDao<LectureBean, String> implements ILectureBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-usecase-interview")
     public void setEntityManager(EntityManager em) {

@@ -34,7 +34,7 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
      * @param id 文号实体id
      * @return
      */
-    JsonStatus revokeBusinessNo(Long id);
+    JsonStatus revokeBusinessNo(String id);
 
     /**
      * 废除文号
@@ -42,7 +42,7 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
      * @param id 文号实体id
      * @return
      */
-    JsonStatus abolishBusinessNo(Long id);
+    JsonStatus abolishBusinessNo(String id);
 
     /**
      * 发文
@@ -51,5 +51,5 @@ public interface IDocumentBeanService extends IBizService<DocumentBean> {
      * @param entity 文号实体
      * @return
      */
-    JsonStatus publishRedhead(Long id, DocumentBean entity);
+    JsonStatus publishRedhead(String id, DocumentBean entity);
 }

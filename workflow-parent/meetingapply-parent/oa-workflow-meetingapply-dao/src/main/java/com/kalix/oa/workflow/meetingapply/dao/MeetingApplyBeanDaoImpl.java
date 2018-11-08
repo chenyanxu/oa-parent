@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author sunlf
  */
-public class MeetingApplyBeanDaoImpl extends GenericDao<MeetingApplyBean, Long> implements IMeetingApplyBeanDao {
+public class MeetingApplyBeanDaoImpl extends GenericDao<MeetingApplyBean, String> implements IMeetingApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-meetingapply")
     public void setEntityManager(EntityManager em) {

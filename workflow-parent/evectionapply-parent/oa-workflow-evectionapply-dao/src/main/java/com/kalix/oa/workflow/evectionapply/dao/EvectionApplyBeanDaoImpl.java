@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class EvectionApplyBeanDaoImpl extends GenericDao<EvectionApplyBean, Long> implements IEvectionApplyBeanDao {
+public class EvectionApplyBeanDaoImpl extends GenericDao<EvectionApplyBean, String> implements IEvectionApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-evectionapply-unit")
     public void setEntityManager(EntityManager em) {

@@ -35,7 +35,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
     @Override
     @Transactional
-    public JsonStatus revokeBusinessNo(Long id) {
+    public JsonStatus revokeBusinessNo(String id) {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
         try {
@@ -79,7 +79,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
     @Override
     @Transactional
-    public JsonStatus abolishBusinessNo(Long id) {
+    public JsonStatus abolishBusinessNo(String id) {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
         try {
@@ -123,7 +123,7 @@ public class DocumentBeanServiceImpl extends ShiroGenericBizServiceImpl<IDocumen
 
     @Override
     @Transactional
-    public JsonStatus publishRedhead(Long id, DocumentBean entity) {
+    public JsonStatus publishRedhead(String id, DocumentBean entity) {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
         try {

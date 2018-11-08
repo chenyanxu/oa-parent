@@ -43,7 +43,7 @@ public class ReimbursementApplyDTO extends BaseDTO {
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date reimbursementDate;//报销日期
     private String reimbursementNo;//编号
-    private Long bussinessPeopleId;//出差人
+    private String bussinessPeopleId;//出差人
     private String projectName;//项目名称
     private String managerUser;//领导批示
     private String depUserBack;//部门领导
@@ -55,7 +55,7 @@ public class ReimbursementApplyDTO extends BaseDTO {
     private Integer backMoney;//补退金额
 
     private String title;//
-    private Long orgId;
+    private String orgId;
     private String orgName;
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
@@ -135,11 +135,11 @@ public class ReimbursementApplyDTO extends BaseDTO {
         this.reimbursementNo = reimbursementNo;
     }
 
-    public Long getBussinessPeopleId() {
+    public String getBussinessPeopleId() {
         return bussinessPeopleId;
     }
 
-    public void setBussinessPeopleId(Long bussinessPeopleId) {
+    public void setBussinessPeopleId(String bussinessPeopleId) {
         this.bussinessPeopleId = bussinessPeopleId;
     }
 
@@ -223,11 +223,11 @@ public class ReimbursementApplyDTO extends BaseDTO {
         this.title = title;
     }
 
-    public Long getOrgId() {
+    public String getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(Long orgId) {
+    public void setOrgId(String orgId) {
         this.orgId = orgId;
     }
 

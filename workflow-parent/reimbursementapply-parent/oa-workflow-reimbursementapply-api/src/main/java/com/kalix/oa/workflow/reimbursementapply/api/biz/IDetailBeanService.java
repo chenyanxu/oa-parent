@@ -14,5 +14,5 @@ import com.kalix.oa.workflow.reimbursementapply.entities.DetailBean;
  */
 public interface IDetailBeanService extends IBizService<DetailBean> {
     //在此添加新的业务方法
-    JsonData getDetailByReimbursementId(Long reimbursementApplyId);
+    JsonData getDetailByReimbursementId(String reimbursementApplyId);
 }

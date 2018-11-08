@@ -7,7 +7,7 @@ import com.kalix.oa.workflow.redheadapply.entities.DocumentConfigBean;
 /**
  * @author sunlf
  */
-public interface IDocumentConfigBeanDao extends IGenericDao<DocumentConfigBean, Long> {
+public interface IDocumentConfigBeanDao extends IGenericDao<DocumentConfigBean, String> {
     /**
      * 获取文号配置实体
      * @param docType 发文类型
@@ -16,5 +16,5 @@ public interface IDocumentConfigBeanDao extends IGenericDao<DocumentConfigBean, 
      */
     DocumentConfigBean getEntity(Integer docType, String year);
 
-    Integer updateNumber(Long id, Integer number);
+    Integer updateNumber(String id, Integer number);
 }

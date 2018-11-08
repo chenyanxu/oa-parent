@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author sunlf
  */
-public class RedheadApplyBeanDaoImpl extends GenericDao<RedheadApplyBean, Long> implements IRedheadApplyBeanDao {
+public class RedheadApplyBeanDaoImpl extends GenericDao<RedheadApplyBean, String> implements IRedheadApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-redheadapply-unit")
     public void setEntityManager(EntityManager em) {

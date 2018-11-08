@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "oa_candidate")
 public class CandidateBean extends PersistentEntity {
     private Integer personCategory;//人员类别
-    private Long orgId;//部门代码
+    private String orgId;//部门代码
     private String orgName;//部门名称
     private String xm;//姓名
     private Integer sex;//性别
@@ -38,11 +38,11 @@ public class CandidateBean extends PersistentEntity {
         this.personCategory = personCategory;
     }
 
-    public Long getOrgId() {
+    public String getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(Long orgId) {
+    public void setOrgId(String orgId) {
         this.orgId = orgId;
     }
 

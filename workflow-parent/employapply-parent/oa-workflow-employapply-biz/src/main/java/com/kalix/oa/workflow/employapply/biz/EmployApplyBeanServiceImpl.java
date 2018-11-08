@@ -41,7 +41,7 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         List<CandidateBean> candidateBeanList = candidateBeanService.getAllEntity();
         for (CandidateBean c : candidateBeanList) {
             if (c.getEmployApplyWorkflowId() != null) {
-                if (c.getEmployApplyWorkflowId() == bean.getId()) {
+                if (c.getEmployApplyWorkflowId().equals(bean.getId())) {
                     map.put("personCategory", c.getPersonCategory());
                     break;
                 }
@@ -85,13 +85,13 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
         return jsonData;
     }
 
-    public EmployApplyDTO getDTOModel(Long id) {
+    public EmployApplyDTO getDTOModel(String id) {
         EmployApplyDTO entity = new EmployApplyDTO();
         String sql = "select a.id,a.personCategory,a.orgId,a.orgName,a.xm,a.sex,a.age,a.tel,a.position,a.orgId,a.orgName,a.createby,"
                 + "b.id as employApplyWorkflowId,b.processInstanceId,b.currentNode,b.status,b.auditResult,b.businessNo,"
                 + "b.branchSchoolLeader,b.schoolLeader,b.manpower,b.applydate,a.id as candidateId,b.title,a.xm as candidateName "
                 + "from oa_candidate a, oa_workflow_employapply b "
-                + "where a.employapplyworkflowid = b.id and b.id = " + id;
+                + "where a.employapplyworkflowid = b.id and b.id = '" + id + "'";
         List<EmployApplyDTO> list = dao.findByNativeSql(sql, entity.getClass(), null);
         if (list != null && list.size() > 0) {
             entity = list.get(0);
@@ -133,10 +133,10 @@ public class EmployApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IE
 
     @Override
     public JsonStatus startProcess(String id) {
-        CandidateBean candidateBean = candidateBeanService.getEntity(Long.parseLong(id));
+        CandidateBean candidateBean = candidateBeanService.getEntity(id);
         if (candidateBean.getEmployApplyWorkflowId() == null || candidateBean.getEmployApplyWorkflowId() == 0) {
             EmployApplyBean employApplyBean = new EmployApplyBean();
-            employApplyBean.setId(0);
+            employApplyBean.setId("0");
             employApplyBean.setOrgId(candidateBean.getOrgId());
             employApplyBean.setOrgName(candidateBean.getOrgName());
             employApplyBean.setTitle("吉林动画学院入职申请表");

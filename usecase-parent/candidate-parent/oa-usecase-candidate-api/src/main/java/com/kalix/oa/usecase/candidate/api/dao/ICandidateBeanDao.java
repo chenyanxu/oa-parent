@@ -11,6 +11,6 @@ import com.kalix.oa.usecase.candidate.entities.CandidateBean;
  * @修改时间：
  * @修改备注：
  */
-public interface ICandidateBeanDao extends IGenericDao<CandidateBean, Long> {
+public interface ICandidateBeanDao extends IGenericDao<CandidateBean, String> {
     //在此添加新的DAO方法
 }

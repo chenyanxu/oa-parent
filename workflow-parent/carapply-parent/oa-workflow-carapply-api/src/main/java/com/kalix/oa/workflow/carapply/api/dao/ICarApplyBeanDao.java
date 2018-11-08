@@ -7,5 +7,5 @@ import com.kalix.oa.workflow.carapply.entities.CarApplyBean;
 /**
  * @author sunlf
  */
-public interface ICarApplyBeanDao extends IGenericDao<CarApplyBean, Long> {
+public interface ICarApplyBeanDao extends IGenericDao<CarApplyBean, String> {
 }

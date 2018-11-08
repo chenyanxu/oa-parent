@@ -60,7 +60,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     }
 
     @Override
-    public MeetingApplyBean getEntity(long id) {
+    public MeetingApplyBean getEntity(String id) {
         MeetingApplyBean meetingApplyBean = super.getEntity(id);
         String meetingSummaryPersonName = "", importantAttendeesName = "", otherAttendeesName = "";
         List<MeetingApplyBean> bean = new ArrayList<>();
@@ -72,7 +72,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
             for (int i = 0; i < meetingApplyBean.getMeetingSummaryPerson().split(",").length; i++) {
                 if (!meetingApplyBean.getMeetingSummaryPerson().split(",")[i].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getMeetingSummaryPerson().split(",")[i]));
+                    UserBean userBean = userBeanService.getEntity(meetingApplyBean.getMeetingSummaryPerson().split(",")[i]);
                     if (userBean != null) {
                         meetingSummaryPersonName += userBean.getName() + ",";
                     }
@@ -88,7 +88,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         if (!meetingApplyBean.getImportantAttendees().isEmpty()) {
             for (int k = 0; k < meetingApplyBean.getImportantAttendees().split(",").length; k++) {
                 if (!meetingApplyBean.getImportantAttendees().split(",")[k].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getImportantAttendees().split(",")[k]));
+                    UserBean userBean = userBeanService.getEntity(meetingApplyBean.getImportantAttendees().split(",")[k]);
                     importantAttendeesName += userBean.getName() + ",";
                 }
             }
@@ -101,7 +101,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
             for (int l = 0; l < meetingApplyBean.getMeetingSummaryPerson().split(",").length; l++) {
                 if (!meetingApplyBean.getOtherAttendees().split(",")[l].equals("")) {
-                    UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingApplyBean.getOtherAttendees().split(",")[l]));
+                    UserBean userBean = userBeanService.getEntity(meetingApplyBean.getOtherAttendees().split(",")[l]);
                     otherAttendeesName += userBean.getName() + ",";
                 }
             }
@@ -134,7 +134,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             if (meetingApplyBean.getMeetingSummaryPerson() != null && !meetingApplyBean.getMeetingSummaryPerson().isEmpty()) {
                 for (int j = 0; j < meetingSummaryPerson.length; j++) {
                     if (!meetingSummaryPerson[j].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingSummaryPerson[j]));
+                        UserBean userBean = userBeanService.getEntity(meetingSummaryPerson[j]);
                         if (userBean != null) {
                             meetingSummaryPersonName += userBean.getName() + ",";
                         }
@@ -151,7 +151,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                 String[] meetingAttendeesSplit = meetingApplyBean.getImportantAttendees().split(",");
                 for (int k = 0; k < meetingAttendeesSplit.length; k++) {
                     if (!meetingAttendeesSplit[k].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(meetingAttendeesSplit[k]));
+                        UserBean userBean = userBeanService.getEntity(meetingAttendeesSplit[k]);
                         importantAttendeesName += userBean.getName() + ",";
                     }
                 }
@@ -165,7 +165,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
                 for (int l = 0; l < meetingSummaryPerson.length; l++) {
                     String[] otherAttendeesSplit = meetingApplyBean.getOtherAttendees().split(",");
                     if (!otherAttendeesSplit[l].equals("")) {
-                        UserBean userBean = userBeanService.getEntity(Long.parseLong(otherAttendeesSplit[l]));
+                        UserBean userBean = userBeanService.getEntity(otherAttendeesSplit[l]);
                         otherAttendeesName += userBean.getName() + ",";
                     }
                 }
@@ -193,14 +193,14 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         MeetingApplyBean entity = SerializeUtil.unserializeJson(jsonStr, MeetingApplyBean.class);
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setMsg("0");
-        long id;
-        if (entity.getId() == 0) {
-            id = -1;
+        String id;
+        if (entity.getId() == null) {
+            id = "-1";
         } else {
             id = entity.getId();
         }
 
-        long meetingroomId = entity.getMeetingroomId();
+        String meetingroomId = entity.getMeetingroomId();
         //Date meetingDate = entity.getMeetingDate();
 
         Date beginDateTime = new Date();
@@ -293,7 +293,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
      * @return
      */
     @Override
-    public JsonData reservation(long roomId, Date date) {
+    public JsonData reservation(String roomId, Date date) {
         if (date == null) return null;
         JsonData jsonData = new JsonData();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -314,7 +314,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             String[] split = importantAttendees.split(",");
             for (int i = 0; i < split.length; i++) {
                 //根据用户id转成loginName
-                Long userId = Long.parseLong(split[i]);
+                String userId = split[i];
                 UserBean userBean = userBeanService.getEntity(userId);
                 assigneeList.add(userBean.getLoginName());
             }

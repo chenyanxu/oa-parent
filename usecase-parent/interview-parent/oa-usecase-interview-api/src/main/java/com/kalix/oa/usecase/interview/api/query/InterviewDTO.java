@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class InterviewDTO extends BaseDTO {
     private Integer personCategory;//人员类别
-    private Long orgId;//部门代码
+    private String orgId;//部门代码
     private String orgName;//部门名称
     private String xm;//姓名
     private Integer sex;//性别
@@ -18,7 +18,7 @@ public class InterviewDTO extends BaseDTO {
     private String tel;//联系电话
     private String position;//应聘岗位
 
-    private Long candidateId;//应聘id
+    private String candidateId;//应聘id
     @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date dateFirst;//初试时间
     private String interviewerFirst;//初试面试官
@@ -39,11 +39,11 @@ public class InterviewDTO extends BaseDTO {
         this.personCategory = personCategory;
     }
 
-    public Long getOrgId() {
+    public String getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(Long orgId) {
+    public void setOrgId(String orgId) {
         this.orgId = orgId;
     }
 
@@ -95,11 +95,11 @@ public class InterviewDTO extends BaseDTO {
         this.position = position;
     }
 
-    public Long getCandidateId() {
+    public String getCandidateId() {
         return candidateId;
     }
 
-    public void setCandidateId(Long candidateId) {
+    public void setCandidateId(String candidateId) {
         this.candidateId = candidateId;
     }
 

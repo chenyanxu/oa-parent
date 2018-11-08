@@ -11,6 +11,6 @@ import com.kalix.oa.workflow.reimbursementapply.entities.DetailBean;
  * @修改时间：
  * @修改备注：
  */
-public interface IDetailBeanDao extends IGenericDao<DetailBean, Long> {
+public interface IDetailBeanDao extends IGenericDao<DetailBean, String> {
     //在此添加新的DAO方法
 }

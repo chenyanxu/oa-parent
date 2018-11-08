@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @修改时间：
  * @修改备注：
  */
-public class DetailBeanDaoImpl extends GenericDao<DetailBean, Long> implements IDetailBeanDao {
+public class DetailBeanDaoImpl extends GenericDao<DetailBean, String> implements IDetailBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-reimbursementapply-unit")
     public void setEntityManager(EntityManager em) {

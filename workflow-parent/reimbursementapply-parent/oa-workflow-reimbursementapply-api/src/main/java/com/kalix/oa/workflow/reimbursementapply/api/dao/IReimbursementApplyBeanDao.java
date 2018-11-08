@@ -7,5 +7,5 @@ import com.kalix.oa.workflow.reimbursementapply.entities.ReimbursementApplyBean;
 /**
  * @author zangyanming
  */
-public interface IReimbursementApplyBeanDao extends IGenericDao<ReimbursementApplyBean, Long> {
+public interface IReimbursementApplyBeanDao extends IGenericDao<ReimbursementApplyBean, String> {
 }

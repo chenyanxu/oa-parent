@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 /**
  * @author chenyanxu
  */
-public class TempApplyBeanDaoImpl extends GenericDao<TempApplyBean, Long> implements ITempApplyBeanDao {
+public class TempApplyBeanDaoImpl extends GenericDao<TempApplyBean, String> implements ITempApplyBeanDao {
     @Override
     @PersistenceContext(unitName = "oa-workflow-tempapply")
     public void setEntityManager(EntityManager em) {

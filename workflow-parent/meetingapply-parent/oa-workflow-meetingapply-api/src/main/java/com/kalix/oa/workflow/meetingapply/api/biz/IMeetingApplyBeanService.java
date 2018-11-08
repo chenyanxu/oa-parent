@@ -19,7 +19,7 @@ public interface IMeetingApplyBeanService extends IWorkflowBizService<MeetingApp
     //会议室预约情况
     JsonData reservation(Date date);
 
-    JsonData reservation(long roomId, Date date);
+    JsonData reservation(String roomId, Date date);
 
     void getStartMap(Map map, MeetingApplyBean bean);
 }
