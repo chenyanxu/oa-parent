@@ -13,6 +13,8 @@
     <modules>
         <!--<module>oa-core-extjs</module>-->
         <module>oa-core-etc</module>
+        <module>oa-core-biz</module>
+        <module>oa-core-rest</module>
     </modules>
     <packaging>pom</packaging>
 
